@@ -50,16 +50,23 @@ class TOTD extends EventEmitter {
         setInterval(async ()=>{
             this.emit('debug', 'Listener checking...')
             var hour2 = new Date().getHours();
+            var checked = false
             if (hour != hour2){
                 if (new Date(moment.tz(new Date(), "CET").format()).getHours() == 19){
-                    var totd2 = await this.totd()
-                    if (totd1.days.length != totd2.days.length){
-                        this.emit('new-totd', totd2.days[0])
+                    if (!checked){
+                        var totd2 = await this.totd()
+                        if (totd1.days.length != totd2.days.length){
+                            this.emit('new-totd', totd2.days[0])
+                        }
+                        else if (totd1.days[0].map.mapId != totd2.days[0].map.mapId) this.emit('new-totd', totd2[0])
+                        totd1 = totd2
+                        checked = true
+                    } else {
+                        this.emit('debug', 'Already checked')
                     }
-                    else if (totd1.days[0].map.mapId != totd2.days[0].map.mapId) this.emit('new-totd', totd2[0])
-                    totd1 = totd2
                 } else {
                     this.emit('debug', 'Not 19h CET, cancelling check')
+                    checked = false
                 }
                 hour = hour2
             } else {
