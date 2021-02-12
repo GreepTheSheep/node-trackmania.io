@@ -18,6 +18,14 @@ A Node.js inplementation of Trackmania Live services ([trackmania.io](https://tr
 ![GitHub forks](https://img.shields.io/github/forks/GreepTheSheep/node-trackmania.io?style=flat-square)
 
 ---
+## To-do
+
+- Players
+- Clubs
+- Events
+- COTD
+
+---
 
 ## Disclaimer - Can I use the Trackmania.io API for my own project?
 *(Copied from Miss' ([@codecat](https://github.com/codecat)) Disclaimer)*

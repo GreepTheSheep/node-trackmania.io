@@ -1,6 +1,6 @@
 {
   "name": "trackmania.io",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node.js inplementation of Trackmania Live services (trackmania.io)",
   "main": "src/index.js",
   "scripts": {
