@@ -27,6 +27,10 @@ function searchPlayer(player){
     return fetch(`${url.tmstats.protocol}://${url.tmstats.host}/${url.tmstats.api}/${url.tmstats.tabs.searchPlayer}/${player.replace(' ', '%20')}`, headers).then(r=>r.json())
 }
 
+function playerCOTD(player){
+    return fetch(`${url.tmstats.protocol}://${url.tmstats.host}/${url.tmstats.api}/${url.tmstats.tabs.player}/${player}`, headers).then(r=>r.json())
+}
+
 // Thanks to @dassschaf and Solux#5809 for this tool
 function stripFormatting(string) {
     // eslint-disable-next-line no-useless-escape
@@ -42,6 +46,7 @@ module.exports = {
             getPlayer,
             getPlayerTrophies,
             searchPlayer,
+            playerCOTD
         }
     },
     stripFormatting

@@ -11,13 +11,16 @@ cotd.on('debug', msg =>{
 
 function run(){
     try{
-        cotd.latestCOTDs().then(t=>{
-            console.log(t)
-        })
-        cotd.latestCOTD().then(t=>{
-            console.log(t)
-        })
-        cotd.latestCOTDResults().then(t=>{
+        // cotd.latestCOTDs().then(t=>{
+        //     console.log(t)
+        // })
+        // cotd.latestCOTD().then(t=>{
+        //     console.log(t)
+        // })
+        // cotd.latestCOTDResults().then(t=>{
+        //     console.log(t)
+        // })
+        cotd.playerResults('26d9a7de-4067-4926-9d93-2fe62cd869fc').then(t=>{
             console.log(t)
         })
     } catch (e){

@@ -51,6 +51,18 @@ class Players {
 
         return results_arr
     }
+
+    /**
+     * Gets the last trophies gains of a player
+     * @param {string} accountid The account ID
+     * @returns {array} The lastest COTD results of this player
+     */
+    async COTDResults(accountId){
+        var results = await f.getData.player.playerCOTD(accountId)
+        if (!results) throw 'Invalid account ID.'
+
+        return results.results.cotd.reverse()
+    }
 }
 
 module.exports = Players

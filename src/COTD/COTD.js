@@ -1,6 +1,7 @@
 const f = require('../functions')
 const url = require('../httpOptions')
 const EventEmitter = require('events')
+const Players = require('../Players/players')
 
 class COTD extends EventEmitter {
     constructor(options = {
@@ -43,6 +44,16 @@ class COTD extends EventEmitter {
         var results = await f.getData.page(url.tabs.comp, COTDs[0].id+`/results/${lastCOTD.rounds[0].matches[match-1].id}/0`)
 
         return results.results
+    }
+
+    /**
+     * Gets the last trophies gains of a player
+     * @param {string} accountid The account ID
+     * @returns {array} The lastest COTD results of this player
+     */
+    async playerResults(accountid){
+        var players = new Players()
+        return await players.COTDResults(accountid)
     }
 
     /**
