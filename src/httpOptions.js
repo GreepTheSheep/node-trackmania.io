@@ -5,6 +5,7 @@ module.exports = {
     "tabs": {
         "totd": "totd",
         "cotd": "cotd",
+        "comp": "comp",
         "news": "splashscreens",
         "campaigns": "campaigns",
         "campaign": "campaign",
