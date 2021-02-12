@@ -49,7 +49,7 @@ class News extends EventEmitter {
             if (news1.length != news2.length){
                 if (news2.length == news1.length + 1) this.emit('new-news', news2[0])
             }
-            if (news1[0].id != news2[0].id) this.emit('new-news', news2[0])
+            else if (news1[0].id != news2[0].id) this.emit('new-news', news2[0])
             news1 = news2
         }, 30000)
     }

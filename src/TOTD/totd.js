@@ -15,11 +15,12 @@ class TOTD extends EventEmitter {
 
     /**
      * Gets the Track Of The Day list for this month 
+     * @param {number} monthBefore Defaults to 0, Number of months ago this one
      * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {object} The Track Of The Day list for this month 
      */
-    async totd(format = true){
-        var totd = await f.getData.simple(url.tabs.totd)
+    async totd(monthBefore = 0, format = true){
+        var totd = await f.getData.page(url.tabs.totd, monthBefore)
 
         if (!format) return totd
         else {
@@ -55,7 +56,7 @@ class TOTD extends EventEmitter {
                     if (totd1.days.length != totd2.days.length){
                         this.emit('new-totd', totd2.days[0])
                     }
-                    if (totd1.days[0].map.mapId != totd2.days[0].map.mapId) this.emit('new-totd', totd2[0])
+                    else if (totd1.days[0].map.mapId != totd2.days[0].map.mapId) this.emit('new-totd', totd2[0])
                     totd1 = totd2
                 } else {
                     this.emit('debug', 'Not 19h CET, cancelling check')

@@ -13,6 +13,9 @@ const headers = {
 function getDataSimple(tab){
     return fetch(`${url.protocol}://${url.host}/${url.api}/${tab}/0`, headers).then(r=>r.json())
 }
+function getDataSimplePage(tab, page){
+    return fetch(`${url.protocol}://${url.host}/${url.api}/${tab}/${page}`, headers).then(r=>r.json())
+}
 function getPlayer(player){
     return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}/${url.tabs.trophies}/0`, headers).then(r=>r.json())
 }
@@ -30,6 +33,7 @@ function stripFormatting(string) {
 module.exports = {
     getData: {
         simple: getDataSimple,
+        page: getDataSimplePage,
         player: getPlayer,
         trophies: getPlayerTrophies
     },
