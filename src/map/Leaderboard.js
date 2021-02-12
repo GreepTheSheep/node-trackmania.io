@@ -3,11 +3,11 @@ const url = require('../httpOptions')
 
 /**
  * Gets the leaderboard
- * @param {string} mapId The Map ID
+ * @param {string} mapUid The Map UID
  * @returns {array} The list of tops
  */
-async function leaderboard(mapId){
-    var leaderboard = await f.getData.page(url.tabs.leaderboard, 'map/' + mapId)
+async function leaderboard(mapUid){
+    var leaderboard = await f.getData.page(url.tabs.leaderboard, 'map/' + mapUid)
 
     leaderboard.tops.forEach(e=>{
         Object.entries(e).forEach(entry => {

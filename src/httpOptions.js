@@ -13,7 +13,8 @@ module.exports = {
         "events": "competitions",
         "player": "player",
         "trophies":"trophies",
-        "leaderboard": "leaderboard"
+        "leaderboard": "leaderboard",
+        "map": "map"
     },
 
     "useragent" : "node-trackmania.io by GreepTheSheep (Greep#3022) - https://github.com/GreepTheSheep/node-trackmania.io"
