@@ -1,6 +1,8 @@
 # node-trackmania.io
 A Node.js inplementation of Trackmania Live services ([trackmania.io](https://trackmania.io))
 
+[![Trackmania.io icon](https://trackmania.io/img/square.png)](https://trackmania.io)
+
 ![Trackmania.io API](https://img.shields.io/website?down_message=Offline&label=Trackmania.io%20API&up_message=Online&url=https%3A%2F%2Ftrackmania.io)
 
 [![NPM](https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true)](https://npmjs.org/trackmania.io)
@@ -19,7 +21,7 @@ A Node.js inplementation of Trackmania Live services ([trackmania.io](https://tr
 
 ### Thanks
 
-Thanks to Miss#8888 ([@codecat](https://github.com/codecat)) for helping me with their API *(and updating it everytime)*.
+Thanks to Miss#8888 ([@codecat](https://github.com/codecat)) for creating trackmania.io and for helping me with their API *(and updating it everytime)*.
 
 Thanks to Nadeo (Trackmania's studio) for giving an API to trackmania.io.
 
