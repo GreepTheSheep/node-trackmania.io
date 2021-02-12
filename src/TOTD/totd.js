@@ -55,10 +55,10 @@ class TOTD extends EventEmitter {
                 if (new Date(moment.tz(new Date(), "CET").format()).getHours() == 19){
                     if (!checked){
                         var totd2 = await this.totd()
-                        if (totd1.days.length != totd2.days.length){
-                            this.emit('new-totd', totd2.days[0])
+                        if (totd1.length != totd2.length){
+                            this.emit('new-totd', totd2[0])
                         }
-                        else if (totd1.days[0].map.mapId != totd2.days[0].map.mapId) this.emit('new-totd', totd2[0])
+                        else if (totd1[0].map.mapId != totd2[0].map.mapId) this.emit('new-totd', totd2[0])
                         totd1 = totd2
                         checked = true
                     } else {
