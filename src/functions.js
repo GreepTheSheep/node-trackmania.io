@@ -17,10 +17,14 @@ function getDataSimplePage(tab, page){
     return fetch(`${url.protocol}://${url.host}/${url.api}/${tab}/${page}`, headers).then(r=>r.json())
 }
 function getPlayer(player){
-    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}/${url.tabs.trophies}/0`, headers).then(r=>r.json())
+    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}`, headers).then(r=>r.json())
 }
 function getPlayerTrophies(player){
     return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}/${url.tabs.trophies}/0`, headers).then(r=>r.json())
+}
+
+function searchPlayer(player){
+    return fetch(`${url.tmstats.protocol}://${url.tmstats.host}/${url.tmstats.api}/${url.tmstats.tabs.searchPlayer}/${player.replace(' ', '%20')}`, headers).then(r=>r.json())
 }
 
 // Thanks to @dassschaf and Solux#5809 for this tool
@@ -34,8 +38,11 @@ module.exports = {
     getData: {
         simple: getDataSimple,
         page: getDataSimplePage,
-        player: getPlayer,
-        trophies: getPlayerTrophies
+        player: {
+            getPlayer,
+            getPlayerTrophies,
+            searchPlayer,
+        }
     },
     stripFormatting
 }

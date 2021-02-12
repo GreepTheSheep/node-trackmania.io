@@ -52,3 +52,5 @@ Thanks to Miss#8888 ([@codecat](https://github.com/codecat)) for creating trackm
 Thanks to Nadeo (Trackmania's studio) for giving an API to trackmania.io.
 
 Thanks to dassschaf#0090 ([@dassschaf](https://github.com/dassschaf)) and Solux#5809 for chat formatting remover code in regex *(it saves my life)*
+
+Thanks to Flirno/Knacki#2477 ([@Flirno](https://github.com/Flirno)) for player searching and COTD results API
