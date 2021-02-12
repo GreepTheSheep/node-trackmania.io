@@ -2,7 +2,7 @@ const Trackmania = require('../')
 
 const campaigns = new Trackmania.Campaigns({listener:false})
 
-campaigns.on('new-news', news =>{
+campaigns.on('new-campaign', news =>{
     console.log(news)
 })
 campaigns.on('debug', msg =>{

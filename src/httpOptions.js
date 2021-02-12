@@ -9,6 +9,7 @@ module.exports = {
         "campaigns": "campaigns",
         "campaign": "campaign",
         "rooms": "rooms",
+        "room": "room",
         "clubs": "clubs",
         "events": "competitions",
         "player": "player",
