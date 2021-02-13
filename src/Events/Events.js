@@ -33,7 +33,7 @@ class Competitions {
      * @returns {array} The list of competitions
      */
     async searchCompetitions(search, format = true){
-        var competitions = await f.getData.page(url.tabs.clubs, '0?search=' + search.replace(' ', "%20"))
+        var competitions = await f.getData.page(url.tabs.events, '0?search=' + search.replace(' ', "%20"))
 
         if (!format) return competitions.competitions
         else {
