@@ -20,7 +20,7 @@ A Node.js inplementation of Trackmania Live services ([trackmania.io](https://tr
 ---
 ## To-do
 
-- Events
+- Minor adds
 
 ---
 
