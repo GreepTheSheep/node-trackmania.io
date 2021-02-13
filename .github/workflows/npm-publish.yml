@@ -40,8 +40,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://npm.pkg.github.com/@greepthesheep
+          registry-url: https://npm.pkg.github.com/
+          scope: '@greepthesheep'
       - run: npm ci
-      - run: npm publish --registry=https://npm.pkg.github.com/@greepthesheep
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.gh_token}}
