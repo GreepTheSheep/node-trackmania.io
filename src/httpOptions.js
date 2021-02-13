@@ -12,6 +12,7 @@ module.exports = {
         "rooms": "rooms",
         "room": "room",
         "clubs": "clubs",
+        "club": "club",
         "events": "competitions",
         "player": "player",
         "trophies":"trophies",

@@ -20,7 +20,6 @@ A Node.js inplementation of Trackmania Live services ([trackmania.io](https://tr
 ---
 ## To-do
 
-- Clubs
 - Events
 
 ---
