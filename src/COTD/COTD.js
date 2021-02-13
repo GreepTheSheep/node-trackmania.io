@@ -2,6 +2,7 @@ const f = require('../functions')
 const url = require('../httpOptions')
 const EventEmitter = require('events')
 const Players = require('../Players/players')
+const moment = require('moment-timezone')
 const wait = require('util').promisify(setTimeout);
 
 class COTD extends EventEmitter {
