@@ -43,7 +43,7 @@ class TOTD extends EventEmitter {
      * @private
      */
     async _listener(){
-        this.emit('debug', 'Listener started, awaiting new TOTD every 10 seconds')
+        this.emit('debug', 'Listener started, awaiting new TOTD every 1 seconds')
         var totd1 = await this.totd()
         var hour = new Date().getHours();
 
@@ -57,10 +57,14 @@ class TOTD extends EventEmitter {
                         var totd2 = await this.totd()
                         if (totd1.length != totd2.length){
                             this.emit('new-totd', totd2[0])
+                            totd1 = totd2
+                            checked = true
                         }
-                        else if (totd1[0].map.mapId != totd2[0].map.mapId) this.emit('new-totd', totd2[0])
-                        totd1 = totd2
-                        checked = true
+                        else if (totd1[0].map.mapId != totd2[0].map.mapId){
+                            this.emit('new-totd', totd2[0])
+                            totd1 = totd2
+                            checked = true
+                        }
                     } else {
                         this.emit('debug', 'Already checked')
                     }
