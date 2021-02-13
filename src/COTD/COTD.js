@@ -41,6 +41,7 @@ class COTD extends EventEmitter {
      * @returns {array} The information about this COTD
      */
     async latestCOTDResults(match = 1){
+        if (match < 1) match = 1
         var lastCOTD = await this.latestCOTD()
         var COTDs = await this.latestCOTDs()
         var results = await f.getData.page(url.tabs.comp, COTDs[0].id+`/results/${lastCOTD.rounds[0].matches[match-1].id}/0`)

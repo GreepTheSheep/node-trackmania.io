@@ -6,6 +6,7 @@ module.exports = {
     Players: require('./Players/players'),
     COTD : require('./COTD/COTD'),
     Clubs: require('./Clubs/Clubs'),
+    Events: require('./Events/Events'),
 
     map: require('./map/map-info'),
     leaderboard: require('./map/Leaderboard')
