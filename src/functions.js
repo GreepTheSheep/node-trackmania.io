@@ -24,7 +24,11 @@ function getPlayerTrophies(player){
 }
 
 function searchPlayer(player){
-    return fetch(`${url.tmstats.protocol}://${url.tmstats.host}/${url.tmstats.api}/${url.tmstats.tabs.searchPlayer}/${player.replace(' ', '%20')}`, headers).then(r=>r.json())
+    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.players}/find?search=${player.replace(' ', '%20')}`, headers).then(r=>r.json())
+}
+
+function playersGroup(group){
+    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.players}/group/${player.replace(' ', '%20')}`, headers).then(r=>r.json())
 }
 
 function playerCOTD(player){
@@ -46,6 +50,7 @@ module.exports = {
             getPlayer,
             getPlayerTrophies,
             searchPlayer,
+            playersGroup,
             playerCOTD
         }
     },

@@ -44,10 +44,12 @@ If you're still unsure about your use of the API, feel free to DM Miss#8888 with
 ---
 ## Thanks
 
-Thanks to Miss#8888 ([@codecat](https://github.com/codecat)) for creating trackmania.io and for helping me with their API *(and updating it everytime)*.
+Thanks to [@codecat](https://github.com/codecat) for creating trackmania.io and for helping me with their API *(and updating it everytime)*.
 
 Thanks to Nadeo (Trackmania's studio) for giving an API to trackmania.io.
 
-Thanks to dassschaf#0090 ([@dassschaf](https://github.com/dassschaf)) and [@stefan-baumann](https://github.com/stefan-baumann) for chat formatting remover code in regex *(it saves my life)*
+Thanks to [@dassschaf](https://github.com/dassschaf) and [@stefan-baumann](https://github.com/stefan-baumann) for chat formatting remover code in regex *(it saves my life)*
 
-Thanks to Flirno/Knacki#2477 ([@Flirno](https://github.com/Flirno)) for player searching and COTD results API
+Thanks to [@Flirno](https://github.com/Flirno) for player COTD results API
+
+Thanks to [@jonese1234](https://github.com/jonese1234) for the dataset to get the players searching
