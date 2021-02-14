@@ -37,19 +37,16 @@ class Players {
      * @returns {array} The possible results
      */
     async searchPlayer(name){
-        var players = await f.getData.player.searchPlayer(name)
+        return await f.getData.player.searchPlayer(name)
+    }
 
-        var results_arr = []
-        Object.entries(players).forEach(entry => {
-            const [key, value] = entry;
-
-            results_arr.push({
-                "displayName": key,
-                "accountid": value
-            })
-        });
-
-        return results_arr
+    /**
+     * Gets the players in a group
+     * @param {string} group The group name: "Nadeo", "TMGL", (trackmania.io "Sponsor", "Team")
+     * @returns {array} The possible results
+     */
+    async getGroupPlayers(group){
+        return await f.getData.player.playersGroup(group.toLowerCase())
     }
 
     /**
