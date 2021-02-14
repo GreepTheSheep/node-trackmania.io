@@ -15,7 +15,7 @@ module.exports = {
         "club": "club",
         "events": "competitions",
         "player": "player",
-        "players": "player",
+        "players": "players",
         "trophies":"trophies",
         "leaderboard": "leaderboard",
         "map": "map"
