@@ -28,7 +28,7 @@ function searchPlayer(player){
 }
 
 function playersGroup(group){
-    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.players}/group/${player.replace(' ', '%20')}`, headers).then(r=>r.json())
+    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.players}/group/${group}`, headers).then(r=>r.json())
 }
 
 function playerCOTD(player){
