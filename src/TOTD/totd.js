@@ -43,38 +43,23 @@ class TOTD extends EventEmitter {
      * @private
      */
     async _listener(){
-        this.emit('debug', 'Listener started, awaiting new TOTD every 1 seconds')
-        var totd1 = await this.totd()
-        var hour = new Date().getHours();
+        this.emit('debug', 'Listener started, awaiting new TOTD every 2 seconds')
+        var checked = false
 
         setInterval(async ()=>{
             this.emit('debug', 'Listener checking...')
-            var hour2 = new Date().getHours();
-            var checked = false
-            if (hour != hour2){
-                if (new Date(moment.tz(new Date(), "CET").format()).getHours() == 19){
-                    if (!checked){
-                        var totd2 = await this.totd()
-                        if (totd1.length != totd2.length){
-                            this.emit('new-totd', totd2[0])
-                            totd1 = totd2
-                            checked = true
-                        }
-                        else if (totd1[0].map.mapId != totd2[0].map.mapId){
-                            this.emit('new-totd', totd2[0])
-                            totd1 = totd2
-                            checked = true
-                        }
-                    } else {
-                        this.emit('debug', 'Already checked')
-                    }
+            if (new Date(moment.tz(new Date(), "CET").format()).getHours() == 19 && new Date(moment.tz(new Date(), "CET").format()).getMinutes() == 1){
+                if (checked == false){
+                    var totd2 = await this.totd()
+                    this.emit('debug', 'Sending TOTD')
+                    this.emit('new-totd', totd2[0])
+                    checked = true
                 } else {
-                    this.emit('debug', 'Not 19h CET, cancelling check')
-                    checked = false
+                    this.emit('debug', 'Already checked')
                 }
-                hour = hour2
             } else {
-                this.emit('debug', 'Same hour, cancelling check')
+                this.emit('debug', 'Not 19h CET, cancelling check')
+                checked = false
             }
         }, 1000)
     }
