@@ -76,6 +76,7 @@ class Players {
             }
         ]
         rankNames.reverse()
+        player.matchmaking.find(m=>m.info.typename == '3v3').info['place'] = player.matchmaking.find(m=>m.info.typename == '3v3').info['rank']
         rankNames.forEach(rank=>{
             if (player.matchmaking.find(m=>m.info.typename == '3v3').info.score < rank.before) player.matchmaking.find(m=>m.info.typename == '3v3').info['rank'] = rank
         })
