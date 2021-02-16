@@ -11,11 +11,74 @@ class Players {
         var player = await f.getData.player.getPlayer(accountid)
         if (player.error) throw player.error
 
-        if (player.meta.vanity != ""){
+        if (player.meta && player.meta.vanity != ""){
             player['url'] = `${url.protocol}://${url.host}/#/${url.tabs.player}/${player.meta.vanity}`
         } else {
             player['url'] = `${url.protocol}://${url.host}/#/${url.tabs.player}/${player.accountid}`
         }
+
+
+        var rankNames = [
+            {
+                "name": "Unranked",
+                "abbr": "U",
+                "before": 1000
+            },
+            {
+                "name": "Beginner I",
+                "abbr": "BI",
+                "before": 1250
+            },
+            {
+                "name": "Beginner II",
+                "abbr": "BII",
+                "before": 1500
+            },
+            {
+                "name": "Beginner III",
+                "abbr": "BIII",
+                "before": 2000
+            },
+            {
+                "name": "Challenger I",
+                "abbr": "CI",
+                "before": 2250
+            },
+            {
+                "name": "Challenger II",
+                "abbr": "CII",
+                "before": 2500
+            },
+            {
+                "name": "Challenger III",
+                "abbr": "CIII",
+                "before": 3000
+            },
+            {
+                "name": "Master I",
+                "abbr": "MI",
+                "before": 3500
+            },
+            {
+                "name": "Master II",
+                "abbr": "MII",
+                "before": 4000
+            },
+            {
+                "name": "Master III",
+                "abbr": "MIII",
+                "before": 5000
+            },
+            {
+                "name": "Trackmaster",
+                "abbr": "TM",
+                "before": Infinity
+            }
+        ]
+        rankNames.reverse()
+        rankNames.forEach(rank=>{
+            if (player.matchmaking.find(m=>m.info.typename == '3v3').info.score < rank.before) player.matchmaking.find(m=>m.info.typename == '3v3').info['rank'] = rank
+        })
 
         return player
     }
