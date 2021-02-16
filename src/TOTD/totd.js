@@ -48,7 +48,7 @@ class TOTD extends EventEmitter {
 
         setInterval(async ()=>{
             this.emit('debug', 'Listener checking...')
-            if (new Date(moment.tz(new Date(), "CET").format()).getHours() == 19 && new Date(moment.tz(new Date(), "CET").format()).getMinutes() == 1){
+            if (moment.tz("CET").hour() == 19 && moment.tz("CET").minute() == 1){
                 if (checked == false){
                     var totd2 = await this.totd()
                     totd2.reverse()
