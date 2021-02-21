@@ -58,7 +58,7 @@ class Players {
             ]
             echelonNames.reverse()
             echelonNames.forEach(echelon=>{
-                if (player.trophies.echelon < echelon.echelon) player.trophies.echelonName = echelon.name
+                if (player.trophies.echelon == echelon.echelon) player.trophies.echelonName = echelon.name
             })
         }
 
