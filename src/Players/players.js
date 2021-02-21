@@ -17,6 +17,51 @@ class Players {
             player['url'] = `${url.protocol}://${url.host}/#/${url.tabs.player}/${player.accountid}`
         }
 
+        if (player.trophies.echelon){
+            var echelonNames = [
+                {
+                    name: 'Bronze 3',
+                    echelon: 1
+                },
+                {
+                    name: 'Bronze 2',
+                    echelon: 2
+                },
+                {
+                    name: 'Bronze 1',
+                    echelon: 3
+                },
+                {
+                    name: 'Silver 3',
+                    echelon: 4
+                },
+                {
+                    name: 'Silver 2',
+                    echelon: 5
+                },
+                {
+                    name: 'Silver 1',
+                    echelon: 6
+                },
+                {
+                    name: 'Gold 3',
+                    echelon: 7
+                },
+                {
+                    name: 'Gold 2',
+                    echelon: 8
+                },
+                {
+                    name: 'Gold 1',
+                    echelon: 9
+                }
+            ]
+            echelonNames.reverse()
+            echelonNames.forEach(echelon=>{
+                if (player.trophies.echelon < echelon.echelon) player.trophies.echelonName = echelon.name
+            })
+        }
+
         if (player.matchmaking.length > 0){
             var rankNames = [
                 {
