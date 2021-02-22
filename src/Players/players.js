@@ -20,7 +20,7 @@ class Players {
         if (player.trophies.echelon){
             var echelonNames = [
                 {
-                    name: 'Bronze 3',
+                    name: 'Bronze 1',
                     echelon: 1
                 },
                 {
@@ -28,11 +28,11 @@ class Players {
                     echelon: 2
                 },
                 {
-                    name: 'Bronze 1',
+                    name: 'Bronze 3',
                     echelon: 3
                 },
                 {
-                    name: 'Silver 3',
+                    name: 'Silver 1',
                     echelon: 4
                 },
                 {
@@ -40,11 +40,11 @@ class Players {
                     echelon: 5
                 },
                 {
-                    name: 'Silver 1',
+                    name: 'Silver 3',
                     echelon: 6
                 },
                 {
-                    name: 'Gold 3',
+                    name: 'Gold 1',
                     echelon: 7
                 },
                 {
@@ -52,7 +52,7 @@ class Players {
                     echelon: 8
                 },
                 {
-                    name: 'Gold 1',
+                    name: 'Gold 3',
                     echelon: 9
                 }
             ]
