@@ -13,11 +13,12 @@ class Matches extends EventEmitter {
 
     /**
      * Gets the latest matches
+     * @param {boolean} page Defaults to 0, The page of the list
      * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {array} The list of clubs
      */
-    async matches(format = true){
-        var matches = await f.getData.simple(url.tabs.matches)
+    async matches(page = 0, format = true){
+        var matches = await f.getData.page(url.tabs.matches, page)
 
         if (!format) return matches.matches
         else {
