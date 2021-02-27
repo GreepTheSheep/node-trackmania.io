@@ -7,6 +7,7 @@ module.exports = {
     COTD : require('./COTD/COTD'),
     Clubs: require('./Clubs/Clubs'),
     Events: require('./Events/Events'),
+    Matches: require('./Matches/Matches'),
 
     map: require('./map/map-info'),
     leaderboard: require('./map/Leaderboard')

@@ -18,7 +18,9 @@ module.exports = {
         "players": "players",
         "trophies":"trophies",
         "leaderboard": "leaderboard",
-        "map": "map"
+        "map": "map",
+        "matches": "matches",
+        "match":"match"
     },
 
     "tmstats": {
