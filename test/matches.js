@@ -11,9 +11,9 @@ matches.on('debug', msg =>{
 
 function run(){
     try{
-        matches.matches().then(matches=>{
-            console.log('all latest', matches)
-            matches.match(matches[0].lid).then(match=>{
+        matches.matches().then(list=>{
+            console.log('all latest', list)
+            matches.match(list[0].lid).then(match=>{
                 console.log('latest info', match)
             })
         })
