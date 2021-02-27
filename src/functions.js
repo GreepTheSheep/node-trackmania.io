@@ -1,12 +1,18 @@
 const fetch = require('node-fetch')
 const url = require('./httpOptions')
 
+var cwd = process.cwd()
+cwd = cwd.substring(cwd.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1)
+var UA;
+if (cwd == 'node-trackmania.io') UA = '[TESTING BUILD] ' + url.useragent
+else UA = cwd + ' - using ' + url.useragent
+
 const headers = {
     method : 'GET',
     headers : new fetch.Headers({
         "Accept"       : "application/json",
         "Content-Type" : "application/json",
-        "User-Agent"   : url.useragent
+        "User-Agent"   : UA
     })
 }
 
