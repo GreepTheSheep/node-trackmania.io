@@ -28,7 +28,7 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "eslint": "^7.20.0",
+    "eslint": "^7.21.0",
     "fs": "0.0.1-security",
     "shelljs": "^0.8.4"
   }
