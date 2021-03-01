@@ -62,7 +62,7 @@ class TOTD extends EventEmitter {
                 this.emit('debug', 'Not 19h CET, cancelling check')
                 checked = false
             }
-        }, 1000)
+        }, 10000)
     }
 }
 

@@ -40,7 +40,7 @@ class News extends EventEmitter {
      * @private
      */
     async _listener(){
-        this.emit('debug', 'Listener started, awaiting new news every 30 seconds')
+        this.emit('debug', 'Listener started, awaiting new news every 2 minutes')
         var news1 = await this.news()
 
         setInterval(async ()=>{
@@ -53,7 +53,7 @@ class News extends EventEmitter {
                 if (news1[0].id != news2[0].id) this.emit('new-news', news2[0])
             } 
             news1 = news2
-        }, 30000)
+        }, 2* 60 * 1000)
     }
 }
 
