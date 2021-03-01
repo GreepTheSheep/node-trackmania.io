@@ -4,7 +4,7 @@ const EventEmitter = require('events')
 
 class Matches extends EventEmitter {
     constructor(options = {
-        listener: true
+        listener: false
     }){
         super()
 

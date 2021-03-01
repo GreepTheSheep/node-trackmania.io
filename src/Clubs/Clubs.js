@@ -4,7 +4,7 @@ const EventEmitter = require('events')
 
 class Clubs extends EventEmitter {
     constructor(options = {
-        listener: true
+        listener: false
     }){
         super()
 

@@ -6,7 +6,7 @@ moment.tz.setDefault("CET");
 
 class TOTD extends EventEmitter {
     constructor(options = {
-        listener: true
+        listener: false
     }){
         super()
 

@@ -7,7 +7,7 @@ const wait = require('util').promisify(setTimeout);
 
 class COTD extends EventEmitter {
     constructor(options = {
-        listener: true
+        listener: false
     }){
         super()
 

@@ -4,7 +4,7 @@ const EventEmitter = require('events')
 
 class News extends EventEmitter {
     constructor(options = {
-        listener: true
+        listener: false
     }){
         super()
 
