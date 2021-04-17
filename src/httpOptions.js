@@ -9,6 +9,7 @@ module.exports = {
         "news": "splashscreens",
         "campaigns": "campaigns",
         "campaign": "campaign",
+        "officialCampaign": "officialcampaign",
         "rooms": "rooms",
         "room": "room",
         "clubs": "clubs",

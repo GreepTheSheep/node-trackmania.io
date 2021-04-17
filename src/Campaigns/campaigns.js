@@ -125,6 +125,33 @@ class Campaigns extends EventEmitter {
     }
 
     /**
+     * Gets the official campaign
+     * @param {number} campaignId The Official Campaign ID
+     * @param {boolean} format Defaults to true, removes chat formatting codes
+     * @returns {object} The list of maps of this campaign
+     */
+     async officialCampaign(campaignId, format = true){
+        var campaigns = await f.getData.page(url.tabs.officialCampaign, campaignId)
+
+        if (!format) return campaigns
+        else {
+            var cpns_tmp = []
+            campaigns.name = f.stripFormatting(campaigns.name)
+            campaigns.playlist.forEach(e=>{
+                Object.entries(e).forEach(entry => {
+                    const [key, value] = entry;
+
+                    if (key == 'name') e[key] = f.stripFormatting(value)
+                    else e[key] = value
+                });
+                cpns_tmp.push(e)
+            })
+            campaigns.playlist = cpns_tmp
+            return campaigns
+        }
+    }
+
+    /**
      * Enables the listener module
      * @private
      */

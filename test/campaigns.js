@@ -26,6 +26,9 @@ function run(){
                 console.log('tmgl leaderboard', leaderboard)
             })
         })
+        campaigns.officialCampaign(8449).then(campaigns=>{
+            console.log('Spring 2021',campaigns)
+        })
     } catch (e){
         console.error(e)
         process.exit(1)
