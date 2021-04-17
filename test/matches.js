@@ -11,11 +11,8 @@ matches.on('debug', msg =>{
 
 function run(){
     try{
-        matches.matches().then(list=>{
-            console.log('all latest', list)
-            matches.match(list[0].lid).then(match=>{
-                console.log('latest info', match)
-            })
+        matches.match("LID-MTCH-vzap1bpi0ifshtu").then(match=>{
+            console.log('match', match)
         })
     } catch (e){
         console.error(e)
