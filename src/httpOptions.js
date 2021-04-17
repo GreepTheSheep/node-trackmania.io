@@ -35,5 +35,5 @@ module.exports = {
         }
     },
 
-    "useragent" : "node-trackmania.io by GreepTheSheep"
+    "useragent" : "node-trackmania.io by Greep"
 }
