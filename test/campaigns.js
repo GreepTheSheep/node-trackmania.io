@@ -20,9 +20,9 @@ function run(){
         campaigns.searchCampaigns('tmgl FALL 2020').then(campaigns=>{
             console.log('search',campaigns)
         })
-        campaigns.campaign(383, 3037).then(campaigns=>{
+        campaigns.campaign(383, 3037).then(campaign=>{
             console.log('tmgl',campaigns)
-            campaigns.leaderboard(campaigns).then(leaderboard=>{
+            campaigns.leaderboard(campaign).then(leaderboard=>{
                 console.log('tmgl leaderboard', leaderboard)
             })
         })
