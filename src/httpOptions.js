@@ -9,6 +9,7 @@ module.exports = {
         "news": "splashscreens",
         "campaigns": "campaigns",
         "campaign": "campaign",
+        "officialCampaign": "officialcampaign",
         "rooms": "rooms",
         "room": "room",
         "clubs": "clubs",
@@ -35,5 +36,5 @@ module.exports = {
         }
     },
 
-    "useragent" : "node-trackmania.io by GreepTheSheep"
+    "useragent" : "node-trackmania.io by Greep"
 }
