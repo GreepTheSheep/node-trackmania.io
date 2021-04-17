@@ -116,6 +116,15 @@ class Campaigns extends EventEmitter {
     }
 
     /**
+     * Gets the leaderboard of a campaign
+     * @param {object} campaign The Campaign from campaign()
+     * @returns {object} The list of maps of this campaign
+     */
+     async leaderboard(campaign){
+        return await f.getData.page(url.tabs.leaderboard, campaign.leaderboarduid)
+    }
+
+    /**
      * Enables the listener module
      * @private
      */
