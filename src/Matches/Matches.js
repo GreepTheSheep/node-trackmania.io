@@ -12,35 +12,20 @@ class Matches extends EventEmitter {
     }
 
     /**
-     * Gets the latest matches
-     * @param {boolean} page Defaults to 0, The page of the list
-     * @param {boolean} format Defaults to true, removes chat formatting codes
-     * @returns {array} The list of clubs
+     * ENDED - Gets the latest matches
+     * @throws Reason for the end
+     * @deprecated
      */
+    // eslint-disable-next-line no-unused-vars
     async matches(page = 0, format = true){
-        var matches = await f.getData.page(url.tabs.matches, page)
-
-        if (!format) return matches.matches
-        else {
-            var matches_tmp = []
-            matches.matches.forEach(e=>{
-                Object.entries(e).forEach(entry => {
-                    const [key, value] = entry;
-
-                    if (key == 'name') e[key] = f.stripFormatting(value)
-                    else e[key] = value
-                });
-                matches_tmp.push(e)
-            })
-            return matches_tmp
-        }
+        throw "When the Spring 2021 campaign released on 2021-04-01, Nadeo disabled their matches list API. This means that for the time being we can't show a list of matches here."
     }
 
     /**
      * Get a match
      * @param {boolean} matchID The Match Identifier
      * @param {boolean} format Defaults to true, removes chat formatting codes
-     * @returns {array} The list of clubs
+     * @returns {array} The match info
      */
     async match(matchID,format = true){
         var match = await f.getData.page(url.tabs.match, matchID)
