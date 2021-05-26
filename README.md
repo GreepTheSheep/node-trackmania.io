@@ -18,11 +18,6 @@ A Node.js inplementation of Trackmania Live services ([trackmania.io](https://tr
 ![GitHub forks](https://img.shields.io/github/forks/GreepTheSheep/node-trackmania.io?style=flat-square)
 
 ---
-## To-do
-
-- Minor adds
-
----
 
 ## Disclaimer - Can I use the Trackmania.io API for my own project?
 *(Copied from Miss' ([@codecat](https://github.com/codecat)) Disclaimer)*
@@ -40,6 +35,12 @@ It depends. My usual answer is "yes, BUT.." before you start using the internal 
 - Let me know what you're working on! I'm always curious and it lets me understand how people are using the API and who to contact about certain things if any contact is needed.
 
 If you're still unsure about your use of the API, feel free to DM Miss#8888 with any further questions.
+
+---
+## Contributing
+
+Before opening a PR, run `npm test` to do a eslint scan then run mocha tests
+When opening a PR, please open it to the 'develop' branch. Thanks!
 
 ---
 ## Thanks

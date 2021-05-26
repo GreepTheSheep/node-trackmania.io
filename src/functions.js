@@ -27,8 +27,11 @@ function getDataSimplePage(tab, page){
 function getPlayer(player){
     return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}`, headers).then(r=>r.json())
 }
-function getPlayerTrophies(player){
-    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}/${url.tabs.trophies}/0`, headers).then(r=>r.json())
+function getPlayerTrophies(player, page = 0){
+    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}/${url.tabs.trophies}/${page}`, headers).then(r=>r.json())
+}
+function getPlayerMatches(player, page = 0){
+    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}/${url.tabs.matches}/${page}`, headers).then(r=>r.json())
 }
 
 function searchPlayer(player){
@@ -57,6 +60,7 @@ module.exports = {
         player: {
             getPlayer,
             getPlayerTrophies,
+            getPlayerMatches,
             searchPlayer,
             playersGroup,
             playerCOTD

@@ -112,7 +112,7 @@ class Players {
                 {
                     "name": "Master III",
                     "abbr": "MIII",
-                    "before": 5000
+                    "before": 10001
                 },
                 {
                     "name": "Trackmaster",
@@ -132,12 +132,25 @@ class Players {
     /**
      * Gets the last trophies gains of a player
      * @param {string} accountid The account ID or the Trackmania.io Vanity URL
+     * @param {number} page The page number (defaults to 0), displays 25 items / page
      * @returns {array} The lastest trophies of the player
      */
-    async playerTrophies(accountid){
-        var player = await f.getData.player.getPlayerTrophies(accountid)
+    async playerTrophies(accountid, page = 0){
+        var player = await f.getData.player.getPlayerTrophies(accountid, page)
         if (player.error) throw player.error
         return player.gains
+    }
+
+    /**
+     * Gets the last matches infos of a player (MatchMaking)
+     * @param {string} accountid The account ID or the Trackmania.io Vanity URL
+     * @param {number} page The page number (defaults to 0), displays 25 items / page
+     * @returns {array} The lastest matches of the player
+     */
+     async playerMatches(accountid, page = 0){
+        var player = await f.getData.player.getPlayerMatches(accountid, page)
+        if (player.error) throw player.error
+        return player.matches
     }
 
     /**
