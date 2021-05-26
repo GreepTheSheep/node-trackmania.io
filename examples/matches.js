@@ -11,7 +11,11 @@ matches.on('debug', msg =>{
 
 function run(){
     try{
-        matches.match("LID-MTCH-vzap1bpi0ifshtu").then(match=>{
+        matches.matches().then(list=>{
+            console.log('Matches list', list)
+        })
+        
+        matches.match("LID-MTCH-dqy33e0shqrjfro").then(match=>{
             console.log('match', match)
         })
     } catch (e){

@@ -12,13 +12,15 @@ class Matches extends EventEmitter {
     }
 
     /**
-     * ENDED - Gets the latest matches
-     * @throws Reason for the end
-     * @deprecated
+     * Gets the latest matches
+     * @param {number} typeId The match type ID. Defaults to 2 (3v3)
+     * @param {number} page The page number. Defaults to 0
+     * @returns {array} The list of matches
      */
-    // eslint-disable-next-line no-unused-vars
-    async matches(page = 0, format = true){
-        throw "When the Spring 2021 campaign released on 2021-04-01, Nadeo disabled their matches list API. This means that for the time being we can't show a list of matches here."
+    async matches(typeId = 2, page = 0){
+        var matches = await f.getData.page(url.tabs.matches, `${typeId}/${page}`)
+
+        return matches.matches
     }
 
     /**
