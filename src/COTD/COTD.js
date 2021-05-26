@@ -38,13 +38,87 @@ class COTD extends EventEmitter {
     /**
      * Gets the latest COTD info
      * @param {number} match The match number. Defaults to 1
+     * @param {number} page The page number, starts from 0 (25 items / page). Defaults to 0
      * @returns {array} The information about this COTD
      */
-    async latestCOTDResults(match = 1){
+    async latestCOTDResults(match = 1, page = 0){
         if (match < 1) match = 1
         var lastCOTD = await this.latestCOTD()
-        var COTDs = await this.latestCOTDs()
-        var results = await f.getData.page(url.tabs.comp, COTDs[0].id+`/results/${lastCOTD.rounds[0].matches[match-1].id}/0`)
+        var results = await f.getData.page(url.tabs.comp, lastCOTD.id+`/match/${lastCOTD.rounds[0].matches[match-1].id}/${page}`)
+
+        return results.results
+    }
+
+    /**
+     * Gets a specific COTD info
+     * @param {number} id The COTD Identifier
+     * @returns {array} The information about this COTD
+     */
+     async COTD(id){
+        var info = await f.getData.page(url.tabs.comp, id)
+
+        return info
+    }
+
+    /**
+     * Gets a specific COTD results info
+     * @param {number} id The COTD Identifier
+     * @param {number} match The match number. Defaults to 1
+     * @param {number} page The page number, starts from 0 (25 items / page). Defaults to 0
+     * @returns {array} The information about this COTD
+     */
+     async COTDResults(id, match = 1, page = 0){
+        if (match < 1) match = 1
+        var COTD = await this.COTD(id)
+        var results = await f.getData.page(url.tabs.comp, id+`/match/${COTD.rounds[0].matches[match-1].id}/${page}`)
+
+        return results.results
+    }
+
+    /**
+     * Gets a specific COTD Challenge (seeding) info (for results, refer to COTDChallengeResults)
+     * @param {number} id The COTD Identifier
+     * @returns {object} The information about this COTD
+     */
+     async COTDChallenge(id){
+        var COTD = await this.COTD(id)
+        var info = await f.getData.page(url.tabs.comp, id+`/challenge/${COTD.rounds[0].challenges[0].id}`)
+
+        return info
+    }
+
+    /**
+     * Gets a specific COTD Challenge (seeding) results info
+     * @param {number} id The COTD Identifier
+     * @param {number} page The page number, starts from 0 (25 items / page). Defaults to 0
+     * @returns {array} The information about this COTD
+     */
+     async COTDChallengeResults(id, page = 0){
+        var COTD = await this.COTD(id)
+        var results = await f.getData.page(url.tabs.comp, id+`/challenge/${COTD.rounds[0].challenges[0].id}/${page}`)
+
+        return results.results
+    }
+
+    /**
+     * Gets the latest COTD Challenge (seeding) info (for results, refer to latestCOTDChallengeResults)
+     * @returns {object} The information about this COTD
+     */
+     async latestCOTDChallenge(){
+        var latestCOTD = await this.latestCOTD()
+        var results = await f.getData.page(url.tabs.comp, latestCOTD[0].id+`/challenge/${latestCOTD[0].rounds[0].challenges[0].id}`)
+
+        return results.results
+    }
+
+    /**
+     * Gets the latest COTD Challenge (seeding) results info
+     * @param {number} page The page number, starts from 0 (25 items / page). Defaults to 0
+     * @returns {array} The information about this COTD
+     */
+     async latestCOTDChallengeResults(page = 0){
+        var latestCOTD = await this.latestCOTD()
+        var results = await f.getData.page(url.tabs.comp, latestCOTD.id+`/challenge/${latestCOTD.rounds[0].challenges[0].id}/${page}`)
 
         return results.results
     }
