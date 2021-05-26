@@ -112,7 +112,7 @@ class Players {
                 {
                     "name": "Master III",
                     "abbr": "MIII",
-                    "before": 5000
+                    "before": 10001
                 },
                 {
                     "name": "Trackmaster",
