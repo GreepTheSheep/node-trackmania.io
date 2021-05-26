@@ -44,6 +44,9 @@ class COTD extends EventEmitter {
     async latestCOTDResults(match = 1, page = 0){
         if (match < 1) match = 1
         var lastCOTD = await this.latestCOTD()
+        if (lastCOTD.rounds[0].matches.length < 1) return {
+            "error": "No currently matches"
+        }
         var results = await f.getData.page(url.tabs.comp, lastCOTD.id+`/match/${lastCOTD.rounds[0].matches[match-1].id}/${page}`)
 
         return results.results
@@ -52,7 +55,7 @@ class COTD extends EventEmitter {
     /**
      * Gets a specific COTD info
      * @param {number} id The COTD Identifier
-     * @returns {array} The information about this COTD
+     * @returns {object} The information about this COTD
      */
      async COTD(id){
         var info = await f.getData.page(url.tabs.comp, id)
@@ -70,6 +73,9 @@ class COTD extends EventEmitter {
      async COTDResults(id, match = 1, page = 0){
         if (match < 1) match = 1
         var COTD = await this.COTD(id)
+        if (COTD.rounds[0].matches.length < 1) return {
+            "error": "No currently matches"
+        }
         var results = await f.getData.page(url.tabs.comp, id+`/match/${COTD.rounds[0].matches[match-1].id}/${page}`)
 
         return results.results
@@ -106,15 +112,15 @@ class COTD extends EventEmitter {
      */
      async latestCOTDChallenge(){
         var latestCOTD = await this.latestCOTD()
-        var results = await f.getData.page(url.tabs.comp, latestCOTD[0].id+`/challenge/${latestCOTD[0].rounds[0].challenges[0].id}`)
+        var info = await f.getData.page(url.tabs.comp, latestCOTD.id+`/challenge/${latestCOTD.rounds[0].challenges[0].id}`)
 
-        return results.results
+        return info
     }
 
     /**
      * Gets the latest COTD Challenge (seeding) results info
      * @param {number} page The page number, starts from 0 (25 items / page). Defaults to 0
-     * @returns {array} The information about this COTD
+     * @returns {array} The results about this COTD Challenge
      */
      async latestCOTDChallengeResults(page = 0){
         var latestCOTD = await this.latestCOTD()

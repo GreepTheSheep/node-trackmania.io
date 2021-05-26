@@ -19,6 +19,10 @@ function run(){
             console.log('information on the latest COTD', t)
         })
 
+        cotd.latestCOTDChallenge().then(t=>{
+            console.log('information of the seeding of latest COTD', t)
+        })
+
         cotd.latestCOTDChallengeResults().then(t=>{
             console.log('results of the seeding of latest COTD', t)
         })
