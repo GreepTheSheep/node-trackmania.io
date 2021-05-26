@@ -32,7 +32,7 @@ class Campaigns extends EventEmitter {
                 cpns_tmp.push(e)
             })
             campaigns.campaigns = cpns_tmp
-            return campaigns
+            return campaigns.campaigns
         }
     }
 
@@ -57,7 +57,7 @@ class Campaigns extends EventEmitter {
                 cpns_tmp.push(e)
             })
             campaigns.campaigns = cpns_tmp
-            return campaigns
+            return campaigns.campaigns
         }
     }
 
@@ -83,7 +83,7 @@ class Campaigns extends EventEmitter {
                 cpns_tmp.push(e)
             })
             campaigns.campaigns = cpns_tmp
-            return campaigns
+            return campaigns.campaigns
         }
     }
 
