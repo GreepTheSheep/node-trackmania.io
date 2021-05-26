@@ -10,6 +10,7 @@ function run(){
         }).catch(err=>{
             console.error(err)
         })
+
         players.searchPlayer('fezfzefze').then(p=>{
             if (p.length < 1) console.error('nobody found')
         })
@@ -18,13 +19,21 @@ function run(){
         players.searchPlayer('greep').then(p=>{
             if (p.length < 1) return console.error('nobody found')
             console.log('results', p)
+
             players.player(p[0].accountid).then(data=>{
                 console.log('data', data)
             }).catch(err=>{
                 console.error(err)
             })
+
             players.playerTrophies(p[0].accountid).then(data=>{
                 console.log('last trophies gains', data[0])
+            }).catch(err=>{
+                console.error(err)
+            })
+
+            players.playerMatches(p[0].accountid).then(data=>{
+                console.log('last matches', data[0])
             }).catch(err=>{
                 console.error(err)
             })

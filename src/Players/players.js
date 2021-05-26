@@ -141,6 +141,18 @@ class Players {
     }
 
     /**
+     * Gets the last matches infos of a player (MatchMaking)
+     * @param {string} accountid The account ID or the Trackmania.io Vanity URL
+     * @param {number} page The page number (defaults to 0), displays 25 items / page
+     * @returns {array} The lastest matches of the player
+     */
+     async playerMatches(accountid, page = 0){
+        var player = await f.getData.player.getPlayerMatches(accountid, page)
+        if (player.error) throw player.error
+        return player.matches
+    }
+
+    /**
      * Search the players
      * @param {string} name The display name of the player
      * @returns {array} The possible results

@@ -30,6 +30,9 @@ function getPlayer(player){
 function getPlayerTrophies(player){
     return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}/${url.tabs.trophies}/0`, headers).then(r=>r.json())
 }
+function getPlayerMatches(player, page = 0){
+    return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.player}/${player}/${url.tabs.matches}/${page}`, headers).then(r=>r.json())
+}
 
 function searchPlayer(player){
     return fetch(`${url.protocol}://${url.host}/${url.api}/${url.tabs.players}/find?search=${player.replace(' ', '%20')}`, headers).then(r=>r.json())
@@ -57,6 +60,7 @@ module.exports = {
         player: {
             getPlayer,
             getPlayerTrophies,
+            getPlayerMatches,
             searchPlayer,
             playersGroup,
             playerCOTD
