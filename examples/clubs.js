@@ -21,7 +21,7 @@ function run(){
             console.log('search',clubs)
         })
         clubs.club(54).then(club=>{
-            console.log('tmgl',club)
+            console.log('zrt',club)
         })
     } catch (e){
         console.error(e)
