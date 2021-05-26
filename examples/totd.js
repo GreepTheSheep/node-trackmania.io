@@ -12,7 +12,7 @@ totd.on('debug', msg =>{
 function run(){
     try{
         totd.totd().then(t=>{
-            console.log(t)
+            console.log('List of TOTD for this actual month', t)
         })
     } catch (e){
         console.error(e)

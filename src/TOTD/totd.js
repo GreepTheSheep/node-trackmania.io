@@ -17,12 +17,12 @@ class TOTD extends EventEmitter {
      * Gets the Track Of The Day list for this month 
      * @param {number} monthBefore Defaults to 0, Number of months ago this one
      * @param {boolean} format Defaults to true, removes chat formatting codes
-     * @returns {object} The Track Of The Day list for this month 
+     * @returns {array} The Track Of The Day list for this month 
      */
     async totd(monthBefore = 0, format = true){
         var totd = await f.getData.page(url.tabs.totd, monthBefore)
 
-        if (!format) return totd
+        if (!format) return totd.days
         else {
             var totd_tmp = []
             totd.days.forEach(e=>{
