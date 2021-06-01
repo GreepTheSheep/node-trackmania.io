@@ -65,54 +65,64 @@ class Players {
         if (player.matchmaking.length > 0){
             var rankNames = [
                 {
-                    "name": "Unranked",
-                    "abbr": "U",
+                    "name": "Bronze 1",
+                    "abbr": "B1",
+                    "before": 300
+                },
+                {
+                    "name": "Bronze 2",
+                    "abbr": "B2",
+                    "before": 600
+                },
+                {
+                    "name": "Bronze 3",
+                    "abbr": "B3",
                     "before": 1000
                 },
                 {
-                    "name": "Beginner I",
-                    "abbr": "BI",
-                    "before": 1250
+                    "name": "Silver 1",
+                    "abbr": "S1",
+                    "before": 1300
                 },
                 {
-                    "name": "Beginner II",
-                    "abbr": "BII",
-                    "before": 1500
+                    "name": "Silver 2",
+                    "abbr": "S2",
+                    "before": 1600
                 },
                 {
-                    "name": "Beginner III",
-                    "abbr": "BIII",
+                    "name": "Silver 3",
+                    "abbr": "S3",
                     "before": 2000
                 },
                 {
-                    "name": "Challenger I",
-                    "abbr": "CI",
-                    "before": 2250
+                    "name": "Gold 1",
+                    "abbr": "G1",
+                    "before": 2300
                 },
                 {
-                    "name": "Challenger II",
-                    "abbr": "CII",
-                    "before": 2500
+                    "name": "Gold 2",
+                    "abbr": "G2",
+                    "before": 2600
                 },
                 {
-                    "name": "Challenger III",
-                    "abbr": "CIII",
+                    "name": "Gold 3",
+                    "abbr": "G3",
                     "before": 3000
                 },
                 {
-                    "name": "Master I",
-                    "abbr": "MI",
-                    "before": 3500
+                    "name": "Master 1",
+                    "abbr": "M1",
+                    "before": 3300
                 },
                 {
-                    "name": "Master II",
-                    "abbr": "MII",
+                    "name": "Master 2",
+                    "abbr": "M2",
+                    "before": 3600
+                },
+                {
+                    "name": "Master 3",
+                    "abbr": "M3",
                     "before": 4000
-                },
-                {
-                    "name": "Master III",
-                    "abbr": "MIII",
-                    "before": 10001
                 },
                 {
                     "name": "Trackmaster",
