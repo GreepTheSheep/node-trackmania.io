@@ -8,6 +8,7 @@ module.exports = {
     Clubs: require('./Clubs/Clubs'),
     Events: require('./Events/Events'),
     Matches: require('./Matches/Matches'),
+    Matchmaking: require('./Matchmaking/Matchmaking'),
 
     map: require('./map/map-info'),
     leaderboard: require('./map/Leaderboard')
