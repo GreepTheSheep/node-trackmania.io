@@ -63,63 +63,7 @@ class Players {
         }
 
         if (player.matchmaking.length > 0){
-            var rankNames = [
-                {
-                    "name": "Unranked",
-                    "abbr": "U",
-                    "before": 1000
-                },
-                {
-                    "name": "Beginner I",
-                    "abbr": "BI",
-                    "before": 1250
-                },
-                {
-                    "name": "Beginner II",
-                    "abbr": "BII",
-                    "before": 1500
-                },
-                {
-                    "name": "Beginner III",
-                    "abbr": "BIII",
-                    "before": 2000
-                },
-                {
-                    "name": "Challenger I",
-                    "abbr": "CI",
-                    "before": 2250
-                },
-                {
-                    "name": "Challenger II",
-                    "abbr": "CII",
-                    "before": 2500
-                },
-                {
-                    "name": "Challenger III",
-                    "abbr": "CIII",
-                    "before": 3000
-                },
-                {
-                    "name": "Master I",
-                    "abbr": "MI",
-                    "before": 3500
-                },
-                {
-                    "name": "Master II",
-                    "abbr": "MII",
-                    "before": 4000
-                },
-                {
-                    "name": "Master III",
-                    "abbr": "MIII",
-                    "before": 10001
-                },
-                {
-                    "name": "Trackmaster",
-                    "abbr": "TM",
-                    "before": Infinity
-                }
-            ]
+            var rankNames = require('../rankNames')
             rankNames.reverse()
             player.matchmaking.find(m=>m.info.typename == '3v3').info['place'] = player.matchmaking.find(m=>m.info.typename == '3v3').info['rank']
             rankNames.forEach(rank=>{
