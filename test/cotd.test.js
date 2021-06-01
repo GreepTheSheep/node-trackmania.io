@@ -36,7 +36,7 @@ describe('Cup Of The Day', function() {
         var theCOTD = await cotd.COTD(398)
         assert.strictEqual(typeof theCOTD, 'object', 'It returns an ' + typeof theCOTD + ' insead of an object')
         assert.strictEqual(theCOTD.liveid, "LID-COMP-tbxazgv2ot34qtp", "The Live ID is not correct")
-        assert.strictEqual(theCOTD.rounds[0].matches.length, 25, "The matches number is not correct")
+        assert.strictEqual(theCOTD.rounds[0].matches.length, 32, "The matches number is not correct")
         assert.strictEqual(theCOTD.leaderboardid, 1320, "The leaderboard ID is not correct")
     });
 
