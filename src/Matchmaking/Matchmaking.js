@@ -21,10 +21,13 @@ class Matchmaking extends EventEmitter {
 
         json.ranks.forEach(rankJson => {
             var rankNames = require('../rankNames')
-            rankNames.reverse()
-            rankNames.forEach(rankName=>{
-                if (rankJson.score < rankName.before) rankJson.division['rank'] = rankName
-            })
+            for (let i = 0; i < rankNames.length; i++) {
+                if (
+                    rankJson.score >= rankNames[i].startPts
+                    && rankJson.score < rankNames[i].endPts
+                )
+                rankJson.division['rank'] = rankNames[i]
+            }
         });
 
         return json

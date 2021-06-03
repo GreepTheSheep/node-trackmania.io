@@ -2,66 +2,79 @@ module.exports = [
     {
         "name": "Bronze 1",
         "abbr": "B1",
-        "before": 300
+        "startPts": 0,
+        "endPts": 299
     },
     {
         "name": "Bronze 2",
         "abbr": "B2",
-        "before": 600
+        "startPts": 300,
+        "endPts": 599
     },
     {
         "name": "Bronze 3",
         "abbr": "B3",
-        "before": 1000
+        "startPts": 600,
+        "endPts": 999
     },
     {
         "name": "Silver 1",
         "abbr": "S1",
-        "before": 1300
+        "startPts": 1000,
+        "endPts": 1299
     },
     {
         "name": "Silver 2",
         "abbr": "S2",
-        "before": 1600
+        "startPts": 1300,
+        "endPts": 1599
     },
     {
         "name": "Silver 3",
         "abbr": "S3",
-        "before": 2000
+        "startPts": 1600,
+        "endPts": 1999
     },
     {
         "name": "Gold 1",
         "abbr": "G1",
-        "before": 2300
+        "startPts": 2000,
+        "endPts": 2299
     },
     {
         "name": "Gold 2",
         "abbr": "G2",
-        "before": 2600
+        "startPts": 2300,
+        "endPts": 2599
     },
     {
         "name": "Gold 3",
         "abbr": "G3",
-        "before": 3000
+        "startPts": 2600,
+        "endPts": 2999
     },
     {
         "name": "Master 1",
         "abbr": "M1",
-        "before": 3300
+        "startPts": 3000,
+        "endPts": 3299
     },
     {
         "name": "Master 2",
         "abbr": "M2",
-        "before": 3600
+        "startPts": 3300,
+        "endPts": 3599
     },
     {
         "name": "Master 3",
         "abbr": "M3",
-        "before": 4000
+        "startPts": 3600,
+        "endPts": 5999
     },
     {
         "name": "Trackmaster",
         "abbr": "TM",
-        "before": Infinity
+        "startPts": 6000,
+        "endPts": Number.MAX_VALUE
     }
 ]
