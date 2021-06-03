@@ -64,11 +64,14 @@ class Players {
 
         if (player.matchmaking.length > 0){
             var rankNames = require('../rankNames')
-            rankNames.reverse()
             player.matchmaking.find(m=>m.info.typename == '3v3').info['place'] = player.matchmaking.find(m=>m.info.typename == '3v3').info['rank']
-            rankNames.forEach(rank=>{
-                if (player.matchmaking.find(m=>m.info.typename == '3v3').info.score < rank.before) player.matchmaking.find(m=>m.info.typename == '3v3').info['rank'] = rank
-            })
+            for (let i = 0; i < rankNames.length; i++) {
+                if (
+                    player.matchmaking.find(m=>m.info.typename == '3v3').info.score >= rankNames[i].startPts
+                    && player.matchmaking.find(m=>m.info.typename == '3v3').info.score < rankNames[i].endPts
+                )
+                player.matchmaking.find(m=>m.info.typename == '3v3').info['rank'] = rankNames[i]
+            }
         }
         return player
     }
