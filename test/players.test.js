@@ -61,7 +61,7 @@ describe('Players', function() {
         it('Test 1 - Nadeo', async function() {
             var player = await players.getGroupPlayers("Nadeo")
             assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.length, 21, "The result length is invalid")
+            assert.strictEqual(player.length, 22, "The result length is invalid")
         });
 
         it('Test 2 - Openplanet Team', async function() {
@@ -77,8 +77,14 @@ describe('Players', function() {
     });
 
     it('Player matches', async function() {
-        var player = await players.playerMatches("26d9a7de-4067-4926-9d93-2fe62cd869fc")
-        assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
+        it('Test 1 - 3v3', async function() {
+            var player = await players.playerMatches("26d9a7de-4067-4926-9d93-2fe62cd869fc", "3v3")
+            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
+        });
+        it('Test 2 - Royal', async function() {
+            var player = await players.playerMatches("26d9a7de-4067-4926-9d93-2fe62cd869fc", "Royal")
+            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
+        });
     });
 
     it('Player COTD Results', async function() {

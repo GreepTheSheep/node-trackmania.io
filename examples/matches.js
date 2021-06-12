@@ -11,8 +11,12 @@ matches.on('debug', msg =>{
 
 function run(){
     try{
-        matches.matches().then(list=>{
-            console.log('Matches list', list)
+        matches.matches("3v3").then(list=>{
+            console.log('Matches list 3v3', list)
+        })
+
+        matches.matches("Royal").then(list=>{
+            console.log('Matches list Royal', list)
         })
         
         matches.match("LID-MTCH-dqy33e0shqrjfro").then(match=>{
