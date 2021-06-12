@@ -13,12 +13,15 @@ class Matches extends EventEmitter {
 
     /**
      * Gets the latest matches
-     * @param {number} typeId The match type ID. Defaults to 2 (3v3)
+     * @param {string} matchType The match Type, select between "3v3" or "Royal". Defaults to "3v3"
      * @param {number} page The page number. Defaults to 0
      * @returns {array} The list of matches
      */
-    async matches(typeId = 2, page = 0){
-        var matches = await f.getData.page(url.tabs.matches, `${typeId}/${page}`)
+    async matches(matchType = "3v3", page = 0){
+        var matchTypeID;
+        if (matchType == "3v3") matchTypeID = 2;
+        else if (matchType == "Royal") matchTypeID = 3; 
+        var matches = await f.getData.page(url.tabs.matches, `${matchTypeID}/${page}`)
 
         return matches.matches
     }

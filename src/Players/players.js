@@ -64,13 +64,29 @@ class Players {
 
         if (player.matchmaking.length > 0){
             var rankNames = require('../rankNames')
-            player.matchmaking.find(m=>m.info.typename == '3v3').info['place'] = player.matchmaking.find(m=>m.info.typename == '3v3').info['rank']
-            for (let i = 0; i < rankNames.length; i++) {
-                if (
-                    player.matchmaking.find(m=>m.info.typename == '3v3').info.score >= rankNames[i].startPts
-                    && player.matchmaking.find(m=>m.info.typename == '3v3').info.score < rankNames[i].endPts
-                )
-                player.matchmaking.find(m=>m.info.typename == '3v3').info['rank'] = rankNames[i]
+
+            if (player.matchmaking.some(m=>m.info.typename == '3v3')){
+                // 3v3
+                player.matchmaking.find(m=>m.info.typename == '3v3').info['place'] = player.matchmaking.find(m=>m.info.typename == '3v3').info['rank']
+                for (let i = 0; i < rankNames['3v3'].length; i++) {
+                    if (
+                        player.matchmaking.find(m=>m.info.typename == '3v3').info.score >= rankNames['3v3'][i].startPts
+                        && player.matchmaking.find(m=>m.info.typename == '3v3').info.score < rankNames['3v3'][i].endPts
+                    )
+                    player.matchmaking.find(m=>m.info.typename == '3v3').info['rank'] = rankNames['3v3'][i]
+                }
+            }
+
+            if (player.matchmaking.some(m=>m.info.typename == 'Royal')){
+                // Royal
+                player.matchmaking.find(m=>m.info.typename == 'Royal').info['place'] = player.matchmaking.find(m=>m.info.typename == 'Royal').info['rank']
+                for (let i = 0; i < rankNames.Royal.length; i++) {
+                    if (
+                        player.matchmaking.find(m=>m.info.typename == 'Royal').info.progression >= rankNames.Royal[i].startPts
+                        && player.matchmaking.find(m=>m.info.typename == 'Royal').info.progression < rankNames.Royal[i].endPts
+                    )
+                    player.matchmaking.find(m=>m.info.typename == 'Royal').info['rank'] = rankNames.Royal[i]
+                }
             }
         }
         return player
@@ -91,11 +107,15 @@ class Players {
     /**
      * Gets the last matches infos of a player (MatchMaking)
      * @param {string} accountid The account ID or the Trackmania.io Vanity URL
+     * @param {string} matchType The match Type, select between "3v3" or "Royal". Defaults to "3v3"
      * @param {number} page The page number (defaults to 0), displays 25 items / page
      * @returns {array} The lastest matches of the player
      */
-     async playerMatches(accountid, page = 0){
-        var player = await f.getData.player.getPlayerMatches(accountid, page)
+     async playerMatches(accountid, matchType = "3v3", page = 0){
+        var matchTypeID;
+        if (matchType == "3v3") matchTypeID = 2;
+        else if (matchType == "Royal") matchTypeID = 3; 
+        var player = await f.getData.player.getPlayerMatches(accountid, matchTypeID, page)
         if (player.error) throw player.error
         return player.matches
     }

@@ -13,20 +13,34 @@ class Matchmaking extends EventEmitter {
 
     /**
      * Gets the tops ranking om Matchmaking
+     * @param {string} matchType The match Type, select between "3v3" or "Royal". Defaults to "3v3"
      * @param {number} page The page number. Defaults to 0
      * @returns {array} The list of ranks
      */
-    async ranking(page = 0){
-        var json = await f.getData.page(url.tabs.matchmaking, page)
+    async ranking(matchType = "3v3", page = 0){
+        var matchTypeID;
+        if (matchType == "3v3") matchTypeID = 2;
+        else if (matchType == "Royal") matchTypeID = 3; 
+        var json = await f.getData.page(url.tabs.matchmaking, matchTypeID+'/'+page)
 
         json.ranks.forEach(rankJson => {
             var rankNames = require('../rankNames')
-            for (let i = 0; i < rankNames.length; i++) {
-                if (
-                    rankJson.score >= rankNames[i].startPts
-                    && rankJson.score < rankNames[i].endPts
-                )
-                rankJson.division['rank'] = rankNames[i]
+            if (matchType == "3v3"){
+                for (let i = 0; i < rankNames['3v3'].length; i++) {
+                    if (
+                        rankJson.score >= rankNames['3v3'][i].startPts
+                        && rankJson.score < rankNames['3v3'][i].endPts
+                    )
+                    rankJson.division['rank'] = rankNames['3v3'][i]
+                }
+            } else if (matchType == "Royal"){
+                for (let i = 0; i < rankNames.Royal.length; i++) {
+                    if (
+                        rankJson.progression >= rankNames.Royal[i].startPts
+                        && rankJson.progression < rankNames.Royal[i].endPts
+                    )
+                    rankJson.division['rank'] = rankNames.Royal[i]
+                }
             }
         });
 

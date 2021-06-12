@@ -32,8 +32,14 @@ function run(){
                 console.error(err)
             })
 
-            players.playerMatches(p[0].accountid).then(data=>{
-                console.log('last matches', data[0])
+            players.playerMatches(p[0].accountid, "3v3").then(data=>{
+                console.log('last match in 3v3 mode', data[0])
+            }).catch(err=>{
+                console.error(err)
+            })
+
+            players.playerMatches(p[0].accountid, "Royal").then(data=>{
+                console.log('last match in Royal mode', data[0])
             }).catch(err=>{
                 console.error(err)
             })

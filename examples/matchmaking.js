@@ -11,8 +11,12 @@ mm.on('debug', msg =>{
 
 function run(){
     try{
-        mm.ranking().then(list=>{
-            console.log('ranking', list)
+        mm.ranking("3v3").then(list=>{
+            console.log('ranking 3v3', list)
+        })
+
+        mm.ranking("Royal").then(list=>{
+            console.log('ranking Royal', list)
         })
     } catch (e){
         console.error(e)
