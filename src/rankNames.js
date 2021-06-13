@@ -90,19 +90,19 @@ module.exports = {
             "name": "Bronze",
             "abbr": "B",
             "startPts": 1,
-            "endPts": 9
+            "endPts": 10
         },
         {
             "name": "Silver",
             "abbr": "S",
             "startPts": 10,
-            "endPts": 99
+            "endPts": 100
         },
         {
             "name": "Gold",
             "abbr": "G",
             "startPts": 100,
-            "endPts": 999
+            "endPts": 1000
         },
         {
             "name": "Master",
