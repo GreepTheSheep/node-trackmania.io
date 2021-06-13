@@ -21,7 +21,7 @@ class Players {
             var echelonNames = require('../_appendix_datas/echelonNames')
             echelonNames.reverse()
             echelonNames.forEach(echelon=>{
-                if (player.trophies.echelon == echelon.echelon) player.trophies.echelonName = echelon.name
+                if (player.trophies.echelon == echelon.echelon) player.trophies.echelon = echelon
             })
         }
 
