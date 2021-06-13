@@ -24,7 +24,7 @@ class Matchmaking extends EventEmitter {
         var json = await f.getData.page(url.tabs.matchmaking, matchTypeID+'/'+page)
 
         json.ranks.forEach(rankJson => {
-            var rankNames = require('../rankNames')
+            var rankNames = require('../_appendix_datas/rankNames')
             if (matchType == "3v3"){
                 for (let i = 0; i < rankNames['3v3'].length; i++) {
                     if (

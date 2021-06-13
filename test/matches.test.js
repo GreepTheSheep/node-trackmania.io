@@ -9,7 +9,7 @@ function randomItem(array) {
 describe('Matches', async function() {
     this.timeout(10*1000)
 
-    it('Test 1 - 3v3', async function() {
+    describe('Test 1 - 3v3', async function() {
         var matchesList = await matches.matches("3v3")
 
         it('Matches list', async function() {
@@ -23,7 +23,7 @@ describe('Matches', async function() {
         });
     });
 
-    it('Test 2 - Royal', async function() {
+    describe('Test 2 - Royal', async function() {
         var matchesList = await matches.matches("Royal")
 
         it('Matches list', async function() {

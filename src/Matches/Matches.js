@@ -35,6 +35,21 @@ class Matches extends EventEmitter {
     async match(matchID,format = true){
         var match = await f.getData.page(url.tabs.match, matchID)
 
+        if (match.name.includes('royal')){
+            const teamNames = require('../_appendix_datas/royalTeamNames')
+            match.players.forEach(player=>{
+                var teamName = teamNames.find(t=>t.teamId == player.team)
+                if (!teamName) return
+                player.team = teamName
+            })
+            match.teams.forEach(team=>{
+                var teamName = teamNames.find(t=>t.teamId == team.index)
+                if (!teamName) return
+                team.name = teamName.name
+                team.img = teamName.img
+            })
+        }
+
         if (!format) return match
         else {
             var e = {}
