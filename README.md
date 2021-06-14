@@ -4,6 +4,7 @@ A Node.js inplementation of Trackmania Live services ([trackmania.io](https://tr
 [![Trackmania.io icon](https://trackmania.io/img/square.png)](https://trackmania.io)
 
 ![Trackmania.io API](https://img.shields.io/website?down_message=Offline&label=Trackmania.io%20API&up_message=Online&url=https%3A%2F%2Ftrackmania.io)
+[![Discord](https://img.shields.io/discord/276076890714800129?color=%23FF309A&label=Discord&logo=discord&logoColor=%23FF309A)](https://openplanet.nl/link/discord)
 
 [![NPM](https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true)](https://npmjs.org/trackmania.io)
 
@@ -19,28 +20,27 @@ A Node.js inplementation of Trackmania Live services ([trackmania.io](https://tr
 
 ---
 
-## Disclaimer - Can I use the Trackmania.io API for my own project?
-*(Copied from Miss' ([@codecat](https://github.com/codecat)) Disclaimer)*
+## Disclaimer - [Can I use the Trackmania.io API for my own project?](https://openplanet.nl/tmio/api)
 
-It depends. My usual answer is "yes, BUT.." before you start using the internal Trackmania.io API, read all of the following disclaimers:
+[Please read this topic](https://openplanet.nl/tmio/api)
 
-- The API is unsupported. If I remove/change something, I will (likely) not give notice of it, and you'll have to deal with it yourself. (or wait for updates in this repo)
+*The User Agent Header will be automatically set to your project directory name, with your current file name included*
 
-- The API is undocumented. You're on your own to figure out how the API works and what you need from it.
+*Most data that you'll request **is not cached!**, do your part to cache stuff and try not to do bulk requests!*
 
-- Use a proper user agent header so that I can see how you're using the API. **(This one is `node-trackmania.io by GreepTheSheep (Greep#3022) - https://github.com/GreepTheSheep/node-trackmania.io`)**
-
-- There are no hard limitations in place, so please be respectful of my server resources as well as Nadeo's. Cache stuff! Please let me know if you're planning to do any kind of "bulk" requests!
-
-- Let me know what you're working on! I'm always curious and it lets me understand how people are using the API and who to contact about certain things if any contact is needed.
+**You are responsible for the program you code, if you are banned from the API don't blame the wrapper or trackmania.io, blame yourself!**
 
 If you're still unsure about your use of the API, feel free to DM Miss#8888 with any further questions.
 
 ---
 ## Contributing
 
-Before opening a PR, run `npm test` to do a eslint scan then run mocha tests
-When opening a PR, please open it to the 'develop' branch. Thanks!
+Please see the [CONTRIBUTING.md file](CONTRIBUTING.md)
+
+---
+## Discussion
+
+If you want to talk about this project or just for saying hi, Join the [Openplanet Discord Server](https://openplanet.nl/link/discord), in the #trackmania-io channel
 
 ---
 ## Thanks
