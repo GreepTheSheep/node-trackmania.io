@@ -26,4 +26,16 @@ describe('Clubs', function() {
         assert.strictEqual(club.name, "ZeratoR", "This club is not ZeratoR, it's " + club.name)
         assert.strictEqual(club.tag, "ZT.", "This club tag is not ZT., it's " + club.tag)
     });
+
+    it('Club Members', async function() {
+        var club = await clubs.clubMembers(54)
+        assert.strictEqual(typeof club, 'object', 'It returns an ' + typeof club + ' insead of an object')
+        assert.strictEqual(club.members.length, 50)
+        assert.strictEqual(club.members[0].role, 'Creator')
+    });
+
+    it('Club Activities', async function() {
+        var club = await clubs.clubActivities(54)
+        assert.strictEqual(typeof club, 'object', 'It returns an ' + typeof club + ' insead of an object')
+    });
 });
