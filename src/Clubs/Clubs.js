@@ -93,15 +93,52 @@ class Clubs extends EventEmitter {
     async club(clubId, format = true){
         var club = await f.getData.page(url.tabs.club, clubId)
 
-        var members = await f.getData.page(url.tabs.club, clubId + '/members/0')
-
-        club.members = members
-
         if (!format) return club
         else {
             club.name = f.stripFormatting(club.name)
             club.description = f.stripFormatting(club.description)
             return club
+        }
+    }
+
+    /**
+     * Gets the club members. Members are sorted by role and club interaction time.
+     * @param {number} clubId The Club ID
+     * @param {number} page The page number. Defaults to 0 
+     * @returns {object} The list of maps of this campaign
+     */
+     async clubMembers(clubId, page = 0){
+        var members = await f.getData.page(url.tabs.club, clubId + '/members/'+page)
+        return members
+    }
+
+    /**
+     * Gets the club activities.
+     * @param {number} clubId The Club ID
+     * @param {string} filter The type of activities to show. ("all", "campaign", "room", "ranking-club", "news", "skin-upload") Defaults to "all"
+     * @param {number} page The page number. Defaults to 0 
+     * @param {boolean} format Defaults to true, removes chat formatting codes
+     * @returns {object} The list of maps of this campaign
+     */
+     async clubActivities(clubId, filter = "all", page = 0, format = true){
+        var activities = await f.getData.page(url.tabs.club, clubId + '/activities/'+page)
+
+        if (filter == "all"){
+            if (!format) return activities.activities
+            else {
+                activities.activities.forEach(a=>{
+                    a.name = f.stripFormatting(a.name)
+                })
+                return activities.activities
+            }
+        } else {
+            if (!format) return activities.activities.filter(a=>a.type == filter)
+            else {
+                activities.activities.forEach(a=>{
+                    a.name = f.stripFormatting(a.name)
+                })
+                return activities.activities.filter(a=>a.type == filter)
+            }
         }
     }
     

@@ -23,6 +23,12 @@ function run(){
         clubs.club(54).then(club=>{
             console.log('zrt',club)
         })
+        clubs.clubActivities(54, "room").then(club=>{
+            console.log('zrt rooms',club)
+        })
+        clubs.clubMembers(54).then(club=>{
+            console.log('zrt members',club)
+        })
     } catch (e){
         console.error(e)
         process.exit(1)
