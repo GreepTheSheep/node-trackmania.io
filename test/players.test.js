@@ -10,9 +10,9 @@ describe('Players', function() {
             var player = await players.player('greep')
             assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
             assert.strictEqual(player.accountid, "26d9a7de-4067-4926-9d93-2fe62cd869fc", "The account ID is invalid")
-            assert.strictEqual(player.meta.team, false, "The meta is invalid")
-            assert.strictEqual(player.meta.tmgl, false, "The meta is invalid")
-            assert.strictEqual(player.meta.nadeo, false, "The meta is invalid")
+            assert.strictEqual(player.meta.team, undefined, "The meta is invalid")
+            assert.strictEqual(player.meta.tmgl, undefined, "The meta is invalid")
+            assert.strictEqual(player.meta.nadeo, undefined, "The meta is invalid")
         });
     
         it('Test 2 - Miss', async function() {
@@ -20,25 +20,25 @@ describe('Players', function() {
             assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
             assert.strictEqual(player.accountid, "7398eeb6-9b4e-44b8-a7a1-a2149955ac70", "The account ID is invalid")
             assert.strictEqual(player.meta.team, true, "The meta is invalid")
-            assert.strictEqual(player.meta.tmgl, false, "The meta is invalid")
-            assert.strictEqual(player.meta.nadeo, false, "The meta is invalid")
+            assert.strictEqual(player.meta.tmgl, undefined, "The meta is invalid")
+            assert.strictEqual(player.meta.nadeo, undefined, "The meta is invalid")
         });
     
         it('Test 3 - Gwen', async function() {
             var player = await players.player('gwen')
             assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
             assert.strictEqual(player.accountid, "dba55c7e-d5cd-40c0-a5e7-8e793fd295eb", "The account ID is invalid")
-            assert.strictEqual(player.meta.team, false, "The meta is invalid")
+            assert.strictEqual(player.meta.team, undefined, "The meta is invalid")
             assert.strictEqual(player.meta.tmgl, true, "The meta is invalid")
-            assert.strictEqual(player.meta.nadeo, false, "The meta is invalid")
+            assert.strictEqual(player.meta.nadeo, undefined, "The meta is invalid")
         });
     
         it('Test 4 - Hylis', async function() {
             var player = await players.player('hylis')
             assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
             assert.strictEqual(player.accountid, "2232c721-f215-4036-b28b-772eee46632c", "The account ID is invalid")
-            assert.strictEqual(player.meta.team, false, "The meta is invalid")
-            assert.strictEqual(player.meta.tmgl, false, "The meta is invalid")
+            assert.strictEqual(player.meta.team, undefined, "The meta is invalid")
+            assert.strictEqual(player.meta.tmgl, undefined, "The meta is invalid")
             assert.strictEqual(player.meta.nadeo, true, "The meta is invalid")
         });
     });

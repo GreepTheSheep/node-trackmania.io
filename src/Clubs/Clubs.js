@@ -26,7 +26,7 @@ class Clubs extends EventEmitter {
                 Object.entries(e).forEach(entry => {
                     const [key, value] = entry;
 
-                    if (key == 'name' || key == 'description') e[key] = f.stripFormatting(value)
+                    if (key == 'name' || key == 'tag' || key == 'description') e[key] = f.stripFormatting(value)
                     else e[key] = value
                 });
                 clubs_tmp.push(e)
@@ -50,7 +50,7 @@ class Clubs extends EventEmitter {
                 Object.entries(e).forEach(entry => {
                     const [key, value] = entry;
 
-                    if (key == 'name' || key == 'description') e[key] = f.stripFormatting(value)
+                    if (key == 'name' || key == 'tag' || key == 'description') e[key] = f.stripFormatting(value)
                     else e[key] = value
                 });
                 clubs_tmp.push(e)
@@ -75,7 +75,7 @@ class Clubs extends EventEmitter {
                 Object.entries(e).forEach(entry => {
                     const [key, value] = entry;
 
-                    if (key == 'name') e[key] = f.stripFormatting(value)
+                    if (key == 'name' || key == 'tag') e[key] = f.stripFormatting(value)
                     else e[key] = value
                 });
                 clubs_tmp.push(e)

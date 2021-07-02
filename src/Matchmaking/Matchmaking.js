@@ -4,20 +4,22 @@ const EventEmitter = require('events')
 
 class Matchmaking extends EventEmitter {
     constructor(options = {
-        listener: false
+        listener: false,
+        listenerMatchType: "3v3"
     }){
         super()
 
-        if (options.listener) this._listener()
+        if (options.listener) this._listener(options.listenerMatchType)
     }
 
     /**
      * Gets the tops ranking om Matchmaking
      * @param {string} matchType The match Type, select between "3v3" or "Royal". Defaults to "3v3"
      * @param {number} page The page number. Defaults to 0
+     * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {array} The list of ranks
      */
-    async ranking(matchType = "3v3", page = 0){
+    async ranking(matchType = "3v3", page = 0, format = true){
         var matchTypeID;
         if (matchType == "3v3") matchTypeID = 2;
         else if (matchType == "Royal") matchTypeID = 3; 
@@ -44,20 +46,36 @@ class Matchmaking extends EventEmitter {
             }
         });
 
+        if (format){
+            var i = 0;
+            json.ranks.forEach(r=>{
+                Object.entries(r.player).forEach(entry => {
+                    const [key, value] = entry;
+    
+                    if (key == 'tag') json.ranks[i].player[key] = f.stripFormatting(value)
+                    else json.ranks[i].player[key] = value
+                });
+                i++
+            })
+        } 
+
         return json
     }
     
+    // TODO: Add trophies ranking
+
+
     /**
      * Enables the listener module
      * @private
      */
-    async _listener(){
+    async _listener(listenerType){
         this.emit('debug', 'Listener started, awaiting new top 1 every 2 minutes')
-        var matches1 = await this.ranking()
+        var matches1 = await this.ranking(listenerType)
 
         setInterval(async ()=>{
             this.emit('debug', 'Listener checking...')
-            var matches2 = await this.ranking()
+            var matches2 = await this.ranking(listenerType)
             if (matches1.ranks[0].accountid != matches2.ranks[0].accountid) this.emit('new-first', matches2.ranks[0])
             matches1 = matches2
         }, 2*60*1000)

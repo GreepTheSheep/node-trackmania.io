@@ -2,7 +2,7 @@ var assert = require('assert');
 var Trackmania = require('../')
 const rooms = new Trackmania.Rooms({listener:false})
 
-describe('rooms', function() {
+describe('Rooms', function() {
     this.timeout(10*1000)
 
     it('Popular rooms', async function() {

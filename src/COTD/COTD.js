@@ -39,9 +39,10 @@ class COTD extends EventEmitter {
      * Gets the latest COTD info
      * @param {number} match The match number. Defaults to 1
      * @param {number} page The page number, starts from 0 (25 items / page). Defaults to 0
+     * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {array} The information about this COTD
      */
-    async latestCOTDResults(match = 1, page = 0){
+    async latestCOTDResults(match = 1, page = 0, format = true){
         if (match < 1) match = 1
         var lastCOTD = await this.latestCOTD()
         if (lastCOTD.rounds[0].matches.length < 1) return {
@@ -49,7 +50,18 @@ class COTD extends EventEmitter {
         }
         var results = await f.getData.page(url.tabs.comp, lastCOTD.id+`/match/${lastCOTD.rounds[0].matches[match-1].id}/${page}`)
 
-        return results.results
+        if (!format) return results.results
+        else {
+            results.results.forEach(e=>{
+                Object.entries(e.player).forEach(entry => {
+                    const [key, value] = entry;
+
+                    if (key == 'tag') e.player[key] = f.stripFormatting(value)
+                    else e.player[key] = value
+                });
+            })
+            return results.results
+        }
     }
 
     /**
@@ -68,9 +80,10 @@ class COTD extends EventEmitter {
      * @param {number} id The COTD Identifier
      * @param {number} match The match number. Defaults to 1
      * @param {number} page The page number, starts from 0 (25 items / page). Defaults to 0
+     * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {array} The information about this COTD
      */
-     async COTDResults(id, match = 1, page = 0){
+     async COTDResults(id, match = 1, page = 0, format = true){
         if (match < 1) match = 1
         var COTD = await this.COTD(id)
         if (COTD.rounds[0].matches.length < 1) return {
@@ -78,7 +91,18 @@ class COTD extends EventEmitter {
         }
         var results = await f.getData.page(url.tabs.comp, id+`/match/${COTD.rounds[0].matches[match-1].id}/${page}`)
 
-        return results.results
+        if (!format) return results.results
+        else {
+            results.results.forEach(e=>{
+                Object.entries(e.player).forEach(entry => {
+                    const [key, value] = entry;
+
+                    if (key == 'tag') e.player[key] = f.stripFormatting(value)
+                    else e.player[key] = value
+                });
+            })
+            return results.results
+        }
     }
 
     /**
@@ -97,13 +121,25 @@ class COTD extends EventEmitter {
      * Gets a specific COTD Challenge (seeding) results info
      * @param {number} id The COTD Identifier
      * @param {number} page The page number, starts from 0 (25 items / page). Defaults to 0
+     * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {array} The information about this COTD
      */
-     async COTDChallengeResults(id, page = 0){
+     async COTDChallengeResults(id, page = 0, format = true){
         var COTD = await this.COTD(id)
         var results = await f.getData.page(url.tabs.comp, id+`/challenge/${COTD.rounds[0].challenges[0].id}/${page}`)
 
-        return results.results
+        if (!format) return results.results
+        else {
+            results.results.forEach(e=>{
+                Object.entries(e.player).forEach(entry => {
+                    const [key, value] = entry;
+
+                    if (key == 'tag') e.player[key] = f.stripFormatting(value)
+                    else e.player[key] = value
+                });
+            })
+            return results.results
+        }
     }
 
     /**
@@ -120,13 +156,27 @@ class COTD extends EventEmitter {
     /**
      * Gets the latest COTD Challenge (seeding) results info
      * @param {number} page The page number, starts from 0 (25 items / page). Defaults to 0
+     * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {array} The results about this COTD Challenge
      */
-     async latestCOTDChallengeResults(page = 0){
+     async latestCOTDChallengeResults(page = 0, format = true){
         var latestCOTD = await this.latestCOTD()
         var results = await f.getData.page(url.tabs.comp, latestCOTD.id+`/challenge/${latestCOTD.rounds[0].challenges[0].id}/${page}`)
 
-        return results.results
+        if (!format) return results.results
+        else {
+            var i = 0
+            results.results.forEach(e=>{
+                Object.entries(e.player).forEach(entry => {
+                    const [key, value] = entry;
+
+                    if (key == 'tag') results.results[i].player[key] = f.stripFormatting(value)
+                    else results.results[i].player[key] = value
+                });
+                i++
+            })
+            return results.results
+        }
     }
 
     /**

@@ -118,11 +118,25 @@ class Campaigns extends EventEmitter {
     /**
      * Gets the leaderboard of a campaign
      * @param {object} campaign The Campaign from campaign()
+     * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {Array} The list of maps of this campaign
      */
-     async leaderboard(campaign){
+     async leaderboard(campaign, format = true){
         var leaderboard = await f.getData.page(url.tabs.leaderboard, campaign.leaderboarduid)
-        return leaderboard.tops
+        if (!format) return leaderboard.tops
+        else {
+            var clubs_tmp = []
+            leaderboard.tops.forEach(e=>{
+                Object.entries(e.player).forEach(entry => {
+                    const [key, value] = entry;
+
+                    if (key == 'tag') e.player[key] = f.stripFormatting(value)
+                    else e.player[key] = value
+                });
+                clubs_tmp.push(e)
+            })
+            return clubs_tmp
+        }
     }
 
     /**

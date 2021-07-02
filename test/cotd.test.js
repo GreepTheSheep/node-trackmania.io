@@ -51,7 +51,7 @@ describe('Cup Of The Day', function() {
     it('COTD Challenge Results', async function() {
         var theCOTD = await cotd.COTDChallengeResults(398, 2)
         assert.strictEqual(typeof theCOTD, 'object', 'It returns an ' + typeof theCOTD + ' insead of an object')
-        assert.strictEqual(theCOTD[0].accountid, "a90404b4-7217-4f78-8891-135da2b442b2", "The account ID of Ice-TM is not correct")
+        assert.strictEqual(theCOTD[0].player.id, "a90404b4-7217-4f78-8891-135da2b442b2", "The account ID of Ice-TM is not correct")
         assert.strictEqual(theCOTD[0].score, 46018, "The score of Ice-TM is not correct")
         assert.strictEqual(theCOTD[0].position, 31, "The position of Ice-TM is not correct")
     });

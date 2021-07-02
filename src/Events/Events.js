@@ -67,15 +67,29 @@ class Competitions {
      * @param {number} competitionId The ID of the competition
      * @param {number} roundsNumber The number of the round, in chronological. Defaults to 1
      * @param {number} match The match number. Defaults to 1
+     * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {array} The information about this COTD
      */
-    async competitionResults(competitionId, roundsNumber = 1, match = 1){
+    async competitionResults(competitionId, roundsNumber = 1, match = 1, format = true){
         if (roundsNumber < 1) roundsNumber = 1
         if (match < 1) match = 1
         var competition = await this.competition(competitionId)
         var results = await f.getData.page(url.tabs.comp, competitionId+`/results/${competition.rounds[roundsNumber-1].matches[match-1].id}/0`)
 
-        return results.results
+        if (!format) return results.results
+        else {
+            var i = 0
+            results.results.forEach(e=>{
+                Object.entries(e.player).forEach(entry => {
+                    const [key, value] = entry;
+
+                    if (key == 'tag') results.results[i].player[key] = f.stripFormatting(value)
+                    else results.results[i].player[key] = value
+                });
+                i++
+            })
+            return results.results
+        }
     }
 }
 

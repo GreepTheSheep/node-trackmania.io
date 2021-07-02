@@ -52,14 +52,25 @@ class Matches extends EventEmitter {
 
         if (!format) return match
         else {
-            var e = {}
             Object.entries(match).forEach(entry => {
                 const [key, value] = entry;
 
-                if (key == 'name') e[key] = f.stripFormatting(value)
-                else e[key] = value
+                if (key == 'name') match[key] = f.stripFormatting(value)
+                else match[key] = value
             });
-            return e
+
+            var i = 0
+            match.players.forEach(p=>{
+                Object.entries(p.player).forEach(entry => {
+                    const [key, value] = entry;
+    
+                    if (key == 'tag') match.players[i].player[key] = f.stripFormatting(value)
+                    else match.players[i].player[key] = value
+                });
+                i++
+            })
+
+            return match
         }
     }
     
