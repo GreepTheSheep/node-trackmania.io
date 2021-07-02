@@ -62,8 +62,30 @@ class Matchmaking extends EventEmitter {
         return json
     }
     
-    // TODO: Add trophies ranking
+    /**
+     * Gets the tops trophies ranking
+     * @param {number} page The page number. Defaults to 0
+     * @param {boolean} format Defaults to true, removes chat formatting codes
+     * @returns {array} The list of ranks
+     */
+    async trophiesRanking(page = 0, format = true){
+        var json = await f.getData.page(url.tabs.topTrophies, page)
 
+        if (format){
+            var i = 0;
+            json.ranks.forEach(r=>{
+                Object.entries(r.player).forEach(entry => {
+                    const [key, value] = entry;
+    
+                    if (key == 'tag') json.ranks[i].player[key] = f.stripFormatting(value)
+                    else json.ranks[i].player[key] = value
+                });
+                i++
+            })
+        }
+
+        return json
+    }
 
     /**
      * Enables the listener module

@@ -14,4 +14,9 @@ describe('Matchmaking', function() {
         var ranks = await mm.ranking("Royal")
         assert.strictEqual(typeof ranks, 'object', 'It returns an ' + typeof ranks + ' insead of an object')
     });
+
+    it('Ranking list - Trophies', async function() {
+        var ranks = await mm.trophiesRanking()
+        assert.strictEqual(typeof ranks, 'object', 'It returns an ' + typeof ranks + ' insead of an object')
+    });
 });

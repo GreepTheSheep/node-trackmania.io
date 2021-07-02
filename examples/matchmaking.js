@@ -18,6 +18,10 @@ function run(){
         mm.ranking("Royal").then(list=>{
             console.log('ranking Royal', list)
         })
+
+        mm.trophiesRanking().then(list=>{
+            console.log("Trophies ranking", list.ranks)
+        })
     } catch (e){
         console.error(e)
         process.exit(1)

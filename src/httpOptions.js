@@ -18,6 +18,7 @@ module.exports = {
         "player": "player",
         "players": "players",
         "trophies":"trophies",
+        "topTrophies": "top/trophies",
         "leaderboard": "leaderboard",
         "map": "map",
         "matches": "matches",
