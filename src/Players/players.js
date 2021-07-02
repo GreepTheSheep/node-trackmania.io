@@ -5,9 +5,10 @@ class Players {
     /**
      * Gets the data of a player
      * @param {string} accountid The account ID or the Trackmania.io Vanity URL
+     * @param {boolean} format Defaults to true, removes chat formatting codes
      * @returns {object} The stats of the player
      */
-    async player(accountid){
+    async player(accountid, format = true){
         var player = await f.getData.player.getPlayer(accountid)
         if (player.error) throw player.error
 
@@ -52,6 +53,16 @@ class Players {
                 }
             }
         }
+
+        if (format){
+            Object.entries(player).forEach(entry => {
+                const [key, value] = entry;
+
+                if (key == 'clubtag') player[key] = f.stripFormatting(value)
+                else player[key] = value
+            });
+        }
+
         return player
     }
 

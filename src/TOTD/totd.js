@@ -32,6 +32,18 @@ class TOTD extends EventEmitter {
                     if (key == 'name') e.map[key] = f.stripFormatting(value)
                     else e.map[key] = value
                 });
+                Object.entries(e.map.authorplayer).forEach(entry => {
+                    const [key, value] = entry;
+
+                    if (key == 'tag') e.map.authorplayer[key] = f.stripFormatting(value)
+                    else e.map.authorplayer[key] = value
+                });
+                Object.entries(e.map.submitterplayer).forEach(entry => {
+                    const [key, value] = entry;
+
+                    if (key == 'tag') e.map.submitterplayer[key] = f.stripFormatting(value)
+                    else e.map.submitterplayer[key] = value
+                });
                 totd_tmp.push(e)
             })
             return totd_tmp

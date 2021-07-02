@@ -21,7 +21,7 @@ module.exports = {
         "leaderboard": "leaderboard",
         "map": "map",
         "matches": "matches",
-        "matchmaking": "matchmaking",
+        "matchmaking": "top/matchmaking",
         "match":"match"
     },
 
