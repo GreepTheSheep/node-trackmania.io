@@ -12,7 +12,7 @@ class Players {
         var player = await f.getData.player.getPlayer(accountid)
         if (player.error) throw player.error
 
-        if (player.meta.vanity && player.meta.vanity != ""){
+        if (player.meta && (player.meta.vanity && player.meta.vanity != "")){
             player['url'] = `${url.protocol}://${url.host}/#/${url.tabs.player}/${player.meta.vanity}`
         } else {
             player['url'] = `${url.protocol}://${url.host}/#/${url.tabs.player}/${player.accountid}`
