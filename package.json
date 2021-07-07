@@ -24,7 +24,7 @@
   "homepage": "https://github.com/GreepTheSheep/node-trackmania.io#readme",
   "dependencies": {
     "events": "^3.3.0",
-    "mocha": "^8.4.0",
+    "mocha": "^9.0.2",
     "moment-timezone": "^0.5.33",
     "ms": "^2.1.3",
     "node-fetch": "^2.6.1"
