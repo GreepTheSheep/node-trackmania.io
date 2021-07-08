@@ -148,6 +148,16 @@ module.exports = {
                 "Lion": "https://trackmania.io/img/royal/Lion_Master.png"
             },
             "startPts": 1000,
+            "endPts": 10000
+        },
+        {
+            "name": "Trackmaster",
+            "abbr": "TM",
+            "img": {
+                "Crown": "https://trackmania.io/img/royal/Crown_Master.png",
+                "Lion": "https://trackmania.io/img/royal/Lion_Master.png"
+            },
+            "startPts": 10000,
             "endPts": Number.MAX_VALUE
         }
     ]

@@ -88,7 +88,7 @@ describe('Players', function() {
     });
 
     it('Player COTD Results', async function() {
-        var player = await players.COTDResults("26d9a7de-4067-4926-9d93-2fe62cd869fc")
+        var player = await players.COTDResults("26d9a7de-4067-4926-9d93-2fe62cd869fc").catch(()=>{done()})
         assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
     });
 });
