@@ -42,12 +42,14 @@ class Matches extends EventEmitter {
                 if (!teamName) return
                 player.team = teamName
             })
-            match.teams.forEach(team=>{
-                var teamName = teamNames.find(t=>t.teamId == team.index)
-                if (!teamName) return
-                team.name = teamName.name
-                team.img = teamName.img
-            })
+            if (match.teams) {
+                match.teams.forEach(team=>{
+                    var teamName = teamNames.find(t=>t.teamId == team.index)
+                    if (!teamName) return
+                    team.name = teamName.name
+                    team.img = teamName.img
+                })    
+            }
         }
 
         if (!format) return match
