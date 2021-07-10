@@ -55,9 +55,4 @@ describe('Cup Of The Day', function() {
         assert.strictEqual(theCOTD[0].score, 46018, "The score of Ice-TM is not correct")
         assert.strictEqual(theCOTD[0].position, 31, "The position of Ice-TM is not correct")
     });
-
-    it('Player COTD Results', async function() {
-        var theCOTD = await cotd.playerResults('26d9a7de-4067-4926-9d93-2fe62cd869fc').catch(()=>{done()})
-        assert.strictEqual(typeof theCOTD, 'object', 'It returns an ' + typeof theCOTD + ' insead of an object')
-    });
 });

@@ -190,6 +190,24 @@ class COTD extends EventEmitter {
     }
 
     /**
+     * Gets the average ranking of players, sorted by best or last
+     * @param {string} sort "best" or "last". Defaults to "best"
+     * @param {string} top Ranked from 10 to 10. Example having the first "10", or from 11 to "20" etc... Defaults to "10"
+     * @returns {array} An array of tops of Players, and with their average
+     */
+     async averageRanks(sort = "best", top = "10"){
+        var results = await f.getData.player.averageCOTD()
+
+        results = results[sort]
+        if (!results) throw 'No data, check your syntax in "sort" field.'
+        
+        results = results[top]
+        if (!results) throw 'No data, check your syntax in "top" field.'
+
+        return results
+    }
+
+    /**
      * Enables the listener module
      * @private
      */

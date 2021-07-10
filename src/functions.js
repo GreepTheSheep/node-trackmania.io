@@ -46,6 +46,10 @@ function playerCOTD(player){
     return fetch(`${url.tmstats.protocol}://${url.tmstats.host}/${url.tmstats.api}/${url.tmstats.tabs.player}/${player}`, headers).then(r=>r.json())
 }
 
+function averageCOTD(){
+    return fetch(`${url.tmstats.protocol}://${url.tmstats.host}/${url.tmstats.api}/${url.tmstats.tabs.rankings}`, headers).then(r=>r.json())
+}
+
 // Thanks to @dassschaf and Solux#5809 for this tool
 function stripFormatting(string) {
     // eslint-disable-next-line no-useless-escape
@@ -63,7 +67,8 @@ module.exports = {
             getPlayerMatches,
             searchPlayer,
             playersGroup,
-            playerCOTD
+            playerCOTD,
+            averageCOTD
         }
     },
     stripFormatting

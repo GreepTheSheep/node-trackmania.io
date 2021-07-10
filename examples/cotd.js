@@ -46,6 +46,10 @@ function run(){
         cotd.playerResults('26d9a7de-4067-4926-9d93-2fe62cd869fc').then(t=>{
             console.log('information of a player on all COTDs', t)
         })
+
+        cotd.averageRanks("last").then(t=>{
+            console.log(t)
+        })
     } catch (e){
         console.error(e)
         process.exit(1)
