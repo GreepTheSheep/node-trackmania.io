@@ -34,7 +34,8 @@ module.exports = {
             "searchPlayer": "searchPlayer",
             "player": "playerProfiles",
             "playerList": "playerList",
-            "cotd": "cotd"
+            "cotd": "cotd",
+            "rankings": "COTDRankings"
         }
     },
 
