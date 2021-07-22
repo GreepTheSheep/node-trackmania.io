@@ -39,5 +39,14 @@ module.exports = {
         }
     },
 
+    "tmx": {
+        "protocol": "https",
+        "host": "trackmania.exchange",
+        "api": "api",
+        "tabs": {
+            "mapInfo": "maps/get_map_info/multi"
+        }
+    },
+
     "useragent" : "node-trackmania.io by Greep"
 }

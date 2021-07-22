@@ -50,6 +50,10 @@ function averageCOTD(){
     return fetch(`${url.tmstats.protocol}://${url.tmstats.host}/${url.tmstats.api}/${url.tmstats.tabs.rankings}`, headers).then(r=>r.json())
 }
 
+function TMXMapInfo(mapId){
+    return fetch(`${url.tmx.protocol}://${url.tmx.host}/${url.tmx.api}/${url.tmx.tabs.mapInfo}/${mapId}`, headers).then(r=>r.json())
+}
+
 // Thanks to @dassschaf and Solux#5809 for this tool
 function stripFormatting(string) {
     // eslint-disable-next-line no-useless-escape
@@ -69,7 +73,8 @@ module.exports = {
             playersGroup,
             playerCOTD,
             averageCOTD
-        }
+        },
+        TMXMapInfo
     },
     stripFormatting
 }

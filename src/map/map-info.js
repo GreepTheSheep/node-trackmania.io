@@ -33,6 +33,11 @@ async function map(mapUid, format = true){
         });
     }
 
+    if (map.exchangeid){
+        var tmxMap = await f.getData.TMXMapInfo(mapUid)
+        map["exchangeinfo"] = tmxMap[0];
+    }
+
     return map
 }
 
