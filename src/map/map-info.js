@@ -33,9 +33,10 @@ async function map(mapUid, format = true){
         });
     }
 
-    if (map.exchangeid){
+    if (map.exchangeid != 0){
+        delete map.exchangeid
         var tmxMap = await f.getData.TMXMapInfo(mapUid)
-        map["exchangeinfo"] = tmxMap[0];
+        map["exchange"] = tmxMap[0];
     }
 
     return map
