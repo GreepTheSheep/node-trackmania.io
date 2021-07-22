@@ -67,7 +67,7 @@ describe('Players', function() {
         it('Test 2 - Openplanet Team', async function() {
             var player = await players.getGroupPlayers("team")
             assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.length, 4, "The result length is invalid")
+            assert.strictEqual(player.length, 5, "The result length is invalid")
         });
     });
 
