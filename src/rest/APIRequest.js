@@ -13,7 +13,7 @@ module.exports = class APIRequest {
 
             UA += ' - using';
         } else UA = '[TESTING BUILD]';
-        this.UA = UA + ' ' + pkg.name + ' ' + pkg.version;
+        this.UA = UA + ' node-' + pkg.name + ' ' + pkg.version;
         var headers = new fetch.Headers({
             "Accept"       : "application/json",
             "Content-Type" : "application/json",
