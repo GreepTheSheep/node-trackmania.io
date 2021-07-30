@@ -22,15 +22,15 @@ class BaseClient extends EventEmitter {
     }
 
     /**
-     * Sets a desctiption for your project.
-     * Important if you run a important project. 
-     * It will set the User-Agent for requests.
+     * Sets a User Agent for your project.
+     * Required if you run a important project.
+     * @param {String} useragent The User Agent to set to.
      * @returns {Boolean}
      */
-    setDescription(description){
-        this.options.api.useragent = description;
+    setUserAgent(useragent){
+        this.options.api.useragent = useragent;
 
-        if (this.options.api.useragent == description) return true;
+        if (this.options.api.useragent == useragent) return true;
         else return false;
     }
 
