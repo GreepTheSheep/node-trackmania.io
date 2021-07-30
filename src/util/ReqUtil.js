@@ -8,7 +8,7 @@ class ReqUtil {
     }
 
     get tmioAPIURL(){
-        var tmio = this.client.options.api.paths.tmio;
+        const tmio = this.client.options.api.paths.tmio;
         return `${tmio.protocol}://${tmio.host}/${tmio.api}`;
     }
 }

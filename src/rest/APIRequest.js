@@ -6,8 +6,8 @@ class APIRequest {
         this.client = client;
 
         // Creating UA string
-        var cwd = process.cwd();
-        var cwf = require.main.filename;
+        let cwd = process.cwd();
+        let cwf = require.main.filename;
         cwf = cwf.substring(cwf.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
         cwd = cwd.substring(cwd.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
         this.UA = this.client.options.api.useragent;
@@ -20,7 +20,7 @@ class APIRequest {
         this.UA += ' node-' + pkg.name + ' ' + pkg.version;
         
         // Creating options
-        var headers = new fetch.Headers({
+        const headers = new fetch.Headers({
             "Accept"       : "application/json",
             "Content-Type" : "application/json",
             "User-Agent"   : this.UA 

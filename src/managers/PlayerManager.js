@@ -12,8 +12,8 @@ class PlayerManager {
      * @returns {Player} The player
      */
     async fetch(accountid){
-        var player = this.client.options.api.paths.tmio.tabs.player;
-        var res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
+        const player = this.client.options.api.paths.tmio.tabs.player;
+        const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
         return new Player(this.client, res);
     }
 }

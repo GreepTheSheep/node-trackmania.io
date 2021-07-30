@@ -16,7 +16,7 @@ class BaseClient extends EventEmitter {
      * @private
      */
     async _apiReq(url){
-        var request = new APIRequest(this);
+        const request = new APIRequest(this);
 
         return await request.do(url);
     }
