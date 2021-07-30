@@ -1,15 +1,14 @@
 const Player = require('../structures/Player');
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
-class PlayerManager {
+const EventEmitter = require('events');
+class PlayerManager extends EventEmitter {
     constructor(client){
+        super();
+
         this.client = client;
 
-        /**
-         * Intiializes the cache
-         * @private
-         */
-        this.cache = new CacheManager(this.client);
+        this.cache = new CacheManager(client, Player);
     }
 
     /**
@@ -23,9 +22,12 @@ class PlayerManager {
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
         if (cache) {
             res._cachedTimestamp = Date.now();
-            this.cache._add(res.accountid, res);
+            this.cache.set(res.accountid, new Player(this.client, res));
+            this.emit('cacheUpdate', this.cache);
+            return this.cache.get(res.accountid);
+        } else {
+            return new Player(this.client, res);
         }
-        return new Player(this.client, res);
     }
 
     /**
@@ -34,7 +36,7 @@ class PlayerManager {
      * @returns {Player} The player
      */
     get(accountid){
-        const res = this.cache._get(accountid);
+        const res = this.cache.get(accountid);
         if (!res) {
             throw new Error(`Player ${accountid} not found in cache`);
         } else return new Player(this.client, res);

@@ -1,67 +1,41 @@
-let cache = {};
-
-class CacheManager {
+class CacheManager extends Map {
     /**
      * Creates a new CacheManager instance.
      * @param {Number} ttl The time to live for the cache in minutes.
      */
-    constructor(client) {
-        
+    constructor(client, exports) {
+        super();
+
         this.client = client;
+        this.exports = exports;
 
         /** 
          * The time to live for the cache in miliseconds.
          * @private
          */
         this._ttl = this.client.options.cache.ttl * 60 * 1000;
-
-        /**
-         * The cache itself.
-         * @private
-         */
-        this.cache = cache;
     }
 
     /**
-     * Gets a value from the cache. Returns undefined if the value is not on the cache or if it is expired.
-     * @param {String} key The key of the value to get.
-     * @returns {Object} The value from the cache.
-     * @private
+	 * Searches for a single item where the given function returns a truthy value. This behaves like
+	 * [Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find).
+     * @param {Function} f The function to test for each element.
+     * @returns {*} 
      */
-    _get(key){
-        if (key in this.cache) {
-            if (Date.now() - this.cache[key]._cachedTimestamp > this._ttl) {
-                delete cache[key];
-                return undefined;
-            } else {
-                return this.cache[key];
-            }
-        } else {
-            return undefined;
-        }
+    find(f) {
+        return Array.from(this.values()).find(f);
     }
 
     /**
-     * Sets a value in the cache.
-     * @param {String} key The key of the value to set.
-     * @param {Object} value The value to set.
-     * @returns {Object} The value from the cache.
-     * @private
+	 * Checks if there exists an item that passes a test. Identical in behavior to
+	 * [Array.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some).
+     * @param {Function} f The function to test for each element.
+     * @returns {Boolean} 
      */
-    _add(key, value) {
-        cache[key] = value;
-        return this._save()[key];
+    some(f) {
+        return Array.from(this.values()).some(f);
     }
-
-    /**
-     * Saves the cache to the class.
-     * @returns {Object} The cache.
-     * @private
-     */
-    _save(){
-        this.cache = cache;
-        return this.cache;
-    }
+    
 }
 
 module.exports = CacheManager;
