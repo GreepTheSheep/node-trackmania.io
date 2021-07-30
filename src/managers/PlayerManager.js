@@ -1,10 +1,11 @@
 const Player = require('../structures/Player');
 const ReqUtil = require('../util/ReqUtil');
+const CacheManager = require('./CacheManager');
 class PlayerManager {
     constructor(client){
         this.client = client;
 
-        this.cache = new Map();
+        this.cache = new CacheManager();
     }
 
     /**
@@ -16,7 +17,7 @@ class PlayerManager {
     async fetch(accountid, cache = this.client.options.cache){
         const player = this.client.options.api.paths.tmio.tabs.player;
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
-        if (cache) this.cache = this.cache.set(res.accountid, res);
+        if (cache) this.cache._add(res.accountid, res);
         return new Player(this.client, res);
     }
 }
