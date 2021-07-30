@@ -32,18 +32,15 @@ class APIRequest {
         };
     }
 
-    do(url, cb) {
+    do(url) {
         this.url = url;
-        fetch(this.url, this.options)
-            .then(response => {
+        return fetch(this.url, this.options)
+            .then(async response => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response.json();
+                    return await response.json();
                 } else {
                     throw new Error(response.statusText);
                 }
-            })
-            .then(json => {
-                cb(json);
             })
             .catch(error => {
                 throw new Error(error);

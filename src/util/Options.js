@@ -1,4 +1,4 @@
-class Options extends null {
+class Options {
     /**
      * Creates default options for the client
      * @returns {Object}

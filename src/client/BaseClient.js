@@ -10,6 +10,18 @@ class BaseClient extends EventEmitter {
     }
 
     /**
+     * Do an API request
+     * @param {String} url The URL to request
+     * @param {Function} cb The callback with the result in parameter
+     * @private
+     */
+    async _apiReq(url){
+        var request = new APIRequest(this);
+
+        return await request.do(url);
+    }
+
+    /**
      * Sets a desctiption for your project.
      * Important if you run a important project. 
      * It will set the User-Agent for requests.
@@ -20,18 +32,6 @@ class BaseClient extends EventEmitter {
 
         if (this.options.api.useragent == description) return true;
         else return false;
-    }
-
-    /**
-     * Do an API request
-     * @param {String} url The URL to request
-     * @param {Function} cb The callback with the result in parameter
-     * @private
-     */
-    apiReq(url, cb){
-        var request = new APIRequest(this);
-
-        return request.do(url, cb);
     }
 
 }
