@@ -7,7 +7,7 @@ class PlayerManager {
         this.client = client;
 
         /** @private */
-        this._cache = new CacheManager(this);
+        this._cache = new CacheManager();
     }
 
     get cache(){
