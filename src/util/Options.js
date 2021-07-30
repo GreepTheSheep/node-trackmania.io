@@ -7,7 +7,6 @@ class Options {
     static createDefault(){
         return {
             api: {
-                method: 'GET',
                 paths: {
 
                     tmio: {

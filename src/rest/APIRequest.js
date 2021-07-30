@@ -18,21 +18,20 @@ class APIRequest {
             this.UA += ' - using';
         } else this.UA = '[TESTING BUILD]';
         this.UA += ' node-' + pkg.name + ' ' + pkg.version;
-        
+    }
+
+    do(url, method = 'GET', body = null) {
         // Creating options
         const headers = new fetch.Headers({
             "Accept"       : "application/json",
             "Content-Type" : "application/json",
             "User-Agent"   : this.UA 
         });
-        this.url = null;
         this.options = {
-            method : this.client.options.api.method,
-            headers
+            headers,
+            method,
+            body            
         };
-    }
-
-    do(url) {
         this.url = url;
         return fetch(this.url, this.options)
             .then(async response => {
