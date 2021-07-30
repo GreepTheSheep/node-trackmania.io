@@ -1,19 +1,25 @@
 const fetch = require('node-fetch');
 const pkg = require('../../package.json');
 
-module.exports = class APIRequest {
-    constructor(UA = null, method = 'GET', body = null) {
+class APIRequest {
+    constructor(client) {
+        this.client = client;
+
+        // Creating UA string
         var cwd = process.cwd();
         var cwf = require.main.filename;
         cwf = cwf.substring(cwf.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
         cwd = cwd.substring(cwd.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
-        if (UA != null || !cwd.includes(pkg.name)) {
-            if (UA == null) UA = cwd + ' (' + cwf + ')' ;
-            else UA += ' (' + cwf + ')';
+        this.UA = this.client.options.api.useragent;
+        if (this.UA != null || !cwd.includes(pkg.name)) {
+            if (this.UA == null) this.UA = cwd + ' (' + cwf + ')' ;
+            else this.UA += ' (' + cwf + ')';
 
-            UA += ' - using';
-        } else UA = '[TESTING BUILD]';
-        this.UA = UA + ' node-' + pkg.name + ' ' + pkg.version;
+            this.UA += ' - using';
+        } else this.UA = '[TESTING BUILD]';
+        this.UA += ' node-' + pkg.name + ' ' + pkg.version;
+        
+        // Creating options
         var headers = new fetch.Headers({
             "Accept"       : "application/json",
             "Content-Type" : "application/json",
@@ -21,9 +27,8 @@ module.exports = class APIRequest {
         });
         this.url = null;
         this.options = {
-            method,
-            headers,
-            body
+            method : this.client.options.api.method,
+            headers
         };
     }
 
@@ -44,4 +49,6 @@ module.exports = class APIRequest {
                 throw new Error(error);
             });
     }
-};
+}
+
+module.exports = APIRequest;

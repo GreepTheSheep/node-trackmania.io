@@ -1,5 +1,5 @@
-module.exportts = {
+module.exports = {
 
     // Entry point for the application.
-    main: require("./main"),
+    Client: require("./client")
 };
