@@ -58,7 +58,8 @@ class Options {
                     },
                 },
                 useragent: null
-            }
+            },
+            cache: true
         };
     }
 }
