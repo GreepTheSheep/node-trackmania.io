@@ -1,4 +1,4 @@
-const BaseClient = require('./client/BaseClient');
+const BaseClient = require('./BaseClient');
 
 class Client extends BaseClient {
     constructor(options){
@@ -6,7 +6,7 @@ class Client extends BaseClient {
     }
 
     get players(){
-        const PlayerManager = require('./managers/PlayerManager');
+        const PlayerManager = require('../managers/PlayerManager');
         return new PlayerManager(this);
     }
 

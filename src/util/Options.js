@@ -8,7 +8,6 @@ class Options {
         return {
             api: {
                 paths: {
-
                     tmio: {
                         protocol: "https",
                         host: "trackmania.io",
@@ -37,7 +36,6 @@ class Options {
                             match:"match"
                         },
                     },
-                    
                     tmstats: {
                         protocol: "https",
                         host: "trackmaniastats.herokuapp.com",
@@ -50,7 +48,6 @@ class Options {
                             rankings: "COTDRankings"
                         }
                     },
-                
                     tmx: {
                         protocol: "https",
                         host: "trackmania.exchange",
@@ -60,7 +57,6 @@ class Options {
                         }
                     },
                 },
-                
                 useragent: null
             }
         };
