@@ -59,7 +59,10 @@ class Options {
                 },
                 useragent: null
             },
-            cache: true
+            cache: {
+                enabled: true,
+                ttl: 10
+            }
         };
     }
 }

@@ -5,20 +5,39 @@ class PlayerManager {
     constructor(client){
         this.client = client;
 
-        this.cache = new CacheManager();
+        /**
+         * Intiializes the cache
+         * @private
+         */
+        this.cache = new CacheManager(this.client);
     }
 
     /**
      * Fetches a player and returns its data
      * @param {String} accountid The account ID or its tm.io vanity name
      * @param {Boolean} cache Whether to cache the player or not
-     * @returns {Player} The player
+     * @returns {Promise<Player>} The player
      */
-    async fetch(accountid, cache = this.client.options.cache){
+    async fetch(accountid, cache = this.client.options.cache.enabled){
         const player = this.client.options.api.paths.tmio.tabs.player;
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
-        if (cache) this.cache._add(res.accountid, res);
+        if (cache) {
+            res._cachedTimestamp = Date.now();
+            this.cache._add(res.accountid, res);
+        }
         return new Player(this.client, res);
+    }
+
+    /**
+     * Gets a player from cache
+     * @param {String} accountid The account ID or its tm.io vanity name
+     * @returns {Player} The player
+     */
+    get(accountid){
+        const res = this.cache._get(accountid);
+        if (!res) {
+            throw new Error(`Player ${accountid} not found in cache`);
+        } else return new Player(this.client, res);
     }
 }
 
