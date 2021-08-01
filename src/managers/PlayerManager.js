@@ -5,7 +5,8 @@ class PlayerManager {
     constructor(client){
         this.client = client;
 
-        this.cache = new CacheManager(client, Player);
+        /** @private */
+        this._cache = new CacheManager(client, Player);
     }
 
     /**
@@ -20,12 +21,8 @@ class PlayerManager {
      * });
      */
     async get(accountid, cache = this.client.options.cache.enabled){
-        if (cache) {
-            if (this.cache.has(accountid)) {
-                return this.cache.get(accountid);
-            } else {
-                return await this._fetch(accountid, cache);
-            }
+        if (cache && this._cache.has(accountid)) {
+            return this._cache.get(accountid);
         } else {
             return await this._fetch(accountid, cache);
         }
@@ -41,18 +38,18 @@ class PlayerManager {
     async _fetch(accountid, cache = this.client.options.cache.enabled){
         const player = this.client.options.api.paths.tmio.tabs.player;
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
+        const thePlayer = new Player(this.client, res);
         if (cache) {
             res._cachedTimestamp = Date.now();
-            this.cache.set(res.accountid, new Player(this.client, res));
+            
+            this._cache.set(res.accountid, thePlayer);
 
             // Adds also the player by its vanity name in the cache
             if (res.meta && (res.meta.vanity && res.meta.vanity != "")){
-                this.cache.set(res.meta.vanity, new Player(this.client, res));
+                this._cache.set(res.meta.vanity, thePlayer);
             }
-            return this.cache.get(res.accountid);
-        } else {
-            return new Player(this.client, res);
         }
+        return thePlayer;
     }
 }
 
