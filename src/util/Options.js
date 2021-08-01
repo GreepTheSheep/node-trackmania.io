@@ -61,7 +61,8 @@ class Options {
             },
             cache: {
                 enabled: true,
-                ttl: 10
+                ttl: 10,
+                leaderboardttl: 1
             }
         };
     }
