@@ -14,6 +14,8 @@ class CacheManager extends Map {
          * @private
          */
         this._ttl = this.client.options.cache.ttl * 60 * 1000;
+
+        this._reset();
     }
 
     /**
@@ -35,7 +37,16 @@ class CacheManager extends Map {
     some(f) {
         return Array.from(this.values()).some(f);
     }
-    
+
+    /**
+     * Resets the cache based on the ttl.
+     * @private
+     */
+    _reset() {
+        setTimeout(() => {
+            this.clear();
+        }, this._ttl);
+    }
 }
 
 module.exports = CacheManager;
