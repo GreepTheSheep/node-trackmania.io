@@ -14,7 +14,7 @@ class PlayerManager {
      * @param {Boolean} cache Whether to get the player from cache or not
      * @returns {Promise<Player>} The player
      * @example
-     * // Get a player
+     * // Get a player 
      * client.players.get('26d9a7de-4067-4926-9d93-2fe62cd869fc').then(player => {
      * console.log(player.displayname);
      * });
@@ -24,10 +24,10 @@ class PlayerManager {
             if (this.cache.has(accountid)) {
                 return this.cache.get(accountid);
             } else {
-                return await this._fetch(accountid);
+                return await this._fetch(accountid, cache);
             }
         } else {
-            return await this._fetch(accountid);
+            return await this._fetch(accountid, cache);
         }
     }
         
@@ -44,6 +44,11 @@ class PlayerManager {
         if (cache) {
             res._cachedTimestamp = Date.now();
             this.cache.set(res.accountid, new Player(this.client, res));
+
+            // Adds also the player by its vanity name in the cache
+            if (res.meta && (res.meta.vanity && res.meta.vanity != "")){
+                this.cache.set(res.meta.vanity, new Player(this.client, res));
+            }
             return this.cache.get(res.accountid);
         } else {
             return new Player(this.client, res);
