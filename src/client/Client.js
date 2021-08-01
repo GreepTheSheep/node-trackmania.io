@@ -6,8 +6,11 @@ class Client extends BaseClient {
     }
 
     get players(){
-        const PlayerManager = require('../managers/PlayerManager');
-        return new PlayerManager(this);
+        if (!this.PlayerManager){
+            const PlayerManager = require('../managers/PlayerManager');
+            this.PlayerManager = new PlayerManager(this);
+        }
+        return this.PlayerManager;
     }
 
 }

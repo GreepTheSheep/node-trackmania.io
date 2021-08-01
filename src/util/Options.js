@@ -58,6 +58,11 @@ class Options {
                     },
                 },
                 useragent: null
+            },
+            cache: {
+                enabled: true,
+                ttl: 10,
+                leaderboardttl: 1
             }
         };
     }

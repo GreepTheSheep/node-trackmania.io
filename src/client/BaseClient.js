@@ -12,7 +12,7 @@ class BaseClient extends EventEmitter {
     /**
      * Do an API request
      * @param {String} url The URL to request
-     * @param {Function} cb The callback with the result in parameter
+     * @returns {Promise<Object>} A promise that resolves to the API response
      * @private
      */
     async _apiReq(url){
