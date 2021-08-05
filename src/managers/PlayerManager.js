@@ -16,8 +16,8 @@ class PlayerManager {
      * @returns {Promise<Player>} The player
      * @example
      * // Get a player 
-     * client.players.get('26d9a7de-4067-4926-9d93-2fe62cd869fc').then(player => {
-     * console.log(player.displayname);
+     * client.players.get('greep').then(player => {
+     *     console.log(player.displayname);
      * });
      */
     async get(accountid, cache = this.client.options.cache.enabled){
