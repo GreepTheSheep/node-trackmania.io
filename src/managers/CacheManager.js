@@ -6,6 +6,10 @@ class CacheManager extends Map {
     constructor(client) {
         super();
 
+        /**
+         * The client instance.
+         * @type {Client}
+         */
         this.client = client;
 
         /** 

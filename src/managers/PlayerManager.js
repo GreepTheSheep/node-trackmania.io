@@ -3,10 +3,17 @@ const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 class PlayerManager {
     constructor(client){
+        /** The client instance
+         * @type {Client}
+         */
         this.client = client;
 
-        /** @private */
-        this._cache = new CacheManager(client, Player);
+        /**
+         * The cache manager
+         * @type {CacheManager} 
+         * @private
+         */
+        this._cache = new CacheManager(client);
     }
 
     /**

@@ -5,12 +5,18 @@ class Client extends BaseClient {
         super(options);
     }
 
+    /**
+     * The player manager
+     * @returns {PlayerManager}
+     */
     get players(){
-        if (!this.PlayerManager){
+        if (!this._PlayerManager){
             const PlayerManager = require('../managers/PlayerManager');
-            this.PlayerManager = new PlayerManager(this);
+            /** @private */
+            this._PlayerManager = new PlayerManager(this);
         }
-        return this.PlayerManager;
+        return this._PlayerManager;
+    }
     }
 
 }
