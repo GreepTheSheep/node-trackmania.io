@@ -38,7 +38,10 @@ class APIRequest {
                 if (response.status >= 200 && response.status < 300) {
                     return await response.json();
                 } else {
-                    throw new Error(response.statusText);
+                    if (response.status == 500) {
+                        const json = await response.json();
+                        throw new Error(json.error);
+                    } else throw new Error(response.statusText);
                 }
             })
             .catch(error => {

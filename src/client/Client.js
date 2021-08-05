@@ -17,6 +17,18 @@ class Client extends BaseClient {
         }
         return this._PlayerManager;
     }
+
+    /**
+     * The map manager
+     * @returns {MapManager}
+     */
+    get maps(){
+        if (!this._MapManager){
+            const MapManager = require('../managers/MapManager');
+            /** @private */
+            this._MapManager = new MapManager(this);
+        }
+        return this._MapManager;
     }
 
 }

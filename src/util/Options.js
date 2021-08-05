@@ -53,7 +53,8 @@ class Options {
                         host: "trackmania.exchange",
                         api: "api",
                         tabs: {
-                            mapInfo: "maps/get_map_info/multi"
+                            mapInfo: "maps/get_map_info/multi",
+                            mapsDownload: "maps/download",
                         }
                     },
                 },
