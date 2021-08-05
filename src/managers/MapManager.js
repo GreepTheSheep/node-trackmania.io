@@ -15,7 +15,7 @@ class MapManager{
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(client);
+        this._cache = new CacheManager(client, TMMap);
     }
 
     /**
