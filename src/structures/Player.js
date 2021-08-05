@@ -8,8 +8,6 @@ class Player {
 
         /** @private */
         this._data = data;
-
-        //Object.assign(this, data);
     }
 
     /**
