@@ -24,6 +24,8 @@ class Options {
                             room: "room",
                             clubs: "clubs",
                             club: "club",
+                            members: "members",
+                            activities: "activities",
                             events: "competitions",
                             player: "player",
                             players: "players",

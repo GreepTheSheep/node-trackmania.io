@@ -31,6 +31,19 @@ class Client extends BaseClient {
         return this._MapManager;
     }
 
+    /**
+     * The club manager
+     * @returns {ClubManager}
+     */
+    get clubs(){
+        if (!this._ClubManager){
+            const ClubManager = require('../managers/ClubManager');
+            /** @private */
+            this._ClubManager = new ClubManager(this);
+        }
+        return this._ClubManager;
+    }
+
 }
 
 module.exports = Client;
