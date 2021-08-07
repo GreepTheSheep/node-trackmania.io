@@ -45,7 +45,7 @@ class MapManager{
      */
     async _fetch(mapUid, cache = this.client.options.cache.enabled){
         const map = this.client.options.api.paths.tmio.tabs.map;
-        const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${map}/${mapUid}`);
+        const res = await this.client._apiReq(`${ReqUtil.tmioAPIURL}/${map}/${mapUid}`);
 
         // Check if the map exists on tmx
         if (res.exchangeid !== 0) {
