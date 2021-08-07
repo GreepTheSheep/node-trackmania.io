@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars
+const Player = require('./Player');
+
 class TMMap {
     /**
      * Represents a map on Trackmania.
@@ -45,8 +48,9 @@ class TMMap {
      * The map author.
      * @returns {Promise<Player>}
      * @example
-     * map.author.then(author => {
-     *    console.log(`The map author is ${author.name}`);
+     * Client.maps.get('z28QXoFnpODEGgg8MOederEVl3j').then(async map => {
+     *     const author = await map.author;
+     *     console.log(`The map author is ${author.name}`);
      * });
      */
     get author() {
