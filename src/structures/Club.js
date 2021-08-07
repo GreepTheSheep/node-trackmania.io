@@ -1,5 +1,6 @@
 const Player = require('./Player'); // eslint-disable-line no-unused-vars
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Campaign = require('./Campaign'); // eslint-disable-line no-unused-vars
 const CacheManager = require('../managers/CacheManager');
 
 class Club {
@@ -350,6 +351,16 @@ class ClubActivity {
      */
     get externalId() {
         return this._data.externalid;
+    }
+
+    /**
+     * If the activity is a campaign, returns the campaign object of the activity
+     * @type {Promise<Campaign>}
+     */
+    get campaign() {
+        if (this.type === 'campaign') {
+            return this.club.client.campaigns.get(this.club.id, this.externalId);
+        } else throw new Error('The activity is not a campaign');
     }
 }
 

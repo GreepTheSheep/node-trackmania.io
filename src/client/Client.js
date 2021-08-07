@@ -44,6 +44,19 @@ class Client extends BaseClient {
         return this._ClubManager;
     }
 
+    /**
+     * The campaign manager
+     * @returns {CampaignManager}
+     */
+    get campaigns(){
+        if (!this._CampaignManager){
+            const CampaignManager = require('../managers/CampaignManager');
+            /** @private */
+            this._CampaignManager = new CampaignManager(this);
+        }
+        return this._CampaignManager;
+    }
+
 }
 
 module.exports = Client;
