@@ -3,14 +3,13 @@
  * @private
  */
 class ReqUtil {
-    static get tmioAPIURL(){
-        const tmio = this.client.options.api.paths.tmio;
-        return `${tmio.protocol}://${tmio.host}/${tmio.api}`;
+    constructor(client){
+        this.client = client;
     }
 
-    static get tmxAPIURL(){
-        const tmx = this.client.options.api.paths.tmx;
-        return `${tmx.protocol}://${tmx.host}/${tmx.api}`;
+    get tmioAPIURL(){
+        const tmio = this.client.options.api.paths.tmio;
+        return `${tmio.protocol}://${tmio.host}/${tmio.api}`;
     }
 }
 
