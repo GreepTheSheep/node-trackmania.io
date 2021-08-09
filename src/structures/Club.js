@@ -362,6 +362,16 @@ class ClubActivity {
             return this.club.client.campaigns.get(this.club.id, this.externalId);
         } else throw new Error('The activity is not a campaign');
     }
+
+    /**
+     * If the activity is a room, returns the room object of the activity
+     * @type {Promise<Room>}
+     */
+    get room() {
+        if (this.type === 'room') {
+            return this.club.client.rooms.get(this.club.id, this.externalId);
+        } else throw new Error('The activity is not a room');
+    }
 }
 
 module.exports = Club;
