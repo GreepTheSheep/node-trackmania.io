@@ -19,11 +19,17 @@ class CacheManager extends Map {
          */
         this.from = from;
 
+        const ttlOpts = {
+            default: this.client.options.cache.ttl * 60 * 1000,
+            Leaderboard: this.client.options.cache.leaderboardttl * 60 * 1000,
+            Room: this.client.options.cache.roomttl * 60 * 1000
+        };
+
         /** 
          * The time to live for the cache in miliseconds.
          * @private
          */
-        this._ttl = this.client.options.cache.ttl * 60 * 1000;
+        this._ttl = this.client.options.cache.ttl != 10 ? ttlOpts.default : ttlOpts[this.from.name] || ttlOpts.default;
 
         this._reset();
     }
