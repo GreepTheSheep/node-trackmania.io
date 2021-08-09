@@ -18,6 +18,15 @@ class TMMap {
          * @private
          */
         this._data = data;
+
+        
+        // Check if the exchange data is already fetched
+        if (!this._data.exchange){
+            const tmxurl = this.client.options.api.paths.tmx;
+            this.client._apiReq(`${tmxurl.protocol}://${tmxurl.host}/${tmxurl.api}/${tmxurl.tabs.mapInfo}/${this.exchangeId}`).then(data => {
+                this._data.exchange = data[0];
+            });
+        }
     }
 
     /**
