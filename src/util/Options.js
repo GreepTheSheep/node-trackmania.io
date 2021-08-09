@@ -65,7 +65,8 @@ class Options {
             cache: {
                 enabled: true,
                 ttl: 10,
-                leaderboardttl: 1
+                leaderboardttl: 1,
+                roomttl: 5,
             }
         };
     }
