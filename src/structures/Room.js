@@ -134,7 +134,7 @@ class Room {
 
     /**
      * The maps on the room
-     * @type {Promise<Array<TMMap>>}
+     * @type {Array<TMMap>}
      */
     get maps() {
         const array = [];
