@@ -57,6 +57,19 @@ class Client extends BaseClient {
         return this._CampaignManager;
     }
 
+    /**
+     * The room manager
+     * @returns {RoomManager}
+     */
+    get rooms(){
+        if (!this._RoomManager){
+            const RoomManager = require('../managers/RoomManager');
+            /** @private */
+            this._RoomManager = new RoomManager(this);
+        }
+        return this._RoomManager;
+    }
+
 }
 
 module.exports = Client;
