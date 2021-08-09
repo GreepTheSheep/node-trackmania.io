@@ -134,10 +134,13 @@ class TMMap {
     get exchange() { 
         if (this.exchangeId == null) return null;
         else {
-            if (!this._TMExchange || this._TMExchange.id !== this.exchangeId) {
-                this._TMExchange = new TMExchangeMap(this, this._data.exchange);
-            } 
-            return this._TMExchange;
+            if (this._data.exchange) {
+                if (!this._TMExchange || this._TMExchange.id !== this.exchangeId) {
+                    /** @private */
+                    this._TMExchange = new TMExchangeMap(this, this._data.exchange);
+                } 
+                return this._TMExchange;
+            } else throw new Error('No exchange data found for this map');
         }
     }
 }
