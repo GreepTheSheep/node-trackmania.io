@@ -139,14 +139,14 @@ class Club {
 
     /**
      * The club creator player
-     * @type {Promise<Player>}
+     * @returns {Promise<Player>}
      * @example
      * Client.clubs.get(54).then(async club => {
      *     const creator = await club.creator;
      *     console.log(creator.name);
      * });
      */
-    get creator() {
+    async creator() {
         return this.client.players.get(this._data.creatorplayer.id);
     }
 
@@ -234,9 +234,9 @@ class ClubMember {
 
     /**
      * The member
-     * @type {Promise<Player>}
+     * @returns {Promise<Player>}
      */
-    get member() {
+    async member() {
         return this.club.client.players.get(this._data.player.id);
     }
 
@@ -355,9 +355,9 @@ class ClubActivity {
 
     /**
      * If the activity is a campaign, returns the campaign object of the activity
-     * @type {Promise<Campaign>}
+     * @returns {Promise<Campaign>}
      */
-    get campaign() {
+    async campaign() {
         if (this.type === 'campaign') {
             return this.club.client.campaigns.get(this.club.id, this.externalId);
         } else throw new Error('The activity is not a campaign');
@@ -365,9 +365,9 @@ class ClubActivity {
 
     /**
      * If the activity is a room, returns the room object of the activity
-     * @type {Promise<Room>}
+     * @returns {Promise<Room>}
      */
-    get room() {
+    async room() {
         if (this.type === 'room') {
             return this.club.client.rooms.get(this.club.id, this.externalId);
         } else throw new Error('The activity is not a room');

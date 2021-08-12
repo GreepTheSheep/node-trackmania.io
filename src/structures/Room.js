@@ -28,9 +28,9 @@ class Room {
 
     /**
      * The club that this room belongs to
-     * @type {Promise<Club>}
+     * @returns {Promise<Club>}
      */
-    get club() {
+    async club() {
         return this.client.clubs.get(this._data.clubid);
     }
 
@@ -134,12 +134,14 @@ class Room {
 
     /**
      * The maps on the room
-     * @type {Array<TMMap>}
+     * @returns {Promise<Array<TMMap>>}
      */
-    get maps() {
+    async maps() {
         const array = [];
         this._data.maps.forEach((map) => {
-            array.push(new TMMap(this.client, map));
+            this.client.maps.get(map.id).then((map) => {
+                array.push(map);
+            });
         });
         return array;
     }

@@ -58,11 +58,11 @@ class TMMap {
      * @returns {Promise<Player>}
      * @example
      * Client.maps.get('z28QXoFnpODEGgg8MOederEVl3j').then(async map => {
-     *     const author = await map.author;
+     *     const author = await map.author();
      *     console.log(`The map author is ${author.name}`);
      * });
      */
-    get author() {
+    async author() {
         return this.client.players.get(this._data.author);
     }
 
@@ -70,7 +70,7 @@ class TMMap {
      * The map submitter.
      * @returns {Promise<Player>}
      */
-    get submitter() {
+    async submitter() {
         return this.client.players.get(this._data.submitter);
     }
 

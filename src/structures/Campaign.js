@@ -72,9 +72,9 @@ class Campaign {
 
     /**
      * The club that owns the campaign.
-     * @type {Promise<Club>}
+     * @returns {Promise<Club>}
      */
-    get club() {
+    async club() {
         if (this.isOfficial) {
             throw new Error("This campaign is an official campaign. It does not have a club.");
         } else return this.client.clubs.get(this._data.clubid);
