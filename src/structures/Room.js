@@ -135,14 +135,18 @@ class Room {
     /**
      * The maps on the room
      * @returns {Promise<Array<TMMap>>}
+     * @example
+     * Client.rooms.get(228, 82160).then(async room => {
+     *   const maps = await room.maps();
+     *   maps.forEach(map => console.log(map.name));
+     * });
      */
     async maps() {
         const array = [];
-        this._data.maps.forEach((map) => {
-            this.client.maps.get(map.id).then((map) => {
-                array.push(map);
-            });
-        });
+        for (let i = 0; i < this._data.maps.length; i++) {
+            let map = await this.client.maps.get(this._data.maps[i].mapUid);
+            array.push(map);
+        }
         return array;
     }
 }

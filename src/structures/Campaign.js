@@ -90,13 +90,19 @@ class Campaign {
 
     /**
      * The list of maps in the campaign.
-     * @type {Array<TMMap>}
+     * @returns {Promise<Array<TMMap>>}
+     * @example
+     * Client.campaigns.get(0, 11612).then(async campaign => {
+     *   const maps = await campaign.maps();
+     *   maps.forEach(map => console.log(map.name));
+     * });
      */
-    get maps() {
+    async maps() {
         const array = [];
-        this._data.playlist.forEach(map => {
-            array.push(new TMMap(this.client, map));
-        });
+        for (let i = 0; i < this._data.playlist.length; i++) {
+            let map = await this.client.maps.get(this._data.playlist[i].mapUid);
+            array.push(map);
+        }
         return array;
     }
 
