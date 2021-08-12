@@ -24,7 +24,15 @@ class Util {
      * @returns {String}
      */
     static formatTMText(str) {
-        return str.replace(/\$[nmwoszi]|\$[hl]\[[a-zA-Z0-9/?#!&.\\\-_=@$'()+,;:]*\]|\$[0-f]{3}/gi, '');
+        let newStr = str;
+        
+        // Check if there are two dollar signs in a row, returns one dollar sign
+        newStr = newStr.replace(/\$\$/gi, '$');
+
+        // Then remove all TM codes
+        newStr = newStr.replace(/\$[nmwoszi]|\$[hl]\[[a-zA-Z0-9/?#!&.\\\-_=@$'()+,;:]*\]|\$[hl]|\$[0-9a-fA-F]{3}/gi, '');
+
+        return newStr;
     }
 }
 
