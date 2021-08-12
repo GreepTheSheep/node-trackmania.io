@@ -22,7 +22,7 @@ class CampaignManager{
      * Fetches a Trackmania campaign and returns its data
      * @param {Number} clubId The club Id that the campaign belongs to (If it's an official campaign, set it to 0)
      * @param {Number} id The campaign Id
-     * @param {Boolean} cache Whether to get the club from cache or not
+     * @param {Boolean} cache Whether to get the campaign from cache or not
      * @returns {Promise<Campaign>} The campaign
      * @example 
      * client.campaigns.get(54, 10621).then(campaign => {
