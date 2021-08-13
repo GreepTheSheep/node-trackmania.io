@@ -24,15 +24,25 @@ class Util {
      * @returns {String}
      */
     static formatTMText(str) {
-        let newStr = str;
+        let res, resStr;
+
+        // Iterate through the string and check if there are $t,
+        // If there is a $t, it will be replaced by the text in uppercase until the $z or the end of the string
         
+        // First remplace all $T by $t and $Z by $z (for the regex)
+        resStr = str.replace(/\$T/g, '$t').replace(/\$Z/g, '$z');
+        
+        while ((res = resStr.match(/\$t(.)*([$z])|\$t(.)*$/g)) !== null) {
+            for (let i = 0; i < res.length; i++) {
+                resStr = resStr.replace(res[i], res[i].toUpperCase());
+            }
+        }
+
         // Check if there are two dollar signs in a row, returns one dollar sign
-        newStr = newStr.replace(/\$\$/gi, '$');
+        resStr = resStr.replace(/\$\$/gi, '$');
 
         // Then remove all TM codes
-        newStr = newStr.replace(/\$[nmwoszi]|\$[hl]\[[a-zA-Z0-9/?#!&.\\\-_=@$'()+,;:]*\]|\$[hl]|\$[0-9a-fA-F]{3}/gi, '');
-
-        return newStr;
+        return resStr.replace(/\$[<>wnoisgtz]|\$[hl]\[(.)+\]|\$[hl]|\$[0-9a-fA-F]{3}/gi, '');
     }
 }
 
