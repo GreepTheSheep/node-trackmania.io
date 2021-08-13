@@ -32,7 +32,7 @@ class Util {
         // First remplace all $T by $t and $Z by $z (for the regex)
         resStr = str.replace(/\$T/g, '$t').replace(/\$Z/g, '$z');
         
-        while ((res = resStr.match(/\$t(.)*([$z])|\$t(.)*$/g)) !== null) {
+        while ((res = resStr.match(/\$t(.)*(\$z)|\$t(.)*$/g)) !== null) {
             for (let i = 0; i < res.length; i++) {
                 resStr = resStr.replace(res[i], res[i].toUpperCase());
             }
