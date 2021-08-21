@@ -67,7 +67,8 @@ class Options {
                 ttl: 10,
                 leaderboardttl: 1,
                 roomttl: 5,
-            }
+            },
+            dev: false
         };
     }
 }

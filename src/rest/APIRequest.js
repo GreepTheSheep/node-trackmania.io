@@ -45,6 +45,7 @@ class APIRequest {
                 }
             })
             .catch(error => {
+                if (this.client.options.dev) error = error + " ("+this.url+")";
                 throw new Error(error);
             });
     }
