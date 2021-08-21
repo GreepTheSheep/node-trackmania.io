@@ -35,7 +35,8 @@ class Options {
                             map: "map",
                             matches: "matches",
                             matchmaking: "top/matchmaking",
-                            match:"match"
+                            match:"match",
+                            challenge: "challenge"
                         },
                     },
                     tmstats: {

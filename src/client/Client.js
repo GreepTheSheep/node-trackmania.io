@@ -70,6 +70,19 @@ class Client extends BaseClient {
         return this._RoomManager;
     }
 
+    /**
+     * The TM events manager
+     * @returns {EventManager}
+     */
+    get events(){
+        if (!this._EventManager){
+            const EventManager = require('../managers/EventManager');
+            /** @private */
+            this._EventManager = new EventManager(this);
+        }
+        return this._EventManager;
+    }
+
 }
 
 module.exports = Client;
