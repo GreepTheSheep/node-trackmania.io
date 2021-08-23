@@ -21,6 +21,11 @@ class ReqUtil {
         const tmx = this.client.options.api.paths.tmx;
         return `${tmx.protocol}://${tmx.host}/${tmx.api}`;
     }
+
+    get votingAPIURL(){
+        const mapVoting = this.client.options.api.paths.mapVoting;
+        return `${mapVoting.protocol}://${mapVoting.host}`;
+    }
 }
 
 module.exports = ReqUtil;

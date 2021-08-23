@@ -54,6 +54,11 @@ class MapManager{
             res['exchange'] = tmxres[0];
         }
 
+        // Get map votes thanks to RoboTec's Voting API
+        const mapVotes = this.client.options.api.paths.mapVoting.tabs.getVotes;
+        const votes = await this.client._apiReq(`${new ReqUtil(this.client).votingAPIURL}/${mapVotes}?map=${mapUid}`);
+        res['karma'] = votes;
+
         const theMap = new TMMap(this.client, res);
         if (cache) {
             res._cachedTimestamp = Date.now();

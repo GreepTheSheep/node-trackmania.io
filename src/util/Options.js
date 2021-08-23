@@ -60,6 +60,17 @@ class Options {
                             mapsDownload: "maps/download",
                         }
                     },
+                    mapVoting: {
+                        protocol: "https",
+                        host: "tm-voting.willers.digital",
+                        tabs: {
+                            getPlayerVote: "getPlayerVote",
+                            getVotes: "getVotes",
+                            mostPlayerVoted: "mostPlayerVoted",
+                            mostVotedMaps: "mostVotedMaps"
+                            //TODO setVote (POST)
+                        }
+                    }
                 },
                 useragent: null
             },
