@@ -20,7 +20,7 @@ class NewsManager{
 
     /**
      * Fetches a Trackmania splashscreen and returns its data.
-     * @param {News} newsId The splashscreen ID
+     * @param {Number} newsId The splashscreen ID
      * @param {Boolean} cache Whether to get the news from cache or not
      * @returns {Promise<News>} The splashscreen
      * @example 
@@ -38,7 +38,7 @@ class NewsManager{
         
     /**
      * Fetches a splashscreen and returns its data
-     * @param {String} newsId The splashscreen ID
+     * @param {Number} newsId The splashscreen ID
      * @param {Boolean} cache Whether to cache the news or not
      * @returns {News} The splashscreen
      * @private
@@ -72,9 +72,6 @@ class NewsManager{
                 }
             } 
         }
-        
-        if (this._cache.has(newsId)) return this._cache.get(newsId);
-        else return null;
     }
 }
 
