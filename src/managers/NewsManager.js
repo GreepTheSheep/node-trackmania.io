@@ -70,7 +70,32 @@ class NewsManager{
                         }
                     }
                 }
-            } 
+            }
+            if (this._cache.has(newsId)) return this._cache.get(newsId);
+            else return null; 
+        } else {
+            if (res.splashscreens.length > 0) { // check all news from the page 0
+                for (let i = 0; i < res.splashscreens.length; i++) {
+                    if (res.splashscreens[i].id === newsId) {
+                        return new News(this.client, res.splashscreens[i]);
+                    }
+                }
+            }
+            if (res.page_max > 1) { // check all news from the pages 1 to page_max
+                for (let i = 1; i < res.page_max; i++) {
+                    const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${news}/${i}`);
+
+                    if (res.splashscreens.length > 0) {
+                        for (let i = 0; i < res.splashscreens.length; i++) {
+                            if (res.splashscreens[i].id === newsId) {
+                                return new News(this.client, res.splashscreens[i]);
+                            }
+                        }
+                    }
+                }
+            }
+            // If we reach this point, the news was not found
+            return null; 
         }
     }
 }
