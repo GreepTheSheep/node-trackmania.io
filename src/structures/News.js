@@ -1,24 +1,17 @@
-class NewsItem {
-    constructor(page, data) {
+class News {
+    constructor(client, data) {
         /**
-         * The news object this news item belongs to
-         * @type {News}
+         * The client object of the news page
+         * @type {Client}
          */
-        this.news = page;
+        this.client = client;
 
         /**
-         * The data of the news item
+         * The data of the news page
          * @type {Object}
          * @private
          */
         this._data = data;
-
-        /**
-         * The client of the parent news object
-         * @type {Object}
-         * @private
-         */
-        this._client = this.news.client;
     }
 
     /**
@@ -67,54 +60,6 @@ class NewsItem {
      */
     get time() {
         return new Date(this._data.time * 1000);
-    }
-}
-
-// TODO: is this a NewsPage? can you request multiple pages?
-class News {
-    constructor(client, data) {
-        /**
-         * The client object of the news page
-         * @type {Client}
-         */
-        this.client = client;
-
-        /**
-         * The data of the news page
-         * @type {Object}
-         * @private
-         */
-        this._data = data;
-    }
-
-    /**
-     * The news page's number
-     * @type {number}
-     */
-    get pageNumber() {
-        return this._data.page;
-    }
-
-    /**
-     * The number of available news pages
-     * @type {number}
-     */
-    get pageLimit() {
-        return this._data.page_max;
-    }
-
-    // TODO: does this make sense? if there's more than one news item, does it show up in this array?
-    // or do you have to request the next page, and the splashscreens array is only ever 1 element long?
-    /**
-     * The available news items
-     * @type {Array<NewsItem>}
-     */
-    get newsItems() {
-        const arr = [];
-        for (let i = 0; i < this._data.splashscreens; i++) {
-            arr.push(new NewsItem(this, this._data.splashscreens[i]));
-        }
-        return arr;
     }
 }
 
