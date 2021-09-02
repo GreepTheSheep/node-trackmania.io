@@ -1,5 +1,7 @@
 const BaseClient = require('./BaseClient');
 
+const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line no-unused-vars
+
 // Managers
 const PlayerManager = require('../managers/PlayerManager');
 const MapManager = require('../managers/MapManager');
@@ -7,7 +9,11 @@ const ClubManager = require('../managers/ClubManager');
 const CampaignManager = require('../managers/CampaignManager');
 const RoomManager = require('../managers/RoomManager');
 const EventManager = require('../managers/EventManager');
+
 class Client extends BaseClient {
+    /** Initialises a new Client
+     * @param {defaultOptions} options
+     */
     constructor(options){
         super(options);
     }

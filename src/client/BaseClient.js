@@ -2,10 +2,13 @@ const EventEmitter = require('events');
 const APIRequest = require('../rest/APIRequest');
 const Util = require('../util/Util');
 const Options = require('../util/Options');
+const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line no-unused-vars
 
 class BaseClient extends EventEmitter {
     constructor(options = {}) {
         super();
+
+        /** @type {defaultOptions} */
         this.options = Util.mergeDefault(Options.createDefault(), options);
 
         /** 
