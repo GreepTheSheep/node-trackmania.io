@@ -40,6 +40,14 @@ class APIRequest {
         this.url = url;
         return fetch(this.url, this.options)
             .then(async response => {
+                // Save the rate limit details
+                if (this.url.startsWith(new ReqUtil(this.client).tmioAPIURL)){
+                    this.client.ratelimit = {
+                        ratelimit: Number(response.headers.raw()['x-ratelimit-limit'][0]),
+                        remaining: Number(response.headers.raw()['x-ratelimit-remaining'][0]),
+                        reset: new Date(Number(response.headers.raw()['x-ratelimit-reset'][0]) * 1000)
+                    };
+                }
                 if (response.status >= 200 && response.status < 300) {
                     return await response.json();
                 } else {

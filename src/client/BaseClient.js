@@ -7,6 +7,16 @@ class BaseClient extends EventEmitter {
     constructor(options = {}) {
         super();
         this.options = Util.mergeDefault(Options.createDefault(), options);
+
+        /** 
+         * Get the ratelimits details on trackmania.io. If the data returns null, it means you haven't actually done a request
+         * @type {Object} 
+         */
+        this.ratelimit = {
+            ratelimit: null,
+            remaining: null,
+            reset: null
+        };
     }
 
     /**
