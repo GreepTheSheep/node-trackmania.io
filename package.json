@@ -3,9 +3,10 @@
   "version": "3.0.0",
   "description": "Node.js inplementation of Trackmania Live services (trackmania.io)",
   "main": "src/index.js",
+  "types": "typings/index.d.ts",
   "scripts": {
-    "test": "eslint . && mocha",
-    "oldtests": "eslint . && node ./run_tests_old_ver.js"
+    "test": "tsc && eslint . && mocha",
+    "dts": "tsc"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "eslint": "^7.31.0"
+    "eslint": "^7.31.0",
+    "typescript": "^4.4.2"
   }
 }
