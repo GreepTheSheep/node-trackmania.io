@@ -38,8 +38,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
       
     - name: Build d.ts files
-      run: npm ci
-      run: npm run dts
+      run: npm ci && npm run dts
     
     - name: Commit files
       run: |
