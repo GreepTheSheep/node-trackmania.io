@@ -31,7 +31,7 @@ class APIRequest {
             "Content-Type" : "application/json",
             "User-Agent"   : this.UA 
         });
-        if (this.key) headers.append('X-API-Key', this.key);
+        if (this.url.startsWith(new ReqUtil(this.client).tmioAPIURL && this.key) headers.append('X-API-Key', this.key);
         this.options = {
             headers,
             method,
