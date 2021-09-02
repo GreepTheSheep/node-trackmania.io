@@ -4,6 +4,6 @@
       "allowJs": true,
       "declaration": true,
       "emitDeclarationOnly": true,
-      "outFile": "typings/index.d.ts"
+      "outDir": "typings"
     }
 }
