@@ -248,7 +248,7 @@ declare class TMEventChallenge {
      * The challenge's maps.
      * @returns {Promise<Array<TMmap>>}
      */
-    getMaps(): Promise<Array<TMmap>>;
+    getMaps(): Promise<Array<any>>;
     /**
      * The challenge's admins.
      * @returns {Promise<Array<Player>>}
@@ -305,7 +305,6 @@ declare class TMEventRoundMatchResult {
      */
     get score(): number;
 }
-import TMmap = require("./TMmap");
 declare class TMEventChallengeResult {
     constructor(challenge: any, data: any);
     /**
