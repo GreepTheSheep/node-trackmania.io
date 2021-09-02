@@ -10,12 +10,13 @@ on:
   workflow_dispatch:
     inputs:
       build:
-        description: 'Build DefinitelyTyped files'
+        description: 'Build DefinitelyTyped'
 
 permissions: write-all
 
 jobs:
   build:
+    name: Build DefinitelyTyped
     runs-on: ubuntu-latest
 
     strategy:
@@ -44,7 +45,7 @@ jobs:
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git commit -m ":children_crossing: Build DefinitelyTyped files - ${{ steps.date.outputs.date }}" -a
+        git commit -m ":children_crossing: Build DefinitelyTyped - ${{ steps.date.outputs.date }}" -a
 
     - name: Push changes
       uses: ad-m/github-push-action@master
