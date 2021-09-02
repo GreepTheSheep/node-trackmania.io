@@ -8,15 +8,9 @@ on:
       - 'src/**.js'
 
   workflow_dispatch:
-    # Inputs the workflow accepts.
     inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
+      build:
         description: 'Build DefinitelyTyped files'
-        # Default value if no value is explicitly provided
-        default: 'yes'
-        # Input has to be provided for the workflow to run
-        required: true
 
 permissions: write-all
 
