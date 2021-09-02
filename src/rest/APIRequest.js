@@ -25,6 +25,7 @@ class APIRequest {
     }
 
     do(url, method = 'GET', body = null) {
+        this.url = url;
         // Creating options
         const headers = new fetch.Headers({
             "Accept"       : "application/json",
@@ -37,7 +38,6 @@ class APIRequest {
             method,
             body            
         };
-        this.url = url;
         return fetch(this.url, this.options)
             .then(async response => {
                 // Save the rate limit details
