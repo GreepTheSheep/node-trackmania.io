@@ -72,7 +72,8 @@ class Options {
                         }
                     }
                 },
-                useragent: null
+                useragent: null,
+                key: null
             },
             cache: {
                 enabled: true,

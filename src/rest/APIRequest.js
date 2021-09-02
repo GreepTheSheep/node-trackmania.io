@@ -1,8 +1,11 @@
 const fetch = require('node-fetch');
 const pkg = require('../../package.json');
+const ReqUtil = require('../util/ReqUtil');
+const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
 class APIRequest {
     constructor(client) {
+        /** @type {Client} */
         this.client = client;
 
         // Creating UA string
@@ -11,6 +14,7 @@ class APIRequest {
         cwf = cwf.substring(cwf.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
         cwd = cwd.substring(cwd.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
         this.UA = this.client.options.api.useragent;
+        this.key = this.client.options.api.key;
         if (this.UA != null || !cwd.includes(pkg.name)) {
             if (this.UA == null) this.UA = cwd + ' (' + cwf + ')' ;
             else this.UA += ' (' + cwf + ')';
@@ -27,6 +31,7 @@ class APIRequest {
             "Content-Type" : "application/json",
             "User-Agent"   : this.UA 
         });
+        if (this.key) headers.append('X-API-Key', this.key);
         this.options = {
             headers,
             method,
