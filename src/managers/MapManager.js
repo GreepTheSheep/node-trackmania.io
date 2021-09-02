@@ -1,6 +1,7 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const TMMap = require('../structures/TMMap');
+const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
 class MapManager{
     constructor(client){

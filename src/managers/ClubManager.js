@@ -1,6 +1,7 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const Club = require('../structures/Club');
+const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
 class ClubManager{
     constructor(client){

@@ -1,3 +1,5 @@
+const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+
 class CacheManager extends Map {
     /**
      * Creates a new CacheManager instance.

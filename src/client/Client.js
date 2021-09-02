@@ -1,5 +1,12 @@
 const BaseClient = require('./BaseClient');
 
+// Managers
+const PlayerManager = require('../managers/PlayerManager');
+const MapManager = require('../managers/MapManager');
+const ClubManager = require('../managers/ClubManager');
+const CampaignManager = require('../managers/CampaignManager');
+const RoomManager = require('../managers/RoomManager');
+const EventManager = require('../managers/EventManager');
 class Client extends BaseClient {
     constructor(options){
         super(options);
@@ -11,7 +18,6 @@ class Client extends BaseClient {
      */
     get players(){
         if (!this._PlayerManager){
-            const PlayerManager = require('../managers/PlayerManager');
             /** @private */
             this._PlayerManager = new PlayerManager(this);
         }
@@ -24,7 +30,6 @@ class Client extends BaseClient {
      */
     get maps(){
         if (!this._MapManager){
-            const MapManager = require('../managers/MapManager');
             /** @private */
             this._MapManager = new MapManager(this);
         }
@@ -37,7 +42,6 @@ class Client extends BaseClient {
      */
     get clubs(){
         if (!this._ClubManager){
-            const ClubManager = require('../managers/ClubManager');
             /** @private */
             this._ClubManager = new ClubManager(this);
         }
@@ -50,7 +54,6 @@ class Client extends BaseClient {
      */
     get campaigns(){
         if (!this._CampaignManager){
-            const CampaignManager = require('../managers/CampaignManager');
             /** @private */
             this._CampaignManager = new CampaignManager(this);
         }
@@ -63,7 +66,6 @@ class Client extends BaseClient {
      */
     get rooms(){
         if (!this._RoomManager){
-            const RoomManager = require('../managers/RoomManager');
             /** @private */
             this._RoomManager = new RoomManager(this);
         }
@@ -76,7 +78,6 @@ class Client extends BaseClient {
      */
     get events(){
         if (!this._EventManager){
-            const EventManager = require('../managers/EventManager');
             /** @private */
             this._EventManager = new EventManager(this);
         }

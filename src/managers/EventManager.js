@@ -1,6 +1,7 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const TMEvent = require('../structures/TMEvent');
+const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
 class EventManager{
     constructor(client){
