@@ -1,6 +1,6 @@
 const Player = require('./Player'); // eslint-disable-line no-unused-vars
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const TMmap = require('./TMmap'); // eslint-disable-line no-unused-vars
+const TMMap = require('./TMMap'); // eslint-disable-line no-unused-vars
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('../managers/CacheManager');
 
@@ -466,7 +466,7 @@ class TMEventChallenge {
 
     /**
      * The challenge's maps.
-     * @returns {Promise<Array<TMmap>>}
+     * @returns {Promise<Array<TMMap>>}
      */
     async getMaps() {
         const maps = [];
