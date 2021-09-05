@@ -1,6 +1,6 @@
 const ReqUtil = require('../util/ReqUtil');
-// eslint-disable-next-line no-unused-vars
-const Player = require('./Player');
+const Player = require('./Player'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
 class TMMap {
     /**
