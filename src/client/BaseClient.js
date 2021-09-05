@@ -28,13 +28,15 @@ class BaseClient extends EventEmitter {
     /**
      * Do an API request
      * @param {String} url The URL to request
+     * @param {String} method The HTTP method to use (Default: GET)
+     * @param {Object} data The data to send
      * @returns {Promise<Object>} A promise that resolves to the API response
      * @private
      */
-    async _apiReq(url){
+    async _apiReq(url, method = 'GET', body = null){
         const request = new APIRequest(this);
 
-        return await request.do(url);
+        return await request.do(url, method, body);
     }
 
     /**
