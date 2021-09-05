@@ -8,7 +8,7 @@ declare class TMMap {
      * The client instance.
      * @type {Client}
      */
-    client: any;
+    client: Client;
     /**
      * The map data.
      * @private
@@ -101,6 +101,7 @@ declare class TMMap {
      */
     get leaderboard(): TMMapLeaderboard[];
 }
+import Client = require("../client/Client");
 import Player = require("./Player");
 declare class TMExchangeMap {
     constructor(map: any, data: any);
@@ -113,7 +114,7 @@ declare class TMExchangeMap {
      * The client instance.
      * @type {Client}
      */
-    client: any;
+    client: Client;
     /**
      * The map data.
      * @type {Object}
@@ -182,7 +183,7 @@ declare class TMMapKarma {
      * The client instance.
      * @type {Client}
      */
-    client: any;
+    client: Client;
     /**
      * The map data.
      * @type {Object}
@@ -221,7 +222,7 @@ declare class TMMapLeaderboard {
      * The Client instance
      * @type {Client}
      */
-    client: any;
+    client: Client;
     /**
      * The data
      * @type {Object}
