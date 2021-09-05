@@ -27,7 +27,7 @@ declare class MapManager {
      * Fetches a map and returns its data
      * @param {String} mapUid The map UID
      * @param {Boolean} cache Whether to cache the map or not
-     * @returns {Player} The map
+     * @returns {TMMap} The map
      * @private
      */
     private _fetch;

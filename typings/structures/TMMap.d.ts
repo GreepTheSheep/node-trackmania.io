@@ -95,6 +95,11 @@ declare class TMMap {
     get karma(): TMMapKarma;
     /** @private */
     private _TMMapKarma;
+    /**
+     * The map leaderboard.
+     * @returns {?Array<TMMapLeaderboard>}
+     */
+    get leaderboard(): TMMapLeaderboard[];
 }
 import Player = require("./Player");
 declare class TMExchangeMap {
@@ -204,4 +209,48 @@ declare class TMMapKarma {
      * @type {Date}
      */
     get lastVoteDate(): Date;
+}
+declare class TMMapLeaderboard {
+    constructor(map: any, data: any);
+    /**
+     * The map Instance
+     * @type {TMMap}
+     */
+    map: TMMap;
+    /**
+     * The Client instance
+     * @type {Client}
+     */
+    client: any;
+    /**
+     * The data
+     * @type {Object}
+     * @private
+     */
+    private _data;
+    /**
+     * The player that got this leaderboard
+     * @returns {Player}
+     */
+    player(): Player;
+    /**
+     * The position of the player on this leaderboard
+     * @type {Number}
+     */
+    get position(): number;
+    /**
+     * The time in milliseconds of the player
+     * @type {Number}
+     */
+    get time(): number;
+    /**
+     * The date when the player get this leaderboard
+     * @type {Date}
+     */
+    get date(): Date;
+    /**
+     * The ghost URL
+     * @type {String}
+     */
+    get ghost(): string;
 }
