@@ -13,6 +13,8 @@ declare class BaseClient {
     /**
      * Do an API request
      * @param {String} url The URL to request
+     * @param {String} method The HTTP method to use (Default: GET)
+     * @param {Object} data The data to send
      * @returns {Promise<Object>} A promise that resolves to the API response
      * @private
      */
