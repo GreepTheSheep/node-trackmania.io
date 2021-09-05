@@ -41,7 +41,7 @@ class MapManager{
      * Fetches a map and returns its data
      * @param {String} mapUid The map UID
      * @param {Boolean} cache Whether to cache the map or not
-     * @returns {Player} The map
+     * @returns {TMMap} The map
      * @private
      */
     async _fetch(mapUid, cache = this.client.options.cache.enabled){
@@ -59,6 +59,14 @@ class MapManager{
         const mapVotes = this.client.options.api.paths.mapVoting.tabs.getVotes;
         const votes = await this.client._apiReq(`${new ReqUtil(this.client).votingAPIURL}/${mapVotes}?map=${mapUid}`);
         res['karma'] = votes;
+
+        // Get map leaderboard
+        const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard;
+        const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${mapUid}`);
+        if (leaderboardRes.tops.length > 0){
+            leaderboardRes["from"] = leaderboardRes.tops[0].time;
+        }
+        res["leaderboard"] = leaderboardRes;
 
         const theMap = new TMMap(this.client, res);
         if (cache) {

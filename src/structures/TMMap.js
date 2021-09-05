@@ -1,3 +1,4 @@
+const ReqUtil = require('../util/ReqUtil');
 // eslint-disable-next-line no-unused-vars
 const Player = require('./Player');
 
@@ -166,6 +167,20 @@ class TMMap {
             return this._TMMapKarma;
         } else throw new Error('No karma data found for this map');
     }
+
+    /**
+     * The map leaderboard.
+     * @returns {?Array<TMMapLeaderboard>}
+     */
+    get leaderboard() {
+        if (this._data.leaderboard && this._data.leaderboard.tops.length < 1) {
+            const arr = [];
+            for (let i = 0; i < this._data.leaderboard.tops.length; i++) {
+                arr.push(new TMMapLeaderboard(this, this._data.leaderboard.tops[i]));
+            }
+            return arr;
+        } else throw new Error('No leaderboard data found for this map');
+    }
 }
 
 class TMExchangeMap {
@@ -324,6 +339,69 @@ class TMMapKarma {
      */
     get lastVoteDate() {
         return new Date(this._data.lastVoteDate);
+    }
+}
+
+class TMMapLeaderboard {
+    constructor(map, data) {
+        /**
+         * The map Instance
+         * @type {TMMap}
+         */
+        this.map = map;
+
+        /**
+         * The Client instance
+         * @type {Client}
+         */
+        this.client = map.client;
+
+        /**
+         * The data
+         * @type {Object}
+         * @private
+         */
+        this._data = data;
+    }
+
+    /**
+     * The player that got this leaderboard
+     * @returns {Player}
+     */
+    async player(){
+        return this.client.players.get(this._data.player.id);
+    }
+
+    /**
+     * The position of the player on this leaderboard
+     * @type {Number}
+     */
+    get position(){
+        return this._data.position;
+    }
+
+    /**
+     * The time in milliseconds of the player
+     * @type {Number}
+     */
+    get time(){
+        return this._data.time;
+    }
+
+    /**
+     * The date when the player get this leaderboard
+     * @type {Date}
+     */
+    get date() {
+        return new Date(this._data.timestamp);
+    }
+
+    /**
+     * The ghost URL
+     * @type {String}
+     */
+    get ghost(){
+        return `${new ReqUtil(this.client).tmioURL}${this._data.url}`;
     }
 }
 
