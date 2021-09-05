@@ -4,10 +4,12 @@ declare class BaseClient {
     /** @type {defaultOptions} */
     options: defaultOptions;
     /**
-     * Get the ratelimits details on trackmania.io. If the data returns null, it means you haven't actually done a request
-     * @type {Object}
+     * Get the ratelimits details on trackmania.io.
+     * @type {ClientRatelimit}
      */
-    ratelimit: any;
+    get ratelimit(): ClientRatelimit;
+    /** @private */
+    private _Ratelimit;
     /**
      * Do an API request
      * @param {String} url The URL to request
@@ -31,3 +33,20 @@ declare class BaseClient {
     setAPIKey(key: string): boolean;
 }
 import defaultOptions = require("../util/defaultOptions");
+declare class ClientRatelimit {
+    /**
+     * The total number of requests you can make on trackmania.io API. If null, it means you haven't actually done a request
+     * @type {Number}
+     */
+    ratelimit: number;
+    /**
+     * The number of requests you can make before the ratelimit resets. If null, it means you haven't actually done a request
+     * @type {Number}
+     */
+    remaining: number;
+    /**
+     * The date when the ratelimit resets. If null, it means you haven't actually done a request
+     * @type {Date}
+     */
+    reset: Date;
+}
