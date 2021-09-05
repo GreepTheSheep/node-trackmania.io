@@ -10,16 +10,19 @@ class BaseClient extends EventEmitter {
 
         /** @type {defaultOptions} */
         this.options = Util.mergeDefault(Options.createDefault(), options);
+        
+    }
 
-        /** 
-         * Get the ratelimits details on trackmania.io. If the data returns null, it means you haven't actually done a request
-         * @type {Object} 
-         */
-        this.ratelimit = {
-            ratelimit: null,
-            remaining: null,
-            reset: null
-        };
+    /** 
+     * Get the ratelimits details on trackmania.io.
+     * @type {ClientRatelimit} 
+     */
+    get ratelimit(){
+        if (!this._Ratelimit){
+            /** @private */
+            this._Ratelimit = new ClientRatelimit();
+        }
+        return this._Ratelimit;
     }
 
     /**
@@ -60,6 +63,28 @@ class BaseClient extends EventEmitter {
         else return false;
     }
 
+}
+
+class ClientRatelimit {
+    constructor(){
+        /**
+         * The total number of requests you can make on trackmania.io API. If null, it means you haven't actually done a request
+         * @type {Number}
+         */
+        this.ratelimit = null;
+
+        /**
+         * The number of requests you can make before the ratelimit resets. If null, it means you haven't actually done a request
+         * @type {Number}
+         */
+        this.remaining = null;
+
+        /**
+         * The date when the ratelimit resets. If null, it means you haven't actually done a request
+         * @type {Date}
+         */
+        this.reset = null;
+    }
 }
 
 module.exports = BaseClient;
