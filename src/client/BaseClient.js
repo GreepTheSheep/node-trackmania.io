@@ -10,19 +10,12 @@ class BaseClient extends EventEmitter {
 
         /** @type {defaultOptions} */
         this.options = Util.mergeDefault(Options.createDefault(), options);
-        
-    }
 
-    /** 
-     * Get the ratelimits details on trackmania.io.
-     * @type {ClientRatelimit} 
-     */
-    get ratelimit(){
-        if (!this._Ratelimit){
-            /** @private */
-            this._Ratelimit = new ClientRatelimit();
-        }
-        return this._Ratelimit;
+        /** 
+         * Get the ratelimits details on trackmania.io.
+         * @type {ClientRatelimit} 
+         */
+        this.ratelimit = new ClientRatelimit();
     }
 
     /**
