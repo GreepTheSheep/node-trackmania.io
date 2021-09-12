@@ -100,6 +100,11 @@ declare class TMMap {
      * @returns {?Array<TMMapLeaderboard>}
      */
     get leaderboard(): TMMapLeaderboard[];
+    /**
+     * Load more in the leaderboard
+     * @returns {?Promise<Array<TMMapLeaderboard>>}
+     */
+    leaderboardLoadMore(): Promise<Array<TMMapLeaderboard>> | null;
 }
 import Client = require("../client/Client");
 import Player = require("./Player");

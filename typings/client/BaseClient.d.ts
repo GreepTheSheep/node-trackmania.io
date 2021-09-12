@@ -7,9 +7,7 @@ declare class BaseClient {
      * Get the ratelimits details on trackmania.io.
      * @type {ClientRatelimit}
      */
-    get ratelimit(): ClientRatelimit;
-    /** @private */
-    private _Ratelimit;
+    ratelimit: ClientRatelimit;
     /**
      * Do an API request
      * @param {String} url The URL to request
