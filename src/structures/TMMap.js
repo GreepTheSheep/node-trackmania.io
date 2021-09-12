@@ -173,7 +173,30 @@ class TMMap {
      * @returns {?Array<TMMapLeaderboard>}
      */
     get leaderboard() {
-        if (this._data.leaderboard && this._data.leaderboard.tops.length < 1) {
+        if (this._data.leaderboard && this._data.leaderboard.tops.length >= 1) {
+            const arr = [];
+            for (let i = 0; i < this._data.leaderboard.tops.length; i++) {
+                arr.push(new TMMapLeaderboard(this, this._data.leaderboard.tops[i]));
+            }
+            return arr;
+        } else throw new Error('No leaderboard data found for this map');
+    }
+
+    /**
+     * Load more in the leaderboard
+     * @returns {?Promise<Array<TMMapLeaderboard>>}
+     */
+    async leaderboardLoadMore(){
+        if (this._data.leaderboard && this._data.leaderboard.tops.length >= 1) {
+
+            const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
+                map = this.client.options.api.paths.tmio.tabs.map;
+            const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?from=${this._data.leaderboard.tops[this._data.leaderboard.tops.length - 2].time}`);
+            if (leaderboardRes.tops != null){
+                for (let i = 0; i < leaderboardRes.tops.length; i++){
+                    this._data.leaderboard.tops.push(leaderboardRes.tops[i]);
+                }
+            }
             const arr = [];
             for (let i = 0; i < this._data.leaderboard.tops.length; i++) {
                 arr.push(new TMMapLeaderboard(this, this._data.leaderboard.tops[i]));
