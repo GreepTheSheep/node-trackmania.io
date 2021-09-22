@@ -1,39 +1,61 @@
 export = MatchmakingDivision;
 declare class MatchmakingDivision {
-    constructor(client: any, division: any);
+    constructor(client: any, typeId: any, division: any);
     /**
      * The client instance
      * @type {Client}
      */
-    client: any;
+    client: Client;
     /**
-     * The division
-     * @type {number}
+     * The type of the division
+     * @type {Number}
      */
-    id: number;
+    typeId: number;
+    /**
+     * The division data
+     * @type {Object}
+     * @private
+     */
+    private _division;
+    /**
+     * The division position
+     * @type {Number}
+     */
+    get position(): number;
+    /**
+     * The type name of the division
+     * @type {string}
+     */
+    get typeName(): string;
     /**
      * The name of the division
-     * @type {string}
+     * @type {String}
      */
     get name(): string;
     /**
+     * The rule identifier of this division
+     * @type {String}
+     */
+    get rule(): string;
+    /**
      * The minimum points to the division
-     * @type {number}
+     * @type {Number}
      */
     get minPoints(): number;
     /**
      * The maximum points to the division
-     * @type {number}
+     * @type {Number}
      */
     get maxPoints(): number;
     /**
-     * The minimum number of wins to the division
-     * @type {number}
+     * The image of the division. If Royal, the crown
+     * @type {String}
      */
-    get minWins(): number;
+    get image(): string;
     /**
-     * The maximum number of wins to the division
-     * @type {number}
+     * The Royal Lion image of the division
+     * @type {String}
      */
-    get maxWins(): number;
+    get lion(): string;
 }
+import Client = require("../client/Client");

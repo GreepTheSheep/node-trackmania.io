@@ -5,7 +5,7 @@ declare class Player {
      * The client object of the player
      * @type {Client}
      */
-    client: any;
+    client: Client;
     /** @private */
     private _data;
     /**
@@ -71,6 +71,7 @@ declare class Player {
     /** @private */
     private _PlayerMatchmaking;
 }
+import Client = require("../client/Client");
 declare class PlayerTrophies {
     constructor(player: any);
     /**
@@ -90,9 +91,11 @@ declare class PlayerTrophies {
     get lastChange(): Date;
     /**
      * The echelon level of the player
-     * @returns {Number}
+     * @returns {PlayerEchelon}
      */
-    get echelon(): number;
+    get echelon(): PlayerEchelon;
+    /** @private */
+    private _PlayerEchelon;
     /**
      * The number of trophies the player has
      * @param {Number} number The trophy number, from 1 (bronze 1) to 9 (gold 3)
@@ -149,6 +152,11 @@ declare class PlayerMatchmaking {
      */
     player: Player;
     /**
+     * The client object
+     * @type {Client}
+     */
+    client: Client;
+    /**
      * The raw data of the player's matchmaking data based on the type
      * @type {Object}
      * @private
@@ -186,4 +194,32 @@ declare class PlayerMatchmaking {
     get division(): import("./MatchmakingDivision");
     /** @private */
     private _MatchmakingDivision;
+}
+declare class PlayerEchelon {
+    constructor(player: any);
+    /**
+     * The player object
+     * @type {Player}
+     */
+    player: Player;
+    /**
+     * The client object of the player
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The echelon number
+     * @type {Number}
+     */
+    number: number;
+    /**
+     * The name of the echelon
+     * @returns {String}
+     */
+    get name(): string;
+    /**
+     * The image URL of the echelon
+     * @returns {String}
+     */
+    get image(): string;
 }
