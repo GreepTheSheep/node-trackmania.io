@@ -189,6 +189,12 @@ class PlayerMatchmaking {
         this.player = player;
 
         /**
+         * The client object
+         * @type {Client}
+         */
+        this.client = this.player.client;
+
+        /**
          * The raw data of the player's matchmaking data based on the type
          * @type {Object}
          * @private
@@ -249,7 +255,7 @@ class PlayerMatchmaking {
         if (!this._MatchmakingDivision || this._MatchmakingDivision.division !== this._data.division.position){
             const MatchmakingDivision = require('./MatchmakingDivision');
             /** @private */
-            this._MatchmakingDivision = new MatchmakingDivision(this.player.client, this._data.division.position);
+            this._MatchmakingDivision = new MatchmakingDivision(this.client, this.typeId, this._data.division);
         } 
         return this._MatchmakingDivision;
     }
