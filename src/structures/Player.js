@@ -1,3 +1,6 @@
+const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const PlayerEchelonData = require('../data/PlayerEchelons.json');
+
 class Player {
     constructor(client, data){
         /**
@@ -150,10 +153,14 @@ class PlayerTrophies {
 
     /**
      * The echelon level of the player
-     * @returns {Number}
+     * @returns {PlayerEchelon}
      */
     get echelon(){
-        return this.player._data.trophies.echelon;
+        if (!this._PlayerEchelon || this._PlayerEchelon.number !== this.player._data.trophies.echelon){
+            /** @private */
+            this._PlayerEchelon = new PlayerEchelon(this.player);
+        } 
+        return this._PlayerEchelon;
     }
 
     /**
@@ -177,6 +184,44 @@ class PlayerTrophies {
      */
     get trophies(){
         return this.player._data.trophies.counts;
+    }
+}
+
+class PlayerEchelon {
+    constructor(player){
+        /**
+         * The player object
+         * @type {Player}
+         */
+        this.player = player;
+
+        /**
+         * The client object of the player
+         * @type {Client}
+         */
+        this.client = player.client;
+
+        /**
+         * The echelon number
+         * @type {Number}
+         */
+        this.number = player._data.trophies.echelon;
+    }
+
+    /**
+     * The name of the echelon
+     * @returns {String}
+     */
+    get name(){
+        return PlayerEchelonData[this.number].name;
+    }
+
+    /**
+     * The image URL of the echelon
+     * @returns {String}
+     */
+    get image(){
+        return PlayerEchelonData[this.number].img;
     }
 }
 
