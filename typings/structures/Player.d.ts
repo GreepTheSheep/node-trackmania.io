@@ -27,9 +27,10 @@ declare class Player {
     /**
      * The timestamps of the player's first login
      * @returns {Date}
+     * @readonly
      * @private can be used but keep it private
      */
-    private get timestamp();
+    private readonly get timestamp();
     /**
      * The club tag of the player (non-formatted)
      * @returns {String}
@@ -38,8 +39,9 @@ declare class Player {
     /**
      * The last change of the player's club tag
      * @returns {Date}
+     * @readonly
      */
-    get lastClubTagChange(): Date;
+    readonly get lastClubTagChange(): Date;
     /**
      * The player's zone data with the ranking of the player in the zone
      * @returns {Array<Object>} An array from the player's region name to World
@@ -62,6 +64,13 @@ declare class Player {
     get meta(): PlayerMeta;
     /** @private */
     private _PlayerMeta;
+    /**
+     * The player's COTD Data
+     * @returns {PlayerCOTD}
+     */
+    get cotd(): PlayerCOTD;
+    /** @private */
+    private _cotd;
     /**
      * The player's matchmaking data
      * @param {String | number} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
@@ -87,8 +96,9 @@ declare class PlayerTrophies {
     /**
      * The last time the player got a trophy
      * @returns {Date}
+     * @readonly
      */
-    get lastChange(): Date;
+    readonly get lastChange(): Date;
     /**
      * The echelon level of the player
      * @returns {PlayerEchelon}
@@ -143,6 +153,41 @@ declare class PlayerMeta {
      * @returns {String}
      */
     get displayURL(): string;
+}
+declare class PlayerCOTD {
+    constructor(player: any, data: any);
+    /**
+     * The Player object
+     * @type {Player}
+     */
+    player: Player;
+    /**
+     * The client object
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @private
+     */
+    private _data;
+    /**
+     * The number of COTDs played
+     * @returns {Number}
+     */
+    get count(): number;
+    /**
+     * The Player COTD stats
+     * @type {PlayerCOTDStats}
+     */
+    get stats(): PlayerCOTDStats;
+    /** @private */
+    private _stats;
+    /**
+     * Get the 25 recents COTD results
+     * @returns {Array<PlayerCOTDResult>}
+     */
+    get recentResults(): PlayerCOTDResult[];
 }
 declare class PlayerMatchmaking {
     constructor(player: any, type: any);
@@ -222,4 +267,196 @@ declare class PlayerEchelon {
      * @returns {String}
      */
     get image(): string;
+}
+declare class PlayerCOTDStats {
+    constructor(player: any, data: any);
+    /**
+     * The player object
+     * @type {Player}
+     */
+    player: Player;
+    /**
+     * The client object
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @private
+     */
+    private _data;
+    /**
+     * The best stats in the primary COTD
+     * @type {PlayerCOTDStatsBest}
+     */
+    get bestPrimary(): PlayerCOTDStatsBest;
+    /** @private */
+    private _bestprimary;
+    /**
+     * The best stats in all COTDs (including reruns)
+     * @type {PlayerCOTDStatsBest}
+     */
+    get bestOverall(): PlayerCOTDStatsBest;
+    /** @private */
+    private _bestoverall;
+    /**
+     * The total COTD wins in division 1
+     * @returns {Number}
+     */
+    get totalWins(): number;
+    /**
+     * The total COTD wins in any divison
+     * @returns {Number}
+     */
+    get totalDivWins(): number;
+    /**
+     * Average rank, float between 0 and 1
+     * @returns {Number}
+     */
+    get averageRank(): number;
+    /**
+     * Average div rank (in any division), float between 0 and 1
+     * @returns {Number}
+     */
+    get averageDivRank(): number;
+    /**
+     * Average division
+     * @returns {Number}
+     */
+    get averageDiv(): number;
+    /**
+     * The win streak in division 1
+     * @returns {Number}
+     */
+    get winStreak(): number;
+    /**
+     * The win streak in any division
+     * @returns {Number}
+     */
+    get divWinStreak(): number;
+}
+declare class PlayerCOTDResult {
+    constructor(player: any, data: any);
+    /**
+     * The Player object
+     * @type {Player}
+     */
+    player: Player;
+    /**
+     * The client object
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @private
+     */
+    private _data;
+    /**
+     * The ID of the COTD
+     * @returns {Number}
+     */
+    get id(): number;
+    /**
+     * The date of the COTD
+     * @returns {Date}
+     * @readonly
+     */
+    readonly get date(): Date;
+    /**
+     * The name of the COTD
+     * @returns {String}
+     */
+    get name(): string;
+    /**
+     * The division of the COTD
+     * @returns {Number}
+     */
+    get division(): number;
+    /**
+     * The overall rank on the COTD
+     * @returns {Number}
+     */
+    get rank(): number;
+    /**
+     * The division rank on the COTD
+     * @returns {Number}
+     */
+    get divisionRank(): number;
+    /**
+     * The score of the COTD
+     * @returns {Number}
+     */
+    get score(): number;
+    /**
+     * The total number of players of the COTD
+     * @returns {Number}
+     */
+    get totalPlayers(): number;
+}
+declare class PlayerCOTDStatsBest {
+    constructor(PlayerCOTDStats: any, data: any);
+    /**
+    * The PlayerCOTDStats object
+    * @type {PlayerCOTDStats}
+    */
+    stats: PlayerCOTDStats;
+    /**
+     * The player object
+     * @type {Player}
+     */
+    player: Player;
+    /**
+     * The client object
+     * @type {Client}
+     */
+    client: Client;
+    /**
+    * The data
+    * @private
+    */
+    private _data;
+    /**
+     * The best rank
+     * @returns {Number}
+     */
+    get rank(): number;
+    /**
+     * The best rank date
+     * @returns {Date}
+     * @readonly
+     */
+    readonly get rankDate(): Date;
+    /**
+     * The best div rank
+     * @returns {Number}
+     */
+    get divRank(): number;
+    /**
+     * The best division
+     * @returns {Number}
+     */
+    get division(): number;
+    /**
+     * The best divison date
+     * @returns {Date}
+     * @readonly
+     */
+    readonly get divisionDate(): Date;
+    /**
+     * The best rank in a division
+     * @returns {Number}
+     */
+    get rankInDivision(): number;
+    /**
+     * The best rank in a division date
+     * @returns {Date}
+     * @readonly
+     */
+    readonly get rankInDivisionDate(): Date;
+    /**
+     * The division who got the best rank in a division
+     * @returns {Number}
+     */
+    get divisionOfRankInDivision(): number;
 }
