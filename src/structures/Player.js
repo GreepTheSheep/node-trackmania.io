@@ -51,6 +51,7 @@ class Player {
     /**
      * The timestamps of the player's first login
      * @returns {Date}
+     * @readonly
      * @private can be used but keep it private
      */
     get timestamp(){
@@ -71,6 +72,7 @@ class Player {
     /**
      * The last change of the player's club tag
      * @returns {Date}
+     * @readonly
      */
     get lastClubTagChange(){
         return new Date(this._data.clubtagtimestamp);
@@ -112,6 +114,18 @@ class Player {
     }
 
     /**
+     * The player's COTD Data
+     * @returns {PlayerCOTD}
+     */
+    get cotd(){
+        if (!this._cotd){
+            /** @private */
+            this._cotd = new PlayerCOTD(this, this._data.cotd);
+        }
+        return this._cotd;
+    }
+
+    /**
      * The player's matchmaking data
      * @param {String | number} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
      * @returns {PlayerMatchmaking}
@@ -146,6 +160,7 @@ class PlayerTrophies {
     /**
      * The last time the player got a trophy
      * @returns {Date}
+     * @readonly
      */
     get lastChange(){
         return new Date(this.player._data.trophies.timestamp);
@@ -363,6 +378,346 @@ class PlayerMeta {
         } else {
             return player + this.player.id;
         }
+    }
+}
+
+class PlayerCOTD{
+    constructor(player, data){
+        /**
+         * The Player object
+         * @type {Player}
+         */
+        this.player = player;
+
+        /**
+         * The client object
+         * @type {Client}
+         */
+        this.client = player.client;
+
+        /**
+         * The data
+         * @private
+         */
+        this._data = data;
+    }
+
+    /**
+     * The number of COTDs played
+     * @returns {Number}
+     */
+    get count(){
+        return this._data.total;
+    }
+
+    /**
+     * The Player COTD stats
+     * @type {PlayerCOTDStats}
+     */
+    get stats(){
+        if (!this._stats){
+            /** @private */
+            this._stats = new PlayerCOTDStats(this.player, this._data.stats);
+        }
+        return this._stats;
+    }
+
+    /**
+     * Get the 25 recents COTD results
+     * @returns {Array<PlayerCOTDResult>}
+     */
+    get recentResults(){
+        const arr = [];
+        this._data.cotds.forEach(cotd=>{
+            arr.push(new PlayerCOTDResult(this.player, cotd));
+        });
+        return arr;
+    }
+}
+
+class PlayerCOTDResult{
+    constructor(player, data){
+        /**
+         * The Player object
+         * @type {Player}
+         */
+        this.player = player;
+
+        /**
+         * The client object
+         * @type {Client}
+         */
+        this.client = player.client;
+
+        /**
+         * The data
+         * @private
+         */
+        this._data = data;
+    }
+
+    /**
+     * The ID of the COTD
+     * @returns {Number}
+     */
+    get id(){
+        return this._data.id;
+    }
+
+    /**
+     * The date of the COTD
+     * @returns {Date}
+     * @readonly
+     */
+    get date(){
+        return new Date(this._data.timestamp);
+    }
+
+    /**
+     * The name of the COTD
+     * @returns {String}
+     */
+    get name(){
+        return this._data.name;
+    }
+
+    /**
+     * The division of the COTD
+     * @returns {Number}
+     */
+    get division(){
+        return this._data.div;
+    }
+
+    /**
+     * The overall rank on the COTD
+     * @returns {Number}
+     */
+    get rank(){
+        return this._data.rank;
+    }
+
+    /**
+     * The division rank on the COTD
+     * @returns {Number}
+     */
+    get divisionRank(){
+        return this._data.divrank;
+    }
+
+    /**
+     * The score of the COTD
+     * @returns {Number}
+     */
+    get score(){
+        return this._data.score;
+    }
+
+    /**
+     * The total number of players of the COTD
+     * @returns {Number}
+     */
+    get totalPlayers(){
+        return this._data.total;
+    }
+}
+
+class PlayerCOTDStats{
+    constructor(player, data){
+
+        /**
+         * The player object
+         * @type {Player}
+         */
+        this.player = player;
+
+        /**
+         * The client object
+         * @type {Client}
+         */
+        this.client = player.client;
+
+        /**
+         * The data
+         * @private
+         */
+        this._data = data;
+    }
+
+    /**
+     * The best stats in the primary COTD
+     * @type {PlayerCOTDStatsBest}
+     */
+    get bestPrimary(){
+        if (!this._bestprimary){
+            /** @private */
+            this._bestprimary = new PlayerCOTDStatsBest(this, this._data.bestprimary);
+        }
+        return this._bestprimary;
+    }
+
+    /**
+     * The best stats in all COTDs (including reruns)
+     * @type {PlayerCOTDStatsBest}
+     */
+    get bestOverall(){
+        if (!this._bestoverall){
+            /** @private */
+            this._bestoverall = new PlayerCOTDStatsBest(this, this._data.bestoverall);
+        }
+        return this._bestoverall;
+    }
+
+    /**
+     * The total COTD wins in division 1
+     * @returns {Number}
+     */
+    get totalWins(){
+        return this._data.totalwins;
+    }
+
+    /**
+     * The total COTD wins in any divison
+     * @returns {Number}
+     */
+    get totalDivWins(){
+        return this._data.totaldivwins;
+    }
+
+    /**
+     * Average rank, float between 0 and 1
+     * @returns {Number}
+     */
+    get averageRank(){
+        return this._data.avgrank;
+    }
+
+    /**
+     * Average div rank (in any division), float between 0 and 1
+     * @returns {Number}
+     */
+    get averageDivRank(){
+        return this._data.avgdivrank;
+    }
+
+    /**
+     * Average division
+     * @returns {Number}
+     */
+    get averageDiv(){
+        return this._data.avgdiv;
+    }
+
+    /**
+     * The win streak in division 1
+     * @returns {Number}
+     */
+    get winStreak(){
+        return this._data.winstreak;
+    }
+
+    /**
+     * The win streak in any division
+     * @returns {Number}
+     */
+    get divWinStreak(){
+        return this._data.divwinstreak;
+    }
+}
+
+class PlayerCOTDStatsBest{
+    constructor(PlayerCOTDStats, data){
+    
+        /**
+        * The PlayerCOTDStats object
+        * @type {PlayerCOTDStats}
+        */
+        this.stats = PlayerCOTDStats;
+
+        /**
+         * The player object
+         * @type {Player}
+         */
+        this.player = PlayerCOTDStats.player;
+
+        /**
+         * The client object
+         * @type {Client}
+         */
+        this.client = this.player.client;
+
+        /**
+        * The data
+        * @private
+        */
+        this._data = data;
+    }
+
+    /**
+     * The best rank
+     * @returns {Number}
+     */
+    get rank(){
+        return this._data.bestrank;
+    }
+
+    /**
+     * The best rank date
+     * @returns {Date}
+     * @readonly
+     */
+    get rankDate(){
+        return new Date(this._data.bestrankdate);
+    }
+
+    /**
+     * The best div rank
+     * @returns {Number}
+     */
+    get divRank(){
+        return this._data.bestrankdivrank;
+    }
+
+    /**
+     * The best division
+     * @returns {Number}
+     */
+    get division(){
+        return this._data.bestdiv;
+    }
+
+    /**
+     * The best divison date
+     * @returns {Date}
+     * @readonly
+     */
+    get divisionDate(){
+        return new Date(this._data.bestdivdate);
+    }
+
+    /**
+     * The best rank in a division
+     * @returns {Number}
+     */
+    get rankInDivision(){
+        return this._data.bestrankindiv;
+    }
+
+    /**
+     * The best rank in a division date
+     * @returns {Date}
+     * @readonly
+     */
+    get rankInDivisionDate(){
+        return new Date(this._data.bestrankindivdate);
+    }
+
+    /**
+     * The division who got the best rank in a division
+     * @returns {Number}
+     */
+    get divisionOfRankInDivision(){
+        return this._data.bestrankindivdiv;
     }
 }
 

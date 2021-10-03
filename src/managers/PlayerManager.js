@@ -44,8 +44,10 @@ class PlayerManager {
      * @private
      */
     async _fetch(accountid, cache = this.client.options.cache.enabled){
-        const player = this.client.options.api.paths.tmio.tabs.player;
+        const player = this.client.options.api.paths.tmio.tabs.player,
+            cotd = this.client.options.api.paths.tmio.tabs.cotd;
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
+        res["cotd"] = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${res["accountid"]}/${cotd}/0`);
         const thePlayer = new Player(this.client, res);
         if (cache) {
             res._cachedTimestamp = Date.now();
