@@ -21,7 +21,7 @@
             },
             "problemMatcher": [],
             "label": "npm: test",
-            "detail": "tsc && eslint . && mocha",
+            "detail": "eslint . && mocha"
         }
     ]
 }
