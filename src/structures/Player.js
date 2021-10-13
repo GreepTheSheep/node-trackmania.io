@@ -1,4 +1,5 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const TMMap = require('../structures/TMMap'); // eslint-disable-line no-unused-vars
 const PlayerEchelonData = require('../data/PlayerEchelons.json');
 
 class Player {
@@ -211,6 +212,97 @@ class PlayerTrophies {
      */
     get trophies(){
         return this._data.counts;
+    }
+
+    /**
+     * The last 25 trophies gains of the player
+     * @returns {Array<PlayerTrophyHistory>}
+     */
+    get history(){
+        let arr = [];
+        for (let i = 0; i < this._data.history.length; i++){
+            arr.push(new PlayerTrophyHistory(this.player, this._data.history[i]));
+        }
+        return arr;
+    }
+}
+
+class PlayerTrophyHistory {
+    constructor(player, data){
+        /**
+         * The player object
+         * @type {Player}
+         */
+        this.player = player;
+
+        /**
+         * The client object
+         * @type {Client}
+         */
+        this.client = player.client;
+
+        /**
+         * The data
+         * @private
+         */
+        this._data = data;
+    }
+
+    /**
+     * The number of trophies the player has
+     * @param {Number} number The trophy number, from 1 (bronze 1) to 9 (gold 3)
+     * @returns {Number}
+     * @example
+     * // Get number of trophy 5 (aka silver 2 trophy) on the latest gain
+     * player.trophies.history[0].trophy(5);
+     */
+    trophy(number = 1){
+        if (number < 1 || number > 9){
+            throw new Error('Invalid trophy number');
+        }
+        return this._data.counts[number - 1];
+    }
+
+    /**
+     * The number of trophies the player has
+     * @returns {Array<Number>}
+     */
+    get trophies(){
+        return this._data.counts;
+    }
+
+    /**
+     * The date of the gain
+     * @returns {Date}
+     */
+    get date(){
+        return new Date(this._data.timestamp);
+    }
+
+    /**
+     * The rank of the player
+     * @returns {Number}
+     */
+    get rank(){
+        return this._data.details.rank;
+    }
+
+    /**
+     * The type of the achievement
+     * @returns {String}
+     */
+    get type(){
+        return this._data.achievement.trophyAchievementType;
+    }
+
+    /**
+     * The map where the achievement was earned (if any)
+     * @returns {?Promise<TMMap>}
+     */
+    async map(){
+        if (this._data.map){
+            return await this.client.maps.get(this._data.achievement.mapId);
+        } else return null;
     }
 }
 
