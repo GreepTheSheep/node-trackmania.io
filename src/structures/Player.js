@@ -240,6 +240,66 @@ class PlayerEchelon {
     }
 }
 
+class PlayerMeta {
+    constructor(player){
+        /**
+         * The player object
+         * @type {Player}
+         */
+        this.player = player;
+    }
+
+    /**
+     * The vanity name of the player, if the player has one, otherwise null
+     * @returns {String}
+     */
+    get vanity(){
+        if (this.player._data.meta && (this.player._data.meta.vanity && this.player._data.vanity != "")) return this.player._data.meta.vanity;
+        else return null;
+    }
+
+    /**
+     * The youtube link of the player, if the player has one, otherwise null
+     * @returns {String}
+     */
+    get youtube(){
+        if (this.player._data.meta && (this.player._data.meta.youtube && this.player._data.youtube != "")) return 'https://www.youtube.com/channel/' + this.player._data.meta.youtube;
+        else return null;
+    }
+
+    /**
+     * The twitter link of the player, if the player has one, otherwise null
+     * @returns {String}
+     */
+    get twitter(){
+        if (this.player._data.meta && (this.player._data.meta.twitter && this.player._data.twitter != "")) return 'https://twitter.com/' + this.player._data.meta.twitter;
+        else return null;
+    }
+
+    /**
+     * The twitch channel link of the player, if the player has one, otherwise null
+     * @returns {String}
+     */
+    get twitch(){
+        if (this.player._data.meta && (this.player._data.meta.twitch && this.player._data.twitch != "")) return 'https://www.twitch.tv/' + this.player._data.meta.twitch;
+        else return null;
+    }
+
+    /**
+     * The display URL of the player
+     * @returns {String}
+     */
+    get displayURL(){
+        const tmio = this.player.client.options.api.paths.tmio,
+            player = `${tmio.protocol}://${tmio.host}/#/${tmio.tabs.player}/`;
+        if (this.vanity != null) {
+            return player + this.vanity;
+        } else {
+            return player + this.player.id;
+        }
+    }
+}
+
 class PlayerMatchmaking {
     constructor(player, type){
         /**
@@ -319,65 +379,87 @@ class PlayerMatchmaking {
         } 
         return this._MatchmakingDivision;
     }
+
+    /**
+     * The history of recent matches on this matchmaking
+     * @returns {Array<PlayerMatchmakingMatchResult>}
+     */
+    get history(){
+        let arr = [];
+        for (let i = 0; i < this._data.history.length; i++){
+            arr.push(new PlayerMatchmakingMatchResult(this.player, this._data.history[i]));
+        }
+        return arr;
+    }
 }
 
-class PlayerMeta {
-    constructor(player){
+class PlayerMatchmakingMatchResult {
+    constructor(player, data){
         /**
          * The player object
          * @type {Player}
          */
         this.player = player;
+
+        /**
+         * The client object
+         * @type {Client}
+         */
+        this.client = this.player.client;
+
+        /**
+         * The data
+         * @private
+         */
+        this._data = data;
     }
 
     /**
-     * The vanity name of the player, if the player has one, otherwise null
-     * @returns {String}
+     * The player has win the match
+     * @returns {Boolean}
      */
-    get vanity(){
-        if (this.player._data.meta && (this.player._data.meta.vanity && this.player._data.vanity != "")) return this.player._data.meta.vanity;
-        else return null;
+    get win(){
+        return this._data.win;
     }
 
     /**
-     * The youtube link of the player, if the player has one, otherwise null
-     * @returns {String}
+     * The player has leaved the match
+     * @returns {Boolean}
      */
-    get youtube(){
-        if (this.player._data.meta && (this.player._data.meta.youtube && this.player._data.youtube != "")) return 'https://www.youtube.com/channel/' + this.player._data.meta.youtube;
-        else return null;
+    get leave(){
+        return this._data.leave;
     }
 
     /**
-     * The twitter link of the player, if the player has one, otherwise null
-     * @returns {String}
+     * The player is the most valuable player in the match
+     * @returns {Boolean}
      */
-    get twitter(){
-        if (this.player._data.meta && (this.player._data.meta.twitter && this.player._data.twitter != "")) return 'https://twitter.com/' + this.player._data.meta.twitter;
-        else return null;
+    get mvp(){
+        return this._data.mvp;
     }
 
     /**
-     * The twitch channel link of the player, if the player has one, otherwise null
+     * The match LiveID
      * @returns {String}
      */
-    get twitch(){
-        if (this.player._data.meta && (this.player._data.meta.twitch && this.player._data.twitch != "")) return 'https://www.twitch.tv/' + this.player._data.meta.twitch;
-        else return null;
+    get liveId(){
+        return this._data.lid;
     }
 
     /**
-     * The display URL of the player
-     * @returns {String}
+     * The start date of the match
+     * @returns {Date}
      */
-    get displayURL(){
-        const tmio = this.player.client.options.api.paths.tmio,
-            player = `${tmio.protocol}://${tmio.host}/#/${tmio.tabs.player}/`;
-        if (this.vanity != null) {
-            return player + this.vanity;
-        } else {
-            return player + this.player.id;
-        }
+    get startDate(){
+        return new Date(this._data.starttime);
+    }
+
+    /**
+     * The score of the player after this match
+     * @returns {Number}
+     */
+    get afterScore(){
+        return this._data.afterscore;
     }
 }
 
