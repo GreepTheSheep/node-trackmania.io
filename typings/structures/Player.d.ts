@@ -82,12 +82,22 @@ declare class Player {
 }
 import Client = require("../client/Client");
 declare class PlayerTrophies {
-    constructor(player: any);
+    constructor(player: any, data: any);
     /**
      * The player object
      * @type {Player}
      */
     player: Player;
+    /**
+     * The client object
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @private
+     */
+    private _data;
     /**
      * The points of the player
      * @returns {Number}
@@ -239,9 +249,14 @@ declare class PlayerMatchmaking {
     get division(): import("./MatchmakingDivision");
     /** @private */
     private _MatchmakingDivision;
+    /**
+     * The history of recent matches on this matchmaking
+     * @returns {Array<PlayerMatchmakingMatchResult>}
+     */
+    get history(): PlayerMatchmakingMatchResult[];
 }
 declare class PlayerEchelon {
-    constructor(player: any);
+    constructor(player: any, data: any);
     /**
      * The player object
      * @type {Player}
@@ -393,6 +408,54 @@ declare class PlayerCOTDResult {
      * @returns {Number}
      */
     get totalPlayers(): number;
+}
+declare class PlayerMatchmakingMatchResult {
+    constructor(player: any, data: any);
+    /**
+     * The player object
+     * @type {Player}
+     */
+    player: Player;
+    /**
+     * The client object
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @private
+     */
+    private _data;
+    /**
+     * The player has win the match
+     * @returns {Boolean}
+     */
+    get win(): boolean;
+    /**
+     * The player has leaved the match
+     * @returns {Boolean}
+     */
+    get leave(): boolean;
+    /**
+     * The player is the most valuable player in the match
+     * @returns {Boolean}
+     */
+    get mvp(): boolean;
+    /**
+     * The match LiveID
+     * @returns {String}
+     */
+    get liveId(): string;
+    /**
+     * The start date of the match
+     * @returns {Date}
+     */
+    get startDate(): Date;
+    /**
+     * The score of the player after this match
+     * @returns {Number}
+     */
+    get afterScore(): number;
 }
 declare class PlayerCOTDStatsBest {
     constructor(PlayerCOTDStats: any, data: any);
