@@ -130,6 +130,11 @@ declare class PlayerTrophies {
      * @returns {Array<Number>}
      */
     get trophies(): number[];
+    /**
+     * The last 25 trophies gains of the player
+     * @returns {Array<PlayerTrophyHistory>}
+     */
+    get history(): PlayerTrophyHistory[];
 }
 declare class PlayerMeta {
     constructor(player: any);
@@ -282,6 +287,58 @@ declare class PlayerEchelon {
      * @returns {String}
      */
     get image(): string;
+}
+declare class PlayerTrophyHistory {
+    constructor(player: any, data: any);
+    /**
+     * The player object
+     * @type {Player}
+     */
+    player: Player;
+    /**
+     * The client object
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @private
+     */
+    private _data;
+    /**
+     * The number of trophies the player has
+     * @param {Number} number The trophy number, from 1 (bronze 1) to 9 (gold 3)
+     * @returns {Number}
+     * @example
+     * // Get number of trophy 5 (aka silver 2 trophy) on the latest gain
+     * player.trophies.history[0].trophy(5);
+     */
+    trophy(number?: number): number;
+    /**
+     * The number of trophies the player has
+     * @returns {Array<Number>}
+     */
+    get trophies(): number[];
+    /**
+     * The date of the gain
+     * @returns {Date}
+     */
+    get date(): Date;
+    /**
+     * The rank of the player
+     * @returns {Number}
+     */
+    get rank(): number;
+    /**
+     * The type of the achievement
+     * @returns {String}
+     */
+    get type(): string;
+    /**
+     * The map where the achievement was earned (if any)
+     * @returns {?Promise<TMMap>}
+     */
+    map(): Promise<TMMap> | null;
 }
 declare class PlayerCOTDStats {
     constructor(player: any, data: any);
@@ -457,6 +514,7 @@ declare class PlayerMatchmakingMatchResult {
      */
     get afterScore(): number;
 }
+import TMMap = require("../structures/TMMap");
 declare class PlayerCOTDStatsBest {
     constructor(PlayerCOTDStats: any, data: any);
     /**
