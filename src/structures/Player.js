@@ -96,7 +96,7 @@ class Player {
     get trophies(){
         if (!this._PlayerTrophies){
             /** @private */
-            this._PlayerTrophies = new PlayerTrophies(this);
+            this._PlayerTrophies = new PlayerTrophies(this, this._data.trophies);
         } 
         return this._PlayerTrophies;
     }
@@ -141,12 +141,24 @@ class Player {
 }
 
 class PlayerTrophies {
-    constructor(player){
+    constructor(player, data){
         /**
          * The player object
          * @type {Player}
          */
         this.player = player;
+
+        /**
+         * The client object
+         * @type {Client}
+         */
+        this.client = player.client;
+
+        /**
+         * The data
+         * @private
+         */
+        this._data = data;
     }
 
     /**
@@ -154,7 +166,7 @@ class PlayerTrophies {
      * @returns {Number}
      */
     get points(){
-        return this.player._data.trophies.points;
+        return this._data.points;
     }
 
     /**
@@ -163,7 +175,7 @@ class PlayerTrophies {
      * @readonly
      */
     get lastChange(){
-        return new Date(this.player._data.trophies.timestamp);
+        return new Date(this._data.timestamp);
     }
 
     /**
@@ -171,9 +183,9 @@ class PlayerTrophies {
      * @returns {PlayerEchelon}
      */
     get echelon(){
-        if (!this._PlayerEchelon || this._PlayerEchelon.number !== this.player._data.trophies.echelon){
+        if (!this._PlayerEchelon || this._PlayerEchelon.number !== this._data.echelon){
             /** @private */
-            this._PlayerEchelon = new PlayerEchelon(this.player);
+            this._PlayerEchelon = new PlayerEchelon(this.player, this._data);
         } 
         return this._PlayerEchelon;
     }
@@ -190,7 +202,7 @@ class PlayerTrophies {
         if (number < 1 || number > 9){
             throw new Error('Invalid trophy number');
         }
-        return this.player._data.trophies.counts[number - 1];
+        return this._data.counts[number - 1];
     }
 
     /**
@@ -198,12 +210,12 @@ class PlayerTrophies {
      * @returns {Array<Number>}
      */
     get trophies(){
-        return this.player._data.trophies.counts;
+        return this._data.counts;
     }
 }
 
 class PlayerEchelon {
-    constructor(player){
+    constructor(player, data){
         /**
          * The player object
          * @type {Player}
@@ -220,7 +232,7 @@ class PlayerEchelon {
          * The echelon number
          * @type {Number}
          */
-        this.number = player._data.trophies.echelon;
+        this.number = data.echelon;
     }
 
     /**
