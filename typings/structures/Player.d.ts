@@ -330,13 +330,15 @@ declare class PlayerTrophyHistory {
      */
     get rank(): number;
     /**
-     * The type of the achievement
-     * @returns {String}
+     * The types of the achievement
+     * @returns {PlayerTrophyAchievementType}
      */
-    get type(): string;
+    get type(): PlayerTrophyAchievementType;
+    /** @private */
+    private _achievement;
     /**
      * The map where the achievement was earned (if any)
-     * @returns {?Promise<TMMap>}
+     * @returns {Promise<TMMap>|null}
      */
     map(): Promise<TMMap> | null;
 }
@@ -513,6 +515,104 @@ declare class PlayerMatchmakingMatchResult {
      * @returns {Number}
      */
     get afterScore(): number;
+}
+declare class PlayerTrophyAchievementType {
+    constructor(player: any, data: any);
+    /**
+     * The player object
+     * @type {Player}
+     */
+    player: Player;
+    /**
+     * The client object
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @private
+     */
+    private _data;
+    /**
+     * Gets the type of the achievement
+     * @returns {String}
+     */
+    get type(): string;
+    /**
+     * Gets the ID of the achievement
+     * @returns {String}
+     */
+    get id(): string;
+    /**
+     * Gets the solo ranking achievement type (if the type is SoloRanking)
+     * @return {String|null}
+     */
+    get soloRankingType(): string;
+    /**
+     * Gets the solo ranking season ID (if the type is SoloRanking)
+     * @return {String|null}
+     */
+    get soloRankingSeasonId(): string;
+    /**
+     * Gets the competition id (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionId(): string;
+    /**
+     * Gets the competition name (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionName(): string;
+    /**
+     * Gets the competition stage (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionStage(): string;
+    /**
+     * Gets the competition stage step (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionStageStep(): string;
+    /**
+     * Gets the competition type (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionType(): string;
+    /**
+     * Gets the Solo Medal type (if the type is SoloMedal)
+     * @return {String|null}
+     */
+    get soloMedalType(): string;
+    /**
+     * Gets the solo medal level (if the type is SoloMedal)
+     * @return {Number|null}
+     */
+    get soloMedalLevel(): number;
+    /**
+     * Gets the server ID of the Live Match (if the type is LiveMatch)
+     * @returns {String|null}
+     */
+    get liveMatchServerId(): string;
+    /**
+     * Gets the game mode of the Live Match (if the type is LiveMatch)
+     * @return {String|null}
+     */
+    get liveMatchGameMode(): string;
+    /**
+     * Gets the duration of the Live Match in seconds (if the type is LiveMatch)
+     * @return {Number|null}
+     */
+    get liveMatchDuration(): number;
+    /**
+     * Gets the rank of the Live Match (if the type is LiveMatch)
+     * @return {Number|null}
+     */
+    get liveMatchRank(): number;
+    /**
+     * Gets the trophy rank of the Live Match (if the type is LiveMatch)
+     * @return {Number|null}
+     */
+    get liveMatchTrophyRank(): number;
 }
 import TMMap = require("../structures/TMMap");
 declare class PlayerCOTDStatsBest {
