@@ -288,21 +288,191 @@ class PlayerTrophyHistory {
     }
 
     /**
-     * The type of the achievement
-     * @returns {String}
+     * The types of the achievement
+     * @returns {PlayerTrophyAchievementType}
      */
     get type(){
-        return this._data.achievement.trophyAchievementType;
+        let achievement = this._data.achievement;
+        if (this._data.details) achievement.details = this._data.details;
+        if (!this._achievement || this.achievement.id != achievement.trophyAchievementId){
+            /** @private */
+            this._achievement = new PlayerTrophyAchievementType(this.player, achievement);
+        }
+        return this._achievement;
     }
 
     /**
      * The map where the achievement was earned (if any)
-     * @returns {?Promise<TMMap>}
+     * @returns {Promise<TMMap>|null}
      */
     async map(){
         if (this._data.map){
-            return await this.client.maps.get(this._data.achievement.mapId);
+            return await this.client.maps.get(this._data.map.mapId);
         } else return null;
+    }
+}
+
+class PlayerTrophyAchievementType{
+    constructor(player, data){
+        /**
+         * The player object
+         * @type {Player}
+         */
+        this.player = player;
+
+        /**
+         * The client object
+         * @type {Client}
+         */
+        this.client = this.player.client;
+
+        /**
+         * The data
+         * @private
+         */
+        this._data = data;
+    }
+
+    /**
+     * Gets the type of the achievement
+     * @returns {String}
+     */
+    get type(){
+        return this._data.trophyAchievementType;
+    }
+
+    /**
+     * Gets the ID of the achievement
+     * @returns {String}
+     */
+    get id(){
+        return this._data.trophyAchievementId;
+    }
+
+    /**
+     * Gets the solo ranking achievement type (if the type is SoloRanking)
+     * @return {String|null}
+     */
+    get soloRankingType(){
+        if (this.type == "SoloRanking") return this._data.trophySoloRankingAchievementType;
+        else return null;
+    }
+
+    /**
+     * Gets the solo ranking season ID (if the type is SoloRanking)
+     * @return {String|null}
+     */
+    get soloRankingSeasonId(){
+        if (this.type == "SoloRanking") return this._data.seasonId;
+        else return null;
+    }
+
+    /**
+     * Gets the competition id (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionId(){
+        if (this.type == "CompetitionRanking") return this._data.competitionId;
+        else return null;
+    }
+
+    /**
+     * Gets the competition name (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionName(){
+        if (this.type == "CompetitionRanking") return this._data.competitionName;
+        else return null;
+    }
+
+    /**
+     * Gets the competition stage (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionStage(){
+        if (this.type == "CompetitionRanking") return this._data.competitionStage;
+        else return null;
+    }
+
+    /**
+     * Gets the competition stage step (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionStageStep(){
+        if (this.type == "CompetitionRanking") return this._data.competitionStageStep;
+        else return null;
+    }
+
+    /**
+     * Gets the competition type (if the type is CompetitionRanking)
+     * @returns {String|null}
+     */
+    get competitionType(){
+        if (this.type == "CompetitionRanking") return this._data.competitionType;
+        else return null;
+    }
+
+    /**
+     * Gets the Solo Medal type (if the type is SoloMedal)
+     * @return {String|null}
+     */
+    get soloMedalType(){
+        if (this.type == "SoloMedal") return this._data.trophySoloMedalAchievementType;
+        else return null;
+    }
+
+    /**
+     * Gets the solo medal level (if the type is SoloMedal)
+     * @return {Number|null}
+     */
+    get soloMedalLevel(){
+        if (this.type == "SoloMedal") return this._data.detals.level;
+        else return null;
+    }
+
+    /**
+     * Gets the server ID of the Live Match (if the type is LiveMatch)
+     * @returns {String|null}
+     */
+    get liveMatchServerId(){
+        if (this.type == "LiveMatch") return this._data.serverId;
+        else return null;
+    }
+
+    /**
+     * Gets the game mode of the Live Match (if the type is LiveMatch)
+     * @return {String|null}
+     */
+    get liveMatchGameMode(){
+        if (this.type == "LiveMatch") return this._data.gameMode;
+        else return null;
+    }
+
+    /**
+     * Gets the duration of the Live Match in seconds (if the type is LiveMatch)
+     * @return {Number|null}
+     */
+    get liveMatchDuration(){
+        if (this.type == "LiveMatch") return this._data.duration;
+        else return null;
+    }
+
+    /**
+     * Gets the rank of the Live Match (if the type is LiveMatch)
+     * @return {Number|null}
+     */
+    get liveMatchRank(){
+        if (this.type == "LiveMatch") return this._data.details.rank;
+        else return null;
+    }
+
+    /**
+     * Gets the trophy rank of the Live Match (if the type is LiveMatch)
+     * @return {Number|null}
+     */
+    get liveMatchTrophyRank(){
+        if (this.type == "LiveMatch") return this._data.details.trophyRanking;
+        else return null;
     }
 }
 
