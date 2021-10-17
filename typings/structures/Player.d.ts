@@ -545,12 +545,12 @@ declare class PlayerTrophyAchievementType {
     get id(): string;
     /**
      * Gets the solo ranking achievement type (if the type is SoloRanking)
-     * @return {String|null}
+     * @returns {String|null}
      */
     get soloRankingType(): string;
     /**
      * Gets the solo ranking season ID (if the type is SoloRanking)
-     * @return {String|null}
+     * @returns {String|null}
      */
     get soloRankingSeasonId(): string;
     /**
@@ -580,12 +580,12 @@ declare class PlayerTrophyAchievementType {
     get competitionType(): string;
     /**
      * Gets the Solo Medal type (if the type is SoloMedal)
-     * @return {String|null}
+     * @returns {String|null}
      */
     get soloMedalType(): string;
     /**
      * Gets the solo medal level (if the type is SoloMedal)
-     * @return {Number|null}
+     * @returns {Number|null}
      */
     get soloMedalLevel(): number;
     /**
@@ -595,22 +595,22 @@ declare class PlayerTrophyAchievementType {
     get liveMatchServerId(): string;
     /**
      * Gets the game mode of the Live Match (if the type is LiveMatch)
-     * @return {String|null}
+     * @returns {String|null}
      */
     get liveMatchGameMode(): string;
     /**
      * Gets the duration of the Live Match in seconds (if the type is LiveMatch)
-     * @return {Number|null}
+     * @returns {Number|null}
      */
     get liveMatchDuration(): number;
     /**
      * Gets the rank of the Live Match (if the type is LiveMatch)
-     * @return {Number|null}
+     * @returns {Number|null}
      */
     get liveMatchRank(): number;
     /**
      * Gets the trophy rank of the Live Match (if the type is LiveMatch)
-     * @return {Number|null}
+     * @returns {Number|null}
      */
     get liveMatchTrophyRank(): number;
 }
