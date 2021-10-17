@@ -351,7 +351,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the solo ranking achievement type (if the type is SoloRanking)
-     * @return {String|null}
+     * @returns {String|null}
      */
     get soloRankingType(){
         if (this.type == "SoloRanking") return this._data.trophySoloRankingAchievementType;
@@ -360,7 +360,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the solo ranking season ID (if the type is SoloRanking)
-     * @return {String|null}
+     * @returns {String|null}
      */
     get soloRankingSeasonId(){
         if (this.type == "SoloRanking") return this._data.seasonId;
@@ -414,7 +414,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the Solo Medal type (if the type is SoloMedal)
-     * @return {String|null}
+     * @returns {String|null}
      */
     get soloMedalType(){
         if (this.type == "SoloMedal") return this._data.trophySoloMedalAchievementType;
@@ -423,7 +423,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the solo medal level (if the type is SoloMedal)
-     * @return {Number|null}
+     * @returns {Number|null}
      */
     get soloMedalLevel(){
         if (this.type == "SoloMedal") return this._data.detals.level;
@@ -441,7 +441,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the game mode of the Live Match (if the type is LiveMatch)
-     * @return {String|null}
+     * @returns {String|null}
      */
     get liveMatchGameMode(){
         if (this.type == "LiveMatch") return this._data.gameMode;
@@ -450,7 +450,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the duration of the Live Match in seconds (if the type is LiveMatch)
-     * @return {Number|null}
+     * @returns {Number|null}
      */
     get liveMatchDuration(){
         if (this.type == "LiveMatch") return this._data.duration;
@@ -459,7 +459,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the rank of the Live Match (if the type is LiveMatch)
-     * @return {Number|null}
+     * @returns {Number|null}
      */
     get liveMatchRank(){
         if (this.type == "LiveMatch") return this._data.details.rank;
@@ -468,7 +468,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the trophy rank of the Live Match (if the type is LiveMatch)
-     * @return {Number|null}
+     * @returns {Number|null}
      */
     get liveMatchTrophyRank(){
         if (this.type == "LiveMatch") return this._data.details.trophyRanking;
