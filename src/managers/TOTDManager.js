@@ -72,7 +72,7 @@ class MapManager{
 
         if (!dayMap) dayMap = res.days.find(map => map.monthday == date.getDate()-1);
 
-        if (!dayMap) throw new Error('Map of the day not found, it is the right date?');
+        if (!dayMap) throw new Error('Track of the day not found, it is the right date?');
 
         // Check if the map exists on tmx
         if (dayMap.map.exchangeid !== 0) {
