@@ -26,6 +26,13 @@ declare class Client extends BaseClient {
     /** @private */
     private _TOTDManager;
     /**
+     * The COTD manager
+     * @returns {COTDManager}
+     */
+    get cotd(): COTDManager;
+    /** @private */
+    private _COTDManager;
+    /**
      * The club manager
      * @returns {ClubManager}
      */
@@ -58,6 +65,7 @@ import BaseClient = require("./BaseClient");
 import PlayerManager = require("../managers/PlayerManager");
 import MapManager = require("../managers/MapManager");
 import TOTDManager = require("../managers/TOTDManager");
+import COTDManager = require("../managers/COTDManager");
 import ClubManager = require("../managers/ClubManager");
 import CampaignManager = require("../managers/CampaignManager");
 import RoomManager = require("../managers/RoomManager");
