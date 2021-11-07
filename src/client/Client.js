@@ -6,6 +6,7 @@ const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line
 const PlayerManager = require('../managers/PlayerManager');
 const MapManager = require('../managers/MapManager');
 const TOTDManager = require('../managers/TOTDManager');
+const COTDManager = require('../managers/COTDManager');
 const ClubManager = require('../managers/ClubManager');
 const CampaignManager = require('../managers/CampaignManager');
 const RoomManager = require('../managers/RoomManager');
@@ -53,6 +54,18 @@ class Client extends BaseClient {
             this._TOTDManager = new TOTDManager(this);
         }
         return this._TOTDManager;
+    }
+
+    /**
+     * The COTD manager
+     * @returns {COTDManager}
+     */
+    get cotd(){
+        if (!this._COTDManager){
+            /** @private */
+            this._COTDManager = new COTDManager(this);
+        }
+        return this._COTDManager;
     }
 
     /**
