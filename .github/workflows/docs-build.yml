@@ -1,11 +1,13 @@
 name: JSDoc Build
 on:
   push:
-    branches:
-      - '*'
-      - '!docs'
+    branches-ignore:
+      - 'docs'
     tags:
       - '*'
+    paths:
+      - 'src/**.js'
+
 jobs:
   docs:
     name: Documentation
