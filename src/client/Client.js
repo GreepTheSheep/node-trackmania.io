@@ -18,104 +18,55 @@ class Client extends BaseClient {
      */
     constructor(options){
         super(options);
-    }
 
-    /**
-     * The player manager
-     * @returns {PlayerManager}
-     */
-    get players(){
-        if (!this._PlayerManager){
-            /** @private */
-            this._PlayerManager = new PlayerManager(this);
-        }
-        return this._PlayerManager;
-    }
+        /**
+         * The player manager
+         * @returns {PlayerManager}
+         */
+        this.players = new PlayerManager(this);
 
-    /**
-     * The map manager
-     * @returns {MapManager}
-     */
-    get maps(){
-        if (!this._MapManager){
-            /** @private */
-            this._MapManager = new MapManager(this);
-        }
-        return this._MapManager;
-    }
+        /**
+         * The map manager
+         * @returns {MapManager}
+         */
+        this.maps = new MapManager(this);
 
-    /**
-     * The TOTD manager
-     * @returns {TOTDManager}
-     */
-    get totd(){
-        if (!this._TOTDManager){
-            /** @private */
-            this._TOTDManager = new TOTDManager(this);
-        }
-        return this._TOTDManager;
-    }
+        /**
+         * The TOTD manager
+         * @returns {TOTDManager}
+         */
+        this.totd = new TOTDManager(this);
 
-    /**
-     * The COTD manager
-     * @returns {COTDManager}
-     */
-    get cotd(){
-        if (!this._COTDManager){
-            /** @private */
-            this._COTDManager = new COTDManager(this);
-        }
-        return this._COTDManager;
-    }
+        /**
+         * The COTD manager
+         * @returns {COTDManager}
+         */
+        this.cotd = new COTDManager(this);
 
-    /**
-     * The club manager
-     * @returns {ClubManager}
-     */
-    get clubs(){
-        if (!this._ClubManager){
-            /** @private */
-            this._ClubManager = new ClubManager(this);
-        }
-        return this._ClubManager;
-    }
+        /**
+         * The club manager
+         * @returns {ClubManager}
+         */
+        this.clubs = new ClubManager(this);
 
-    /**
-     * The campaign manager
-     * @returns {CampaignManager}
-     */
-    get campaigns(){
-        if (!this._CampaignManager){
-            /** @private */
-            this._CampaignManager = new CampaignManager(this);
-        }
-        return this._CampaignManager;
-    }
+        /**
+         * The campaign manager
+         * @returns {CampaignManager}
+         */
+        this.campaigns = new CampaignManager(this);
 
-    /**
-     * The room manager
-     * @returns {RoomManager}
-     */
-    get rooms(){
-        if (!this._RoomManager){
-            /** @private */
-            this._RoomManager = new RoomManager(this);
-        }
-        return this._RoomManager;
-    }
+        /**
+         * The room manager
+         * @returns {RoomManager}
+         */
+        this.rooms = new RoomManager(this);
 
-    /**
-     * The TM events manager
-     * @returns {EventManager}
-     */
-    get events(){
-        if (!this._EventManager){
-            /** @private */
-            this._EventManager = new EventManager(this);
-        }
-        return this._EventManager;
+        /**
+         * The TM events manager
+         * @returns {EventManager}
+         */
+        this.events = new EventManager(this);
     }
-
 }
 
 module.exports = Client;
