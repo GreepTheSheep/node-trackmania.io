@@ -18,6 +18,7 @@ declare class CacheManager {
     from: any;
     /**
      * The time to live for the cache in miliseconds.
+     * @type {number}
      * @private
      */
     private _ttl;

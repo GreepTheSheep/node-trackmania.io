@@ -1,7 +1,10 @@
 export = BaseClient;
 declare class BaseClient {
     constructor(options?: {});
-    /** @type {defaultOptions} */
+    /**
+     * The options of the client.
+     * @type {defaultOptions}
+     */
     options: defaultOptions;
     /**
      * Get the ratelimits details on trackmania.io.
@@ -35,18 +38,21 @@ declare class BaseClient {
 import defaultOptions = require("../util/defaultOptions");
 declare class ClientRatelimit {
     /**
-     * The total number of requests you can make on trackmania.io API. If null, it means you haven't actually done a request
-     * @type {Number}
+     * The total number of requests you can make on trackmania.io API.
+     * If null, it means you haven't actually done a request
+     * @type {?Number}
      */
-    ratelimit: number;
+    ratelimit: number | null;
     /**
-     * The number of requests you can make before the ratelimit resets. If null, it means you haven't actually done a request
-     * @type {Number}
+     * The number of requests you can make before the ratelimit resets.
+     * If null, it means you haven't actually done a request
+     * @type {?Number}
      */
-    remaining: number;
+    remaining: number | null;
     /**
-     * The date when the ratelimit resets. If null, it means you haven't actually done a request
-     * @type {Date}
+     * The date when the ratelimit resets.
+     * If null, it means you haven't actually done a request
+     * @type {?Date}
      */
-    reset: Date;
+    reset: Date | null;
 }

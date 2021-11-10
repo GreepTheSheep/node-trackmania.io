@@ -6,42 +6,42 @@ declare class Client extends BaseClient {
     constructor(options: defaultOptions);
     /**
      * The player manager
-     * @returns {PlayerManager}
+     * @type {PlayerManager}
      */
     players: PlayerManager;
     /**
      * The map manager
-     * @returns {MapManager}
+     * @type {MapManager}
      */
     maps: MapManager;
     /**
      * The TOTD manager
-     * @returns {TOTDManager}
+     * @type {TOTDManager}
      */
     totd: TOTDManager;
     /**
      * The COTD manager
-     * @returns {COTDManager}
+     * @type {COTDManager}
      */
     cotd: COTDManager;
     /**
      * The club manager
-     * @returns {ClubManager}
+     * @type {ClubManager}
      */
     clubs: ClubManager;
     /**
      * The campaign manager
-     * @returns {CampaignManager}
+     * @type {CampaignManager}
      */
     campaigns: CampaignManager;
     /**
      * The room manager
-     * @returns {RoomManager}
+     * @type {RoomManager}
      */
     rooms: RoomManager;
     /**
      * The TM events manager
-     * @returns {EventManager}
+     * @type {EventManager}
      */
     events: EventManager;
 }

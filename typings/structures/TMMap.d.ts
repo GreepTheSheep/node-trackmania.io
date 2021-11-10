@@ -11,9 +11,15 @@ declare class TMMap {
     client: Client;
     /**
      * The map data.
+     * @type {Object}
      * @private
      */
     private _data;
+    /**
+     * The map medal times.
+     * @type {TMMapMedalTimes} The medal times class
+     */
+    medalTimes: TMMapMedalTimes;
     /**
      * The map name.
      * @type {string}
@@ -44,13 +50,6 @@ declare class TMMap {
      * @returns {Promise<Player>}
      */
     submitter(): Promise<Player>;
-    /**
-     * The map medal times.
-     * @returns {Object<string, number>} string: medal name, number: time in miliseconds
-     */
-    get medalTimes(): {
-        [x: string]: number;
-    };
     /**
      * The environment for this map.
      * @type {string}
@@ -83,21 +82,27 @@ declare class TMMap {
     get exchangeId(): string;
     /**
      * The map informations on trackmania.exchange.
-     * @returns {?TMExchangeMap}
+     * @type {?TMExchangeMap}
      */
     get exchange(): TMExchangeMap;
-    /** @private */
+    /**
+     * @type {TMExchangeMap}
+     * @private
+     * */
     private _TMExchange;
     /**
      * The map karma.
-     * @returns {?TMMapKarma}
+     * @type {?TMMapKarma}
      */
     get karma(): TMMapKarma;
-    /** @private */
+    /**
+     * @type {TMMapKarma}
+     * @private
+     */
     private _TMMapKarma;
     /**
      * The map leaderboard.
-     * @returns {?Array<TMMapLeaderboard>}
+     * @type {?Array<TMMapLeaderboard>}
      */
     get leaderboard(): TMMapLeaderboard[];
     /**
@@ -107,6 +112,34 @@ declare class TMMap {
     leaderboardLoadMore(): Promise<Array<TMMapLeaderboard>> | null;
 }
 import Client = require("../client/Client");
+declare class TMMapMedalTimes {
+    constructor(map: any);
+    /**
+     * The map object.
+     * @type {TMMap}
+     */
+    map: TMMap;
+    /**
+     * The map author time.
+     * @type {number}
+     */
+    author: number;
+    /**
+     * The map gold time.
+     * @type {number}
+     */
+    gold: number;
+    /**
+     * The map silver time.
+     * @type {number}
+     */
+    silver: number;
+    /**
+     * The map bronze time.
+     * @type {number}
+     */
+    bronze: number;
+}
 import Player = require("./Player");
 declare class TMExchangeMap {
     constructor(map: any, data: any);
