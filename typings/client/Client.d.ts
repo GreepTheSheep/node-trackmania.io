@@ -8,58 +8,42 @@ declare class Client extends BaseClient {
      * The player manager
      * @returns {PlayerManager}
      */
-    get players(): PlayerManager;
-    /** @private */
-    private _PlayerManager;
+    players: PlayerManager;
     /**
      * The map manager
      * @returns {MapManager}
      */
-    get maps(): MapManager;
-    /** @private */
-    private _MapManager;
+    maps: MapManager;
     /**
      * The TOTD manager
      * @returns {TOTDManager}
      */
-    get totd(): TOTDManager;
-    /** @private */
-    private _TOTDManager;
+    totd: TOTDManager;
     /**
      * The COTD manager
      * @returns {COTDManager}
      */
-    get cotd(): COTDManager;
-    /** @private */
-    private _COTDManager;
+    cotd: COTDManager;
     /**
      * The club manager
      * @returns {ClubManager}
      */
-    get clubs(): ClubManager;
-    /** @private */
-    private _ClubManager;
+    clubs: ClubManager;
     /**
      * The campaign manager
      * @returns {CampaignManager}
      */
-    get campaigns(): CampaignManager;
-    /** @private */
-    private _CampaignManager;
+    campaigns: CampaignManager;
     /**
      * The room manager
      * @returns {RoomManager}
      */
-    get rooms(): RoomManager;
-    /** @private */
-    private _RoomManager;
+    rooms: RoomManager;
     /**
      * The TM events manager
      * @returns {EventManager}
      */
-    get events(): EventManager;
-    /** @private */
-    private _EventManager;
+    events: EventManager;
 }
 import BaseClient = require("./BaseClient");
 import PlayerManager = require("../managers/PlayerManager");
