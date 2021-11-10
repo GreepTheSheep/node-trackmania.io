@@ -3,20 +3,28 @@ const CacheManager = require('./CacheManager');
 const Campaign = require('../structures/Campaign');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
+
+/**
+ * Represents a manager for campaigns.
+ */
 class CampaignManager{
+    /**
+     * @param {Client} client The client
+     */
     constructor(client){
         /**
          * The client instance.
          * @type {Client}
+         * @readonly
          */
-        this.client = client;
+        Object.defineProperty(this, 'client', { value: client });
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(client, Campaign);
+        this._cache = new CacheManager(this, Campaign);
     }
 
     /**

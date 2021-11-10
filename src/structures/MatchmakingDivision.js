@@ -1,7 +1,15 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const MatchmakingDivisionData = require('../data/MatchmakingDivisions.json');
 
+/**
+ * Represents a division in the matchmaking system.
+ */
 class MatchmakingDivision{
+    /**
+     * @param {Client} client The client
+     * @param {Number} typeId 
+     * @param {Object} division 
+     */
     constructor(client, typeId, division){
         /**
          * The client instance

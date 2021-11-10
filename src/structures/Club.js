@@ -3,7 +3,14 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
 const Campaign = require('./Campaign'); // eslint-disable-line no-unused-vars
 const CacheManager = require('../managers/CacheManager');
 
+/**
+ * The Club class represents a club in Trackmania.
+ */
 class Club {
+    /**
+     * @param {Client} client The client.
+     * @param {Object} data 
+     */
     constructor(client, data) {
         /**
          * The client object of the club
@@ -216,7 +223,14 @@ class Club {
     }
 }
 
+/**
+ * Represents a club member (player) in the club
+ */
 class ClubMember {
+    /**
+     * @param {Club} club The Club.
+     * @param {Object} data 
+     */
     constructor(club, data) {
         /**
          * The club object
@@ -281,7 +295,14 @@ class ClubMember {
     }
 }
 
+/**
+ * Represents a club activity in the club
+ */
 class ClubActivity {
+    /**
+     * @param {Club} club The club
+     * @param {Object} data 
+     */
     constructor(club, data) {
         /**
          * The club object

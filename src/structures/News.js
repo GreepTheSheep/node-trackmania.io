@@ -1,4 +1,13 @@
+const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+
+/**
+ * Represents a news item.
+ */
 class News {
+    /**
+     * @param {Client} client The client.
+     * @param {Object} data 
+     */
     constructor(client, data) {
         /**
          * The client object of the news page

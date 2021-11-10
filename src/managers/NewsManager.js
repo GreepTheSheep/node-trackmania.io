@@ -3,20 +3,27 @@ const CacheManager = require('./CacheManager');
 const News = require('../structures/News');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
+/**
+ * Represents a in-game news manager.
+ */
 class NewsManager{
+    /**
+     * @param {Client} client The client
+     */
     constructor(client){
         /**
          * The client instance.
          * @type {Client}
+         * @readonly
          */
-        this.client = client;
+        Object.defineProperty(this, 'client', { value: client });
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(client, News);
+        this._cache = new CacheManager(this, News);
     }
 
     /**

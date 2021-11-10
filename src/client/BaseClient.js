@@ -1,24 +1,30 @@
 const EventEmitter = require('events');
 const APIRequest = require('../rest/APIRequest');
 const Util = require('../util/Util');
-const Options = require('../util/Options');
-const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line no-unused-vars
+const defaultOptions = require('../util/defaultOptions'); 
 
+/**
+ * The Base Client
+ */
 class BaseClient extends EventEmitter {
+    /**
+     * @param {defaultOptions} options The options to use.
+     */
     constructor(options = {}) {
         super();
 
         /** 
          * The options of the client.
          * @type {defaultOptions}
+         * @readonly
          */
-        this.options = Util.mergeDefault(Options.createDefault(), options);
+        this.options = Util.mergeDefault(new defaultOptions(this), options);
 
         /** 
          * Get the ratelimits details on trackmania.io.
          * @type {ClientRatelimit} 
          */
-        this.ratelimit = new ClientRatelimit();
+        this.ratelimit = new ClientRatelimit(this);
     }
 
     /**
@@ -63,8 +69,17 @@ class BaseClient extends EventEmitter {
 
 }
 
+/**
+ * The ratelimit details of the client.
+ */
 class ClientRatelimit {
-    constructor(){
+    constructor(baseClient){
+        /**
+         * The base client.
+         * @type {BaseClient}
+         */
+        this.baseClient = baseClient;
+
         /**
          * The total number of requests you can make on trackmania.io API.
          * If null, it means you haven't actually done a request

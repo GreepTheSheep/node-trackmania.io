@@ -1,25 +1,37 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
+/**
+ * The Cache Manager is responsible for managing the cache.
+ * @private
+ */
 class CacheManager extends Map {
     /**
      * Creates a new CacheManager instance.
-     * @param {Client} client The client instance. 
-     * @param {*} from The class that instants this manager.
+     * @param {*} from The class that instants this manager. 
+     * @param {*} to The class this manager will operate on.
      */
-    constructor(client, from) {
+    constructor(from, to) {
         super();
-
-        /**
-         * The client instance.
-         * @type {Client}
-         */
-        this.client = client;
 
         /**
          * The class that instantiated this manager.
          * @type {*}
+         * @readonly
          */
-        this.from = from;
+        Object.defineProperty(this, 'from', { value: from });
+
+        /**
+         * The class this manager will operate on.
+         * @type {*}
+         * @readonly
+         */
+        this.to = to;
+        
+        /**
+         * The client instance.
+         * @type {Client}
+         */
+        this.client = from.client;
 
         const ttlOpts = {
             default: this.client.options.cache.ttl * 60 * 1000,
@@ -32,7 +44,7 @@ class CacheManager extends Map {
          * @type {number}
          * @private
          */
-        this._ttl = this.client.options.cache.ttl != 10 ? ttlOpts.default : ttlOpts[this.from.name] || ttlOpts.default;
+        this._ttl = this.client.options.cache.ttl != 10 ? ttlOpts.default : ttlOpts[this.to.name] || ttlOpts.default;
 
         this._reset();
     }
@@ -40,6 +52,7 @@ class CacheManager extends Map {
     /**
      * Resets the cache based on the ttl.
      * @private
+     * @type {void}
      */
     _reset() {
         setInterval(() => {

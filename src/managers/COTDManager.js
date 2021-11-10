@@ -3,20 +3,27 @@ const CacheManager = require('./CacheManager');
 const COTD = require('../structures/COTD');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
+
+/**
+ * Represents a COTD Manager.
+ */
 class COTDManager{
+    /**
+     * @param {Client} client The client.
+     */
     constructor(client){
         /**
          * The client instance.
          * @type {Client}
          */
-        this.client = client;
+        Object.defineProperty(this, 'client', { value: client });
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(client, COTD);
+        this._cache = new CacheManager(this, COTD);
     }
 
     /**

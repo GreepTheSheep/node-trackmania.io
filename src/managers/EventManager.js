@@ -3,20 +3,28 @@ const CacheManager = require('./CacheManager');
 const TMEvent = require('../structures/TMEvent');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
+
+/**
+ * Represents a manager for in-game events.
+ */
 class EventManager{
+    /**
+     * @param {Client} client The client.
+     */
     constructor(client){
         /**
          * The client instance.
          * @type {Client}
+         * @readonly
          */
-        this.client = client;
+        Object.defineProperty(this, 'client', { value: client });
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(client, TMEvent);
+        this._cache = new CacheManager(this, TMEvent);
     }
 
     /**

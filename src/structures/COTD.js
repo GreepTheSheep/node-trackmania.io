@@ -1,7 +1,14 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const TMEvent = require('./TMEvent'); // eslint-disable-line no-unused-vars
 
+/**
+ * Represents a COTD event.
+ */
 class COTD {
+    /**
+     * @param {Client} client The client.
+     * @param {Object} data 
+     */
     constructor(client, data){
         /**
          * The client instance
@@ -11,6 +18,7 @@ class COTD {
 
         /**
          * The data
+         * @type {Object}
          * @private
          */
         this._data = data;
@@ -26,7 +34,7 @@ class COTD {
 
     /**
      * The COTD identifier
-     * @returns {Number}
+     * @type {Number}
      */
     get id(){
         return this._data.id;
@@ -34,7 +42,7 @@ class COTD {
 
     /**
      * The COTD name
-     * @returns {String}
+     * @type {String}
      */
     get name(){
         return this._data.name;
@@ -42,7 +50,7 @@ class COTD {
 
     /**
      * The number of players in this COTD
-     * @returns {Number}
+     * @type {Number}
      */
     get players(){
         return this._data.players;
@@ -50,7 +58,7 @@ class COTD {
 
     /**
      * The start date of this COTD
-     * @returns {Date}
+     * @type {Date}
      */
     get startDate(){
         return new Date(this._data.starttime * 1000);
@@ -58,7 +66,7 @@ class COTD {
 
     /**
      * The end date of this COTD
-     * @returns {Date}
+     * @type {Date}
      */
     get endDate(){
         return new Date(this._data.endtime * 1000);

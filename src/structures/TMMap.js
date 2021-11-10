@@ -206,7 +206,13 @@ class TMMap {
     }
 }
 
+/**
+ * Represents the medals times on a map.
+ */
 class TMMapMedalTimes {
+    /**
+     * @param {TMMap} map The map.
+     */
     constructor(map) {
         /**
          * The map object.
@@ -240,7 +246,14 @@ class TMMapMedalTimes {
     }
 }
 
+/**
+ * Represents the map details from Trackmania.exchange.
+ */
 class TMExchangeMap {
+    /**
+     * @param {TMMap} map The map
+     * @param {Object} data 
+     */
     constructor(map, data) {
         /**
          * The map instance.
@@ -344,7 +357,14 @@ class TMExchangeMap {
     }
 }
 
+/**
+ * Represents the Map Voting stats.
+ */
 class TMMapKarma {
+    /**
+     * @param {TMMap} map The map.
+     * @param {Object} data 
+     */
     constructor(map, data) {
         /**
          * The map instance.
@@ -399,7 +419,14 @@ class TMMapKarma {
     }
 }
 
+/**
+ * Represents the map leaderboard.
+ */
 class TMMapLeaderboard {
+    /**
+     * @param {TMMap} map The map.
+     * @param {Object} data 
+     */
     constructor(map, data) {
         /**
          * The map Instance

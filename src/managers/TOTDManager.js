@@ -3,20 +3,27 @@ const CacheManager = require('./CacheManager');
 const TOTD = require('../structures/TOTD');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
-class MapManager{
+/**
+ * Represents a manager for TOTDs.
+ */
+class TOTDManager{
+    /**
+     * @param {Client} client The client.
+     */
     constructor(client){
         /**
          * The client instance.
          * @type {Client}
+         * @readonly
          */
-        this.client = client;
+        Object.defineProperty(this, 'client', { value: client });
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(client, TOTD);
+        this._cache = new CacheManager(this, TOTD);
     }
 
     /**
@@ -101,4 +108,4 @@ class MapManager{
     }
 }
 
-module.exports = MapManager;
+module.exports = TOTDManager;

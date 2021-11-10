@@ -3,20 +3,27 @@ const CacheManager = require('./CacheManager');
 const Club = require('../structures/Club');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
+/**
+ * Represents a manager for clubs.
+ */
 class ClubManager{
+    /**
+     * @param {Client} client The client.
+     */
     constructor(client){
         /**
          * The client instance.
          * @type {Client}
+         * @readonly
          */
-        this.client = client;
+        Object.defineProperty(this, 'client', { value: client });
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(client, Club);
+        this._cache = new CacheManager(this, Club);
     }
 
     /**

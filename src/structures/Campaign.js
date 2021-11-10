@@ -3,7 +3,14 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
 const TMMap = require('./TMMap'); // eslint-disable-line no-unused-vars
 const Club = require('./Club'); // eslint-disable-line no-unused-vars
 
+/**
+ * The Campaign class represents a campaign.
+ */
 class Campaign {
+    /**
+     * @param {Clienr} client The client.
+     * @param {Object} data 
+     */
     constructor(client, data) {
         /**
          * The client object of the campaign.

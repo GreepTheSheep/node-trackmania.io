@@ -1,11 +1,22 @@
 const fetch = require('node-fetch');
 const pkg = require('../../package.json');
 const ReqUtil = require('../util/ReqUtil');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const BaseClient = require('../client/BaseClient'); // eslint-disable-line no-unused-vars
 
+/**
+ * APIRequest class
+ * @private
+ */
 class APIRequest {
+    /**
+     * @param {BaseClient} client The client object
+     */
     constructor(client) {
-        /** @type {Client} */
+        /**
+         * The client that created this request 
+         * @type {BaseClient}
+         * @readonly
+         */
         this.client = client;
 
         // Creating UA string

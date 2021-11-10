@@ -2,7 +2,14 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
 const TMMap = require('./TMMap'); // eslint-disable-line no-unused-vars
 const Club = require('./Club'); // eslint-disable-line no-unused-vars
 
+/**
+ * Represents a room.
+ */
 class Room {
+    /**
+     * @param {Client} client The client.
+     * @param {Object} data 
+     */
     constructor(client, data) {
         /**
          * The client that instantiated this room
@@ -96,7 +103,7 @@ class Room {
 
     /**
      * The script settings on the room
-     * @returns {Array<Object<string, string|number|boolean>>} x must be "key" and "value"
+     * @type {Array<Object<string, string|number|boolean>>} x must be "key" and "value"
      * @example [{
      * key: 'S_DecoImageUrl_Checkpoint',
      * value: 'https://trackmania-prod-nls-file-store-s3.cdn.ubi.com/club/decal/5f62400600952.png?updateTimestamp=1600274438.png'

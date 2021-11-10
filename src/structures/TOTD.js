@@ -1,7 +1,14 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const TMMap = require('../structures/TMMap');
 
+/**
+ * Represents a Track Of The Day (TOTD).
+ */
 class TOTD {
+    /**
+     * @param {Client} client The client.
+     * @param {Object} data 
+     */
     constructor(client, data){
         /**
          * The client objet
@@ -11,6 +18,7 @@ class TOTD {
 
         /**
          * The data
+         * @type {Object}
          * @private
          */
         this._data = data;
@@ -18,7 +26,7 @@ class TOTD {
 
     /**
      * The map
-     * @returns {TMMap}
+     * @type {TMMap}
      */
     get map(){
         return new TMMap(this.client, this._data.map);
@@ -26,7 +34,7 @@ class TOTD {
 
     /**
      * The campaign ID
-     * @returns {Number}
+     * @type {Number}
      */
     get campaignId(){
         return this._data.campaignid;
@@ -34,7 +42,7 @@ class TOTD {
 
     /**
      * The week day
-     * @returns {Number}
+     * @type {Number}
      */
     get weekDay(){
         return this._data.weekday;
@@ -42,7 +50,7 @@ class TOTD {
 
     /**
      * The month day
-     * @returns {Number}
+     * @type {Number}
      */
     get monthDay(){
         return this._data.monthday;
@@ -50,7 +58,7 @@ class TOTD {
 
     /**
      * The leaderboard ID
-     * @returns {String}
+     * @type {String}
      */
     get leaderboardId(){
         return this._data.leaderboardid;

@@ -4,14 +4,25 @@ const TMMap = require('./TMMap'); // eslint-disable-line no-unused-vars
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('../managers/CacheManager');
 
+/**
+ * Represents a Event in Trackmania.
+ */
 class TMEvent {
+    /**
+     * @param {Client} client The client
+     * @param {Object} data 
+     */
     constructor(client, data) {
         /** The client instance
          * @type {Client}
          */
         this.client = client;
 
-        /** @private */
+        /**
+         * The event's data.
+         * @type {Object} 
+         * @private 
+         */
         this._data = data;
     }
 
@@ -168,7 +179,14 @@ class TMEvent {
     }
 }
 
+/**
+ * Represents a round in a TMEvent.
+ */
 class TMEventRound {
+    /**
+     * @param {TMEvent} event The Event
+     * @param {Object} data 
+     */
     constructor(event, data) {
         /**
          * The event instance
@@ -182,11 +200,19 @@ class TMEventRound {
          */
         this.client = event.client;
 
-        /** @private */
+        /**
+         * The round's data.
+         * @type {Object}
+         * @private 
+         */
         this._data = data;
 
-        /** @private */
-        this._challengesCache = new CacheManager(this.client, TMEventChallenge);
+        /**
+         * The challenge's CacheManager instance
+         * @type {CacheManager}
+         * @private
+         */
+        this._challengesCache = new CacheManager(this, TMEventChallenge);
     }
 
     /**
@@ -265,7 +291,14 @@ class TMEventRound {
     }
 }
 
+/**
+ * Represents a match in a TMEventRound.
+ */
 class TMEventRoundMatch {
+    /**
+     * @param {TMEventRound} round The Round
+     * @param {Object} data 
+     */
     constructor(round, data) {
         /**
          * The round instance
@@ -285,11 +318,19 @@ class TMEventRoundMatch {
          */
         this.client = round.client;
 
-        /** @private */
+        /**
+         * The match's data.
+         * @type {Object}
+         * @private
+         */
         this._data = data;
 
-        /** @private */
-        this._resultsCache = new CacheManager(this.client, TMEventRoundMatchResult);
+        /**
+         * The match's results CacheManager instance
+         * @type {CacheManager}
+         * @private 
+         */
+        this._resultsCache = new CacheManager(this, TMEventRoundMatchResult);
     }
 
     /**
@@ -356,7 +397,14 @@ class TMEventRoundMatch {
     }
 }
 
+/**
+ * Represents a result in a TMEventRoundMatch.
+ */
 class TMEventRoundMatchResult {
+    /**
+     * @param {TMEventRoundMatch} match The match
+     * @param {Object} data 
+     */
     constructor(match, data) {
         /**
          * The match instance
@@ -376,7 +424,11 @@ class TMEventRoundMatchResult {
          */
         this.client = match.client;
 
-        /** @private */
+        /**
+         * The result's data.
+         * @type {Object}
+         * @private
+         */
         this._data = data;
     }
 
@@ -390,7 +442,7 @@ class TMEventRoundMatchResult {
 
     /**
      * The position of the player.
-     * @returns {Number}
+     * @type {Number}
      */
     get position() {
         return this._data.position;
@@ -398,14 +450,21 @@ class TMEventRoundMatchResult {
 
     /**
      * The score of the player.
-     * @returns {Number}
+     * @type {Number}
      */
     get score() {
         return this._data.score;
     }
 }
 
+/**
+ * Represents a challenge in a TMEventRound.
+ */
 class TMEventChallenge {
+    /**
+     * @param {TMEventRound} round The round 
+     * @param {Object} data 
+     */
     constructor(round, data) {
         /**
          * The round instance
@@ -425,11 +484,19 @@ class TMEventChallenge {
          */
         this.client = round.client;
 
-        /** @private */
+        /**
+         * The challenge's data.
+         * @type {Object}
+         * @private
+         */
         this._data = data;
 
-        /** @private */
-        this._resultsCache = new CacheManager(this.client, TMEventChallengeResult);
+        /**
+         * The challenge's results CacheManager instance
+         * @type {CacheManager}
+         * @private
+         */
+        this._resultsCache = new CacheManager(this, TMEventChallengeResult);
     }
 
     /**
@@ -530,7 +597,14 @@ class TMEventChallenge {
     }
 }
 
+/**
+ * Represents a result in a TMEventChallenge.
+ */
 class TMEventChallengeResult {
+    /**
+     * @param {TMEventChallenge} challenge The challenge
+     * @param {Object} data 
+     */
     constructor(challenge, data) {
         /**
          * The challenge instance
@@ -550,7 +624,11 @@ class TMEventChallengeResult {
          */
         this.client = challenge.client;
 
-        /** @private */
+        /**
+         * The result's data.
+         * @type {Object}
+         * @private
+         */
         this._data = data;
     }
 
@@ -564,7 +642,7 @@ class TMEventChallengeResult {
 
     /**
      * The position of the player.
-     * @returns {Number}
+     * @type {Number}
      */
     get position() {
         return this._data.position;
@@ -572,7 +650,7 @@ class TMEventChallengeResult {
 
     /**
      * The score of the player.
-     * @returns {Number}
+     * @type {Number}
      */
     get score() {
         return this._data.score;

@@ -2,19 +2,28 @@ const Player = require('../structures/Player');
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+
+/**
+ * Represents a manager for players.
+ */
 class PlayerManager {
+    /**
+     * @param {Client} client The client.
+     */
     constructor(client){
-        /** The client instance
+        /**
+         * The client instance
          * @type {Client}
+         * @readonly
          */
-        this.client = client;
+        Object.defineProperty(this, 'client', { value: client });
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(client, Player);
+        this._cache = new CacheManager(this, Player);
     }
 
     /**
