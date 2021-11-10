@@ -29,6 +29,7 @@ class CacheManager extends Map {
 
         /** 
          * The time to live for the cache in miliseconds.
+         * @type {number}
          * @private
          */
         this._ttl = this.client.options.cache.ttl != 10 ? ttlOpts.default : ttlOpts[this.from.name] || ttlOpts.default;

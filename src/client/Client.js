@@ -21,49 +21,49 @@ class Client extends BaseClient {
 
         /**
          * The player manager
-         * @returns {PlayerManager}
+         * @type {PlayerManager}
          */
         this.players = new PlayerManager(this);
 
         /**
          * The map manager
-         * @returns {MapManager}
+         * @type {MapManager}
          */
         this.maps = new MapManager(this);
 
         /**
          * The TOTD manager
-         * @returns {TOTDManager}
+         * @type {TOTDManager}
          */
         this.totd = new TOTDManager(this);
 
         /**
          * The COTD manager
-         * @returns {COTDManager}
+         * @type {COTDManager}
          */
         this.cotd = new COTDManager(this);
 
         /**
          * The club manager
-         * @returns {ClubManager}
+         * @type {ClubManager}
          */
         this.clubs = new ClubManager(this);
 
         /**
          * The campaign manager
-         * @returns {CampaignManager}
+         * @type {CampaignManager}
          */
         this.campaigns = new CampaignManager(this);
 
         /**
          * The room manager
-         * @returns {RoomManager}
+         * @type {RoomManager}
          */
         this.rooms = new RoomManager(this);
 
         /**
          * The TM events manager
-         * @returns {EventManager}
+         * @type {EventManager}
          */
         this.events = new EventManager(this);
     }

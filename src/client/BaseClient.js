@@ -8,7 +8,10 @@ class BaseClient extends EventEmitter {
     constructor(options = {}) {
         super();
 
-        /** @type {defaultOptions} */
+        /** 
+         * The options of the client.
+         * @type {defaultOptions}
+         */
         this.options = Util.mergeDefault(Options.createDefault(), options);
 
         /** 
@@ -63,20 +66,23 @@ class BaseClient extends EventEmitter {
 class ClientRatelimit {
     constructor(){
         /**
-         * The total number of requests you can make on trackmania.io API. If null, it means you haven't actually done a request
-         * @type {Number}
+         * The total number of requests you can make on trackmania.io API.
+         * If null, it means you haven't actually done a request
+         * @type {?Number}
          */
         this.ratelimit = null;
 
         /**
-         * The number of requests you can make before the ratelimit resets. If null, it means you haven't actually done a request
-         * @type {Number}
+         * The number of requests you can make before the ratelimit resets.
+         * If null, it means you haven't actually done a request
+         * @type {?Number}
          */
         this.remaining = null;
 
         /**
-         * The date when the ratelimit resets. If null, it means you haven't actually done a request
-         * @type {Date}
+         * The date when the ratelimit resets.
+         * If null, it means you haven't actually done a request
+         * @type {?Date}
          */
         this.reset = null;
     }

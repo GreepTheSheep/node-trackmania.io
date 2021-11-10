@@ -16,9 +16,16 @@ class TMMap {
 
         /**
          * The map data.
+         * @type {Object}
          * @private
          */
         this._data = data;
+
+        /**
+         * The map medal times.
+         * @type {TMMapMedalTimes} The medal times class
+         */
+        this.medalTimes = new TMMapMedalTimes(this);
 
         
         // Check if the exchange data is already fetched
@@ -76,19 +83,6 @@ class TMMap {
     }
 
     /**
-     * The map medal times.
-     * @returns {Object<string, number>} string: medal name, number: time in miliseconds
-     */
-    get medalTimes() {
-        return {
-            author: this._data.authorScore,
-            gold: this._data.goldScore,
-            silver: this._data.silverScore,
-            bronze: this._data.bronzeScore
-        };
-    }
-
-    /**
      * The environment for this map.
      * @type {string}
      */
@@ -139,14 +133,17 @@ class TMMap {
 
     /**
      * The map informations on trackmania.exchange.
-     * @returns {?TMExchangeMap}
+     * @type {?TMExchangeMap}
      */
     get exchange() { 
         if (this.exchangeId == null) return null;
         else {
             if (this._data.exchange) {
                 if (!this._TMExchange || this._TMExchange.id !== this.exchangeId) {
-                    /** @private */
+                    /** 
+                     * @type {TMExchangeMap}
+                     * @private
+                     * */
                     this._TMExchange = new TMExchangeMap(this, this._data.exchange);
                 } 
                 return this._TMExchange;
@@ -156,12 +153,15 @@ class TMMap {
 
     /**
      * The map karma.
-     * @returns {?TMMapKarma}
+     * @type {?TMMapKarma}
      */
     get karma() {
         if (this._data.karma) {
             if (!this._TMMapKarma || this._TMMapKarma.id !== this.id) {
-                /** @private */
+                /**
+                 * @type {TMMapKarma} 
+                 * @private
+                 */
                 this._TMMapKarma = new TMMapKarma(this, this._data.karma);
             }
             return this._TMMapKarma;
@@ -170,7 +170,7 @@ class TMMap {
 
     /**
      * The map leaderboard.
-     * @returns {?Array<TMMapLeaderboard>}
+     * @type {?Array<TMMapLeaderboard>}
      */
     get leaderboard() {
         if (this._data.leaderboard && this._data.leaderboard.tops.length >= 1) {
@@ -203,6 +203,40 @@ class TMMap {
             }
             return arr;
         } else throw new Error('No leaderboard data found for this map');
+    }
+}
+
+class TMMapMedalTimes {
+    constructor(map) {
+        /**
+         * The map object.
+         * @type {TMMap}
+         */
+        this.map = map;
+
+        /**
+         * The map author time.
+         * @type {number}
+         */
+        this.author = map._data.authorScore;
+
+        /**
+         * The map gold time.
+         * @type {number}
+         */
+        this.gold = map._data.goldScore;
+
+        /**
+         * The map silver time.
+         * @type {number}
+         */
+        this.silver = map._data.silverScore;
+
+        /**
+         * The map bronze time.
+         * @type {number}
+         */
+        this.bronze = map._data.bronzeScore;
     }
 }
 
