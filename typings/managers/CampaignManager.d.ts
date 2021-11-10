@@ -1,11 +1,12 @@
 export = CampaignManager;
+/**
+ * Represents a manager for campaigns.
+ */
 declare class CampaignManager {
-    constructor(client: any);
     /**
-     * The client instance.
-     * @type {Client}
+     * @param {Client} client The client
      */
-    client: Client;
+    constructor(client: Client);
     /**
      * The cache manager
      * @type {CacheManager}
@@ -34,5 +35,5 @@ declare class CampaignManager {
      */
     private _fetch;
 }
-import Client = require("../client/Client");
 import Campaign = require("../structures/Campaign");
+import Client = require("../client/Client");

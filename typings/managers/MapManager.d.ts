@@ -1,11 +1,12 @@
 export = MapManager;
+/**
+ * Represents a map manager.
+ */
 declare class MapManager {
-    constructor(client: any);
     /**
-     * The client instance.
-     * @type {Client}
+     * @param {Client} client The client
      */
-    client: Client;
+    constructor(client: Client);
     /**
      * The cache manager
      * @type {CacheManager}
@@ -32,5 +33,5 @@ declare class MapManager {
      */
     private _fetch;
 }
-import Client = require("../client/Client");
 import TMMap = require("../structures/TMMap");
+import Client = require("../client/Client");

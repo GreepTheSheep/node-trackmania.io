@@ -1,12 +1,23 @@
 export = Player;
+/**
+ * Represents a player in Trackmania.
+ */
 declare class Player {
-    constructor(client: any, data: any);
+    /**
+     * @param {Client} client The client.
+     * @param {Object} data
+     */
+    constructor(client: Client, data: any);
     /**
      * The client object of the player
      * @type {Client}
      */
     client: Client;
-    /** @private */
+    /**
+     * The data of the player
+     * @type {Object}
+     * @private
+     */
     private _data;
     /**
      * Constructs an array of the zone of the player
@@ -16,35 +27,35 @@ declare class Player {
     private _constructZoneArray;
     /**
      * The account ID of the player
-     * @returns {String}
+     * @type {String}
      */
     get id(): string;
     /**
      * The display name of the player
-     * @returns {String}
+     * @type {String}
      */
     get name(): string;
     /**
      * The timestamps of the player's first login
-     * @returns {Date}
+     * @type {Date}
      * @readonly
      * @private can be used but keep it private
      */
     private readonly get timestamp();
     /**
      * The club tag of the player (non-formatted)
-     * @returns {String}
+     * @type {String}
      */
     get clubTag(): string;
     /**
      * The last change of the player's club tag
-     * @returns {Date}
+     * @type {Date}
      * @readonly
      */
     readonly get lastClubTagChange(): Date;
     /**
      * The player's zone data with the ranking of the player in the zone
-     * @returns {Array<Object>} An array from the player's region name to World
+     * @type {Array<Object>} An array from the player's region name to World
      * @example
      * // Generate a string of the player's zone data
      * const string = player.zone.map(p=>p.name).join(', ');
@@ -52,37 +63,60 @@ declare class Player {
     get zone(): any[];
     /**
      * The player's trophy data
-     * @returns {PlayerTrophies}
+     * @type {PlayerTrophies}
      */
     get trophies(): PlayerTrophies;
-    /** @private */
+    /**
+     * The player's trophy data
+     * @type {PlayerTrophies}
+     * @private
+     */
     private _PlayerTrophies;
     /**
      * The player's meta data
-     * @returns {PlayerMeta}
+     * @type {PlayerMeta}
      */
     get meta(): PlayerMeta;
-    /** @private */
+    /**
+     * The player's meta data
+     * @type {PlayerMeta}
+     * @private
+     */
     private _PlayerMeta;
     /**
      * The player's COTD Data
-     * @returns {PlayerCOTD}
+     * @type {PlayerCOTD}
      */
     get cotd(): PlayerCOTD;
-    /** @private */
+    /**
+     * The player's COTD Data
+     * @type {PlayerCOTD}
+     * @private
+     */
     private _cotd;
     /**
      * The player's matchmaking data
      * @param {String | number} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
-     * @returns {PlayerMatchmaking}
+     * @type {PlayerMatchmaking}
      */
     matchmaking(type?: string | number): PlayerMatchmaking;
-    /** @private */
+    /**
+     * The player's matchmaking data
+     * @type {PlayerMatchmaking}
+     * @private
+     */
     private _PlayerMatchmaking;
 }
 import Client = require("../client/Client");
+/**
+ * Represents the trophies of a player
+ */
 declare class PlayerTrophies {
-    constructor(player: any, data: any);
+    /**
+     * @param {Player} player The player
+     * @param {Object} data
+     */
+    constructor(player: Player, data: any);
     /**
      * The player object
      * @type {Player}
@@ -95,26 +129,31 @@ declare class PlayerTrophies {
     client: Client;
     /**
      * The data
+     * @type {Object}
      * @private
      */
     private _data;
     /**
      * The points of the player
-     * @returns {Number}
+     * @type {Number}
      */
     get points(): number;
     /**
      * The last time the player got a trophy
-     * @returns {Date}
+     * @type {Date}
      * @readonly
      */
     readonly get lastChange(): Date;
     /**
      * The echelon level of the player
-     * @returns {PlayerEchelon}
+     * @type {PlayerEchelon}
      */
     get echelon(): PlayerEchelon;
-    /** @private */
+    /**
+     * The player's echelon data
+     * @type {PlayerEchelon}
+     * @private
+     */
     private _PlayerEchelon;
     /**
      * The number of trophies the player has
@@ -127,17 +166,23 @@ declare class PlayerTrophies {
     trophy(number?: number): number;
     /**
      * The number of trophies the player has
-     * @returns {Array<Number>}
+     * @type {Array<Number>}
      */
     get trophies(): number[];
     /**
      * The last 25 trophies gains of the player
-     * @returns {Array<PlayerTrophyHistory>}
+     * @type {Array<PlayerTrophyHistory>}
      */
     get history(): PlayerTrophyHistory[];
 }
+/**
+ * Represents a player's metadata
+ */
 declare class PlayerMeta {
-    constructor(player: any);
+    /**
+     * @param {Player} player The player.
+     */
+    constructor(player: Player);
     /**
      * The player object
      * @type {Player}
@@ -145,32 +190,39 @@ declare class PlayerMeta {
     player: Player;
     /**
      * The vanity name of the player, if the player has one, otherwise null
-     * @returns {String}
+     * @type {String}
      */
     get vanity(): string;
     /**
      * The youtube link of the player, if the player has one, otherwise null
-     * @returns {String}
+     * @type {String}
      */
     get youtube(): string;
     /**
      * The twitter link of the player, if the player has one, otherwise null
-     * @returns {String}
+     * @type {String}
      */
     get twitter(): string;
     /**
      * The twitch channel link of the player, if the player has one, otherwise null
-     * @returns {String}
+     * @type {String}
      */
     get twitch(): string;
     /**
      * The display URL of the player
-     * @returns {String}
+     * @type {String}
      */
     get displayURL(): string;
 }
+/**
+ * Represents a player's COTD object
+ */
 declare class PlayerCOTD {
-    constructor(player: any, data: any);
+    /**
+     * @param {Player} player The player.
+     * @param {Object} data
+     */
+    constructor(player: Player, data: any);
     /**
      * The Player object
      * @type {Player}
@@ -183,12 +235,13 @@ declare class PlayerCOTD {
     client: Client;
     /**
      * The data
+     * @type {Object}
      * @private
      */
     private _data;
     /**
      * The number of COTDs played
-     * @returns {Number}
+     * @type {Number}
      */
     get count(): number;
     /**
@@ -196,16 +249,27 @@ declare class PlayerCOTD {
      * @type {PlayerCOTDStats}
      */
     get stats(): PlayerCOTDStats;
-    /** @private */
+    /**
+     * The Player COTD stats
+     * @type {PlayerCOTDStats}
+     * @private
+     */
     private _stats;
     /**
      * Get the 25 recents COTD results
-     * @returns {Array<PlayerCOTDResult>}
+     * @type {Array<PlayerCOTDResult>}
      */
     get recentResults(): PlayerCOTDResult[];
 }
+/**
+ * Represents a player's stats in matchmaking
+ */
 declare class PlayerMatchmaking {
-    constructor(player: any, type: any);
+    /**
+     * @param {Player} player The player.
+     * @param {string|number} type The type of matchmaking. (3v3 or Royal)
+     */
+    constructor(player: Player, type: string | number);
     /**
      * The player object
      * @type {Player}
@@ -224,44 +288,55 @@ declare class PlayerMatchmaking {
     private _data;
     /**
      * The type name of the matchmaking
-     * @returns {String}
+     * @type {String}
      */
     get type(): string;
     /**
      * The type ID of the matchmaking
-     * @returns {Number}
+     * @type {Number}
      */
     get typeId(): number;
     /**
      * The rank of the player on this matchmaking
-     * @returns {Number}
+     * @type {Number}
      */
     get rank(): number;
     /**
      * The MMR rank of the player on this matchmaking (score)
-     * @returns {Number}
+     * @type {Number}
      */
     get score(): number;
     /**
      * The progression of the player on this matchmaking (can be number of wins for Royal, or score for 3v3)
-     * @returns {Number}
+     * @type {Number}
      */
     get progression(): number;
     /**
      * The division of the player on this matchmaking
-     * @returns {MatchmakingDivision}
+     * @type {MatchmakingDivision}
      */
     get division(): import("./MatchmakingDivision");
-    /** @private */
+    /**
+     * The division of the player on this matchmaking
+     * @type {MatchmakingDivision}
+     * @private
+     */
     private _MatchmakingDivision;
     /**
      * The history of recent matches on this matchmaking
-     * @returns {Array<PlayerMatchmakingMatchResult>}
+     * @type {Array<PlayerMatchmakingMatchResult>}
      */
     get history(): PlayerMatchmakingMatchResult[];
 }
+/**
+ * Represents a player's echelon
+ */
 declare class PlayerEchelon {
-    constructor(player: any, data: any);
+    /**
+     * @param {Player} player The player.
+     * @param {Object} data
+     */
+    constructor(player: Player, data: any);
     /**
      * The player object
      * @type {Player}
@@ -279,17 +354,24 @@ declare class PlayerEchelon {
     number: number;
     /**
      * The name of the echelon
-     * @returns {String}
+     * @type {String}
      */
     get name(): string;
     /**
      * The image URL of the echelon
-     * @returns {String}
+     * @type {String}
      */
     get image(): string;
 }
+/**
+ * Represents the history of a player's trophies
+ */
 declare class PlayerTrophyHistory {
-    constructor(player: any, data: any);
+    /**
+     * @param {Player} player The player.
+     * @param {Object} data
+     */
+    constructor(player: Player, data: any);
     /**
      * The player object
      * @type {Player}
@@ -302,6 +384,7 @@ declare class PlayerTrophyHistory {
     client: Client;
     /**
      * The data
+     * @type {Object}
      * @private
      */
     private _data;
@@ -316,25 +399,29 @@ declare class PlayerTrophyHistory {
     trophy(number?: number): number;
     /**
      * The number of trophies the player has
-     * @returns {Array<Number>}
+     * @type {Array<Number>}
      */
     get trophies(): number[];
     /**
      * The date of the gain
-     * @returns {Date}
+     * @type {Date}
      */
     get date(): Date;
     /**
      * The rank of the player
-     * @returns {Number}
+     * @type {Number}
      */
     get rank(): number;
     /**
      * The types of the achievement
-     * @returns {PlayerTrophyAchievementType}
+     * @type {PlayerTrophyAchievementType}
      */
     get type(): PlayerTrophyAchievementType;
-    /** @private */
+    /**
+     * The achievement type object
+     * @type {PlayerTrophyAchievementType}
+     * @private
+     */
     private _achievement;
     /**
      * The map where the achievement was earned (if any)
@@ -342,8 +429,15 @@ declare class PlayerTrophyHistory {
      */
     map(): Promise<TMMap> | null;
 }
+/**
+ * Represents a player's COTD stats
+ */
 declare class PlayerCOTDStats {
-    constructor(player: any, data: any);
+    /**
+     * @param {Player} player The player.
+     * @param {Object} data
+     */
+    constructor(player: Player, data: any);
     /**
      * The player object
      * @type {Player}
@@ -356,6 +450,7 @@ declare class PlayerCOTDStats {
     client: Client;
     /**
      * The data
+     * @type {Object}
      * @private
      */
     private _data;
@@ -364,53 +459,68 @@ declare class PlayerCOTDStats {
      * @type {PlayerCOTDStatsBest}
      */
     get bestPrimary(): PlayerCOTDStatsBest;
-    /** @private */
+    /**
+     * The best stats in the primary COTD
+     * @type {PlayerCOTDStatsBest}
+     * @private
+     */
     private _bestprimary;
     /**
      * The best stats in all COTDs (including reruns)
      * @type {PlayerCOTDStatsBest}
      */
     get bestOverall(): PlayerCOTDStatsBest;
-    /** @private */
+    /**
+     * The best stats in all COTDs (including reruns)
+     * @type {PlayerCOTDStatsBest}
+     * @private
+     */
     private _bestoverall;
     /**
      * The total COTD wins in division 1
-     * @returns {Number}
+     * @type {Number}
      */
     get totalWins(): number;
     /**
      * The total COTD wins in any divison
-     * @returns {Number}
+     * @type {Number}
      */
     get totalDivWins(): number;
     /**
      * Average rank, float between 0 and 1
-     * @returns {Number}
+     * @type {Number}
      */
     get averageRank(): number;
     /**
      * Average div rank (in any division), float between 0 and 1
-     * @returns {Number}
+     * @type {Number}
      */
     get averageDivRank(): number;
     /**
      * Average division
-     * @returns {Number}
+     * @type {Number}
      */
     get averageDiv(): number;
     /**
      * The win streak in division 1
-     * @returns {Number}
+     * @type {Number}
      */
     get winStreak(): number;
     /**
      * The win streak in any division
-     * @returns {Number}
+     * @type {Number}
      */
     get divWinStreak(): number;
 }
+/**
+ * Represents a player's COTD result
+ */
 declare class PlayerCOTDResult {
-    constructor(player: any, data: any);
+    /**
+     * @param {Player} player The player
+     * @param {Object} data
+     */
+    constructor(player: Player, data: any);
     /**
      * The Player object
      * @type {Player}
@@ -423,53 +533,61 @@ declare class PlayerCOTDResult {
     client: Client;
     /**
      * The data
+     * @type {Object}
      * @private
      */
     private _data;
     /**
      * The ID of the COTD
-     * @returns {Number}
+     * @type {Number}
      */
     get id(): number;
     /**
      * The date of the COTD
-     * @returns {Date}
+     * @type {Date}
      * @readonly
      */
     readonly get date(): Date;
     /**
      * The name of the COTD
-     * @returns {String}
+     * @type {String}
      */
     get name(): string;
     /**
      * The division of the COTD
-     * @returns {Number}
+     * @type {Number}
      */
     get division(): number;
     /**
      * The overall rank on the COTD
-     * @returns {Number}
+     * @type {Number}
      */
     get rank(): number;
     /**
      * The division rank on the COTD
-     * @returns {Number}
+     * @type {Number}
      */
     get divisionRank(): number;
     /**
      * The score of the COTD
-     * @returns {Number}
+     * @type {Number}
      */
     get score(): number;
     /**
      * The total number of players of the COTD
-     * @returns {Number}
+     * @type {Number}
      */
     get totalPlayers(): number;
 }
+/**
+ * Represents a player's matchmaking match result
+ */
 declare class PlayerMatchmakingMatchResult {
-    constructor(player: any, data: any);
+    /**
+     * @param {Player} player The player.
+     * @param {Object} data
+     */
+    constructor(player: Player, data: any);
     /**
      * The player object
      * @type {Player}
@@ -482,42 +600,50 @@ declare class PlayerMatchmakingMatchResult {
     client: Client;
     /**
      * The data
+     * @type {Object}
      * @private
      */
     private _data;
     /**
      * The player has win the match
-     * @returns {Boolean}
+     * @type {Boolean}
      */
     get win(): boolean;
     /**
      * The player has leaved the match
-     * @returns {Boolean}
+     * @type {Boolean}
      */
     get leave(): boolean;
     /**
      * The player is the most valuable player in the match
-     * @returns {Boolean}
+     * @type {Boolean}
      */
     get mvp(): boolean;
     /**
      * The match LiveID
-     * @returns {String}
+     * @type {String}
      */
     get liveId(): string;
     /**
      * The start date of the match
-     * @returns {Date}
+     * @type {Date}
      */
     get startDate(): Date;
     /**
      * The score of the player after this match
-     * @returns {Number}
+     * @type {Number}
      */
     get afterScore(): number;
 }
+/**
+ * Represents the type of an achievement
+ */
 declare class PlayerTrophyAchievementType {
-    constructor(player: any, data: any);
+    /**
+     * @param {Player} player
+     * @param {Object} data
+     */
+    constructor(player: Player, data: any);
     /**
      * The player object
      * @type {Player}
@@ -530,93 +656,101 @@ declare class PlayerTrophyAchievementType {
     client: Client;
     /**
      * The data
+     * @type {Object}
      * @private
      */
     private _data;
     /**
      * Gets the type of the achievement
-     * @returns {String}
+     * @type {String}
      */
     get type(): string;
     /**
      * Gets the ID of the achievement
-     * @returns {String}
+     * @type {String}
      */
     get id(): string;
     /**
      * Gets the solo ranking achievement type (if the type is SoloRanking)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get soloRankingType(): string;
     /**
      * Gets the solo ranking season ID (if the type is SoloRanking)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get soloRankingSeasonId(): string;
     /**
      * Gets the competition id (if the type is CompetitionRanking)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get competitionId(): string;
     /**
      * Gets the competition name (if the type is CompetitionRanking)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get competitionName(): string;
     /**
      * Gets the competition stage (if the type is CompetitionRanking)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get competitionStage(): string;
     /**
      * Gets the competition stage step (if the type is CompetitionRanking)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get competitionStageStep(): string;
     /**
      * Gets the competition type (if the type is CompetitionRanking)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get competitionType(): string;
     /**
      * Gets the Solo Medal type (if the type is SoloMedal)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get soloMedalType(): string;
     /**
      * Gets the solo medal level (if the type is SoloMedal)
-     * @returns {Number|null}
+     * @type {Number|null}
      */
     get soloMedalLevel(): number;
     /**
      * Gets the server ID of the Live Match (if the type is LiveMatch)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get liveMatchServerId(): string;
     /**
      * Gets the game mode of the Live Match (if the type is LiveMatch)
-     * @returns {String|null}
+     * @type {String|null}
      */
     get liveMatchGameMode(): string;
     /**
      * Gets the duration of the Live Match in seconds (if the type is LiveMatch)
-     * @returns {Number|null}
+     * @type {Number|null}
      */
     get liveMatchDuration(): number;
     /**
      * Gets the rank of the Live Match (if the type is LiveMatch)
-     * @returns {Number|null}
+     * @type {Number|null}
      */
     get liveMatchRank(): number;
     /**
      * Gets the trophy rank of the Live Match (if the type is LiveMatch)
-     * @returns {Number|null}
+     * @type {Number|null}
      */
     get liveMatchTrophyRank(): number;
 }
 import TMMap = require("../structures/TMMap");
+/**
+ * Represents a player's COTD stats best stats
+ */
 declare class PlayerCOTDStatsBest {
-    constructor(PlayerCOTDStats: any, data: any);
+    /**
+     * @param {PlayerCOTDStats} PlayerCOTDStats The player's COTD stats
+     * @param {Object} data
+     */
+    constructor(PlayerCOTDStats: PlayerCOTDStats, data: any);
     /**
     * The PlayerCOTDStats object
     * @type {PlayerCOTDStats}
@@ -634,50 +768,51 @@ declare class PlayerCOTDStatsBest {
     client: Client;
     /**
     * The data
+    * @type {Object}
     * @private
     */
     private _data;
     /**
      * The best rank
-     * @returns {Number}
+     * @type {Number}
      */
     get rank(): number;
     /**
      * The best rank date
-     * @returns {Date}
+     * @type {Date}
      * @readonly
      */
     readonly get rankDate(): Date;
     /**
      * The best div rank
-     * @returns {Number}
+     * @type {Number}
      */
     get divRank(): number;
     /**
      * The best division
-     * @returns {Number}
+     * @type {Number}
      */
     get division(): number;
     /**
      * The best divison date
-     * @returns {Date}
+     * @type {Date}
      * @readonly
      */
     readonly get divisionDate(): Date;
     /**
      * The best rank in a division
-     * @returns {Number}
+     * @type {Number}
      */
     get rankInDivision(): number;
     /**
      * The best rank in a division date
-     * @returns {Date}
+     * @type {Date}
      * @readonly
      */
     readonly get rankInDivisionDate(): Date;
     /**
      * The division who got the best rank in a division
-     * @returns {Number}
+     * @type {Number}
      */
     get divisionOfRankInDivision(): number;
 }

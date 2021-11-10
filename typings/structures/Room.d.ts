@@ -1,6 +1,13 @@
 export = Room;
+/**
+ * Represents a room.
+ */
 declare class Room {
-    constructor(client: any, data: any);
+    /**
+     * @param {Client} client The client.
+     * @param {Object} data
+     */
+    constructor(client: Client, data: any);
     /**
      * The client that instantiated this room
      * @type {Client}
@@ -59,7 +66,7 @@ declare class Room {
     get script(): string;
     /**
      * The script settings on the room
-     * @returns {Array<Object<string, string|number|boolean>>} x must be "key" and "value"
+     * @type {Array<Object<string, string|number|boolean>>} x must be "key" and "value"
      * @example [{
      * key: 'S_DecoImageUrl_Checkpoint',
      * value: 'https://trackmania-prod-nls-file-store-s3.cdn.ubi.com/club/decal/5f62400600952.png?updateTimestamp=1600274438.png'

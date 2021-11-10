@@ -1,11 +1,12 @@
 export = NewsManager;
+/**
+ * Represents a in-game news manager.
+ */
 declare class NewsManager {
-    constructor(client: any);
     /**
-     * The client instance.
-     * @type {Client}
+     * @param {Client} client The client
      */
-    client: Client;
+    constructor(client: Client);
     /**
      * The cache manager
      * @type {CacheManager}
@@ -32,5 +33,5 @@ declare class NewsManager {
      */
     private _fetch;
 }
-import Client = require("../client/Client");
 import News = require("../structures/News");
+import Client = require("../client/Client");

@@ -1,11 +1,18 @@
 export = News;
+/**
+ * Represents a news item.
+ */
 declare class News {
-    constructor(client: any, data: any);
+    /**
+     * @param {Client} client The client.
+     * @param {Object} data
+     */
+    constructor(client: Client, data: any);
     /**
      * The client object of the news page
      * @type {Client}
      */
-    client: any;
+    client: Client;
     /**
      * The data of the news page
      * @type {Object}
@@ -43,3 +50,4 @@ declare class News {
      */
     get time(): Date;
 }
+import Client = require("../client/Client");

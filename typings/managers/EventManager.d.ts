@@ -1,11 +1,12 @@
 export = EventManager;
+/**
+ * Represents a manager for in-game events.
+ */
 declare class EventManager {
-    constructor(client: any);
     /**
-     * The client instance.
-     * @type {Client}
+     * @param {Client} client The client.
      */
-    client: Client;
+    constructor(client: Client);
     /**
      * The cache manager
      * @type {CacheManager}
@@ -32,5 +33,5 @@ declare class EventManager {
      */
     private _fetch;
 }
-import Client = require("../client/Client");
 import TMEvent = require("../structures/TMEvent");
+import Client = require("../client/Client");

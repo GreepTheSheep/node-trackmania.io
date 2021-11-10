@@ -1,10 +1,12 @@
 export = PlayerManager;
+/**
+ * Represents a manager for players.
+ */
 declare class PlayerManager {
-    constructor(client: any);
-    /** The client instance
-     * @type {Client}
+    /**
+     * @param {Client} client The client.
      */
-    client: Client;
+    constructor(client: Client);
     /**
      * The cache manager
      * @type {CacheManager}
@@ -32,5 +34,5 @@ declare class PlayerManager {
      */
     private _fetch;
 }
-import Client = require("../client/Client");
 import Player = require("../structures/Player");
+import Client = require("../client/Client");

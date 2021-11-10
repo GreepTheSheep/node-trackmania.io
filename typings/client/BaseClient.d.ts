@@ -1,11 +1,18 @@
 export = BaseClient;
+/**
+ * The Base Client
+ */
 declare class BaseClient {
-    constructor(options?: {});
+    /**
+     * @param {defaultOptions} options The options to use.
+     */
+    constructor(options?: defaultOptions);
     /**
      * The options of the client.
      * @type {defaultOptions}
+     * @readonly
      */
-    options: defaultOptions;
+    readonly options: defaultOptions;
     /**
      * Get the ratelimits details on trackmania.io.
      * @type {ClientRatelimit}
@@ -36,7 +43,16 @@ declare class BaseClient {
     setAPIKey(key: string): boolean;
 }
 import defaultOptions = require("../util/defaultOptions");
+/**
+ * The ratelimit details of the client.
+ */
 declare class ClientRatelimit {
+    constructor(baseClient: any);
+    /**
+     * The base client.
+     * @type {BaseClient}
+     */
+    baseClient: BaseClient;
     /**
      * The total number of requests you can make on trackmania.io API.
      * If null, it means you haven't actually done a request

@@ -1,5 +1,12 @@
 export = Campaign;
+/**
+ * The Campaign class represents a campaign.
+ */
 declare class Campaign {
+    /**
+     * @param {Clienr} client The client.
+     * @param {Object} data
+     */
     constructor(client: any, data: any);
     /**
      * The client object of the campaign.

@@ -1,10 +1,21 @@
 export = APIRequest;
+/**
+ * APIRequest class
+ * @private
+ */
 declare class APIRequest {
-    constructor(client: any);
-    /** @type {Client} */
-    client: Client;
-    UA: any;
-    key: any;
+    /**
+     * @param {BaseClient} client The client object
+     */
+    constructor(client: BaseClient);
+    /**
+     * The client that created this request
+     * @type {BaseClient}
+     * @readonly
+     */
+    readonly client: BaseClient;
+    UA: string;
+    key: string;
     do(url: any, method?: string, body?: any): any;
     url: any;
     options: {
@@ -13,4 +24,4 @@ declare class APIRequest {
         body: any;
     };
 }
-import Client = require("../client/Client");
+import BaseClient = require("../client/BaseClient");

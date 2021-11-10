@@ -1,11 +1,12 @@
 export = ClubManager;
+/**
+ * Represents a manager for clubs.
+ */
 declare class ClubManager {
-    constructor(client: any);
     /**
-     * The client instance.
-     * @type {Client}
+     * @param {Client} client The client.
      */
-    client: Client;
+    constructor(client: Client);
     /**
      * The cache manager
      * @type {CacheManager}
@@ -32,5 +33,5 @@ declare class ClubManager {
      */
     private _fetch;
 }
-import Client = require("../client/Client");
 import Club = require("../structures/Club");
+import Client = require("../client/Client");

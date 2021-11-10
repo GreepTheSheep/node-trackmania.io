@@ -1,6 +1,13 @@
 export = Club;
+/**
+ * The Club class represents a club in Trackmania.
+ */
 declare class Club {
-    constructor(client: any, data: any);
+    /**
+     * @param {Client} client The client.
+     * @param {Object} data
+     */
+    constructor(client: Client, data: any);
     /**
      * The client object of the club
      * @type {Client}
@@ -123,8 +130,15 @@ declare class Club {
 }
 import Client = require("../client/Client");
 import Player = require("./Player");
+/**
+ * Represents a club member (player) in the club
+ */
 declare class ClubMember {
-    constructor(club: any, data: any);
+    /**
+     * @param {Club} club The Club.
+     * @param {Object} data
+     */
+    constructor(club: Club, data: any);
     /**
      * The club object
      * @type {Club}
@@ -167,8 +181,15 @@ declare class ClubMember {
      */
     get isVip(): boolean;
 }
+/**
+ * Represents a club activity in the club
+ */
 declare class ClubActivity {
-    constructor(club: any, data: any);
+    /**
+     * @param {Club} club The club
+     * @param {Object} data
+     */
+    constructor(club: Club, data: any);
     /**
      * The club object
      * @type {Club}

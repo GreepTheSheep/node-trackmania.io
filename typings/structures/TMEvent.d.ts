@@ -1,11 +1,22 @@
 export = TMEvent;
+/**
+ * Represents a Event in Trackmania.
+ */
 declare class TMEvent {
-    constructor(client: any, data: any);
+    /**
+     * @param {Client} client The client
+     * @param {Object} data
+     */
+    constructor(client: Client, data: any);
     /** The client instance
      * @type {Client}
      */
     client: Client;
-    /** @private */
+    /**
+     * The event's data.
+     * @type {Object}
+     * @private
+     */
     private _data;
     /**
      * The event's ID.
@@ -100,8 +111,15 @@ declare class TMEvent {
 }
 import Client = require("../client/Client");
 import Player = require("./Player");
+/**
+ * Represents a round in a TMEvent.
+ */
 declare class TMEventRound {
-    constructor(event: any, data: any);
+    /**
+     * @param {TMEvent} event The Event
+     * @param {Object} data
+     */
+    constructor(event: TMEvent, data: any);
     /**
      * The event instance
      * @type {TMEvent}
@@ -112,9 +130,17 @@ declare class TMEventRound {
      * @type {Client}
      */
     client: Client;
-    /** @private */
+    /**
+     * The round's data.
+     * @type {Object}
+     * @private
+     */
     private _data;
-    /** @private */
+    /**
+     * The challenge's CacheManager instance
+     * @type {CacheManager}
+     * @private
+     */
     private _challengesCache;
     /**
      * The round's ID.
@@ -151,8 +177,15 @@ declare class TMEventRound {
     */
     private _fetchChallenge;
 }
+/**
+ * Represents a match in a TMEventRound.
+ */
 declare class TMEventRoundMatch {
-    constructor(round: any, data: any);
+    /**
+     * @param {TMEventRound} round The Round
+     * @param {Object} data
+     */
+    constructor(round: TMEventRound, data: any);
     /**
      * The round instance
      * @type {TMEventRound}
@@ -168,9 +201,17 @@ declare class TMEventRoundMatch {
      * @type {Client}
      */
     client: Client;
-    /** @private */
+    /**
+     * The match's data.
+     * @type {Object}
+     * @private
+     */
     private _data;
-    /** @private */
+    /**
+     * The match's results CacheManager instance
+     * @type {CacheManager}
+     * @private
+     */
     private _resultsCache;
     /**
      * The match's ID.
@@ -203,8 +244,15 @@ declare class TMEventRoundMatch {
      */
     private _fetchResults;
 }
+/**
+ * Represents a challenge in a TMEventRound.
+ */
 declare class TMEventChallenge {
-    constructor(round: any, data: any);
+    /**
+     * @param {TMEventRound} round The round
+     * @param {Object} data
+     */
+    constructor(round: TMEventRound, data: any);
     /**
      * The round instance
      * @type {TMEventRound}
@@ -220,9 +268,17 @@ declare class TMEventChallenge {
      * @type {Client}
      */
     client: Client;
-    /** @private */
+    /**
+     * The challenge's data.
+     * @type {Object}
+     * @private
+     */
     private _data;
-    /** @private */
+    /**
+     * The challenge's results CacheManager instance
+     * @type {CacheManager}
+     * @private
+     */
     private _resultsCache;
     /**
      * The challenge's ID.
@@ -270,8 +326,15 @@ declare class TMEventChallenge {
      */
     private _fetchResults;
 }
+/**
+ * Represents a result in a TMEventRoundMatch.
+ */
 declare class TMEventRoundMatchResult {
-    constructor(match: any, data: any);
+    /**
+     * @param {TMEventRoundMatch} match The match
+     * @param {Object} data
+     */
+    constructor(match: TMEventRoundMatch, data: any);
     /**
      * The match instance
      * @type {TMEventRoundMatch}
@@ -287,7 +350,11 @@ declare class TMEventRoundMatchResult {
      * @type {Client}
      */
     client: Client;
-    /** @private */
+    /**
+     * The result's data.
+     * @type {Object}
+     * @private
+     */
     private _data;
     /**
      * The player that got the result.
@@ -296,18 +363,25 @@ declare class TMEventRoundMatchResult {
     player(): Promise<Player>;
     /**
      * The position of the player.
-     * @returns {Number}
+     * @type {Number}
      */
     get position(): number;
     /**
      * The score of the player.
-     * @returns {Number}
+     * @type {Number}
      */
     get score(): number;
 }
 import TMMap = require("./TMMap");
+/**
+ * Represents a result in a TMEventChallenge.
+ */
 declare class TMEventChallengeResult {
-    constructor(challenge: any, data: any);
+    /**
+     * @param {TMEventChallenge} challenge The challenge
+     * @param {Object} data
+     */
+    constructor(challenge: TMEventChallenge, data: any);
     /**
      * The challenge instance
      * @type {TMEventChallenge}
@@ -323,7 +397,11 @@ declare class TMEventChallengeResult {
      * @type {Client}
      */
     client: Client;
-    /** @private */
+    /**
+     * The result's data.
+     * @type {Object}
+     * @private
+     */
     private _data;
     /**
      * The player.
@@ -332,12 +410,12 @@ declare class TMEventChallengeResult {
     player(): Promise<Player>;
     /**
      * The position of the player.
-     * @returns {Number}
+     * @type {Number}
      */
     get position(): number;
     /**
      * The score of the player.
-     * @returns {Number}
+     * @type {Number}
      */
     get score(): number;
 }

@@ -1,11 +1,12 @@
 export = RoomManager;
+/**
+ * Represents a manager for rooms.
+ */
 declare class RoomManager {
-    constructor(client: any);
     /**
-     * The client instance.
-     * @type {Client}
+     * @param {Client} client The client.
      */
-    client: Client;
+    constructor(client: Client);
     /**
      * The cache manager
      * @type {CacheManager}
@@ -34,5 +35,5 @@ declare class RoomManager {
      */
     private _fetch;
 }
-import Client = require("../client/Client");
 import Room = require("../structures/Room");
+import Client = require("../client/Client");

@@ -112,8 +112,14 @@ declare class TMMap {
     leaderboardLoadMore(): Promise<Array<TMMapLeaderboard>> | null;
 }
 import Client = require("../client/Client");
+/**
+ * Represents the medals times on a map.
+ */
 declare class TMMapMedalTimes {
-    constructor(map: any);
+    /**
+     * @param {TMMap} map The map.
+     */
+    constructor(map: TMMap);
     /**
      * The map object.
      * @type {TMMap}
@@ -141,8 +147,15 @@ declare class TMMapMedalTimes {
     bronze: number;
 }
 import Player = require("./Player");
+/**
+ * Represents the map details from Trackmania.exchange.
+ */
 declare class TMExchangeMap {
-    constructor(map: any, data: any);
+    /**
+     * @param {TMMap} map The map
+     * @param {Object} data
+     */
+    constructor(map: TMMap, data: any);
     /**
      * The map instance.
      * @type {TMMap}
@@ -210,8 +223,15 @@ declare class TMExchangeMap {
      */
     get download(): string;
 }
+/**
+ * Represents the Map Voting stats.
+ */
 declare class TMMapKarma {
-    constructor(map: any, data: any);
+    /**
+     * @param {TMMap} map The map.
+     * @param {Object} data
+     */
+    constructor(map: TMMap, data: any);
     /**
      * The map instance.
      * @type {TMMap}
@@ -249,8 +269,15 @@ declare class TMMapKarma {
      */
     get lastVoteDate(): Date;
 }
+/**
+ * Represents the map leaderboard.
+ */
 declare class TMMapLeaderboard {
-    constructor(map: any, data: any);
+    /**
+     * @param {TMMap} map The map.
+     * @param {Object} data
+     */
+    constructor(map: TMMap, data: any);
     /**
      * The map Instance
      * @type {TMMap}

@@ -1,6 +1,14 @@
 export = MatchmakingDivision;
+/**
+ * Represents a division in the matchmaking system.
+ */
 declare class MatchmakingDivision {
-    constructor(client: any, typeId: any, division: any);
+    /**
+     * @param {Client} client The client
+     * @param {Number} typeId
+     * @param {Object} division
+     */
+    constructor(client: Client, typeId: number, division: any);
     /**
      * The client instance
      * @type {Client}
