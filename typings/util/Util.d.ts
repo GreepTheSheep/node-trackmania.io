@@ -9,6 +9,12 @@ declare class Util {
    */
     private static mergeDefault;
     /**
+     * Create an enum from a list of strings.
+     * @param {Array<String>} keys
+     * @returns {Object}
+     */
+    static createEnum(keys: Array<string>): any;
+    /**
      * Format the string and remove the TM style code on it.
      * @param {String} str String to format
      * @returns {String}
