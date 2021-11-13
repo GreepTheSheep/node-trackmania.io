@@ -8,6 +8,12 @@ declare class NewsManager {
      */
     constructor(client: Client);
     /**
+     * The client instance.
+     * @type {Client}
+     * @readonly
+     */
+    readonly client: Client;
+    /**
      * The cache manager
      * @type {CacheManager}
      * @private
@@ -33,5 +39,5 @@ declare class NewsManager {
      */
     private _fetch;
 }
-import News = require("../structures/News");
 import Client = require("../client/Client");
+import News = require("../structures/News");

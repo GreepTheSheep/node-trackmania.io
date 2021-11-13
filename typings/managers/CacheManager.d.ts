@@ -6,10 +6,17 @@ export = CacheManager;
 declare class CacheManager {
     /**
      * Creates a new CacheManager instance.
+     * @param {Client} client The client instance.
      * @param {*} from The class that instants this manager.
      * @param {*} to The class this manager will operate on.
      */
-    constructor(from: any, to: any);
+    constructor(client: Client, from: any, to: any);
+    /**
+     * The class that instantiated this manager.
+     * @type {*}
+     * @readonly
+     */
+    readonly from: any;
     /**
      * The class this manager will operate on.
      * @type {*}
