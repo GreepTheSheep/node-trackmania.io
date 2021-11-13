@@ -171,7 +171,7 @@ class Club {
              * @type {CacheManager}
              * @private
              */
-            this._membersCache = new CacheManager(this.client, ClubMember);
+            this._membersCache = new CacheManager(this.client, this, ClubMember);
         }
 
         const club = this.client.options.api.paths.tmio.tabs.club,
@@ -203,7 +203,7 @@ class Club {
              * @type {CacheManager}
              * @private
              */
-            this._activitiesCache = new CacheManager(this.client, ClubActivity);
+            this._activitiesCache = new CacheManager(this.client, this, ClubActivity);
         }
 
         const club = this.client.options.api.paths.tmio.tabs.club,

@@ -16,14 +16,14 @@ class MapManager{
          * @type {Client}
          * @readonly
          */
-        Object.defineProperty(this, 'client', { value: client });
+        this.client = client;
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(this, TMMap);
+        this._cache = new CacheManager(this.client, this, TMMap);
     }
 
     /**

@@ -16,14 +16,14 @@ class TOTDManager{
          * @type {Client}
          * @readonly
          */
-        Object.defineProperty(this, 'client', { value: client });
+        this.client = client;
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(this, TOTD);
+        this._cache = new CacheManager(this.client, this, TOTD);
     }
 
     /**

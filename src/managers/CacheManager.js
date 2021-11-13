@@ -7,10 +7,11 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
 class CacheManager extends Map {
     /**
      * Creates a new CacheManager instance.
+     * @param {Client} client The client instance.
      * @param {*} from The class that instants this manager. 
      * @param {*} to The class this manager will operate on.
      */
-    constructor(from, to) {
+    constructor(client, from, to) {
         super();
 
         /**
@@ -18,7 +19,7 @@ class CacheManager extends Map {
          * @type {*}
          * @readonly
          */
-        Object.defineProperty(this, 'from', { value: from });
+        this.from = from;
 
         /**
          * The class this manager will operate on.
@@ -31,7 +32,7 @@ class CacheManager extends Map {
          * The client instance.
          * @type {Client}
          */
-        this.client = from.client;
+        this.client = client;
 
         const ttlOpts = {
             default: this.client.options.cache.ttl * 60 * 1000,
@@ -46,6 +47,7 @@ class CacheManager extends Map {
          */
         this._ttl = this.client.options.cache.ttl != 10 ? ttlOpts.default : ttlOpts[this.to.name] || ttlOpts.default;
 
+        this.client.emit('debug', this.constructor.name, 'Cache is set to a TTL of ' + (this._ttl / 60 / 1000) + ' min for the manager "' + this.from.constructor.name + '" to the class "' + this.to.name + '"');
         this._reset();
     }
 
@@ -57,7 +59,7 @@ class CacheManager extends Map {
     _reset() {
         setInterval(() => {
             this.clear();
-            this.client.emit('debug', this.constructor.name, 'Cache reset for ' + this.from.name);
+            this.client.emit('debug', this.constructor.name, 'Cache reset for ' + this.to.name);
         }, this._ttl);
     }
 }

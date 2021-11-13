@@ -16,14 +16,14 @@ class RoomManager{
          * @type {Client}
          * @readonly
          */
-        Object.defineProperty(this, 'client', { value: client });
+        this.client = client;
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(this, Room);
+        this._cache = new CacheManager(this.client, this, Room);
     }
 
     /**

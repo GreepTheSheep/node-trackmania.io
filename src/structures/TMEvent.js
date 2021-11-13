@@ -212,7 +212,7 @@ class TMEventRound {
          * @type {CacheManager}
          * @private
          */
-        this._challengesCache = new CacheManager(this, TMEventChallenge);
+        this._challengesCache = new CacheManager(this.client, this, TMEventChallenge);
     }
 
     /**
@@ -330,7 +330,7 @@ class TMEventRoundMatch {
          * @type {CacheManager}
          * @private 
          */
-        this._resultsCache = new CacheManager(this, TMEventRoundMatchResult);
+        this._resultsCache = new CacheManager(this.client, this, TMEventRoundMatchResult);
     }
 
     /**
@@ -496,7 +496,7 @@ class TMEventChallenge {
          * @type {CacheManager}
          * @private
          */
-        this._resultsCache = new CacheManager(this, TMEventChallengeResult);
+        this._resultsCache = new CacheManager(this.client, this, TMEventChallengeResult);
     }
 
     /**

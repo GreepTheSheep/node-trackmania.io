@@ -16,14 +16,14 @@ class COTDManager{
          * The client instance.
          * @type {Client}
          */
-        Object.defineProperty(this, 'client', { value: client });
+        this.client = client;
 
         /**
          * The cache manager
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(this, COTD);
+        this._cache = new CacheManager(this.client, this, COTD);
     }
 
     /**
