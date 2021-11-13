@@ -26,6 +26,31 @@ class EventManager{
          */
         this._cache = new CacheManager(this.client, this, TMEvent);
     }
+    
+    /**
+     * List all available events
+     * @param {Number} page The page number
+     * @returns {Promise<Array<EventSearchResult>>} The events
+     */
+    async listEvents(page = 0){
+        const events = this.client.options.api.paths.tmio.tabs.events,
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${events}/${page}`),
+            eventList = res.competitions.map(event=> new EventSearchResult(this.client, event));
+        return eventList;
+    }
+
+    /**
+     * Searches for an event by name
+     * @param {string} query The query
+     * @param {number} page The page number
+     * @returns {Promise<Array<EventSearchResult>>} The events
+     */
+    async search(query, page = 0){
+        const events = this.client.options.api.paths.tmio.tabs.events,
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${events}/${page}?search=${query}`),
+            eventList = res.competitions.map(event=> new EventSearchResult(this.client, event));
+        return eventList;
+    }
 
     /**
      * Fetches a Trackmania event and returns its data
@@ -63,6 +88,53 @@ class EventManager{
             this._cache.set(res.id, theEvent);
         }
         return theEvent;
+    }
+}
+
+/**
+ * The result of a campaign search. It is completely different from the {@link TMEvent} object.
+ */
+class EventSearchResult {
+    /**
+     * @param {Client} client The client instance.
+     * @param {Object} data The data.
+     */
+    constructor(client, data){
+        /**
+         * The client instance
+         * @type {Client}
+         */
+        this.client = client;
+
+        /**
+         * The event's ID
+         * @type {Number}
+         */
+        this.id = data.id;
+
+        /**
+         * The event's competiton ID
+         * @type {Number}
+         */
+        this.compId = data.id;
+
+        /**
+         * The event's Club ID
+         * @type {Number}
+         */
+        this.clubId = data.clubid;
+
+        /**
+         * The event's name
+         * @type {String}
+         */
+        this.name = data.name;
+
+        /**
+         * The event's creation date
+         * @type {Date}
+         */
+        this.date = new Date(data.timestamp * 1000);
     }
 }
 
