@@ -27,6 +27,25 @@ class ClubManager{
     }
 
     /**
+     * Gets all the popular clubs
+     * @param {Number} page The page number
+     * @param {Boolean} cache Whether to cache the clubs or not
+     * @returns {Promise<Array<Club>>} The clubs
+     */
+    async popularClubs(page = 0, cache = this.client.options.cache.enabled){
+        const clubs = this.client.options.api.paths.tmio.tabs.clubs,
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${clubs}/${page}?sort=popularity`),
+            clubsList = res.map(club => new Club(this.client, club));
+        if (cache) {
+            for (const club of clubsList) {
+                club._cachedTimestamp = Date.now();
+                this._cache.set(club.id, club);
+            }
+        }
+        return clubsList;
+    }
+
+    /**
      * Fetches a Trackmania Club and returns its data
      * @param {Number} id The Club Id
      * @param {Boolean} cache Whether to get the club from cache or not
