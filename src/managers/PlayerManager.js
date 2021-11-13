@@ -2,6 +2,7 @@ const Player = require('../structures/Player');
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const {PlayerGroup} = require('../util/Constants'); // eslint-disable-line no-unused-vars
 
 /**
  * Represents a manager for players.
@@ -27,14 +28,57 @@ class PlayerManager {
     }
 
     /**
+     * Searches for a player by its name
+     * @param {String} query The query to search for
+     * @returns {Promise<Array<PlayerSearchResult>>} The results
+     * @example
+     * // Search for a player
+     * client.players.search('greep').then(results => {
+     *    client.players.get(results[0].id).then(player => {
+     *       console.log('The tag of this player is', player.tag);
+     *   });
+     * });
+     */
+    async search(query){
+        const players = this.client.options.api.paths.tmio.tabs.players,
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${players}/find?search=${query}`);
+
+        let results = [];
+        for (var i = 0; i < res.length; i++) {
+            results.push(new PlayerSearchResult(this.client, res[i].player));
+        }
+        return results;
+    }
+
+    /**
+     * Get all players from a group
+     * @param {PlayerGroup} groupName The group name
+     * @returns {?Promise<Array<PlayerSearchResult>>} The results
+     */
+    async group(groupName){
+        const players = this.client.options.api.paths.tmio.tabs.players,
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${players}/group/${groupName}`);
+
+        if (res.error) {
+            throw new Error(res.error);
+        }
+
+        let results = [];
+        for (var i = 0; i < res.length; i++) {
+            results.push(new PlayerSearchResult(this.client, res[i].player));
+        }
+        return results;
+    }
+
+    /**
      * Fetches a player and returns its data
      * @param {String} accountid The account ID or its tm.io vanity name
      * @param {Boolean} cache Whether to get the player from cache or not
      * @returns {Promise<Player>} The player
      * @example
      * // Get a player 
-     * client.players.get('greep').then(player => {
-     *     console.log(player.displayname);
+     * client.players.get('26d9a7de-4067-4926-9d93-2fe62cd869fc').then(player => {
+     *     console.log(player.name);
      * });
      */
     async get(accountid, cache = this.client.options.cache.enabled){
@@ -83,6 +127,41 @@ class PlayerManager {
             }
         }
         return thePlayer;
+    }
+}
+
+/**
+ * The result of a player search. It is completely different from the {@link Player} object.
+ */
+class PlayerSearchResult {
+    /**
+     * @param {Client} client The client instance.
+     * @param {Object} data The data.
+     */
+    constructor(client, data){
+        /**
+         * The client instance
+         * @type {Client}
+         */
+        this.client = client;
+
+        /**
+         * The player's account ID
+         * @type {String}
+         */
+        this.id = data.id;
+
+        /**
+         * The player's display name
+         * @type {String}
+         */
+        this.name = data.name;
+
+        /**
+         * The player's club tag (if any)
+         * @type {?String}
+         */
+        this.tag = data.tag ? data.tag : null;
     }
 }
 
