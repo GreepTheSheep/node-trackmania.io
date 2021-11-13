@@ -35,7 +35,7 @@ class ClubManager{
     async popularClubs(page = 0, cache = this.client.options.cache.enabled){
         const clubs = this.client.options.api.paths.tmio.tabs.clubs,
             res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${clubs}/${page}?sort=popularity`),
-            clubsList = res.map(club => new Club(this.client, club));
+            clubsList = res.clubs.map(club => new Club(this.client, club));
         if (cache) {
             for (const club of clubsList) {
                 club._cachedTimestamp = Date.now();
