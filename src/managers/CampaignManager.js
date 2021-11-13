@@ -28,6 +28,82 @@ class CampaignManager{
     }
 
     /**
+     * Get the current official campaign
+     * @param {boolean} cache Whether to use from the cache or not
+     * @returns {Promise<Campaign>} The campaign
+     */
+    async currentSeason(cache = this.client.options.cache.enabled){
+        const campaigns = this.client.options.api.paths.tmio.tabs.campaigns,
+            searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaigns}/0`),
+            campaignId = searchRes.campaigns[0].id;
+
+        if (cache && this._cache.has(campaignId)){
+            return this._cache.get(campaignId);
+        } else {
+            await this._fetch(0, campaignId, cache);
+        }
+    }
+
+    /**
+     * Get all official campaigns from recent to old
+     * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
+     */
+    async officialCampaigns(){
+        const campaigns = this.client.options.api.paths.tmio.tabs.campaigns,
+            searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaigns}/0`);
+
+        let arr = [];
+        for (const campaign of searchRes.campaigns) {
+            if (campaign.clubid != 0) break;
+
+            arr.push(new CampaignSearchResult(this.client, campaign));
+        }
+        return arr;
+    }
+
+    /**
+     * Get all popular campaigns (official excluded) (top 50)
+     * @param {Number} page The page number
+     * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
+     */
+    async popularCampaigns(page = 0){
+        const campaigns = this.client.options.api.paths.tmio.tabs.campaigns,
+            searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaigns}/${page}`);
+
+        let arr = [];
+        for (const campaign of searchRes.campaigns) {
+            if (campaign.clubid == 0) continue;
+
+            arr.push(new CampaignSearchResult(this.client, campaign));
+        }
+        return arr;
+    }
+
+    /**
+     * Searches for a campaign
+     * @param {string} query The query
+     * @param {Number} page The page number
+     * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
+     * @example
+     * client.campaigns.search('htimh').then(campaigns => {
+     *    client.campaigns.get(campaigns[0].clubid, campaigns[0].id).then(async campaign => {
+     *       const maps = await campaign.maps();
+     *       maps.forEach(map => console.log(map.name));
+     *   });
+     * });
+     */
+    async search(query, page = 0){
+        const campaigns = this.client.options.api.paths.tmio.tabs.campaigns,
+            searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaigns}/${page}?search=${query}`);
+
+        let arr = [];
+        for (const campaign of searchRes.campaigns) {
+            arr.push(new CampaignSearchResult(this.client, campaign));
+        }
+        return arr;
+    }
+
+    /**
      * Fetches a Trackmania campaign and returns its data
      * @param {Number} clubId The club Id that the campaign belongs to (If it's an official campaign, set it to 0)
      * @param {Number} id The campaign Id
@@ -73,6 +149,53 @@ class CampaignManager{
             this._cache.set(res.id, theCampaign);
         }
         return theCampaign;
+    }
+}
+
+/**
+ * The result of a campaign search. It is completely different from the {@link Campaign} object.
+ */
+class CampaignSearchResult {
+    /**
+     * @param {Client} client The client instance.
+     * @param {Object} data The data.
+     */
+    constructor(client, data){
+        /**
+         * The client instance
+         * @type {Client}
+         */
+        this.client = client;
+
+        /**
+         * The campaign's ID
+         * @type {Number}
+         */
+        this.id = data.id;
+
+        /**
+         * The campaign's Club ID
+         * @type {Number}
+         */
+        this.clubId = data.clubid;
+
+        /**
+         * The campaign's name
+         * @type {String}
+         */
+        this.name = data.name;
+
+        /**
+         * The campaign's creation date
+         * @type {Date}
+         */
+        this.date = new Date(data.timestamp * 1000);
+
+        /**
+         * The campaign's map count
+         * @type {Number}
+         */
+        this.mapCount = data.mapcount;
     }
 }
 
