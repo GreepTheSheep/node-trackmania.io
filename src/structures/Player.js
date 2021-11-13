@@ -78,9 +78,6 @@ class Player {
         return this._data.clubtag;
     }
 
-    // TODO: Add a formatter function
-
-
     /**
      * The last change of the player's club tag
      * @type {Date}
