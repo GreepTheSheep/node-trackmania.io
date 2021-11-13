@@ -8,6 +8,12 @@ declare class CampaignManager {
      */
     constructor(client: Client);
     /**
+     * The client instance.
+     * @type {Client}
+     * @readonly
+     */
+    readonly client: Client;
+    /**
      * The cache manager
      * @type {CacheManager}
      * @private
@@ -35,5 +41,5 @@ declare class CampaignManager {
      */
     private _fetch;
 }
-import Campaign = require("../structures/Campaign");
 import Client = require("../client/Client");
+import Campaign = require("../structures/Campaign");

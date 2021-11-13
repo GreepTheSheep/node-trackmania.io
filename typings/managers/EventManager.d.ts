@@ -8,6 +8,12 @@ declare class EventManager {
      */
     constructor(client: Client);
     /**
+     * The client instance.
+     * @type {Client}
+     * @readonly
+     */
+    readonly client: Client;
+    /**
      * The cache manager
      * @type {CacheManager}
      * @private
@@ -33,5 +39,5 @@ declare class EventManager {
      */
     private _fetch;
 }
-import TMEvent = require("../structures/TMEvent");
 import Client = require("../client/Client");
+import TMEvent = require("../structures/TMEvent");

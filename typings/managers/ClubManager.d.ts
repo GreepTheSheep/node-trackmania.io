@@ -8,6 +8,12 @@ declare class ClubManager {
      */
     constructor(client: Client);
     /**
+     * The client instance.
+     * @type {Client}
+     * @readonly
+     */
+    readonly client: Client;
+    /**
      * The cache manager
      * @type {CacheManager}
      * @private
@@ -33,5 +39,5 @@ declare class ClubManager {
      */
     private _fetch;
 }
-import Club = require("../structures/Club");
 import Client = require("../client/Client");
+import Club = require("../structures/Club");

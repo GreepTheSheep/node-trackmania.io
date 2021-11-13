@@ -8,6 +8,12 @@ declare class RoomManager {
      */
     constructor(client: Client);
     /**
+     * The client instance.
+     * @type {Client}
+     * @readonly
+     */
+    readonly client: Client;
+    /**
      * The cache manager
      * @type {CacheManager}
      * @private
@@ -35,5 +41,5 @@ declare class RoomManager {
      */
     private _fetch;
 }
-import Room = require("../structures/Room");
 import Client = require("../client/Client");
+import Room = require("../structures/Room");

@@ -8,6 +8,12 @@ declare class MapManager {
      */
     constructor(client: Client);
     /**
+     * The client instance.
+     * @type {Client}
+     * @readonly
+     */
+    readonly client: Client;
+    /**
      * The cache manager
      * @type {CacheManager}
      * @private
@@ -33,5 +39,5 @@ declare class MapManager {
      */
     private _fetch;
 }
-import TMMap = require("../structures/TMMap");
 import Client = require("../client/Client");
+import TMMap = require("../structures/TMMap");

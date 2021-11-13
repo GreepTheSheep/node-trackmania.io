@@ -8,6 +8,12 @@ declare class PlayerManager {
      */
     constructor(client: Client);
     /**
+     * The client instance
+     * @type {Client}
+     * @readonly
+     */
+    readonly client: Client;
+    /**
      * The cache manager
      * @type {CacheManager}
      * @private
@@ -34,5 +40,5 @@ declare class PlayerManager {
      */
     private _fetch;
 }
-import Player = require("../structures/Player");
 import Client = require("../client/Client");
+import Player = require("../structures/Player");
