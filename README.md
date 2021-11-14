@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div align="center">
 <img src="docs/infography/image.svg" alt="Logo" />
 <br />
 <a href="https://npmjs.org/trackmania.io"><img src="https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true" alt="NPM" /></a>
