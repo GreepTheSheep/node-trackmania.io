@@ -52,7 +52,8 @@ class TOTDManager{
      */
     async get(date, cache = this.client.options.cache.enabled){
         if (cache && this._cache.has(date.getMonth()+"_"+date.getFullYear())) {
-            return this._cache.get(date.getMonth()+"_"+date.getFullYear());
+            let month = this._cache.get(date.getMonth()+"_"+date.getFullYear());
+            return month.days.find(map => map.monthday == date.getDate());
         } else {
             return await this._fetch(date, cache);
         }
