@@ -52,9 +52,9 @@ declare class PlayerManager {
      * Gets the matchmaking leaderboard
      * @param {MatchmakingGroup} group The matchmaking group
      * @param {Number} page The page number
-     * @returns
+     * @returns {Promise<Array<PlayerTopMatchmaking>>} The players' top matchmaking
      */
-    topMatchmaking(group: MatchmakingGroup, page?: number): Promise<any>;
+    topMatchmaking(group: MatchmakingGroup, page?: number): Promise<Array<PlayerTopMatchmaking>>;
     /**
      * Fetches a player and returns its data
      * @param {String} accountid The account ID or its tm.io vanity name
@@ -139,4 +139,33 @@ declare class PlayerTopTrophy {
     score: number;
 }
 import { MatchmakingGroup } from "../util/Constants";
+declare class PlayerTopMatchmaking {
+    constructor(client: any, typeId: any, data: any);
+    /**
+     * The client instance
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The player
+     * @type {PlayerSearchResult}
+     */
+    player: PlayerSearchResult;
+    /**
+     * The rank
+     * @type {Number}
+     */
+    rank: number;
+    /**
+     * The score
+     * @type {Number}
+     */
+    score: number;
+    /**
+     * The matchmaking division of the player
+     * @type {MatchmakingDivision}
+     */
+    division: MatchmakingDivision;
+}
 import Player = require("../structures/Player");
+import MatchmakingDivision = require("../structures/MatchmakingDivision");

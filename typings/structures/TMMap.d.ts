@@ -17,7 +17,7 @@ declare class TMMap {
     private _data;
     /**
      * The map medal times.
-     * @type {TMMapMedalTimes} The medal times class
+     * @type {TMMapMedalTimes}
      */
     medalTimes: TMMapMedalTimes;
     /**

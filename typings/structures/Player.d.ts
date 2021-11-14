@@ -39,7 +39,7 @@ declare class Player {
      * The timestamps of the player's first login
      * @type {Date}
      * @readonly
-     * @private can be used but keep it private
+     * @private
      */
     private readonly get timestamp();
     /**
@@ -55,7 +55,7 @@ declare class Player {
     readonly get lastClubTagChange(): Date;
     /**
      * The player's zone data with the ranking of the player in the zone
-     * @type {Array<Object>} An array from the player's region name to World
+     * @type {Array<Object>}
      * @example
      * // Generate a string of the player's zone data
      * const string = player.zone.map(p=>p.name).join(', ');
