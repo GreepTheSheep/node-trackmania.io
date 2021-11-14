@@ -330,7 +330,7 @@ declare class defaultOptionsAPIPathsTMIOTabs {
      * Matchmaking Tab.
      * @type {string}
      */
-    matchmaking: string;
+    topMatchmaking: string;
     /**
      * Specific match Tab.
      * @type {string}

@@ -39,6 +39,23 @@ declare class PlayerManager {
      */
     group(groupName: PlayerGroup): Promise<Array<PlayerSearchResult>> | null;
     /**
+     * Get the trophy leaderboard
+     * @param {Number} page The page number
+     * @returns {Promise<Array<PlayerTopTrophy>>} The players' top trophies
+     * @example
+     * Client.players.topTrophies().then(top => {
+     *    console.log("The number 1 player is " + top[0].player.name + " with " + top[0].score + " trophies");
+     * });
+     */
+    topTrophies(page?: number): Promise<Array<PlayerTopTrophy>>;
+    /**
+     * Gets the matchmaking leaderboard
+     * @param {MatchmakingGroup} group The matchmaking group
+     * @param {Number} page The page number
+     * @returns
+     */
+    topMatchmaking(group: MatchmakingGroup, page?: number): Promise<any>;
+    /**
      * Fetches a player and returns its data
      * @param {String} accountid The account ID or its tm.io vanity name
      * @param {Boolean} cache Whether to get the player from cache or not
@@ -91,4 +108,35 @@ declare class PlayerSearchResult {
     tag: string | null;
 }
 import { PlayerGroup } from "../util/Constants";
+/**
+ * Represents a player top trophy
+ */
+declare class PlayerTopTrophy {
+    /**
+     * @param {Client} client The client instance
+     * @param {Object} data The data
+     */
+    constructor(client: Client, data: any);
+    /**
+     * The client instance
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The player
+     * @type {PlayerSearchResult}
+     */
+    player: PlayerSearchResult;
+    /**
+     * The rank
+     * @type {Number}
+     */
+    rank: number;
+    /**
+     * The score (number of trophies)
+     * @type {Number}
+     */
+    score: number;
+}
+import { MatchmakingGroup } from "../util/Constants";
 import Player = require("../structures/Player");
