@@ -20,6 +20,13 @@ declare class ClubManager {
      */
     private _cache;
     /**
+     * Gets all the popular clubs
+     * @param {Number} page The page number
+     * @param {Boolean} cache Whether to cache the clubs or not
+     * @returns {Promise<Array<Club>>} The clubs
+     */
+    popularClubs(page?: number, cache?: boolean): Promise<Array<Club>>;
+    /**
      * Fetches a Trackmania Club and returns its data
      * @param {Number} id The Club Id
      * @param {Boolean} cache Whether to get the club from cache or not

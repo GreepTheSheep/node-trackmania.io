@@ -20,6 +20,37 @@ declare class CampaignManager {
      */
     private _cache;
     /**
+     * Get the current official campaign
+     * @param {boolean} cache Whether to use from the cache or not
+     * @returns {Promise<Campaign>} The campaign
+     */
+    currentSeason(cache?: boolean): Promise<Campaign>;
+    /**
+     * Get all official campaigns from recent to old
+     * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
+     */
+    officialCampaigns(): Promise<Array<CampaignSearchResult>>;
+    /**
+     * Get all popular campaigns (official excluded) (top 50)
+     * @param {Number} page The page number
+     * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
+     */
+    popularCampaigns(page?: number): Promise<Array<CampaignSearchResult>>;
+    /**
+     * Searches for a campaign
+     * @param {string} query The query
+     * @param {Number} page The page number
+     * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
+     * @example
+     * client.campaigns.search('htimh').then(campaigns => {
+     *    client.campaigns.get(campaigns[0].clubid, campaigns[0].id).then(async campaign => {
+     *       const maps = await campaign.maps();
+     *       maps.forEach(map => console.log(map.name));
+     *   });
+     * });
+     */
+    search(query: string, page?: number): Promise<Array<CampaignSearchResult>>;
+    /**
      * Fetches a Trackmania campaign and returns its data
      * @param {Number} clubId The club Id that the campaign belongs to (If it's an official campaign, set it to 0)
      * @param {Number} id The campaign Id
@@ -43,3 +74,43 @@ declare class CampaignManager {
 }
 import Client = require("../client/Client");
 import Campaign = require("../structures/Campaign");
+/**
+ * The result of a campaign search. It is completely different from the {@link Campaign} object.
+ */
+declare class CampaignSearchResult {
+    /**
+     * @param {Client} client The client instance.
+     * @param {Object} data The data.
+     */
+    constructor(client: Client, data: any);
+    /**
+     * The client instance
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The campaign's ID
+     * @type {Number}
+     */
+    id: number;
+    /**
+     * The campaign's Club ID
+     * @type {Number}
+     */
+    clubId: number;
+    /**
+     * The campaign's name
+     * @type {String}
+     */
+    name: string;
+    /**
+     * The campaign's creation date
+     * @type {Date}
+     */
+    date: Date;
+    /**
+     * The campaign's map count
+     * @type {Number}
+     */
+    mapCount: number;
+}
