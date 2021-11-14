@@ -2,7 +2,8 @@ const Player = require('../structures/Player');
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const {PlayerGroup} = require('../util/Constants'); // eslint-disable-line no-unused-vars
+const {PlayerGroup, MMTypes, MatchmakingGroup} = require('../util/Constants'); // eslint-disable-line no-unused-vars
+const MatchmakingDivision = require('../structures/MatchmakingDivision');
 
 /**
  * Represents a manager for players.
@@ -81,8 +82,28 @@ class PlayerManager {
      */
     async topTrophies(page = 0){
         const top = this.client.options.api.paths.tmio.tabs.topTrophies,
-            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${top}/${page}`),
-            topsArray = res.ranks.map(playerTop=> new PlayerTopTrophy(this.client, playerTop));
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${top}/${page}`);
+
+        if (res.error) throw new Error(res.error);
+
+        const topsArray = res.ranks.map(playerTop=> new PlayerTopTrophy(this.client, playerTop));
+        return topsArray;
+    }
+
+    /**
+     * Gets the matchmaking leaderboard
+     * @param {MatchmakingGroup} group The matchmaking group
+     * @param {Number} page The page number
+     * @returns 
+     */
+    async topMatchmaking(group, page = 0){
+        const top = this.client.options.api.paths.tmio.tabs.topMatchmaking,
+            typeId = typeof group == "string" ? MMTypes[group] : group,
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${top}/${typeId}/${page}`);
+
+        if (res.error) throw new Error(res.error);
+        
+        const topsArray = res.ranks.map(playerTop=> new PlayerTopMatchmaking(this.client, typeId, playerTop));
         return topsArray;
     }
 
@@ -178,6 +199,40 @@ class PlayerTopTrophy {
          * @type {Number}
          */
         this.score = data.score;
+    }
+}
+
+class PlayerTopMatchmaking{
+    constructor(client, typeId, data){
+        /**
+         * The client instance
+         * @type {Client}
+         */
+        this.client = client;
+
+        /**
+         * The player
+         * @type {PlayerSearchResult}
+         */
+        this.player = new PlayerSearchResult(this.client, data.player);
+
+        /**
+         * The rank
+         * @type {Number}
+         */
+        this.rank = data.rank;
+
+        /**
+         * The score
+         * @type {Number}
+         */
+        this.score = data.score;
+
+        /**
+         * The matchmaking division of the player
+         * @type {MatchmakingDivision}
+         */
+        this.division = new MatchmakingDivision(client, typeId, data.division);
     }
 }
 

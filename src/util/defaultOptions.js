@@ -278,7 +278,7 @@ class defaultOptionsAPIPathsTMIOTabs {
          * Matchmaking Tab.
          * @type {string}
          */
-        this.matchmaking = "top/matchmaking";
+        this.topMatchmaking = "top/matchmaking";
         
         /**
          * Specific match Tab.
