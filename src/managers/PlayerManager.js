@@ -94,7 +94,7 @@ class PlayerManager {
      * Gets the matchmaking leaderboard
      * @param {MatchmakingGroup} group The matchmaking group
      * @param {Number} page The page number
-     * @returns 
+     * @returns {Promise<Array<PlayerTopMatchmaking>>} The players' top matchmaking
      */
     async topMatchmaking(group, page = 0){
         const top = this.client.options.api.paths.tmio.tabs.topMatchmaking,

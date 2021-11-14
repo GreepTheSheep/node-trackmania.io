@@ -23,7 +23,7 @@ class TMMap {
 
         /**
          * The map medal times.
-         * @type {TMMapMedalTimes} The medal times class
+         * @type {TMMapMedalTimes} 
          */
         this.medalTimes = new TMMapMedalTimes(this);
 
