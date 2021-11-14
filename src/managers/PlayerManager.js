@@ -71,6 +71,22 @@ class PlayerManager {
     }
 
     /**
+     * Get the trophy leaderboard
+     * @param {Number} page The page number
+     * @returns {Promise<Array<PlayerTopTrophy>>} The players' top trophies
+     * @example
+     * Client.players.topTrophies().then(top => {
+     *    console.log("The number 1 player is " + top[0].player.name + " with " + top[0].score + " trophies");
+     * });
+     */
+    async topTrophies(page = 0){
+        const top = this.client.options.api.paths.tmio.tabs.topTrophies,
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${top}/${page}`),
+            topsArray = res.ranks.map(playerTop=> new PlayerTopTrophy(this.client, playerTop));
+        return topsArray;
+    }
+
+    /**
      * Fetches a player and returns its data
      * @param {String} accountid The account ID or its tm.io vanity name
      * @param {Boolean} cache Whether to get the player from cache or not
@@ -127,6 +143,41 @@ class PlayerManager {
             }
         }
         return thePlayer;
+    }
+}
+
+/**
+ * Represents a player top trophy
+ */
+class PlayerTopTrophy {
+    /**
+     * @param {Client} client The client instance
+     * @param {Object} data The data
+     */
+    constructor(client, data){
+        /**
+         * The client instance
+         * @type {Client}
+         */
+        this.client = client;
+
+        /**
+         * The player
+         * @type {PlayerSearchResult}
+         */
+        this.player = new PlayerSearchResult(this.client, data.player);
+
+        /**
+         * The rank
+         * @type {Number}
+         */
+        this.rank = data.rank;
+
+        /**
+         * The score (number of trophies)
+         * @type {Number}
+         */
+        this.score = data.score;
     }
 }
 
