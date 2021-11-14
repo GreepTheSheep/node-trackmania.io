@@ -1,5 +1,6 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const MatchmakingDivisionData = require('../data/MatchmakingDivisions.json');
+const { MMTypes } = require('../util/Constants');
 
 /**
  * Represents a division in the matchmaking system.
@@ -45,9 +46,7 @@ class MatchmakingDivision{
      * @type {string}
      */
     get typeName(){
-        if (this.typeId === 2) return "3v3";
-        else if (this.typeId === 3) return "Royal";
-        else return null;
+        return MMTypes[this.typeId];
     }
 
     /**
