@@ -1,5 +1,5 @@
 <div align="center">
-<img src="docs/infography/image.svg" alt="Logo" />
+<a href="https://tmio.greep.gq/#" target="_blank"><img src="docs/infography/image.svg" alt="Logo" /></a>
 <br />
 <a href="https://npmjs.org/trackmania.io"><img src="https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true" alt="NPM" /></a>
 <br />
