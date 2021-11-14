@@ -27,6 +27,31 @@ class RoomManager{
     }
 
     /**
+     * Get the popular Club rooms (by number of players connected)
+     * @param {number} page The page number
+     * @returns {Promise<Array<RoomSearchResult>>} The rooms
+     */
+    async popularRooms(page = 0){
+        const rooms = this.client.options.api.paths.tmio.tabs.rooms,
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${rooms}/${page}`),
+            roomList = res.rooms.map(room=> new RoomSearchResult(this.client, room));
+        return roomList;
+    }
+
+    /**
+     * Searches for a room
+     * @param {string} query The query to search for
+     * @param {number} page The page number
+     * @returns {Promise<Array<RoomSearchResult>>} The rooms
+     */
+    async search(query, page = 0){
+        const rooms = this.client.options.api.paths.tmio.tabs.rooms,
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${rooms}/${page}?search=${query}`),
+            roomList = res.rooms.map(room=> new RoomSearchResult(this.client, room));
+        return roomList;
+    }
+
+    /**
      * Fetches a Trackmania room (server) and returns its data
      * @param {Number} clubId The club Id that the room belongs to
      * @param {Number} id The room Id
@@ -64,6 +89,59 @@ class RoomManager{
             this._cache.set(res.id, theRoom);
         }
         return theRoom;
+    }
+}
+
+/**
+ * The result of a campaign search. It is completely different from the {@link Room} object.
+ */
+class RoomSearchResult {
+    /**
+     * @param {Client} client The client instance.
+     * @param {Object} data The data.
+     */
+    constructor(client, data){
+        /**
+         * The client instance
+         * @type {Client}
+         */
+        this.client = client;
+
+        /**
+         * The room's ID
+         * @type {Number}
+         */
+        this.id = data.id;
+
+        /**
+         * The room's Club ID
+         * @type {Number}
+         */
+        this.clubId = data.clubid;
+
+        /**
+         * The room's name
+         * @type {String}
+         */
+        this.name = data.name;
+
+        /**
+         * Whether the room is hosted by Nadeo
+         * @type {boolean}
+         */
+        this.nadeo = data.nadeo;
+
+        /**
+         * The player count
+         * @type {Number}
+         */
+        this.playerCount = data.playercount;
+
+        /**
+         * The max player count
+         * @type {Number}
+         */
+        this.maxPlayerCount = data.playermax;
     }
 }
 
