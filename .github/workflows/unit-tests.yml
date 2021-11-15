@@ -2,7 +2,9 @@ name: Node.js CI & Tests
 
 on:
   pull_request:
-    branches: [ main, develop, v3 ]
+    branches: [ main, develop ]
+  push:
+    branches: [ develop, v3 ]
 
 jobs:
   build:
