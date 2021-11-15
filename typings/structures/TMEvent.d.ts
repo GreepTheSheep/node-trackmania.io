@@ -20,17 +20,17 @@ declare class TMEvent {
     private _data;
     /**
      * The event's ID.
-     * @type {Number}
+     * @type {number}
      */
     get id(): number;
     /**
      * The number of players in the event.
-     * @type {Number}
+     * @type {number}
      */
     get size(): number;
     /**
      * The event's Live ID.
-     * @type {String}
+     * @type {string}
      */
     get liveId(): string;
     /**
@@ -40,12 +40,12 @@ declare class TMEvent {
     creator(): Promise<Player>;
     /**
      * The event's name.
-     * @type {String}
+     * @type {string}
      */
     get name(): string;
     /**
      * The event's description.
-     * @type {String}
+     * @type {string}
      */
     get description(): string;
     /**
@@ -70,37 +70,37 @@ declare class TMEvent {
     get end(): Date;
     /**
      * The event's leaderboard id.
-     * @type {Number}
+     * @type {number}
      */
     get leaderboardId(): number;
     /**
      * The event's manialink (if any).
-     * @type {?String}
+     * @type {?string}
      */
     get manialink(): string;
     /**
      * The event's rules URL (if any).
-     * @type {?String}
+     * @type {?string}
      */
     get rulesUrl(): string;
     /**
      * The event's stream URL (if any).
-     * @type {?String}
+     * @type {?string}
      */
     get stream(): string;
     /**
      * The event's website (if any).
-     * @type {?String}
+     * @type {?string}
      */
     get website(): string;
     /**
      * The event's logo URL.
-     * @type {String}
+     * @type {string}
      */
     get logo(): string;
     /**
      * The event's vertical banner URL.
-     * @type {String}
+     * @type {string}
      */
     get vertical(): string;
     /**
@@ -144,17 +144,17 @@ declare class TMEventRound {
     private _challengesCache;
     /**
      * The round's ID.
-     * @type {Number}
+     * @type {number}
      */
     get id(): number;
     /**
      * The round's name.
-     * @type {String}
+     * @type {string}
      */
     get name(): string;
     /**
      * The round's status.
-     * @type {String}
+     * @type {string}
      */
     get status(): string;
     /**
@@ -170,7 +170,7 @@ declare class TMEventRound {
     challenges(cache?: boolean): Promise<Array<TMEventChallenge>>;
     /**
      * Fetches the round's challenges.
-     * @param {Number} index The index of the challenge to fetch.
+     * @param {number} index The index of the challenge to fetch.
      * @param {Boolean} cache Wether to cache the challenges or not.
      * @returns {Promise<Array<TMEventChallenge>>}
      * @private
@@ -215,12 +215,12 @@ declare class TMEventRoundMatch {
     private _resultsCache;
     /**
      * The match's ID.
-     * @type {Number}
+     * @type {number}
      */
     get id(): number;
     /**
      * The match's name.
-     * @type {String}
+     * @type {string}
      */
     get name(): string;
     /**
@@ -230,14 +230,14 @@ declare class TMEventRoundMatch {
     get isCompleted(): boolean;
     /**
      * The match's results.
-     * @param {Number} page The page number.
+     * @param {number} page The page number.
      * @param {Boolean} cache Whether to cache the results.
      * @returns {Promise<Array<TMEventRoundMatchResult>>}
      */
     getResults(page?: number, cache?: boolean): Promise<Array<TMEventRoundMatchResult>>;
     /**
      * Fetches the match's results.
-     * @param {Number} page The page number.
+     * @param {number} page The page number.
      * @param {Boolean} cache Whether to cache the results.
      * @returns {Promise<Array<TMEventRoundMatchResult>>}
      * @private
@@ -282,22 +282,22 @@ declare class TMEventChallenge {
     private _resultsCache;
     /**
      * The challenge's ID.
-     * @type {Number}
+     * @type {number}
      */
     get id(): number;
     /**
      * The challenge's name.
-     * @type {String}
+     * @type {string}
      */
     get name(): string;
     /**
      * The challenge's status.
-     * @type {String}
+     * @type {string}
      */
     get status(): string;
     /**
      * The challenge's rooms number.
-     * @type {Number}
+     * @type {number}
      */
     get rooms(): number;
     /**
@@ -312,14 +312,14 @@ declare class TMEventChallenge {
     getAdmins(): Promise<Array<Player>>;
     /**
      * The challenge's results.
-     * @param {Number} page The page number.
+     * @param {number} page The page number.
      * @param {Boolean} cache Whether to get the results from cache.
      * @returns {Promise<Array<TMEventChallengeResult>>}
     */
     getResults(page?: number, cache?: boolean): Promise<Array<TMEventChallengeResult>>;
     /**
      * Fetches the match's results.
-     * @param {Number} page The page number.
+     * @param {number} page The page number.
      * @param {Boolean} cache Whether to cache the results.
      * @returns {Promise<Array<TMEventChallengeResult>>}
      * @private
@@ -363,12 +363,12 @@ declare class TMEventRoundMatchResult {
     player(): Promise<Player>;
     /**
      * The position of the player.
-     * @type {Number}
+     * @type {number}
      */
     get position(): number;
     /**
      * The score of the player.
-     * @type {Number}
+     * @type {number}
      */
     get score(): number;
 }
@@ -410,12 +410,12 @@ declare class TMEventChallengeResult {
     player(): Promise<Player>;
     /**
      * The position of the player.
-     * @type {Number}
+     * @type {number}
      */
     get position(): number;
     /**
      * The score of the player.
-     * @type {Number}
+     * @type {number}
      */
     get score(): number;
 }

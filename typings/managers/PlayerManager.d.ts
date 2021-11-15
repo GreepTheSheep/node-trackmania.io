@@ -21,7 +21,7 @@ declare class PlayerManager {
     private _cache;
     /**
      * Searches for a player by its name
-     * @param {String} query The query to search for
+     * @param {string} query The query to search for
      * @returns {Promise<Array<PlayerSearchResult>>} The results
      * @example
      * // Search for a player
@@ -40,7 +40,7 @@ declare class PlayerManager {
     group(groupName: PlayerGroup): Promise<Array<PlayerSearchResult>> | null;
     /**
      * Get the trophy leaderboard
-     * @param {Number} page The page number
+     * @param {number} page The page number
      * @returns {Promise<Array<PlayerTopTrophy>>} The players' top trophies
      * @example
      * Client.players.topTrophies().then(top => {
@@ -51,13 +51,13 @@ declare class PlayerManager {
     /**
      * Gets the matchmaking leaderboard
      * @param {MatchmakingGroup} group The matchmaking group
-     * @param {Number} page The page number
+     * @param {number} page The page number
      * @returns {Promise<Array<PlayerTopMatchmaking>>} The players' top matchmaking
      */
     topMatchmaking(group: MatchmakingGroup, page?: number): Promise<Array<PlayerTopMatchmaking>>;
     /**
      * Fetches a player and returns its data
-     * @param {String} accountid The account ID or its tm.io vanity name
+     * @param {string} accountid The account ID or its tm.io vanity name
      * @param {Boolean} cache Whether to get the player from cache or not
      * @returns {Promise<Player>} The player
      * @example
@@ -69,7 +69,7 @@ declare class PlayerManager {
     get(accountid: string, cache?: boolean): Promise<Player>;
     /**
      * Fetches a player and returns its data
-     * @param {String} accountid The account ID or its tm.io vanity name
+     * @param {string} accountid The account ID or its tm.io vanity name
      * @param {Boolean} cache Whether to cache the player or not
      * @returns {Player} The player
      * @private
@@ -93,17 +93,17 @@ declare class PlayerSearchResult {
     client: Client;
     /**
      * The player's account ID
-     * @type {String}
+     * @type {string}
      */
     id: string;
     /**
      * The player's display name
-     * @type {String}
+     * @type {string}
      */
     name: string;
     /**
      * The player's club tag (if any)
-     * @type {?String}
+     * @type {?string}
      */
     tag: string | null;
 }
@@ -129,12 +129,12 @@ declare class PlayerTopTrophy {
     player: PlayerSearchResult;
     /**
      * The rank
-     * @type {Number}
+     * @type {number}
      */
     rank: number;
     /**
      * The score (number of trophies)
-     * @type {Number}
+     * @type {number}
      */
     score: number;
 }
@@ -153,12 +153,12 @@ declare class PlayerTopMatchmaking {
     player: PlayerSearchResult;
     /**
      * The rank
-     * @type {Number}
+     * @type {number}
      */
     rank: number;
     /**
      * The score
-     * @type {Number}
+     * @type {number}
      */
     score: number;
     /**

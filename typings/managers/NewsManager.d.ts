@@ -21,7 +21,7 @@ declare class NewsManager {
     private _cache;
     /**
      * Fetches a Trackmania splashscreen and returns its data.
-     * @param {Number} newsId The splashscreen ID
+     * @param {number} newsId The splashscreen ID
      * @param {Boolean} cache Whether to get the news from cache or not
      * @returns {Promise<News>} The splashscreen
      * @example
@@ -32,7 +32,7 @@ declare class NewsManager {
     get(newsId: number, cache?: boolean): Promise<News>;
     /**
      * Fetches a splashscreen and returns its data
-     * @param {Number} newsId The splashscreen ID
+     * @param {number} newsId The splashscreen ID
      * @param {Boolean} cache Whether to cache the news or not
      * @returns {News} The splashscreen
      * @private
