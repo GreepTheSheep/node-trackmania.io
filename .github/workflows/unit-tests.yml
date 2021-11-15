@@ -2,7 +2,7 @@ name: Node.js CI & Tests
 
 on:
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, v3 ]
 
 jobs:
   build:
@@ -24,3 +24,5 @@ jobs:
 
     - name: Run tests
       run: npm test
+      env:
+        TMIO_API: ${{ secrets.TMIO_API }}
