@@ -2,13 +2,19 @@ name: Node.js CI & Tests
 
 on:
   pull_request:
-    branches: [ main, develop ]
+    branches:
+      - main
+      - develop
   push:
-    branches: [ develop, v3 ]
+    branches-ignore:
+      - main
+  paths:
+      - 'src/**.js'
+      - 'test/**.test.js'
 
 jobs:
-  build:
-
+  test:
+    name: Unit Tests
     runs-on: ubuntu-latest
 
     steps:
