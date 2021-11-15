@@ -606,17 +606,17 @@ declare class PlayerMatchmakingMatchResult {
     private _data;
     /**
      * The player has win the match
-     * @type {Boolean}
+     * @type {boolean}
      */
     get win(): boolean;
     /**
      * The player has leaved the match
-     * @type {Boolean}
+     * @type {boolean}
      */
     get leave(): boolean;
     /**
      * The player is the most valuable player in the match
-     * @type {Boolean}
+     * @type {boolean}
      */
     get mvp(): boolean;
     /**

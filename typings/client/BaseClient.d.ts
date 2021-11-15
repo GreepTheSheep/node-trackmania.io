@@ -31,14 +31,14 @@ declare class BaseClient {
      * Sets a User Agent for your project.
      * Required if you run a important project.
      * @param {string} useragent The User Agent to set to.
-     * @returns {Boolean}
+     * @returns {boolean}
      */
     setUserAgent(useragent: string): boolean;
     /**
      * Sets an API Key.
      * Required if you run a important project. It will triple the rate limit.
      * @param {string} key The full API key. It must contains "yourname:theactualsecretkey"
-     * @returns {Boolean}
+     * @returns {boolean}
      */
     setAPIKey(key: string): boolean;
 }

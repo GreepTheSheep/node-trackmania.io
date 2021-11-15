@@ -36,7 +36,7 @@ declare class Room {
     get name(): string;
     /**
      * Whether this room is hosted on the cloud (Nadeo)
-     * @type {Boolean}
+     * @type {boolean}
      */
     get isCloud(): boolean;
     /**

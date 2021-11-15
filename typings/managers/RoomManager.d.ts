@@ -36,7 +36,7 @@ declare class RoomManager {
      * Fetches a Trackmania room (server) and returns its data
      * @param {number} clubId The club Id that the room belongs to
      * @param {number} id The room Id
-     * @param {Boolean} cache Whether to get the room from cache or not
+     * @param {boolean} cache Whether to get the room from cache or not
      * @returns {Promise<Room>} The room
      * @example
      * client.rooms.get(338, 1180).then(room => {
@@ -48,7 +48,7 @@ declare class RoomManager {
      * Fetches a room and returns its data
      * @param {number} clubId The club Id that the room belongs to
      * @param {string} id The room Id
-     * @param {Boolean} cache Whether to cache the room or not
+     * @param {boolean} cache Whether to cache the room or not
      * @returns {Campaign} The room
      * @private
      */

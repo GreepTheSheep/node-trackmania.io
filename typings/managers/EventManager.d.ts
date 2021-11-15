@@ -35,7 +35,7 @@ declare class EventManager {
     /**
      * Fetches a Trackmania event and returns its data
      * @param {number} eventId The event id
-     * @param {Boolean} cache Whether to get the map from cache or not
+     * @param {boolean} cache Whether to get the map from cache or not
      * @returns {Promise<TMEvent>} The event
      * @example
      * client.events.get(706).then(event => {
@@ -46,7 +46,7 @@ declare class EventManager {
     /**
      * Fetches a event and returns its data
      * @param {number} eventId The event id
-     * @param {Boolean} cache Whether to cache the map or not
+     * @param {boolean} cache Whether to cache the map or not
      * @returns {Event} The event
      * @private
      */

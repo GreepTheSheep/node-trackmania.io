@@ -22,7 +22,7 @@ declare class NewsManager {
     /**
      * Fetches a Trackmania splashscreen and returns its data.
      * @param {number} newsId The splashscreen ID
-     * @param {Boolean} cache Whether to get the news from cache or not
+     * @param {boolean} cache Whether to get the news from cache or not
      * @returns {Promise<News>} The splashscreen
      * @example
      * client.news.get(143).then(news => {
@@ -33,7 +33,7 @@ declare class NewsManager {
     /**
      * Fetches a splashscreen and returns its data
      * @param {number} newsId The splashscreen ID
-     * @param {Boolean} cache Whether to cache the news or not
+     * @param {boolean} cache Whether to cache the news or not
      * @returns {News} The splashscreen
      * @private
      */
