@@ -143,6 +143,14 @@ class RoomSearchResult {
          */
         this.maxPlayerCount = data.playermax;
     }
+
+    /**
+     * Return to the Room Object
+     * @returns {Promise<Room>}
+     */
+    async room(){
+        return await this.client.rooms.get(this.clubId, this.id);
+    }
 }
 
 module.exports = RoomManager;

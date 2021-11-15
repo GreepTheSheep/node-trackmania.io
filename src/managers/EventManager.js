@@ -136,6 +136,14 @@ class EventSearchResult {
          */
         this.date = new Date(data.timestamp * 1000);
     }
+
+    /**
+     * Return to the TMEvent Object
+     * @returns {Promise<TMEvent>}
+     */
+    async event(){
+        return await this.client.events.get(this.id);
+    }
 }
 
 module.exports = EventManager;

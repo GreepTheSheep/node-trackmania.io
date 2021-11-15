@@ -269,6 +269,14 @@ class PlayerSearchResult {
          */
         this.tag = data.tag ? data.tag : null;
     }
+
+    /**
+     * Return to the Player Object
+     * @returns {Promise<Player>}
+     */
+    async player(){
+        return await this.client.players.get(this.id);
+    }
 }
 
 module.exports = PlayerManager;

@@ -197,6 +197,14 @@ class CampaignSearchResult {
          */
         this.mapCount = data.mapcount;
     }
+
+    /**
+     * Return to the Campaign Object
+     * @returns {Promise<Campaign>}
+     */
+    async campaign(){
+        return await this.client.campaigns.get(this.clubId, this.id);
+    }
 }
 
 module.exports = CampaignManager;
