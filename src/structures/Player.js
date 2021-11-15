@@ -778,7 +778,7 @@ class PlayerMatchmakingMatchResult {
 
     /**
      * The player has win the match
-     * @type {Boolean}
+     * @type {boolean}
      */
     get win(){
         return this._data.win;
@@ -786,7 +786,7 @@ class PlayerMatchmakingMatchResult {
 
     /**
      * The player has leaved the match
-     * @type {Boolean}
+     * @type {boolean}
      */
     get leave(){
         return this._data.leave;
@@ -794,7 +794,7 @@ class PlayerMatchmakingMatchResult {
 
     /**
      * The player is the most valuable player in the match
-     * @type {Boolean}
+     * @type {boolean}
      */
     get mvp(){
         return this._data.mvp;

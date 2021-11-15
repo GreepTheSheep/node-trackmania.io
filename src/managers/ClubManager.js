@@ -29,7 +29,7 @@ class ClubManager{
     /**
      * Gets all the popular clubs
      * @param {number} page The page number
-     * @param {Boolean} cache Whether to cache the clubs or not
+     * @param {boolean} cache Whether to cache the clubs or not
      * @returns {Promise<Array<Club>>} The clubs
      */
     async popularClubs(page = 0, cache = this.client.options.cache.enabled){
@@ -48,7 +48,7 @@ class ClubManager{
     /**
      * Fetches a Trackmania Club and returns its data
      * @param {number} id The Club Id
-     * @param {Boolean} cache Whether to get the club from cache or not
+     * @param {boolean} cache Whether to get the club from cache or not
      * @returns {Promise<Club>} The Club
      * @example 
      * client.clubs.get(54).then(club => {
@@ -66,7 +66,7 @@ class ClubManager{
     /**
      * Fetches a map and returns its data
      * @param {string} id The Club Id
-     * @param {Boolean} cache Whether to cache the club or not
+     * @param {boolean} cache Whether to cache the club or not
      * @returns {Club} The club
      * @private
      */

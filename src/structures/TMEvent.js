@@ -253,7 +253,7 @@ class TMEventRound {
 
     /**
      * The round's challenges.
-     * @param {Boolean} cache Wether to get the challenges from the cache or not.
+     * @param {boolean} cache Wether to get the challenges from the cache or not.
      * @returns {Promise<Array<TMEventChallenge>>}
      */
     async challenges(cache = this.client.options.cache.enabled) {
@@ -271,7 +271,7 @@ class TMEventRound {
     /**
      * Fetches the round's challenges.
      * @param {number} index The index of the challenge to fetch.
-     * @param {Boolean} cache Wether to cache the challenges or not.
+     * @param {boolean} cache Wether to cache the challenges or not.
      * @returns {Promise<Array<TMEventChallenge>>}
      * @private
     */
@@ -351,7 +351,7 @@ class TMEventRoundMatch {
 
     /**
      * Whether the match is completed.
-     * @type {Boolean}
+     * @type {boolean}
      */
     get isCompleted() {
         return this._data.completed;
@@ -360,7 +360,7 @@ class TMEventRoundMatch {
     /**
      * The match's results.
      * @param {number} page The page number.
-     * @param {Boolean} cache Whether to cache the results.
+     * @param {boolean} cache Whether to cache the results.
      * @returns {Promise<Array<TMEventRoundMatchResult>>}
      */
     async getResults(page = 0, cache = this.client.options.cache.enabled) {
@@ -374,7 +374,7 @@ class TMEventRoundMatch {
     /**
      * Fetches the match's results.
      * @param {number} page The page number.
-     * @param {Boolean} cache Whether to cache the results.
+     * @param {boolean} cache Whether to cache the results.
      * @returns {Promise<Array<TMEventRoundMatchResult>>}
      * @private
      */
@@ -560,7 +560,7 @@ class TMEventChallenge {
     /**
      * The challenge's results.
      * @param {number} page The page number.
-     * @param {Boolean} cache Whether to get the results from cache.
+     * @param {boolean} cache Whether to get the results from cache.
      * @returns {Promise<Array<TMEventChallengeResult>>}
     */
     async getResults(page = 0 , cache = this.client.options.cache.enabled) {
@@ -574,7 +574,7 @@ class TMEventChallenge {
     /**
      * Fetches the match's results.
      * @param {number} page The page number.
-     * @param {Boolean} cache Whether to cache the results.
+     * @param {boolean} cache Whether to cache the results.
      * @returns {Promise<Array<TMEventChallengeResult>>}
      * @private
      */

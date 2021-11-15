@@ -45,7 +45,7 @@ class BaseClient extends EventEmitter {
      * Sets a User Agent for your project.
      * Required if you run a important project.
      * @param {string} useragent The User Agent to set to.
-     * @returns {Boolean}
+     * @returns {boolean}
      */
     setUserAgent(useragent){
         this.options.api.useragent = useragent;
@@ -58,7 +58,7 @@ class BaseClient extends EventEmitter {
      * Sets an API Key.
      * Required if you run a important project. It will triple the rate limit.
      * @param {string} key The full API key. It must contains "yourname:theactualsecretkey"
-     * @returns {Boolean}
+     * @returns {boolean}
      */
     setAPIKey(key){
         this.options.api.key = key;

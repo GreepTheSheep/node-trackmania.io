@@ -110,7 +110,7 @@ class PlayerManager {
     /**
      * Fetches a player and returns its data
      * @param {string} accountid The account ID or its tm.io vanity name
-     * @param {Boolean} cache Whether to get the player from cache or not
+     * @param {boolean} cache Whether to get the player from cache or not
      * @returns {Promise<Player>} The player
      * @example
      * // Get a player 
@@ -129,7 +129,7 @@ class PlayerManager {
     /**
      * Fetches a player and returns its data
      * @param {string} accountid The account ID or its tm.io vanity name
-     * @param {Boolean} cache Whether to cache the player or not
+     * @param {boolean} cache Whether to cache the player or not
      * @returns {Player} The player
      * @private
      */

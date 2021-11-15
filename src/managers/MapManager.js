@@ -29,7 +29,7 @@ class MapManager{
     /**
      * Fetches a Trackmania map and returns its data
      * @param {string} mapUid The map UID
-     * @param {Boolean} cache Whether to get the map from cache or not
+     * @param {boolean} cache Whether to get the map from cache or not
      * @returns {Promise<TMMap>} The map
      * @example 
      * client.maps.get('z28QXoFnpODEGgg8MOederEVl3j').then(map => {
@@ -47,7 +47,7 @@ class MapManager{
     /**
      * Fetches a map and returns its data
      * @param {string} mapUid The map UID
-     * @param {Boolean} cache Whether to cache the map or not
+     * @param {boolean} cache Whether to cache the map or not
      * @returns {TMMap} The map
      * @private
      */
