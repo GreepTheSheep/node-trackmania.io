@@ -8,7 +8,7 @@ const { MMTypes } = require('../util/Constants');
 class MatchmakingDivision{
     /**
      * @param {Client} client The client
-     * @param {Number} typeId 
+     * @param {number} typeId 
      * @param {Object} division 
      */
     constructor(client, typeId, division){
@@ -20,7 +20,7 @@ class MatchmakingDivision{
 
         /**
          * The type of the division
-         * @type {Number}
+         * @type {number}
          */
         this.typeId = typeId;
 
@@ -35,7 +35,7 @@ class MatchmakingDivision{
 
     /**
      * The division position
-     * @type {Number}
+     * @type {number}
      */
     get position(){
         return this._division.position;
@@ -51,7 +51,7 @@ class MatchmakingDivision{
 
     /**
      * The name of the division
-     * @type {String}
+     * @type {string}
      */
     get name(){
         if (this.typeName == null) return null;
@@ -60,7 +60,7 @@ class MatchmakingDivision{
 
     /**
      * The rule identifier of this division
-     * @type {String}
+     * @type {string}
      */
     get rule(){
         return this._division.rule;
@@ -68,7 +68,7 @@ class MatchmakingDivision{
 
     /**
      * The minimum points to the division
-     * @type {Number}
+     * @type {number}
      */
     get minPoints(){
         if (this.typeName == "Royal") return this._division.minwins;
@@ -77,7 +77,7 @@ class MatchmakingDivision{
 
     /**
      * The maximum points to the division
-     * @type {Number}
+     * @type {number}
      */
     get maxPoints(){
         if (this.typeName == "Royal") return this._division.maxwins;
@@ -86,7 +86,7 @@ class MatchmakingDivision{
 
     /**
      * The image of the division. If Royal, the crown
-     * @type {String}
+     * @type {string}
      */
     get image(){
         if (this.typeName == null) return null;
@@ -97,7 +97,7 @@ class MatchmakingDivision{
 
     /**
      * The Royal Lion image of the division
-     * @type {String}
+     * @type {string}
      */
     get lion(){
         if (this.typeName == null) return null;

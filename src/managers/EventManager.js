@@ -29,7 +29,7 @@ class EventManager{
     
     /**
      * List all available events
-     * @param {Number} page The page number
+     * @param {number} page The page number
      * @returns {Promise<Array<EventSearchResult>>} The events
      */
     async listEvents(page = 0){
@@ -54,7 +54,7 @@ class EventManager{
 
     /**
      * Fetches a Trackmania event and returns its data
-     * @param {Number} eventId The event id
+     * @param {number} eventId The event id
      * @param {Boolean} cache Whether to get the map from cache or not
      * @returns {Promise<TMEvent>} The event
      * @example 
@@ -72,7 +72,7 @@ class EventManager{
         
     /**
      * Fetches a event and returns its data
-     * @param {Number} eventId The event id
+     * @param {number} eventId The event id
      * @param {Boolean} cache Whether to cache the map or not
      * @returns {Event} The event
      * @private
@@ -108,25 +108,25 @@ class EventSearchResult {
 
         /**
          * The event's ID
-         * @type {Number}
+         * @type {number}
          */
         this.id = data.id;
 
         /**
          * The event's competiton ID
-         * @type {Number}
+         * @type {number}
          */
         this.compId = data.id;
 
         /**
          * The event's Club ID
-         * @type {Number}
+         * @type {number}
          */
         this.clubId = data.clubid;
 
         /**
          * The event's name
-         * @type {String}
+         * @type {string}
          */
         this.name = data.name;
 

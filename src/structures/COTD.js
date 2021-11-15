@@ -34,7 +34,7 @@ class COTD {
 
     /**
      * The COTD identifier
-     * @type {Number}
+     * @type {number}
      */
     get id(){
         return this._data.id;
@@ -42,7 +42,7 @@ class COTD {
 
     /**
      * The COTD name
-     * @type {String}
+     * @type {string}
      */
     get name(){
         return this._data.name;
@@ -50,7 +50,7 @@ class COTD {
 
     /**
      * The number of players in this COTD
-     * @type {Number}
+     * @type {number}
      */
     get players(){
         return this._data.players;

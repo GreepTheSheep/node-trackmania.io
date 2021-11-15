@@ -30,7 +30,7 @@ class PlayerManager {
 
     /**
      * Searches for a player by its name
-     * @param {String} query The query to search for
+     * @param {string} query The query to search for
      * @returns {Promise<Array<PlayerSearchResult>>} The results
      * @example
      * // Search for a player
@@ -73,7 +73,7 @@ class PlayerManager {
 
     /**
      * Get the trophy leaderboard
-     * @param {Number} page The page number
+     * @param {number} page The page number
      * @returns {Promise<Array<PlayerTopTrophy>>} The players' top trophies
      * @example
      * Client.players.topTrophies().then(top => {
@@ -93,7 +93,7 @@ class PlayerManager {
     /**
      * Gets the matchmaking leaderboard
      * @param {MatchmakingGroup} group The matchmaking group
-     * @param {Number} page The page number
+     * @param {number} page The page number
      * @returns {Promise<Array<PlayerTopMatchmaking>>} The players' top matchmaking
      */
     async topMatchmaking(group, page = 0){
@@ -109,7 +109,7 @@ class PlayerManager {
 
     /**
      * Fetches a player and returns its data
-     * @param {String} accountid The account ID or its tm.io vanity name
+     * @param {string} accountid The account ID or its tm.io vanity name
      * @param {Boolean} cache Whether to get the player from cache or not
      * @returns {Promise<Player>} The player
      * @example
@@ -128,7 +128,7 @@ class PlayerManager {
         
     /**
      * Fetches a player and returns its data
-     * @param {String} accountid The account ID or its tm.io vanity name
+     * @param {string} accountid The account ID or its tm.io vanity name
      * @param {Boolean} cache Whether to cache the player or not
      * @returns {Player} The player
      * @private
@@ -190,13 +190,13 @@ class PlayerTopTrophy {
 
         /**
          * The rank
-         * @type {Number}
+         * @type {number}
          */
         this.rank = data.rank;
 
         /**
          * The score (number of trophies)
-         * @type {Number}
+         * @type {number}
          */
         this.score = data.score;
     }
@@ -218,13 +218,13 @@ class PlayerTopMatchmaking{
 
         /**
          * The rank
-         * @type {Number}
+         * @type {number}
          */
         this.rank = data.rank;
 
         /**
          * The score
-         * @type {Number}
+         * @type {number}
          */
         this.score = data.score;
 
@@ -253,19 +253,19 @@ class PlayerSearchResult {
 
         /**
          * The player's account ID
-         * @type {String}
+         * @type {string}
          */
         this.id = data.id;
 
         /**
          * The player's display name
-         * @type {String}
+         * @type {string}
          */
         this.name = data.name;
 
         /**
          * The player's club tag (if any)
-         * @type {?String}
+         * @type {?string}
          */
         this.tag = data.tag ? data.tag : null;
     }

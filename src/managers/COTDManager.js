@@ -28,7 +28,7 @@ class COTDManager{
 
     /**
      * Fetches a Trackmania event and returns its data
-     * @param {Number} page The page, each page contains 12 items
+     * @param {number} page The page, each page contains 12 items
      * @param {Boolean} cache Whether to get the list from cache or not
      * @returns {Promise<Array<COTD>>} The COTD list
      * @example 
@@ -46,7 +46,7 @@ class COTDManager{
         
     /**
      * Fetches a event and returns its data
-     * @param {Number} page The page
+     * @param {number} page The page
      * @param {Boolean} cache Whether to cache the list or not
      * @returns {array<COTD>} The COTD list
      * @private

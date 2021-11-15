@@ -7,7 +7,7 @@ const { createEnum } = require("./Util");
  * * `tmwc21` - All players from the TrackMania World Cup 2021 competition
  * * `sponsor` - All players who sponsors Trackmania.io and Openplanet
  * * `team` - All players from the Trackmania.io and Openplanet team
- * @typedef {String} PlayerGroup
+ * @typedef {string} PlayerGroup
  */
 exports.GroupTypes = createEnum([
     'nadeo',
@@ -21,7 +21,7 @@ exports.GroupTypes = createEnum([
  * All available matchmaking groups.
  * * `3v3`
  * * `royal`
- * @typedef {String} MatchmakingGroup
+ * @typedef {string} MatchmakingGroup
  */
 exports.MMTypes = createEnum([
     ...Array(2).fill(null),

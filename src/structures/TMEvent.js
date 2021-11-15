@@ -28,7 +28,7 @@ class TMEvent {
 
     /**
      * The event's ID.
-     * @type {Number}
+     * @type {number}
      */
     get id() {
         return this._data.id;
@@ -36,7 +36,7 @@ class TMEvent {
 
     /**
      * The number of players in the event.
-     * @type {Number}
+     * @type {number}
      */
     get size() {
         return this._data.numplayers;
@@ -44,7 +44,7 @@ class TMEvent {
 
     /**
      * The event's Live ID.
-     * @type {String}
+     * @type {string}
      */
     get liveId() {
         return this._data.liveid;
@@ -60,7 +60,7 @@ class TMEvent {
 
     /**
      * The event's name.
-     * @type {String}
+     * @type {string}
      */
     get name() {
         return this._data.name;
@@ -68,7 +68,7 @@ class TMEvent {
 
     /**
      * The event's description.
-     * @type {String}
+     * @type {string}
      */
     get description() {
         return this._data.description;
@@ -108,7 +108,7 @@ class TMEvent {
 
     /**
      * The event's leaderboard id.
-     * @type {Number}
+     * @type {number}
      */
     get leaderboardId() {
         return this._data.leaderboardid;
@@ -116,7 +116,7 @@ class TMEvent {
 
     /**
      * The event's manialink (if any).
-     * @type {?String}
+     * @type {?string}
      */
     get manialink() {
         if (this._data.manialink == "") return null;
@@ -125,7 +125,7 @@ class TMEvent {
 
     /**
      * The event's rules URL (if any).
-     * @type {?String}
+     * @type {?string}
      */
     get rulesUrl() {
         if (this._data.rulesurl == "") return null;
@@ -134,7 +134,7 @@ class TMEvent {
 
     /**
      * The event's stream URL (if any).
-     * @type {?String}
+     * @type {?string}
      */
     get stream() {
         if (this._data.streamurl == "") return null;
@@ -143,7 +143,7 @@ class TMEvent {
 
     /**
      * The event's website (if any).
-     * @type {?String}
+     * @type {?string}
      */
     get website() {
         if (this._data.websiteurl == "") return null;
@@ -152,7 +152,7 @@ class TMEvent {
 
     /**
      * The event's logo URL.
-     * @type {String}
+     * @type {string}
      */
     get logo() {
         return new ReqUtil(this.client).tmioURL + this._data.logourl;
@@ -160,7 +160,7 @@ class TMEvent {
 
     /**
      * The event's vertical banner URL.
-     * @type {String}
+     * @type {string}
      */
     get vertical() {
         return new ReqUtil(this.client).tmioURL + this._data.verticalurl;
@@ -217,7 +217,7 @@ class TMEventRound {
 
     /**
      * The round's ID.
-     * @type {Number}
+     * @type {number}
      */
     get id() {
         return this._data.id;
@@ -225,7 +225,7 @@ class TMEventRound {
 
     /**
      * The round's name.
-     * @type {String}
+     * @type {string}
      */
     get name() {
         return this._data.name;
@@ -233,7 +233,7 @@ class TMEventRound {
 
     /**
      * The round's status.
-     * @type {String}
+     * @type {string}
      */
     get status() {
         return this._data.status;
@@ -270,7 +270,7 @@ class TMEventRound {
 
     /**
      * Fetches the round's challenges.
-     * @param {Number} index The index of the challenge to fetch.
+     * @param {number} index The index of the challenge to fetch.
      * @param {Boolean} cache Wether to cache the challenges or not.
      * @returns {Promise<Array<TMEventChallenge>>}
      * @private
@@ -335,7 +335,7 @@ class TMEventRoundMatch {
 
     /**
      * The match's ID.
-     * @type {Number}
+     * @type {number}
      */
     get id() {
         return this._data.id;
@@ -343,7 +343,7 @@ class TMEventRoundMatch {
 
     /**
      * The match's name.
-     * @type {String}
+     * @type {string}
      */
     get name() {
         return this._data.name;
@@ -359,7 +359,7 @@ class TMEventRoundMatch {
 
     /**
      * The match's results.
-     * @param {Number} page The page number.
+     * @param {number} page The page number.
      * @param {Boolean} cache Whether to cache the results.
      * @returns {Promise<Array<TMEventRoundMatchResult>>}
      */
@@ -373,7 +373,7 @@ class TMEventRoundMatch {
 
     /**
      * Fetches the match's results.
-     * @param {Number} page The page number.
+     * @param {number} page The page number.
      * @param {Boolean} cache Whether to cache the results.
      * @returns {Promise<Array<TMEventRoundMatchResult>>}
      * @private
@@ -442,7 +442,7 @@ class TMEventRoundMatchResult {
 
     /**
      * The position of the player.
-     * @type {Number}
+     * @type {number}
      */
     get position() {
         return this._data.position;
@@ -450,7 +450,7 @@ class TMEventRoundMatchResult {
 
     /**
      * The score of the player.
-     * @type {Number}
+     * @type {number}
      */
     get score() {
         return this._data.score;
@@ -501,7 +501,7 @@ class TMEventChallenge {
 
     /**
      * The challenge's ID.
-     * @type {Number}
+     * @type {number}
      */
     get id() {
         return this._data.id;
@@ -509,7 +509,7 @@ class TMEventChallenge {
 
     /**
      * The challenge's name.
-     * @type {String}
+     * @type {string}
      */
     get name() {
         return this._data.name;
@@ -517,7 +517,7 @@ class TMEventChallenge {
 
     /**
      * The challenge's status.
-     * @type {String}
+     * @type {string}
      */
     get status() {
         return this._data.status;
@@ -525,7 +525,7 @@ class TMEventChallenge {
 
     /**
      * The challenge's rooms number.
-     * @type {Number}
+     * @type {number}
      */
     get rooms() {
         return this._data.servers;
@@ -559,7 +559,7 @@ class TMEventChallenge {
 
     /**
      * The challenge's results.
-     * @param {Number} page The page number.
+     * @param {number} page The page number.
      * @param {Boolean} cache Whether to get the results from cache.
      * @returns {Promise<Array<TMEventChallengeResult>>}
     */
@@ -573,7 +573,7 @@ class TMEventChallenge {
 
     /**
      * Fetches the match's results.
-     * @param {Number} page The page number.
+     * @param {number} page The page number.
      * @param {Boolean} cache Whether to cache the results.
      * @returns {Promise<Array<TMEventChallengeResult>>}
      * @private
@@ -642,7 +642,7 @@ class TMEventChallengeResult {
 
     /**
      * The position of the player.
-     * @type {Number}
+     * @type {number}
      */
     get position() {
         return this._data.position;
@@ -650,7 +650,7 @@ class TMEventChallengeResult {
 
     /**
      * The score of the player.
-     * @type {Number}
+     * @type {number}
      */
     get score() {
         return this._data.score;

@@ -19,7 +19,7 @@ exports.mergeDefault = (def, given) => {
 
 /**
  * Create an enum from a list of strings.
- * @param {Array<String>} keys
+ * @param {Array<string>} keys
  * @returns {Object}
  * @private
  */
@@ -35,8 +35,8 @@ exports.createEnum = (keys) => {
 
 /**
  * Format the string and remove the TM style code on it.
- * @param {String} str String to format
- * @returns {String}
+ * @param {string} str string to format
+ * @returns {string}
  */
 exports.formatTMText = (str) => {
     let res, resStr;

@@ -43,7 +43,7 @@ class Room {
 
     /**
      * The name of the room
-     * @type {String}
+     * @type {string}
      */
     get name() {
         return this._data.name;
@@ -59,7 +59,7 @@ class Room {
 
     /**
      * The login of the room (if it's not a cloud room)
-     * @type {String}
+     * @type {string}
      */
     get login() {
         if (!this.isCloud) {
@@ -69,7 +69,7 @@ class Room {
 
     /**
      * The number of players in the room
-     * @type {Number}
+     * @type {number}
      */
     get playerCount() {
         return this._data.playercount;
@@ -77,7 +77,7 @@ class Room {
 
     /**
      * The maximum number of players in the room
-     * @type {Number}
+     * @type {number}
      */
     get maxPlayersCount() {
         return this._data.playermax;
@@ -85,7 +85,7 @@ class Room {
 
     /**
      * The region of the room (if it's on a cloud room)
-     * @type {String}
+     * @type {string}
      */
     get region() {
         if (this.isCloud) {
@@ -95,7 +95,7 @@ class Room {
 
     /**
      * The script name that currently runs in the room
-     * @type {String}
+     * @type {string}
      */
     get script() {
         return this._data.script;
@@ -133,7 +133,7 @@ class Room {
 
     /**
      * The image URL of the room
-     * @type {String}
+     * @type {string}
      */
     get imageUrl() {
         return this._data.mediaurl;

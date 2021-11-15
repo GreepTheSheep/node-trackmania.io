@@ -28,7 +28,7 @@ class ClubManager{
 
     /**
      * Gets all the popular clubs
-     * @param {Number} page The page number
+     * @param {number} page The page number
      * @param {Boolean} cache Whether to cache the clubs or not
      * @returns {Promise<Array<Club>>} The clubs
      */
@@ -47,7 +47,7 @@ class ClubManager{
 
     /**
      * Fetches a Trackmania Club and returns its data
-     * @param {Number} id The Club Id
+     * @param {number} id The Club Id
      * @param {Boolean} cache Whether to get the club from cache or not
      * @returns {Promise<Club>} The Club
      * @example 
@@ -65,7 +65,7 @@ class ClubManager{
         
     /**
      * Fetches a map and returns its data
-     * @param {String} id The Club Id
+     * @param {string} id The Club Id
      * @param {Boolean} cache Whether to cache the club or not
      * @returns {Club} The club
      * @private

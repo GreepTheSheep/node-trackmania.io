@@ -34,7 +34,7 @@ class TOTD {
 
     /**
      * The campaign ID
-     * @type {Number}
+     * @type {number}
      */
     get campaignId(){
         return this._data.campaignid;
@@ -42,7 +42,7 @@ class TOTD {
 
     /**
      * The week day
-     * @type {Number}
+     * @type {number}
      */
     get weekDay(){
         return this._data.weekday;
@@ -50,7 +50,7 @@ class TOTD {
 
     /**
      * The month day
-     * @type {Number}
+     * @type {number}
      */
     get monthDay(){
         return this._data.monthday;
@@ -58,7 +58,7 @@ class TOTD {
 
     /**
      * The leaderboard ID
-     * @type {String}
+     * @type {string}
      */
     get leaderboardId(){
         return this._data.leaderboardid;

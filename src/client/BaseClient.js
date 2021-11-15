@@ -29,8 +29,8 @@ class BaseClient extends EventEmitter {
 
     /**
      * Do an API request
-     * @param {String} url The URL to request
-     * @param {String} method The HTTP method to use (Default: GET)
+     * @param {string} url The URL to request
+     * @param {string} method The HTTP method to use (Default: GET)
      * @param {Object} data The data to send
      * @returns {Promise<Object>} A promise that resolves to the API response
      * @private
@@ -44,7 +44,7 @@ class BaseClient extends EventEmitter {
     /**
      * Sets a User Agent for your project.
      * Required if you run a important project.
-     * @param {String} useragent The User Agent to set to.
+     * @param {string} useragent The User Agent to set to.
      * @returns {Boolean}
      */
     setUserAgent(useragent){
@@ -57,7 +57,7 @@ class BaseClient extends EventEmitter {
     /**
      * Sets an API Key.
      * Required if you run a important project. It will triple the rate limit.
-     * @param {String} key The full API key. It must contains "yourname:theactualsecretkey"
+     * @param {string} key The full API key. It must contains "yourname:theactualsecretkey"
      * @returns {Boolean}
      */
     setAPIKey(key){
@@ -83,14 +83,14 @@ class ClientRatelimit {
         /**
          * The total number of requests you can make on trackmania.io API.
          * If null, it means you haven't actually done a request
-         * @type {?Number}
+         * @type {?number}
          */
         this.ratelimit = null;
 
         /**
          * The number of requests you can make before the ratelimit resets.
          * If null, it means you haven't actually done a request
-         * @type {?Number}
+         * @type {?number}
          */
         this.remaining = null;
 

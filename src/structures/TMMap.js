@@ -277,7 +277,7 @@ class TMExchangeMap {
 
     /**
      * The map exchange id.
-     * @type {Number}
+     * @type {number}
      */
     get id() {
         return this._data.TrackID;
@@ -458,7 +458,7 @@ class TMMapLeaderboard {
 
     /**
      * The position of the player on this leaderboard
-     * @type {Number}
+     * @type {number}
      */
     get position(){
         return this._data.position;
@@ -466,7 +466,7 @@ class TMMapLeaderboard {
 
     /**
      * The time in milliseconds of the player
-     * @type {Number}
+     * @type {number}
      */
     get time(){
         return this._data.time;
@@ -482,7 +482,7 @@ class TMMapLeaderboard {
 
     /**
      * The ghost URL
-     * @type {String}
+     * @type {string}
      */
     get ghost(){
         return `${new ReqUtil(this.client).tmioURL}${this._data.url}`;
