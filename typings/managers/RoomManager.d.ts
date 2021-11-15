@@ -99,5 +99,10 @@ declare class RoomSearchResult {
      * @type {number}
      */
     maxPlayerCount: number;
+    /**
+     * Return to the Room Object
+     * @returns {Promise<Room>}
+     */
+    room(): Promise<Room>;
 }
 import Room = require("../structures/Room");

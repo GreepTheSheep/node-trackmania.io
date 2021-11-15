@@ -20,6 +20,13 @@ declare class NewsManager {
      */
     private _cache;
     /**
+     * Get the in-game news list
+     * @param {number} page The page number
+     * @param {Boolean} cache Whether to cache the news or not
+     * @returns {Promise<Array<News>>}
+     */
+    list(page?: number, cache?: boolean): Promise<Array<News>>;
+    /**
      * Fetches a Trackmania splashscreen and returns its data.
      * @param {number} newsId The splashscreen ID
      * @param {boolean} cache Whether to get the news from cache or not

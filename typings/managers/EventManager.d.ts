@@ -92,5 +92,10 @@ declare class EventSearchResult {
      * @type {Date}
      */
     date: Date;
+    /**
+     * Return to the TMEvent Object
+     * @returns {Promise<TMEvent>}
+     */
+    event(): Promise<TMEvent>;
 }
 import TMEvent = require("../structures/TMEvent");

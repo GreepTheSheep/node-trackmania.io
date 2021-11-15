@@ -113,4 +113,9 @@ declare class CampaignSearchResult {
      * @type {number}
      */
     mapCount: number;
+    /**
+     * Return to the Campaign Object
+     * @returns {Promise<Campaign>}
+     */
+    campaign(): Promise<Campaign>;
 }

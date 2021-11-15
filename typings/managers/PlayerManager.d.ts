@@ -106,6 +106,11 @@ declare class PlayerSearchResult {
      * @type {?string}
      */
     tag: string | null;
+    /**
+     * Return to the Player Object
+     * @returns {Promise<Player>}
+     */
+    player(): Promise<Player>;
 }
 import { PlayerGroup } from "../util/Constants";
 /**
