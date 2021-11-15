@@ -5,7 +5,7 @@ export = MatchmakingDivision;
 declare class MatchmakingDivision {
     /**
      * @param {Client} client The client
-     * @param {Number} typeId
+     * @param {number} typeId
      * @param {Object} division
      */
     constructor(client: Client, typeId: number, division: any);
@@ -16,7 +16,7 @@ declare class MatchmakingDivision {
     client: Client;
     /**
      * The type of the division
-     * @type {Number}
+     * @type {number}
      */
     typeId: number;
     /**
@@ -27,7 +27,7 @@ declare class MatchmakingDivision {
     private _division;
     /**
      * The division position
-     * @type {Number}
+     * @type {number}
      */
     get position(): number;
     /**
@@ -37,32 +37,32 @@ declare class MatchmakingDivision {
     get typeName(): string;
     /**
      * The name of the division
-     * @type {String}
+     * @type {string}
      */
     get name(): string;
     /**
      * The rule identifier of this division
-     * @type {String}
+     * @type {string}
      */
     get rule(): string;
     /**
      * The minimum points to the division
-     * @type {Number}
+     * @type {number}
      */
     get minPoints(): number;
     /**
      * The maximum points to the division
-     * @type {Number}
+     * @type {number}
      */
     get maxPoints(): number;
     /**
      * The image of the division. If Royal, the crown
-     * @type {String}
+     * @type {string}
      */
     get image(): string;
     /**
      * The Royal Lion image of the division
-     * @type {String}
+     * @type {string}
      */
     get lion(): string;
 }

@@ -32,14 +32,14 @@ declare class CampaignManager {
     officialCampaigns(): Promise<Array<CampaignSearchResult>>;
     /**
      * Get all popular campaigns (official excluded) (top 50)
-     * @param {Number} page The page number
+     * @param {number} page The page number
      * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
      */
     popularCampaigns(page?: number): Promise<Array<CampaignSearchResult>>;
     /**
      * Searches for a campaign
      * @param {string} query The query
-     * @param {Number} page The page number
+     * @param {number} page The page number
      * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
      * @example
      * client.campaigns.search('htimh').then(campaigns => {
@@ -52,8 +52,8 @@ declare class CampaignManager {
     search(query: string, page?: number): Promise<Array<CampaignSearchResult>>;
     /**
      * Fetches a Trackmania campaign and returns its data
-     * @param {Number} clubId The club Id that the campaign belongs to (If it's an official campaign, set it to 0)
-     * @param {Number} id The campaign Id
+     * @param {number} clubId The club Id that the campaign belongs to (If it's an official campaign, set it to 0)
+     * @param {number} id The campaign Id
      * @param {Boolean} cache Whether to get the campaign from cache or not
      * @returns {Promise<Campaign>} The campaign
      * @example
@@ -64,8 +64,8 @@ declare class CampaignManager {
     get(clubId: number, id: number, cache?: boolean): Promise<Campaign>;
     /**
      * Fetches a campaign and returns its data
-     * @param {Number} clubId The club Id that the campaign belongs to
-     * @param {String} id The campaign Id
+     * @param {number} clubId The club Id that the campaign belongs to
+     * @param {string} id The campaign Id
      * @param {Boolean} cache Whether to cache the campaign or not
      * @returns {Campaign} The campaign
      * @private
@@ -90,17 +90,17 @@ declare class CampaignSearchResult {
     client: Client;
     /**
      * The campaign's ID
-     * @type {Number}
+     * @type {number}
      */
     id: number;
     /**
      * The campaign's Club ID
-     * @type {Number}
+     * @type {number}
      */
     clubId: number;
     /**
      * The campaign's name
-     * @type {String}
+     * @type {string}
      */
     name: string;
     /**
@@ -110,7 +110,7 @@ declare class CampaignSearchResult {
     date: Date;
     /**
      * The campaign's map count
-     * @type {Number}
+     * @type {number}
      */
     mapCount: number;
 }

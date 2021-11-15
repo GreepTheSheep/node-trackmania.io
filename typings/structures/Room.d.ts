@@ -31,7 +31,7 @@ declare class Room {
     club(): Promise<Club>;
     /**
      * The name of the room
-     * @type {String}
+     * @type {string}
      */
     get name(): string;
     /**
@@ -41,27 +41,27 @@ declare class Room {
     get isCloud(): boolean;
     /**
      * The login of the room (if it's not a cloud room)
-     * @type {String}
+     * @type {string}
      */
     get login(): string;
     /**
      * The number of players in the room
-     * @type {Number}
+     * @type {number}
      */
     get playerCount(): number;
     /**
      * The maximum number of players in the room
-     * @type {Number}
+     * @type {number}
      */
     get maxPlayersCount(): number;
     /**
      * The region of the room (if it's on a cloud room)
-     * @type {String}
+     * @type {string}
      */
     get region(): string;
     /**
      * The script name that currently runs in the room
-     * @type {String}
+     * @type {string}
      */
     get script(): string;
     /**
@@ -77,7 +77,7 @@ declare class Room {
     }[];
     /**
      * The image URL of the room
-     * @type {String}
+     * @type {string}
      */
     get imageUrl(): string;
     /**

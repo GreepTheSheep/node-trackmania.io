@@ -174,7 +174,7 @@ declare class TMExchangeMap {
     private _data;
     /**
      * The map exchange id.
-     * @type {Number}
+     * @type {number}
      */
     get id(): number;
     /**
@@ -301,12 +301,12 @@ declare class TMMapLeaderboard {
     player(): Player;
     /**
      * The position of the player on this leaderboard
-     * @type {Number}
+     * @type {number}
      */
     get position(): number;
     /**
      * The time in milliseconds of the player
-     * @type {Number}
+     * @type {number}
      */
     get time(): number;
     /**
@@ -316,7 +316,7 @@ declare class TMMapLeaderboard {
     get date(): Date;
     /**
      * The ghost URL
-     * @type {String}
+     * @type {string}
      */
     get ghost(): string;
 }

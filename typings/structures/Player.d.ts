@@ -27,12 +27,12 @@ declare class Player {
     private _constructZoneArray;
     /**
      * The account ID of the player
-     * @type {String}
+     * @type {string}
      */
     get id(): string;
     /**
      * The display name of the player
-     * @type {String}
+     * @type {string}
      */
     get name(): string;
     /**
@@ -44,7 +44,7 @@ declare class Player {
     private readonly get timestamp();
     /**
      * The club tag of the player (non-formatted)
-     * @type {String}
+     * @type {string}
      */
     get clubTag(): string;
     /**
@@ -96,7 +96,7 @@ declare class Player {
     private _cotd;
     /**
      * The player's matchmaking data
-     * @param {String | number} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
+     * @param {string | number} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
      * @type {PlayerMatchmaking}
      */
     matchmaking(type?: string | number): PlayerMatchmaking;
@@ -135,7 +135,7 @@ declare class PlayerTrophies {
     private _data;
     /**
      * The points of the player
-     * @type {Number}
+     * @type {number}
      */
     get points(): number;
     /**
@@ -157,8 +157,8 @@ declare class PlayerTrophies {
     private _PlayerEchelon;
     /**
      * The number of trophies the player has
-     * @param {Number} number The trophy number, from 1 (bronze 1) to 9 (gold 3)
-     * @returns {Number}
+     * @param {number} number The trophy number, from 1 (bronze 1) to 9 (gold 3)
+     * @returns {number}
      * @example
      * // Get number of trophy 5 (aka silver 2 trophy)
      * player.trophies.trophy(5);
@@ -166,7 +166,7 @@ declare class PlayerTrophies {
     trophy(number?: number): number;
     /**
      * The number of trophies the player has
-     * @type {Array<Number>}
+     * @type {Array<number>}
      */
     get trophies(): number[];
     /**
@@ -190,27 +190,27 @@ declare class PlayerMeta {
     player: Player;
     /**
      * The vanity name of the player, if the player has one, otherwise null
-     * @type {String}
+     * @type {string}
      */
     get vanity(): string;
     /**
      * The youtube link of the player, if the player has one, otherwise null
-     * @type {String}
+     * @type {string}
      */
     get youtube(): string;
     /**
      * The twitter link of the player, if the player has one, otherwise null
-     * @type {String}
+     * @type {string}
      */
     get twitter(): string;
     /**
      * The twitch channel link of the player, if the player has one, otherwise null
-     * @type {String}
+     * @type {string}
      */
     get twitch(): string;
     /**
      * The display URL of the player
-     * @type {String}
+     * @type {string}
      */
     get displayURL(): string;
 }
@@ -241,7 +241,7 @@ declare class PlayerCOTD {
     private _data;
     /**
      * The number of COTDs played
-     * @type {Number}
+     * @type {number}
      */
     get count(): number;
     /**
@@ -288,27 +288,27 @@ declare class PlayerMatchmaking {
     private _data;
     /**
      * The type name of the matchmaking
-     * @type {String}
+     * @type {string}
      */
     get type(): string;
     /**
      * The type ID of the matchmaking
-     * @type {Number}
+     * @type {number}
      */
     get typeId(): number;
     /**
      * The rank of the player on this matchmaking
-     * @type {Number}
+     * @type {number}
      */
     get rank(): number;
     /**
      * The MMR rank of the player on this matchmaking (score)
-     * @type {Number}
+     * @type {number}
      */
     get score(): number;
     /**
      * The progression of the player on this matchmaking (can be number of wins for Royal, or score for 3v3)
-     * @type {Number}
+     * @type {number}
      */
     get progression(): number;
     /**
@@ -349,17 +349,17 @@ declare class PlayerEchelon {
     client: Client;
     /**
      * The echelon number
-     * @type {Number}
+     * @type {number}
      */
     number: number;
     /**
      * The name of the echelon
-     * @type {String}
+     * @type {string}
      */
     get name(): string;
     /**
      * The image URL of the echelon
-     * @type {String}
+     * @type {string}
      */
     get image(): string;
 }
@@ -390,8 +390,8 @@ declare class PlayerTrophyHistory {
     private _data;
     /**
      * The number of trophies the player has
-     * @param {Number} number The trophy number, from 1 (bronze 1) to 9 (gold 3)
-     * @returns {Number}
+     * @param {number} number The trophy number, from 1 (bronze 1) to 9 (gold 3)
+     * @returns {number}
      * @example
      * // Get number of trophy 5 (aka silver 2 trophy) on the latest gain
      * player.trophies.history[0].trophy(5);
@@ -399,7 +399,7 @@ declare class PlayerTrophyHistory {
     trophy(number?: number): number;
     /**
      * The number of trophies the player has
-     * @type {Array<Number>}
+     * @type {Array<number>}
      */
     get trophies(): number[];
     /**
@@ -409,7 +409,7 @@ declare class PlayerTrophyHistory {
     get date(): Date;
     /**
      * The rank of the player
-     * @type {Number}
+     * @type {number}
      */
     get rank(): number;
     /**
@@ -478,37 +478,37 @@ declare class PlayerCOTDStats {
     private _bestoverall;
     /**
      * The total COTD wins in division 1
-     * @type {Number}
+     * @type {number}
      */
     get totalWins(): number;
     /**
      * The total COTD wins in any divison
-     * @type {Number}
+     * @type {number}
      */
     get totalDivWins(): number;
     /**
      * Average rank, float between 0 and 1
-     * @type {Number}
+     * @type {number}
      */
     get averageRank(): number;
     /**
      * Average div rank (in any division), float between 0 and 1
-     * @type {Number}
+     * @type {number}
      */
     get averageDivRank(): number;
     /**
      * Average division
-     * @type {Number}
+     * @type {number}
      */
     get averageDiv(): number;
     /**
      * The win streak in division 1
-     * @type {Number}
+     * @type {number}
      */
     get winStreak(): number;
     /**
      * The win streak in any division
-     * @type {Number}
+     * @type {number}
      */
     get divWinStreak(): number;
 }
@@ -539,7 +539,7 @@ declare class PlayerCOTDResult {
     private _data;
     /**
      * The ID of the COTD
-     * @type {Number}
+     * @type {number}
      */
     get id(): number;
     /**
@@ -550,32 +550,32 @@ declare class PlayerCOTDResult {
     readonly get date(): Date;
     /**
      * The name of the COTD
-     * @type {String}
+     * @type {string}
      */
     get name(): string;
     /**
      * The division of the COTD
-     * @type {Number}
+     * @type {number}
      */
     get division(): number;
     /**
      * The overall rank on the COTD
-     * @type {Number}
+     * @type {number}
      */
     get rank(): number;
     /**
      * The division rank on the COTD
-     * @type {Number}
+     * @type {number}
      */
     get divisionRank(): number;
     /**
      * The score of the COTD
-     * @type {Number}
+     * @type {number}
      */
     get score(): number;
     /**
      * The total number of players of the COTD
-     * @type {Number}
+     * @type {number}
      */
     get totalPlayers(): number;
 }
@@ -621,7 +621,7 @@ declare class PlayerMatchmakingMatchResult {
     get mvp(): boolean;
     /**
      * The match LiveID
-     * @type {String}
+     * @type {string}
      */
     get liveId(): string;
     /**
@@ -631,7 +631,7 @@ declare class PlayerMatchmakingMatchResult {
     get startDate(): Date;
     /**
      * The score of the player after this match
-     * @type {Number}
+     * @type {number}
      */
     get afterScore(): number;
 }
@@ -662,82 +662,82 @@ declare class PlayerTrophyAchievementType {
     private _data;
     /**
      * Gets the type of the achievement
-     * @type {String}
+     * @type {string}
      */
     get type(): string;
     /**
      * Gets the ID of the achievement
-     * @type {String}
+     * @type {string}
      */
     get id(): string;
     /**
      * Gets the solo ranking achievement type (if the type is SoloRanking)
-     * @type {String|null}
+     * @type {string|null}
      */
     get soloRankingType(): string;
     /**
      * Gets the solo ranking season ID (if the type is SoloRanking)
-     * @type {String|null}
+     * @type {string|null}
      */
     get soloRankingSeasonId(): string;
     /**
      * Gets the competition id (if the type is CompetitionRanking)
-     * @type {String|null}
+     * @type {string|null}
      */
     get competitionId(): string;
     /**
      * Gets the competition name (if the type is CompetitionRanking)
-     * @type {String|null}
+     * @type {string|null}
      */
     get competitionName(): string;
     /**
      * Gets the competition stage (if the type is CompetitionRanking)
-     * @type {String|null}
+     * @type {string|null}
      */
     get competitionStage(): string;
     /**
      * Gets the competition stage step (if the type is CompetitionRanking)
-     * @type {String|null}
+     * @type {string|null}
      */
     get competitionStageStep(): string;
     /**
      * Gets the competition type (if the type is CompetitionRanking)
-     * @type {String|null}
+     * @type {string|null}
      */
     get competitionType(): string;
     /**
      * Gets the Solo Medal type (if the type is SoloMedal)
-     * @type {String|null}
+     * @type {string|null}
      */
     get soloMedalType(): string;
     /**
      * Gets the solo medal level (if the type is SoloMedal)
-     * @type {Number|null}
+     * @type {number|null}
      */
     get soloMedalLevel(): number;
     /**
      * Gets the server ID of the Live Match (if the type is LiveMatch)
-     * @type {String|null}
+     * @type {string|null}
      */
     get liveMatchServerId(): string;
     /**
      * Gets the game mode of the Live Match (if the type is LiveMatch)
-     * @type {String|null}
+     * @type {string|null}
      */
     get liveMatchGameMode(): string;
     /**
      * Gets the duration of the Live Match in seconds (if the type is LiveMatch)
-     * @type {Number|null}
+     * @type {number|null}
      */
     get liveMatchDuration(): number;
     /**
      * Gets the rank of the Live Match (if the type is LiveMatch)
-     * @type {Number|null}
+     * @type {number|null}
      */
     get liveMatchRank(): number;
     /**
      * Gets the trophy rank of the Live Match (if the type is LiveMatch)
-     * @type {Number|null}
+     * @type {number|null}
      */
     get liveMatchTrophyRank(): number;
 }
@@ -774,7 +774,7 @@ declare class PlayerCOTDStatsBest {
     private _data;
     /**
      * The best rank
-     * @type {Number}
+     * @type {number}
      */
     get rank(): number;
     /**
@@ -785,12 +785,12 @@ declare class PlayerCOTDStatsBest {
     readonly get rankDate(): Date;
     /**
      * The best div rank
-     * @type {Number}
+     * @type {number}
      */
     get divRank(): number;
     /**
      * The best division
-     * @type {Number}
+     * @type {number}
      */
     get division(): number;
     /**
@@ -801,7 +801,7 @@ declare class PlayerCOTDStatsBest {
     readonly get divisionDate(): Date;
     /**
      * The best rank in a division
-     * @type {Number}
+     * @type {number}
      */
     get rankInDivision(): number;
     /**
@@ -812,7 +812,7 @@ declare class PlayerCOTDStatsBest {
     readonly get rankInDivisionDate(): Date;
     /**
      * The division who got the best rank in a division
-     * @type {Number}
+     * @type {number}
      */
     get divisionOfRankInDivision(): number;
 }

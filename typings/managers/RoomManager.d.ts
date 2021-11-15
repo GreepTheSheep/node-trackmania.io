@@ -34,8 +34,8 @@ declare class RoomManager {
     search(query: string, page?: number): Promise<Array<RoomSearchResult>>;
     /**
      * Fetches a Trackmania room (server) and returns its data
-     * @param {Number} clubId The club Id that the room belongs to
-     * @param {Number} id The room Id
+     * @param {number} clubId The club Id that the room belongs to
+     * @param {number} id The room Id
      * @param {Boolean} cache Whether to get the room from cache or not
      * @returns {Promise<Room>} The room
      * @example
@@ -46,8 +46,8 @@ declare class RoomManager {
     get(clubId: number, id: number, cache?: boolean): Promise<Room>;
     /**
      * Fetches a room and returns its data
-     * @param {Number} clubId The club Id that the room belongs to
-     * @param {String} id The room Id
+     * @param {number} clubId The club Id that the room belongs to
+     * @param {string} id The room Id
      * @param {Boolean} cache Whether to cache the room or not
      * @returns {Campaign} The room
      * @private
@@ -71,17 +71,17 @@ declare class RoomSearchResult {
     client: Client;
     /**
      * The room's ID
-     * @type {Number}
+     * @type {number}
      */
     id: number;
     /**
      * The room's Club ID
-     * @type {Number}
+     * @type {number}
      */
     clubId: number;
     /**
      * The room's name
-     * @type {String}
+     * @type {string}
      */
     name: string;
     /**
@@ -91,12 +91,12 @@ declare class RoomSearchResult {
     nadeo: boolean;
     /**
      * The player count
-     * @type {Number}
+     * @type {number}
      */
     playerCount: number;
     /**
      * The max player count
-     * @type {Number}
+     * @type {number}
      */
     maxPlayerCount: number;
 }

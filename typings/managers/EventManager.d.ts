@@ -21,7 +21,7 @@ declare class EventManager {
     private _cache;
     /**
      * List all available events
-     * @param {Number} page The page number
+     * @param {number} page The page number
      * @returns {Promise<Array<EventSearchResult>>} The events
      */
     listEvents(page?: number): Promise<Array<EventSearchResult>>;
@@ -34,7 +34,7 @@ declare class EventManager {
     search(query: string, page?: number): Promise<Array<EventSearchResult>>;
     /**
      * Fetches a Trackmania event and returns its data
-     * @param {Number} eventId The event id
+     * @param {number} eventId The event id
      * @param {Boolean} cache Whether to get the map from cache or not
      * @returns {Promise<TMEvent>} The event
      * @example
@@ -45,7 +45,7 @@ declare class EventManager {
     get(eventId: number, cache?: boolean): Promise<TMEvent>;
     /**
      * Fetches a event and returns its data
-     * @param {Number} eventId The event id
+     * @param {number} eventId The event id
      * @param {Boolean} cache Whether to cache the map or not
      * @returns {Event} The event
      * @private
@@ -69,22 +69,22 @@ declare class EventSearchResult {
     client: Client;
     /**
      * The event's ID
-     * @type {Number}
+     * @type {number}
      */
     id: number;
     /**
      * The event's competiton ID
-     * @type {Number}
+     * @type {number}
      */
     compId: number;
     /**
      * The event's Club ID
-     * @type {Number}
+     * @type {number}
      */
     clubId: number;
     /**
      * The event's name
-     * @type {String}
+     * @type {string}
      */
     name: string;
     /**
