@@ -27,6 +27,29 @@ class NewsManager{
     }
 
     /**
+     * Get the in-game news list
+     * @param {number} page The page number
+     * @param {Boolean} cache Whether to cache the news or not
+     * @returns {Promise<Array<News>>}
+     */
+    async list(page = 0, cache = this.client.options.cache.enabled){
+        const news = this.client.options.api.paths.tmio.tabs.news;
+        const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${news}/${page}`);
+        const array = [];
+        if (res.splashscreens.length > 0) { // check all news from the page 0
+            for (let i = 0; i < res.splashscreens.length; i++) {
+                let news = new News(this.client, res.splashscreens[i]);
+                if (cache) {
+                    res.splashscreens[i]._cachedTimestamp = Date.now();
+                    this._cache.set(res.id, news);
+                } 
+                array.push(news);
+            }
+        }
+        return news;
+    }
+
+    /**
      * Fetches a Trackmania splashscreen and returns its data.
      * @param {number} newsId The splashscreen ID
      * @param {boolean} cache Whether to get the news from cache or not
