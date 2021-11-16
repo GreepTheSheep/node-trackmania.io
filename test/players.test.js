@@ -14,5 +14,10 @@ describe("Players", function(){
             assert.equal(player.id, "26d9a7de-4067-4926-9d93-2fe62cd869fc", "Wrong account ID");
             assert.equal(player.zone[0].name, "Yonne");
         });
+
+        it("Hylis", async function(){
+            const player = await Client.players.get("hylis");
+            assert.equal(player.id, "2232c721-f215-4036-b28b-772eee46632c", "Wrong account ID");
+        });
     });
 });
