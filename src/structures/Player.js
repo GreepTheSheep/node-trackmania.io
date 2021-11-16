@@ -654,7 +654,8 @@ class PlayerMeta {
      * @type {boolean}
      */
     get inTMGL(){
-        return this.player._data.meta && this.player._data.meta.tmgl;
+        if(this.player._data.meta && this.player._data.meta.tmgl) return true;
+        else return false;
     }
 
     /**
@@ -662,7 +663,8 @@ class PlayerMeta {
      * @type {boolean}
      */
     get inTMWC21(){
-        return this.player._data.meta && this.player._data.meta.tmwc21;
+        if(this.player._data.meta && this.player._data.meta.tmwc21) return true;
+        else return false;
     }
 
     /**
@@ -670,7 +672,8 @@ class PlayerMeta {
      * @type {boolean}
      */
     get inNadeo(){
-        return this.player._data.meta && this.player._data.meta.nadeo;
+        if(this.player._data.meta && this.player._data.meta.nadeo) return true;
+        else return false;
     }
 
     /**
@@ -678,7 +681,8 @@ class PlayerMeta {
      * @type {boolean}
      */
     get inTMIOTeam(){
-        return this.player._data.meta && this.player._data.meta.team;
+        if(this.player._data.meta && this.player._data.meta.team) return true;
+        else return false;
     }
 
     /**
@@ -686,7 +690,8 @@ class PlayerMeta {
      * @type {boolean}
      */
     get isSponsor(){
-        return this.player._data.meta && this.player._data.meta.sponsor;
+        if(this.player._data.meta && this.player._data.meta.sponsor) return true;
+        else return false;
     }
 
     /**
