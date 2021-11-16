@@ -64,9 +64,9 @@ class APIRequest {
             method,
             body            
         };
-        if (this.client.options.dev) console.log("API Request:", this.url, this.options);
         return fetch(this.url, this.options)
             .then(async response => {
+                if (this.client.options.dev) console.log("API Request:", this.url, response.statusText);
                 // Save the rate limit details
                 if (this.url.startsWith(new ReqUtil(this.client).tmioAPIURL)){
                     this.client.ratelimit = {
