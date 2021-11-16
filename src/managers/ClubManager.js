@@ -49,7 +49,7 @@ class ClubManager{
      * Searches for a club
      * @param {string} query Search query
      * @param {number} [page=0] The page number 
-     * @returns 
+     * @returns {Promise<Array<Club>>}
      */
     async search(query, page = 0){
         const clubs = this.client.options.api.paths.tmio.tabs.clubs,
