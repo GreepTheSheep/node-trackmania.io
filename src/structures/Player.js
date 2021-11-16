@@ -1,6 +1,7 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const TMMap = require('../structures/TMMap'); // eslint-disable-line no-unused-vars
 const PlayerEchelonData = require('../data/PlayerEchelons.json');
+const {MMTypes, MatchmakingGroup} = require('../util/Constants'); // eslint-disable-line no-unused-vars
 
 /**
  * Represents a player in Trackmania.
@@ -132,24 +133,23 @@ class Player {
 
     /**
      * The player's COTD Data
-     * @type {PlayerCOTD}
+     * @param {number} page The page number.
+     * @returns {Promise<PlayerCOTD>}
      */
-    get cotd(){
-        if (!this._cotd){
-            /**
-             * The player's COTD Data
-             * @type {PlayerCOTD}
-             * @private
-             */
-            this._cotd = new PlayerCOTD(this, this._data.cotd);
-        }
-        return this._cotd;
+    async cotd(page = 0){
+        const player = this.client.options.api.paths.tmio.tabs.player,
+            cotd = this.client.options.api.paths.tmio.tabs.cotd,
+            ReqUtil = require('../util/ReqUtil');
+
+        const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${this.id}/${cotd}/${page}`);
+        if (!res) throw new Error("No response from the API");
+        return new PlayerCOTD(this, res);
     }
 
     /**
      * The player's matchmaking data
-     * @param {string | number} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
-     * @type {PlayerMatchmaking}
+     * @param {MatchmakingGroup} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
+     * @returns {PlayerMatchmaking}
      */
     matchmaking(type = '3v3'){
         if (!this._PlayerMatchmaking || this._PlayerMatchmaking.type !== type){
@@ -254,10 +254,16 @@ class PlayerTrophies {
      * The last 25 trophies gains of the player
      * @type {Array<PlayerTrophyHistory>}
      */
-    get history(){
+    async history(page = 0){
+        const player = this.client.options.api.paths.tmio.tabs.player,
+            trophies = this.client.options.api.paths.tmio.tabs.trophies,
+            ReqUtil = require('../util/ReqUtil');
+
+        const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${this.player.id}/${trophies}/${page}`);
+        if (!res) throw new Error("No response from the API");
         let arr = [];
-        for (let i = 0; i < this._data.history.length; i++){
-            arr.push(new PlayerTrophyHistory(this.player, this._data.history[i]));
+        for (let i = 0; i < res.gains.length; i++){
+            arr.push(new PlayerTrophyHistory(this.player, res.gains[i]));
         }
         return arr;
     }
@@ -785,12 +791,19 @@ class PlayerMatchmaking {
 
     /**
      * The history of recent matches on this matchmaking
-     * @type {Array<PlayerMatchmakingMatchResult>}
+     * @param {number} page The page number to get
+     * @type {Promise<Array<PlayerMatchmakingMatchResult>>}
      */
-    get history(){
+    async history(page = 0){
+        const player = this.client.options.api.paths.tmio.tabs.player,
+            matches = this.client.options.api.paths.tmio.tabs.matches,
+            ReqUtil = require('../util/ReqUtil');
+
+        const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${this.player.id}/${matches}/${this.typeId}/${page}`);
+        if (!res) throw new Error('No matchmaking history found');
         let arr = [];
-        for (let i = 0; i < this._data.history.length; i++){
-            arr.push(new PlayerMatchmakingMatchResult(this.player, this._data.history[i]));
+        for (let i = 0; i < res.matches.length; i++){
+            arr.push(new PlayerMatchmakingMatchResult(this.player, res.matches[i]));
         }
         return arr;
     }

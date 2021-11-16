@@ -49,6 +49,7 @@ class APIRequest {
             method,
             body            
         };
+        if (this.client.options.dev) console.log("API Request:", this.url, this.options);
         return fetch(this.url, this.options)
             .then(async response => {
                 // Save the rate limit details

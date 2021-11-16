@@ -135,22 +135,7 @@ class PlayerManager {
      */
     async _fetch(accountid, cache = this.client.options.cache.enabled){
         const player = this.client.options.api.paths.tmio.tabs.player,
-            cotd = this.client.options.api.paths.tmio.tabs.cotd,
-            matches = this.client.options.api.paths.tmio.tabs.matches,
-            trophies = this.client.options.api.paths.tmio.tabs.trophies;
-        const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
-        res["cotd"] = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${res["accountid"]}/${cotd}/0`);
-
-        // Get all matchmakings
-        for (var i = 0; i < res["matchmaking"].length; i++) {
-            const mmTypeId = res["matchmaking"][i].info.typeid,
-                mmData = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${res["accountid"]}/${matches}/${mmTypeId}/0`);
-            res.matchmaking.find(m=>m.info.typeid == mmTypeId).info.history = mmData.matches;
-        }
-
-        // Get trophy history
-        const trophyHist = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${res["accountid"]}/${trophies}/0`);
-        res.trophies.history = trophyHist.gains;
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
         
         const thePlayer = new Player(this.client, res);
         if (cache) {
