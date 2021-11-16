@@ -71,7 +71,9 @@ jobs:
       run: npm ci
 
     - name: Build d.ts files
-      run: npm run dts
+      run: |
+        npm run dts
+        npx tsc
     
     - name: Commit files
       run: |
