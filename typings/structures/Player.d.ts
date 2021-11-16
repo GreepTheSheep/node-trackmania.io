@@ -213,6 +213,36 @@ declare class PlayerMeta {
      * @type {string}
      */
     get displayURL(): string;
+    /**
+     * Whether the player is in the TMGL group
+     * @type {boolean}
+     */
+    get inTMGL(): boolean;
+    /**
+     * Whether the player is in the TMWC21 group
+     * @type {boolean}
+     */
+    get inTMWC21(): boolean;
+    /**
+     * Whether the player is in the Nadeo company
+     * @type {boolean}
+     */
+    get inNadeo(): boolean;
+    /**
+     * Whether the player is in the Openplanet & Trackmania.io team
+     * @type {boolean}
+     */
+    get inTMIOTeam(): boolean;
+    /**
+     * Whether the player is a Openplanet & Trackmania.io sponsor
+     * @type {boolean}
+     */
+    get isSponsor(): boolean;
+    /**
+     * If the player is a sponsor, this returns the sponsor's level
+     * @type {?number}
+     */
+    get sponsorLevel(): number;
 }
 /**
  * Represents a player's COTD object
