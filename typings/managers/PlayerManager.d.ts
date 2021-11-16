@@ -144,8 +144,16 @@ declare class PlayerTopTrophy {
     score: number;
 }
 import { MatchmakingGroup } from "../util/Constants";
+/**
+ * The player top matchmaking
+ */
 declare class PlayerTopMatchmaking {
-    constructor(client: any, typeId: any, data: any);
+    /**
+     * @param {Client} client The client instance
+     * @param {MatchmakingGroup} typeId The matchmaking type ID
+     * @param {Object} data The data
+     */
+    constructor(client: Client, typeId: MatchmakingGroup, data: any);
     /**
      * The client instance
      * @type {Client}

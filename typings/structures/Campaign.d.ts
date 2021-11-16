@@ -78,8 +78,15 @@ declare class Campaign {
 import Client = require("../client/Client");
 import Club = require("./Club");
 import TMMap = require("./TMMap");
+/**
+ * The media images of an official campaign.
+ */
 declare class CampaignMedia {
-    constructor(client: any, data: any);
+    /**
+     * @param {Client} client The client instance.
+     * @param {Object} data The data object.
+     */
+    constructor(client: Client, data: any);
     /**
      * The client object of the campaign.
      * @type {Client}
