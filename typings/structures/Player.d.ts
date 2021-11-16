@@ -85,21 +85,16 @@ declare class Player {
     private _PlayerMeta;
     /**
      * The player's COTD Data
-     * @type {PlayerCOTD}
+     * @param {number} page The page number.
+     * @returns {Promise<PlayerCOTD>}
      */
-    get cotd(): PlayerCOTD;
-    /**
-     * The player's COTD Data
-     * @type {PlayerCOTD}
-     * @private
-     */
-    private _cotd;
+    cotd(page?: number): Promise<PlayerCOTD>;
     /**
      * The player's matchmaking data
-     * @param {string | number} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
-     * @type {PlayerMatchmaking}
+     * @param {MatchmakingGroup} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
+     * @returns {PlayerMatchmaking}
      */
-    matchmaking(type?: string | number): PlayerMatchmaking;
+    matchmaking(type?: MatchmakingGroup): PlayerMatchmaking;
     /**
      * The player's matchmaking data
      * @type {PlayerMatchmaking}
@@ -173,7 +168,7 @@ declare class PlayerTrophies {
      * The last 25 trophies gains of the player
      * @type {Array<PlayerTrophyHistory>}
      */
-    get history(): PlayerTrophyHistory[];
+    history(page?: number): Promise<PlayerTrophyHistory[]>;
 }
 /**
  * Represents a player's metadata
@@ -291,6 +286,7 @@ declare class PlayerCOTD {
      */
     get recentResults(): PlayerCOTDResult[];
 }
+import { MatchmakingGroup } from "../util/Constants";
 /**
  * Represents a player's stats in matchmaking
  */
@@ -354,9 +350,10 @@ declare class PlayerMatchmaking {
     private _MatchmakingDivision;
     /**
      * The history of recent matches on this matchmaking
-     * @type {Array<PlayerMatchmakingMatchResult>}
+     * @param {number} page The page number to get
+     * @type {Promise<Array<PlayerMatchmakingMatchResult>>}
      */
-    get history(): PlayerMatchmakingMatchResult[];
+    history(page?: number): Promise<PlayerMatchmakingMatchResult[]>;
 }
 /**
  * Represents a player's echelon
