@@ -46,6 +46,23 @@ class ClubManager{
     }
 
     /**
+     * Searches for a club
+     * @param {string} query Search query
+     * @param {number} [page=0] The page number 
+     * @returns 
+     */
+    async search(query, page = 0){
+        const clubs = this.client.options.api.paths.tmio.tabs.clubs,
+            searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${clubs}/${page}?search=${query}`);
+
+        let arr = [];
+        for (const club of searchRes.clubs) {
+            arr.push(new Club(this.client, club));
+        }
+        return arr;
+    }
+
+    /**
      * Fetches a Trackmania Club and returns its data
      * @param {number} id The Club Id
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the club from cache or not
