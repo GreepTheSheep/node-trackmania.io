@@ -641,6 +641,55 @@ class PlayerMeta {
             return player + this.player.id;
         }
     }
+
+    /**
+     * Whether the player is in the TMGL group
+     * @type {boolean}
+     */
+    get inTMGL(){
+        return this.player._data.meta && this.player._data.meta.tmgl;
+    }
+
+    /**
+     * Whether the player is in the TMWC21 group
+     * @type {boolean}
+     */
+    get inTMWC21(){
+        return this.player._data.meta && this.player._data.meta.tmwc21;
+    }
+
+    /**
+     * Whether the player is in the Nadeo company
+     * @type {boolean}
+     */
+    get inNadeo(){
+        return this.player._data.meta && this.player._data.meta.nadeo;
+    }
+
+    /**
+     * Whether the player is in the Openplanet & Trackmania.io team
+     * @type {boolean}
+     */
+    get inTMIOTeam(){
+        return this.player._data.meta && this.player._data.meta.team;
+    }
+
+    /**
+     * Whether the player is a Openplanet & Trackmania.io sponsor
+     * @type {boolean}
+     */
+    get isSponsor(){
+        return this.player._data.meta && this.player._data.meta.sponsor;
+    }
+
+    /**
+     * If the player is a sponsor, this returns the sponsor's level
+     * @type {?number}
+     */
+    get sponsorLevel(){
+        if (this.isSponsor) return this.player._data.meta.sponsorlevel;
+        else return null;
+    }
 }
 
 /**
