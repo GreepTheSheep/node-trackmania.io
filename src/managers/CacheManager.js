@@ -2,6 +2,7 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
 
 /**
  * The Cache Manager is responsible for managing the cache.
+ * @extends {Map}
  * @private
  */
 class CacheManager extends Map {

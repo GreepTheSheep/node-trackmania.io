@@ -29,7 +29,7 @@ class CampaignManager{
 
     /**
      * Get the current official campaign
-     * @param {boolean} cache Whether to use from the cache or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to use from the cache or not
      * @returns {Promise<Campaign>} The campaign
      */
     async currentSeason(cache = this.client.options.cache.enabled){
@@ -63,7 +63,7 @@ class CampaignManager{
 
     /**
      * Get all popular campaigns (official excluded) (top 50)
-     * @param {number} page The page number
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
      */
     async popularCampaigns(page = 0){
@@ -82,7 +82,7 @@ class CampaignManager{
     /**
      * Searches for a campaign
      * @param {string} query The query
-     * @param {number} page The page number
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
      * @example
      * client.campaigns.search('htimh').then(campaigns => {
@@ -105,9 +105,9 @@ class CampaignManager{
 
     /**
      * Fetches a Trackmania campaign and returns its data
-     * @param {number} clubId The club Id that the campaign belongs to (If it's an official campaign, set it to 0)
+     * @param {number} [clubId=0] The club Id that the campaign belongs to (If it's an official campaign, set it to 0)
      * @param {number} id The campaign Id
-     * @param {boolean} cache Whether to get the campaign from cache or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the campaign from cache or not
      * @returns {Promise<Campaign>} The campaign
      * @example 
      * client.campaigns.get(54, 10621).then(campaign => {
@@ -124,13 +124,13 @@ class CampaignManager{
         
     /**
      * Fetches a campaign and returns its data
-     * @param {number} clubId The club Id that the campaign belongs to
+     * @param {number} [clubId=0] The club Id that the campaign belongs to
      * @param {string} id The campaign Id
-     * @param {boolean} cache Whether to cache the campaign or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the campaign or not
      * @returns {Campaign} The campaign
      * @private
      */
-    async _fetch(clubId, id, cache = this.client.options.cache.enabled){
+    async _fetch(clubId = 0, id, cache = this.client.options.cache.enabled){
         let campaign, res;
         if (clubId == 0) {
             // Official campaign

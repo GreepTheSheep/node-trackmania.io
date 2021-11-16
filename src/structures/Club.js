@@ -159,8 +159,8 @@ class Club {
 
     /**
      * The club members (Members are sorted by role and club interaction time.)
-     * @param {number} page The page number (default: 0)
-     * @param {boolean} cache Whether to cache the result (default: true)
+     * @param {number} [page=0] The page number
+     * @param {boolean} [cache=true] Whether to cache the result
      * @returns {Promise<Array<ClubMember>>}
      */
     async fetchMembers(page = 0, cache = true) {
@@ -192,8 +192,8 @@ class Club {
 
     /**
      * The club activities
-     * @param {number} page The page number (default: 0
-     * @param {boolean} cache Whether to cache the result (default: true)
+     * @param {number} [page=0] The page number
+     * @param {boolean} [cache=true] Whether to cache the result
      * @returns {Promise<Array<ClubActivity>>}
      */
     async fetchActivities(page = 0, cache = true) {
@@ -376,22 +376,20 @@ class ClubActivity {
 
     /**
      * If the activity is a campaign, returns the campaign object of the activity
-     * @returns {Promise<Campaign>}
+     * @returns {?Promise<Campaign>}
      */
     async campaign() {
-        if (this.type === 'campaign') {
-            return this.club.client.campaigns.get(this.club.id, this.externalId);
-        } else throw new Error('The activity is not a campaign');
+        if (this.type === 'campaign') return this.club.client.campaigns.get(this.club.id, this.externalId);
+        else return null;
     }
 
     /**
      * If the activity is a room, returns the room object of the activity
-     * @returns {Promise<Room>}
+     * @returns {?Promise<Room>}
      */
     async room() {
-        if (this.type === 'room') {
-            return this.club.client.rooms.get(this.club.id, this.externalId);
-        } else throw new Error('The activity is not a room');
+        if (this.type === 'room') return this.club.client.rooms.get(this.club.id, this.externalId);
+        else return null;
     }
 }
 

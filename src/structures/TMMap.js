@@ -165,7 +165,7 @@ class TMMap {
                 this._TMMapKarma = new TMMapKarma(this, this._data.karma);
             }
             return this._TMMapKarma;
-        } else throw new Error('No karma data found for this map');
+        } else return null;
     }
 
     /**
@@ -179,7 +179,7 @@ class TMMap {
                 arr.push(new TMMapLeaderboard(this, this._data.leaderboard.tops[i]));
             }
             return arr;
-        } else throw new Error('No leaderboard data found for this map');
+        } else return null;
     }
 
     /**
@@ -202,7 +202,7 @@ class TMMap {
                 arr.push(new TMMapLeaderboard(this, this._data.leaderboard.tops[i]));
             }
             return arr;
-        } else throw new Error('No leaderboard data found for this map');
+        } else return null;
     }
 }
 

@@ -42,7 +42,7 @@ class TOTDManager{
     /**
      * Fetches a TOTD with it's day and returns its data
      * @param {Date} date The date 
-     * @param {boolean} cache Whether to get the map from cache or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the map from cache or not
      * @returns {Promise<TOTD>} The map
      * @example 
      * // Gets the TOTD of today
@@ -62,7 +62,7 @@ class TOTDManager{
     /**
      * Fetches a TOTD and returns its data
      * @param {Date} date The date
-     * @param {boolean} cache Whether to cache the map or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the map or not
      * @returns {TOTD} The map
      * @private
      */

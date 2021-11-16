@@ -78,13 +78,12 @@ class Campaign {
     }
 
     /**
-     * The club that owns the campaign.
-     * @returns {Promise<Club>}
+     * The club that owns the campaign. (if it's not an official campaign)
+     * @returns {?Promise<Club>}
      */
     async club() {
-        if (this.isOfficial) {
-            throw new Error("This campaign is an official campaign. It does not have a club.");
-        } else return this.client.clubs.get(this._data.clubid);
+        if (this.isOfficial) return null;
+        else return this.client.clubs.get(this._data.clubid);
     }
 
     /**
@@ -115,22 +114,67 @@ class Campaign {
 
     /**
      * The media images of the campaign, if this is an official campaign.
-     * @type {Object<string, string>}
+     * @type {?CampaignMedia}
      */
     get media() {
         if (this.isOfficial) {
-            const ReqUtil = require('../util/ReqUtil'),
-                tmioURL = new ReqUtil(this.client).tmioURL;
-            return {
-                decal: tmioURL + this._data.mediae.decal,
-                buttonbackground: tmioURL + this._data.mediae.buttonbackground,
-                buttonforeground: tmioURL + this._data.mediae.buttonforeground,
-                livebuttonbackground: tmioURL + this._data.mediae.livebuttonbackground,
-                livebuttonforeground: tmioURL + this._data.mediae.livebuttonforeground,
-                popupbackground: this._data.mediae.popupbackground,
-                popup: this._data.mediae.popup
-            };
-        } else throw new Error("This campaign is not an official campaign.");
+            return new CampaignMedia(this.client, this._data.mediae);
+        } else return null;
+    }
+}
+
+class CampaignMedia {
+    constructor(client, data) {
+        const ReqUtil = require('../util/ReqUtil'),
+            tmioURL = new ReqUtil(client).tmioURL;
+
+        /**
+         * The client object of the campaign.
+         * @type {Client}
+         */
+        this.client = client;
+
+        /**
+         * The decal image URL of the campaign.
+         * @type {string}
+         */
+        this.decal = tmioURL + data.decal;
+
+        /**
+         * The button background image URL of the campaign.
+         * @type {string}
+         */
+        this.buttonBackground = tmioURL + data.buttonbackground;
+
+        /**
+         * The button foreground image URL of the campaign.
+         * @type {string}
+         */
+        this.buttonForeground = tmioURL + data.buttonforeground;
+
+        /**
+         * The live button background image URL of the campaign.
+         * @type {string}
+         */
+        this.liveButtonBackground = tmioURL + data.livebuttonbackground;
+
+        /**
+         * The live button foreground image URL of the campaign.
+         * @type {string}
+         */
+        this.liveButtonForeground = tmioURL + data.livebuttonforeground;
+
+        /**
+         * The popup background image URL of the campaign.
+         * @type {string}
+         */
+        this.popupBackground = data.popupbackground;
+
+        /**
+         * The popup foreground image URL of the campaign.
+         * @type {string}
+         */
+        this.popup = data.popup;
     }
 }
 

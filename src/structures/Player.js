@@ -133,7 +133,7 @@ class Player {
 
     /**
      * The player's COTD Data
-     * @param {number} page The page number.
+     * @param {number} [page=0] The page number.
      * @returns {Promise<PlayerCOTD>}
      */
     async cotd(page = 0){
@@ -148,7 +148,7 @@ class Player {
 
     /**
      * The player's matchmaking data
-     * @param {MatchmakingGroup} type The type of matchmaking data to return ('3v3' / 'Royal') (defaults to '3v3')
+     * @param {MatchmakingGroup} [type="3v3"] The type of matchmaking data to return
      * @returns {PlayerMatchmaking}
      */
     matchmaking(type = '3v3'){
@@ -229,7 +229,7 @@ class PlayerTrophies {
 
     /**
      * The number of trophies the player has
-     * @param {number} number The trophy number, from 1 (bronze 1) to 9 (gold 3)
+     * @param {number} [number=1] The trophy number, from 1 (bronze 1) to 9 (gold 3)
      * @returns {number}
      * @example
      * // Get number of trophy 5 (aka silver 2 trophy)
@@ -252,6 +252,7 @@ class PlayerTrophies {
 
     /**
      * The last 25 trophies gains of the player
+     * @param {number} [page=0] The page number.
      * @type {Array<PlayerTrophyHistory>}
      */
     async history(page = 0){
@@ -300,7 +301,7 @@ class PlayerTrophyHistory {
 
     /**
      * The number of trophies the player has
-     * @param {number} number The trophy number, from 1 (bronze 1) to 9 (gold 3)
+     * @param {number} [number=1] The trophy number, from 1 (bronze 1) to 9 (gold 3)
      * @returns {number}
      * @example
      * // Get number of trophy 5 (aka silver 2 trophy) on the latest gain
@@ -413,7 +414,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the solo ranking achievement type (if the type is SoloRanking)
-     * @type {string|null}
+     * @type {?string}
      */
     get soloRankingType(){
         if (this.type == "SoloRanking") return this._data.trophySoloRankingAchievementType;
@@ -422,7 +423,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the solo ranking season ID (if the type is SoloRanking)
-     * @type {string|null}
+     * @type {?string}
      */
     get soloRankingSeasonId(){
         if (this.type == "SoloRanking") return this._data.seasonId;
@@ -431,7 +432,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the competition id (if the type is CompetitionRanking)
-     * @type {string|null}
+     * @type {?string}
      */
     get competitionId(){
         if (this.type == "CompetitionRanking") return this._data.competitionId;
@@ -440,7 +441,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the competition name (if the type is CompetitionRanking)
-     * @type {string|null}
+     * @type {?string}
      */
     get competitionName(){
         if (this.type == "CompetitionRanking") return this._data.competitionName;
@@ -449,7 +450,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the competition stage (if the type is CompetitionRanking)
-     * @type {string|null}
+     * @type {?string}
      */
     get competitionStage(){
         if (this.type == "CompetitionRanking") return this._data.competitionStage;
@@ -458,7 +459,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the competition stage step (if the type is CompetitionRanking)
-     * @type {string|null}
+     * @type {?string}
      */
     get competitionStageStep(){
         if (this.type == "CompetitionRanking") return this._data.competitionStageStep;
@@ -467,7 +468,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the competition type (if the type is CompetitionRanking)
-     * @type {string|null}
+     * @type {?string}
      */
     get competitionType(){
         if (this.type == "CompetitionRanking") return this._data.competitionType;
@@ -476,7 +477,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the Solo Medal type (if the type is SoloMedal)
-     * @type {string|null}
+     * @type {?string}
      */
     get soloMedalType(){
         if (this.type == "SoloMedal") return this._data.trophySoloMedalAchievementType;
@@ -485,7 +486,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the solo medal level (if the type is SoloMedal)
-     * @type {number|null}
+     * @type {?number}
      */
     get soloMedalLevel(){
         if (this.type == "SoloMedal") return this._data.detals.level;
@@ -494,7 +495,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the server ID of the Live Match (if the type is LiveMatch)
-     * @type {string|null}
+     * @type {?string}
      */
     get liveMatchServerId(){
         if (this.type == "LiveMatch") return this._data.serverId;
@@ -503,7 +504,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the game mode of the Live Match (if the type is LiveMatch)
-     * @type {string|null}
+     * @type {?string}
      */
     get liveMatchGameMode(){
         if (this.type == "LiveMatch") return this._data.gameMode;
@@ -512,7 +513,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the duration of the Live Match in seconds (if the type is LiveMatch)
-     * @type {number|null}
+     * @type {?number}
      */
     get liveMatchDuration(){
         if (this.type == "LiveMatch") return this._data.duration;
@@ -521,7 +522,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the rank of the Live Match (if the type is LiveMatch)
-     * @type {number|null}
+     * @type {?number}
      */
     get liveMatchRank(){
         if (this.type == "LiveMatch") return this._data.details.rank;
@@ -530,7 +531,7 @@ class PlayerTrophyAchievementType{
 
     /**
      * Gets the trophy rank of the Live Match (if the type is LiveMatch)
-     * @type {number|null}
+     * @type {?number}
      */
     get liveMatchTrophyRank(){
         if (this.type == "LiveMatch") return this._data.details.trophyRanking;
@@ -704,7 +705,7 @@ class PlayerMeta {
 class PlayerMatchmaking {
     /**
      * @param {Player} player The player.
-     * @param {string|number} type The type of matchmaking. (3v3 or Royal)
+     * @param {MatchmakingGroup} type The type of matchmaking.
      */
     constructor(player, type){
         /**
@@ -791,7 +792,7 @@ class PlayerMatchmaking {
 
     /**
      * The history of recent matches on this matchmaking
-     * @param {number} page The page number to get
+     * @param {number} [page=0] The page number to get
      * @type {Promise<Array<PlayerMatchmakingMatchResult>>}
      */
     async history(page = 0){

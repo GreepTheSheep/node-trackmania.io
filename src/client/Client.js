@@ -12,9 +12,13 @@ const CampaignManager = require('../managers/CampaignManager');
 const RoomManager = require('../managers/RoomManager');
 const EventManager = require('../managers/EventManager');
 
+/**
+ * Instantiates a new client.
+ * @extends {BaseClient}
+ */
 class Client extends BaseClient {
-    /** Initialises a new Client
-     * @param {defaultOptions} options
+    /**
+     * @param {defaultOptions} [options={}] The options to use
      */
     constructor(options){
         super(options);

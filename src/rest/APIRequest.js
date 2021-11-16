@@ -24,7 +24,15 @@ class APIRequest {
         let cwf = require.main.filename;
         cwf = cwf.substring(cwf.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
         cwd = cwd.substring(cwd.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
+        /**
+         * The User-Agent string which is used for the requests
+         * @type {string}
+         */
         this.UA = this.client.options.api.useragent;
+        /**
+         * The API key for the requests on trackmania.io
+         * @type {string}
+         */
         this.key = this.client.options.api.key;
         if (this.UA != null || !cwd.includes(pkg.name)) {
             if (this.UA == null) this.UA = cwd + ' (' + cwf + ')' ;
@@ -35,6 +43,13 @@ class APIRequest {
         this.UA += ' node-' + pkg.name + ' ' + pkg.version;
     }
 
+    /**
+     * Makes a request to the API
+     * @param {string} url The URL
+     * @param {string} [method="GET"] The method
+     * @param {Object} [body=null] The body
+     * @returns {Promise<Object>} The response
+     */
     do(url, method = 'GET', body = null) {
         this.url = url;
         // Creating options

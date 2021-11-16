@@ -59,12 +59,11 @@ class Room {
 
     /**
      * The login of the room (if it's not a cloud room)
-     * @type {string}
+     * @type {?string}
      */
     get login() {
-        if (!this.isCloud) {
-            return this._data.login;
-        } else throw new Error('This room is not hosted on the cloud. It has no login.');
+        if (!this.isCloud) return this._data.login;
+        else return null;
     }
 
     /**
@@ -88,9 +87,8 @@ class Room {
      * @type {string}
      */
     get region() {
-        if (this.isCloud) {
-            return this._data.region;
-        } else throw new Error('This room is not hosted on the cloud. It has no region.');
+        if (this.isCloud) return this._data.region;
+        else return null;
     }
 
     /**

@@ -29,7 +29,7 @@ class NewsManager{
     /**
      * Get the in-game news list
      * @param {number} page The page number
-     * @param {Boolean} cache Whether to cache the news or not
+     * @param {Boolean} [cache=this.client.options.cache.enabled] Whether to cache the news or not
      * @returns {Promise<Array<News>>}
      */
     async list(page = 0, cache = this.client.options.cache.enabled){
@@ -52,7 +52,7 @@ class NewsManager{
     /**
      * Fetches a Trackmania splashscreen and returns its data.
      * @param {number} newsId The splashscreen ID
-     * @param {boolean} cache Whether to get the news from cache or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the news from cache or not
      * @returns {Promise<News>} The splashscreen
      * @example 
      * client.news.get(143).then(news => {
@@ -70,7 +70,7 @@ class NewsManager{
     /**
      * Fetches a splashscreen and returns its data
      * @param {number} newsId The splashscreen ID
-     * @param {boolean} cache Whether to cache the news or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the news or not
      * @returns {News} The splashscreen
      * @private
      */
