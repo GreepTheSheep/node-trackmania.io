@@ -24,7 +24,7 @@ permissions: write-all
 jobs:
   test:
     name: Unit Tests
-    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/develop' }}
+    if: ${{ github.ref != 'refs/heads/main' }}
     runs-on: ubuntu-latest
 
     steps:
