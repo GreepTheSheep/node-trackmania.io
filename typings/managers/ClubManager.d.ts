@@ -30,9 +30,9 @@ declare class ClubManager {
      * Searches for a club
      * @param {string} query Search query
      * @param {number} [page=0] The page number
-     * @returns
+     * @returns {Promise<Array<Club>>}
      */
-    search(query: string, page?: number): Promise<Club[]>;
+    search(query: string, page?: number): Promise<Array<Club>>;
     /**
      * Fetches a Trackmania Club and returns its data
      * @param {number} id The Club Id
