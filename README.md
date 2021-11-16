@@ -1,20 +1,24 @@
 <div align="center">
-<a href="https://tmio.greep.gq/#" target="_blank"><img src="docs/infography/image.svg" alt="Logo" /></a>
-<br />
-<a href="https://npmjs.org/trackmania.io"><img src="https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true" alt="NPM" /></a>
-<br />
-<img src="https://img.shields.io/website?down_message=Offline&label=Trackmania.io%20API&up_message=Online&url=https%3A%2F%2Ftrackmania.io" alt="Trackmania.io API Status" />
-<a href="https://greep.gq/discord"><img src="https://img.shields.io/discord/570024448371982373?label=Discord&logo=discord" alt="Discord" /></a>
+
+[![NPM](docs/infography/image.svg)](https://tmio.greep.gq/#)
+
+[![NPM](https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true)](https://npmjs.org/trackmania.io)
+
+[![Trackmania.io API Status](https://img.shields.io/website?down_message=Offline&label=Trackmania.io%20API&up_message=Online&url=https%3A%2F%2Ftrackmania.io)](https://trackmania.io)
+[![Discord](https://img.shields.io/discord/570024448371982373?label=Discord&logo=discord)](https://greep.gq/discord)
+
+[![npm](https://img.shields.io/npm/dw/trackmania.io?logo=npm)](https://npmjs.com/trackmania.io)
+[![NPM](https://img.shields.io/npm/l/trackmania.io)](LICENSE)
+
+[![GitHub issues](https://img.shields.io/github/issues/GreepTheSheep/node-trackmania.io?logo=github)](https://github.com/GreepTheSheep/node-trackmania.io/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/GreepTheSheep/node-trackmania.io?logo=github)](https://github.com/GreepTheSheep/node-trackmania.io/pulls)
+
+[![GitHub Repo stars](https://img.shields.io/github/stars/GreepTheSheep/node-trackmania.io?logo=github&style=flat-square)](https://github.com/GreepTheSheep/node-trackmania.io/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/GreepTheSheep/node-trackmania.io?style=flat-square)](https://github.com/GreepTheSheep/node-trackmania.io/network/members)
+
+[![Unit Test (Push) & Builds](https://github.com/GreepTheSheep/node-trackmania.io/actions/workflows/builds.yml/badge.svg)](https://github.com/GreepTheSheep/node-trackmania.io/actions/workflows/builds.yml)
+
 </div>
-
-![npm](https://img.shields.io/npm/dw/trackmania.io?logo=npm)
-![NPM](https://img.shields.io/npm/l/trackmania.io)
-
-![GitHub issues](https://img.shields.io/github/issues/GreepTheSheep/node-trackmania.io?logo=github)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/GreepTheSheep/node-trackmania.io?logo=github)
-
-![GitHub Repo stars](https://img.shields.io/github/stars/GreepTheSheep/node-trackmania.io?logo=github&style=flat-square)
-![GitHub forks](https://img.shields.io/github/forks/GreepTheSheep/node-trackmania.io?style=flat-square)
 
 ## Disclaimer - [Can I use the Trackmania.io API for my own project?](https://openplanet.nl/tmio/api)
 
