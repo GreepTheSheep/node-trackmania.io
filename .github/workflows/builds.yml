@@ -88,7 +88,6 @@ jobs:
 
   docs:
     name: Build Documentation
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
