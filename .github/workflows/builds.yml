@@ -47,7 +47,6 @@ jobs:
   
   typings:
     name: Build Typings
-    needs: test
     runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' }}
 
@@ -78,7 +77,7 @@ jobs:
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git commit -m ":children_crossing: Build DefinitelyTyped - ${{ steps.vars.outputs.sha }}" -a
+        git commit -am ":children_crossing: Build DefinitelyTyped - ${{ steps.vars.outputs.sha }}"
 
     - name: Push changes
       uses: ad-m/github-push-action@master
