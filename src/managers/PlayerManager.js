@@ -187,7 +187,15 @@ class PlayerTopTrophy {
     }
 }
 
+/**
+ * The player top matchmaking
+ */
 class PlayerTopMatchmaking{
+    /**
+     * @param {Client} client The client instance
+     * @param {MatchmakingGroup} typeId The matchmaking type ID
+     * @param {Object} data The data
+     */
     constructor(client, typeId, data){
         /**
          * The client instance

@@ -123,7 +123,14 @@ class Campaign {
     }
 }
 
+/**
+ * The media images of an official campaign.
+ */
 class CampaignMedia {
+    /**
+     * @param {Client} client The client instance.
+     * @param {Object} data The data object.
+     */
     constructor(client, data) {
         const ReqUtil = require('../util/ReqUtil'),
             tmioURL = new ReqUtil(client).tmioURL;
