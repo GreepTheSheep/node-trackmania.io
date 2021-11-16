@@ -27,6 +27,13 @@ declare class ClubManager {
      */
     popularClubs(page?: number, cache?: boolean): Promise<Array<Club>>;
     /**
+     * Searches for a club
+     * @param {string} query Search query
+     * @param {number} [page=0] The page number
+     * @returns
+     */
+    search(query: string, page?: number): Promise<Club[]>;
+    /**
      * Fetches a Trackmania Club and returns its data
      * @param {number} id The Club Id
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the club from cache or not
