@@ -21,14 +21,14 @@ declare class RoomManager {
     private _cache;
     /**
      * Get the popular Club rooms (by number of players connected)
-     * @param {number} page The page number
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<RoomSearchResult>>} The rooms
      */
     popularRooms(page?: number): Promise<Array<RoomSearchResult>>;
     /**
      * Searches for a room
      * @param {string} query The query to search for
-     * @param {number} page The page number
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<RoomSearchResult>>} The rooms
      */
     search(query: string, page?: number): Promise<Array<RoomSearchResult>>;
@@ -36,7 +36,7 @@ declare class RoomManager {
      * Fetches a Trackmania room (server) and returns its data
      * @param {number} clubId The club Id that the room belongs to
      * @param {number} id The room Id
-     * @param {boolean} cache Whether to get the room from cache or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the room from cache or not
      * @returns {Promise<Room>} The room
      * @example
      * client.rooms.get(338, 1180).then(room => {
@@ -48,7 +48,7 @@ declare class RoomManager {
      * Fetches a room and returns its data
      * @param {number} clubId The club Id that the room belongs to
      * @param {string} id The room Id
-     * @param {boolean} cache Whether to cache the room or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the room or not
      * @returns {Campaign} The room
      * @private
      */

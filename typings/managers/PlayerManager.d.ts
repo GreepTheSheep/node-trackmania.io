@@ -40,7 +40,7 @@ declare class PlayerManager {
     group(groupName: PlayerGroup): Promise<Array<PlayerSearchResult>> | null;
     /**
      * Get the trophy leaderboard
-     * @param {number} page The page number
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<PlayerTopTrophy>>} The players' top trophies
      * @example
      * Client.players.topTrophies().then(top => {
@@ -51,14 +51,14 @@ declare class PlayerManager {
     /**
      * Gets the matchmaking leaderboard
      * @param {MatchmakingGroup} group The matchmaking group
-     * @param {number} page The page number
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<PlayerTopMatchmaking>>} The players' top matchmaking
      */
     topMatchmaking(group: MatchmakingGroup, page?: number): Promise<Array<PlayerTopMatchmaking>>;
     /**
      * Fetches a player and returns its data
      * @param {string} accountid The account ID or its tm.io vanity name
-     * @param {boolean} cache Whether to get the player from cache or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the player from cache or not
      * @returns {Promise<Player>} The player
      * @example
      * // Get a player
@@ -70,7 +70,7 @@ declare class PlayerManager {
     /**
      * Fetches a player and returns its data
      * @param {string} accountid The account ID or its tm.io vanity name
-     * @param {boolean} cache Whether to cache the player or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the player or not
      * @returns {Player} The player
      * @private
      */

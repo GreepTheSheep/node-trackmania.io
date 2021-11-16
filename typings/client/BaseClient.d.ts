@@ -4,7 +4,7 @@ export = BaseClient;
  */
 declare class BaseClient {
     /**
-     * @param {defaultOptions} options The options to use.
+     * @param {defaultOptions} [options={}] The options to use.
      */
     constructor(options?: defaultOptions);
     /**
@@ -21,8 +21,8 @@ declare class BaseClient {
     /**
      * Do an API request
      * @param {string} url The URL to request
-     * @param {string} method The HTTP method to use (Default: GET)
-     * @param {Object} data The data to send
+     * @param {string} [method="GET"] The HTTP method to use
+     * @param {?Object} [body=null] The data to send
      * @returns {Promise<Object>} A promise that resolves to the API response
      * @private
      */
@@ -30,17 +30,17 @@ declare class BaseClient {
     /**
      * Sets a User Agent for your project.
      * Required if you run a important project.
-     * @param {string} useragent The User Agent to set to.
-     * @returns {boolean}
+     * @param {string} [useragent=this.options.api.useragent] The User Agent to set to.
+     * @returns {void}
      */
-    setUserAgent(useragent: string): boolean;
+    setUserAgent(useragent?: string): void;
     /**
      * Sets an API Key.
      * Required if you run a important project. It will triple the rate limit.
-     * @param {string} key The full API key. It must contains "yourname:theactualsecretkey"
-     * @returns {boolean}
+     * @param {string} [key=this.options.api.key] The full API key. It must contains "yourname:theactualsecretkey"
+     * @returns {void}
      */
-    setAPIKey(key: string): boolean;
+    setAPIKey(key?: string): void;
 }
 import defaultOptions = require("../util/defaultOptions");
 /**

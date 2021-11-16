@@ -50,10 +50,10 @@ declare class Campaign {
      */
     get updatedAt(): Date;
     /**
-     * The club that owns the campaign.
-     * @returns {Promise<Club>}
+     * The club that owns the campaign. (if it's not an official campaign)
+     * @returns {?Promise<Club>}
      */
-    club(): Promise<Club>;
+    club(): Promise<Club> | null;
     /**
      * The leaderboard id of the campaign.
      * @type {string}
@@ -71,12 +71,53 @@ declare class Campaign {
     maps(): Promise<Array<TMMap>>;
     /**
      * The media images of the campaign, if this is an official campaign.
-     * @type {Object<string, string>}
+     * @type {?CampaignMedia}
      */
-    get media(): {
-        [x: string]: string;
-    };
+    get media(): CampaignMedia;
 }
 import Client = require("../client/Client");
 import Club = require("./Club");
 import TMMap = require("./TMMap");
+declare class CampaignMedia {
+    constructor(client: any, data: any);
+    /**
+     * The client object of the campaign.
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The decal image URL of the campaign.
+     * @type {string}
+     */
+    decal: string;
+    /**
+     * The button background image URL of the campaign.
+     * @type {string}
+     */
+    buttonBackground: string;
+    /**
+     * The button foreground image URL of the campaign.
+     * @type {string}
+     */
+    buttonForeground: string;
+    /**
+     * The live button background image URL of the campaign.
+     * @type {string}
+     */
+    liveButtonBackground: string;
+    /**
+     * The live button foreground image URL of the campaign.
+     * @type {string}
+     */
+    liveButtonForeground: string;
+    /**
+     * The popup background image URL of the campaign.
+     * @type {string}
+     */
+    popupBackground: string;
+    /**
+     * The popup foreground image URL of the campaign.
+     * @type {string}
+     */
+    popup: string;
+}

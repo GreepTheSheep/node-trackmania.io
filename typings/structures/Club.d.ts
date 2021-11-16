@@ -103,8 +103,8 @@ declare class Club {
     creator(): Promise<Player>;
     /**
      * The club members (Members are sorted by role and club interaction time.)
-     * @param {number} page The page number (default: 0)
-     * @param {boolean} cache Whether to cache the result (default: true)
+     * @param {number} [page=0] The page number
+     * @param {boolean} [cache=true] Whether to cache the result
      * @returns {Promise<Array<ClubMember>>}
      */
     fetchMembers(page?: number, cache?: boolean): Promise<Array<ClubMember>>;
@@ -116,8 +116,8 @@ declare class Club {
     private _membersCache;
     /**
      * The club activities
-     * @param {number} page The page number (default: 0
-     * @param {boolean} cache Whether to cache the result (default: true)
+     * @param {number} [page=0] The page number
+     * @param {boolean} [cache=true] Whether to cache the result
      * @returns {Promise<Array<ClubActivity>>}
      */
     fetchActivities(page?: number, cache?: boolean): Promise<Array<ClubActivity>>;
@@ -238,13 +238,13 @@ declare class ClubActivity {
     get externalId(): number;
     /**
      * If the activity is a campaign, returns the campaign object of the activity
-     * @returns {Promise<Campaign>}
+     * @returns {?Promise<Campaign>}
      */
-    campaign(): Promise<Campaign>;
+    campaign(): Promise<Campaign> | null;
     /**
      * If the activity is a room, returns the room object of the activity
-     * @returns {Promise<Room>}
+     * @returns {?Promise<Room>}
      */
-    room(): Promise<any>;
+    room(): Promise<any> | null;
 }
 import Campaign = require("./Campaign");

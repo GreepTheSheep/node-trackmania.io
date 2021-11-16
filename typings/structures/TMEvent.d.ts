@@ -164,14 +164,14 @@ declare class TMEventRound {
     get matches(): TMEventRoundMatch[];
     /**
      * The round's challenges.
-     * @param {boolean} cache Wether to get the challenges from the cache or not.
+     * @param {boolean} [cache=this.client.options.cache.enabled] Wether to get the challenges from the cache or not.
      * @returns {Promise<Array<TMEventChallenge>>}
      */
     challenges(cache?: boolean): Promise<Array<TMEventChallenge>>;
     /**
      * Fetches the round's challenges.
      * @param {number} index The index of the challenge to fetch.
-     * @param {boolean} cache Wether to cache the challenges or not.
+     * @param {boolean} [cache=this.client.options.cache.enabled] Wether to cache the challenges or not.
      * @returns {Promise<Array<TMEventChallenge>>}
      * @private
     */
@@ -230,15 +230,15 @@ declare class TMEventRoundMatch {
     get isCompleted(): boolean;
     /**
      * The match's results.
-     * @param {number} page The page number.
-     * @param {boolean} cache Whether to cache the results.
+     * @param {number} [page=0] The page number.
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the results.
      * @returns {Promise<Array<TMEventRoundMatchResult>>}
      */
     getResults(page?: number, cache?: boolean): Promise<Array<TMEventRoundMatchResult>>;
     /**
      * Fetches the match's results.
-     * @param {number} page The page number.
-     * @param {boolean} cache Whether to cache the results.
+     * @param {number} [page=0] The page number.
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the results.
      * @returns {Promise<Array<TMEventRoundMatchResult>>}
      * @private
      */
@@ -312,15 +312,15 @@ declare class TMEventChallenge {
     getAdmins(): Promise<Array<Player>>;
     /**
      * The challenge's results.
-     * @param {number} page The page number.
-     * @param {boolean} cache Whether to get the results from cache.
+     * @param {number} [page=0] The page number.
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the results from cache.
      * @returns {Promise<Array<TMEventChallengeResult>>}
     */
     getResults(page?: number, cache?: boolean): Promise<Array<TMEventChallengeResult>>;
     /**
      * Fetches the match's results.
-     * @param {number} page The page number.
-     * @param {boolean} cache Whether to cache the results.
+     * @param {number} [page=0] The page number.
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the results.
      * @returns {Promise<Array<TMEventChallengeResult>>}
      * @private
      */

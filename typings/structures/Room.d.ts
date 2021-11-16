@@ -41,7 +41,7 @@ declare class Room {
     get isCloud(): boolean;
     /**
      * The login of the room (if it's not a cloud room)
-     * @type {string}
+     * @type {?string}
      */
     get login(): string;
     /**

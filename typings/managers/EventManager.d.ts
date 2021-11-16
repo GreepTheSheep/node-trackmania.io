@@ -21,21 +21,21 @@ declare class EventManager {
     private _cache;
     /**
      * List all available events
-     * @param {number} page The page number
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<EventSearchResult>>} The events
      */
     listEvents(page?: number): Promise<Array<EventSearchResult>>;
     /**
      * Searches for an event by name
      * @param {string} query The query
-     * @param {number} page The page number
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<EventSearchResult>>} The events
      */
     search(query: string, page?: number): Promise<Array<EventSearchResult>>;
     /**
      * Fetches a Trackmania event and returns its data
      * @param {number} eventId The event id
-     * @param {boolean} cache Whether to get the map from cache or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the map from cache or not
      * @returns {Promise<TMEvent>} The event
      * @example
      * client.events.get(706).then(event => {
@@ -46,7 +46,7 @@ declare class EventManager {
     /**
      * Fetches a event and returns its data
      * @param {number} eventId The event id
-     * @param {boolean} cache Whether to cache the map or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the map or not
      * @returns {Event} The event
      * @private
      */
