@@ -19,5 +19,10 @@ describe("Players", function(){
             const player = await Client.players.get("hylis");
             assert.equal(player.id, "2232c721-f215-4036-b28b-772eee46632c", "Wrong account ID");
         });
+
+        it("Miss", async function(){
+            const player = await Client.players.get("miss");
+            assert.equal(player.id, "7398eeb6-9b4e-44b8-a7a1-a2149955ac70", "Wrong account ID");
+        });
     });
 });
