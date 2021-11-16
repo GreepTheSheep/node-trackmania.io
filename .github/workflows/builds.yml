@@ -1,4 +1,4 @@
-name: Builds
+name: Unit Test (Push) & Builds
 
 on: 
   push:
@@ -8,9 +8,12 @@ on:
       - '*'
     paths:
       - 'src/**.js'
+      - 'test/**.test.js'
 
   workflow_dispatch:
     inputs:
+      test:
+        description: 'Unit Tests'
       typings:
         description: 'Build Typings'
       docs:
@@ -19,8 +22,32 @@ on:
 permissions: write-all
 
 jobs:
+  test:
+    name: Unit Tests
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/develop' }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Node v16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
+        cache: npm
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run tests
+      run: npm test
+      env:
+        TMIO_API: ${{ secrets.TMIO_API }}
+  
   typings:
     name: Build Typings
+    after: test
     runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' }}
 
@@ -61,6 +88,7 @@ jobs:
 
   docs:
     name: Build Documentation
+    after: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

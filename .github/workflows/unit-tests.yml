@@ -1,16 +1,10 @@
-name: Node.js CI & Tests
+name: Unit Tests (Pull Request)
 
 on:
   pull_request:
     branches:
       - main
       - develop
-  push:
-    branches-ignore:
-      - main
-  paths:
-      - 'src/**.js'
-      - 'test/**.test.js'
 
 jobs:
   test:
