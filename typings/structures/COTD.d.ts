@@ -23,7 +23,7 @@ declare class COTD {
      * The event associated on this COTD
      * @returns {Promise<TMEvent>}
      */
-    event(): Promise<TMEvent>;
+    getEvent(): Promise<TMEvent>;
     /**
      * The COTD identifier
      * @type {number}
@@ -38,7 +38,7 @@ declare class COTD {
      * The number of players in this COTD
      * @type {number}
      */
-    get players(): number;
+    get playerCount(): number;
     /**
      * The start date of this COTD
      * @type {Date}

@@ -1,5 +1,6 @@
 export var GroupTypes: any;
 export var MMTypes: any;
+export var RoomRegionsList: any;
 /**
  * All available player groups.
  * * `nadeo` - All players from the Nadeo company
@@ -16,6 +17,12 @@ export type PlayerGroup = string;
  */
 export type MatchmakingGroup = string;
 /**
+ * All available Nadeo-hosted club rooms regions.
+ * * `eu-west` - Europe West
+ * * `ca-central` - Canada Central
+ */
+export type RoomRegions = string;
+/**
  * Constants that can be used in an enum or object-like way.
  */
 export type Constants = {
@@ -27,4 +34,8 @@ export type Constants = {
      * All available matchmaking groups.
      */
     MMTypes: MatchmakingGroup;
+    /**
+     * All available Nadeo-hosted club rooms regions.
+     */
+    RoomRegionsList: RoomRegions;
 };

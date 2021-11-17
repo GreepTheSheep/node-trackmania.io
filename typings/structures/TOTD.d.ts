@@ -21,9 +21,14 @@ declare class TOTD {
     private _data;
     /**
      * The map
-     * @type {TMMap}
+     * @returns {Promise<TMMap>}
+     * @example
+     * Client.totd.get(date).then(async totd=>{
+     *  const map = await totd.map();
+     *  console.log(map.name);
+     * })
      */
-    get map(): TMMap;
+    map(): Promise<TMMap>;
     /**
      * The campaign ID
      * @type {number}

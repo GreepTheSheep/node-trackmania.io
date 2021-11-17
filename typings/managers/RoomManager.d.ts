@@ -88,7 +88,7 @@ declare class RoomSearchResult {
      * Whether the room is hosted by Nadeo
      * @type {boolean}
      */
-    nadeo: boolean;
+    nadeoHosted: boolean;
     /**
      * The player count
      * @type {number}

@@ -31,7 +31,7 @@ declare class CampaignManager {
      */
     officialCampaigns(): Promise<Array<CampaignSearchResult>>;
     /**
-     * Get all popular campaigns (official excluded) (top 50)
+     * Get all popular campaigns (official excluded) (50 items / page)
      * @param {number} [page=0] The page number
      * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
      */
@@ -52,7 +52,7 @@ declare class CampaignManager {
     search(query: string, page?: number): Promise<Array<CampaignSearchResult>>;
     /**
      * Fetches a Trackmania campaign and returns its data
-     * @param {number} [clubId=0] The club Id that the campaign belongs to (If it's an official campaign, set it to 0)
+     * @param {number} clubId The club Id that the campaign belongs to (If it's an official campaign, set it to 0)
      * @param {number} id The campaign Id
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the campaign from cache or not
      * @returns {Promise<Campaign>} The campaign
@@ -61,10 +61,10 @@ declare class CampaignManager {
      *     console.log(campaign.name);
      * });
      */
-    get(clubId?: number, id: number, cache?: boolean): Promise<Campaign>;
+    get(clubId: number, id: number, cache?: boolean): Promise<Campaign>;
     /**
      * Fetches a campaign and returns its data
-     * @param {number} [clubId=0] The club Id that the campaign belongs to
+     * @param {number} clubId The club Id that the campaign belongs to
      * @param {string} id The campaign Id
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the campaign or not
      * @returns {Campaign} The campaign

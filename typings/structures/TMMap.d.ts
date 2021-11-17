@@ -31,7 +31,7 @@ declare class TMMap {
      */
     get id(): string;
     /**
-     * The map uid.
+     * The map unique id.
      * @type {string}
      */
     get uid(): string;

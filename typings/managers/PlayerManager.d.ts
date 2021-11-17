@@ -57,7 +57,7 @@ declare class PlayerManager {
     topMatchmaking(group: MatchmakingGroup, page?: number): Promise<Array<PlayerTopMatchmaking>>;
     /**
      * Fetches a player and returns its data
-     * @param {string} accountid The account ID or its tm.io vanity name
+     * @param {string} accountId The account ID or its tm.io vanity name
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the player from cache or not
      * @returns {Promise<Player>} The player
      * @example
@@ -66,10 +66,10 @@ declare class PlayerManager {
      *     console.log(player.name);
      * });
      */
-    get(accountid: string, cache?: boolean): Promise<Player>;
+    get(accountId: string, cache?: boolean): Promise<Player>;
     /**
      * Fetches a player and returns its data
-     * @param {string} accountid The account ID or its tm.io vanity name
+     * @param {string} accountId The account ID or its tm.io vanity name
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the player or not
      * @returns {Player} The player
      * @private

@@ -23,28 +23,28 @@ declare class NewsManager {
      * Get the in-game news list
      * @param {number} page The page number
      * @param {Boolean} [cache=this.client.options.cache.enabled] Whether to cache the news or not
-     * @returns {Promise<Array<News>>}
+     * @returns {Promise<Array<Splashscreen>>}
      */
-    list(page?: number, cache?: boolean): Promise<Array<News>>;
+    list(page?: number, cache?: boolean): Promise<Array<Splashscreen>>;
     /**
      * Fetches a Trackmania splashscreen and returns its data.
      * @param {number} newsId The splashscreen ID
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the news from cache or not
-     * @returns {Promise<News>} The splashscreen
+     * @returns {Promise<Splashscreen>} The splashscreen
      * @example
      * client.news.get(143).then(news => {
      *     console.log(news.title);
      * });
      */
-    get(newsId: number, cache?: boolean): Promise<News>;
+    get(newsId: number, cache?: boolean): Promise<Splashscreen>;
     /**
      * Fetches a splashscreen and returns its data
      * @param {number} newsId The splashscreen ID
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the news or not
-     * @returns {News} The splashscreen
+     * @returns {Promise<Splashscreen>} The splashscreen
      * @private
      */
     private _fetch;
 }
 import Client = require("../client/Client");
-import News = require("../structures/News");
+import Splashscreen = require("../structures/Splashscreen");
