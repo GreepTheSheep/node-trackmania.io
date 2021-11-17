@@ -28,8 +28,6 @@
 
 API Keys can be set with the method `Client.setAPIKey("yourname:yourkey");`
 
-**You are responsible for the program you code, if you are banned from the API don't blame the wrapper or trackmania.io, blame yourself!**
-
 If you're still unsure about your use of the API, feel free to DM Miss#8888 with any further questions.
 
 ---
