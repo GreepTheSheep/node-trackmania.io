@@ -30,7 +30,19 @@ exports.MMTypes = createEnum([
 ]);
 
 /**
+ * All available Nadeo-hosted club rooms regions.
+ * * `eu-west` - Europe West
+ * * `ca-central` - Canada Central
+ * @typedef {string} RoomRegions
+ */
+exports.RoomRegionsList = createEnum([
+    'eu-west',
+    'ca-central'
+]);
+
+/**
  * @typedef {Object} Constants Constants that can be used in an enum or object-like way.
  * @property {PlayerGroup} GroupTypes All available player groups.
  * @property {MatchmakingGroup} MMTypes All available matchmaking groups.
+ * @property {RoomRegions} RoomRegionsList All available Nadeo-hosted club rooms regions.
  */

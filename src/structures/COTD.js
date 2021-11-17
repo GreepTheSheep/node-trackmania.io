@@ -28,7 +28,7 @@ class COTD {
      * The event associated on this COTD
      * @returns {Promise<TMEvent>}
      */
-    async event(){
+    async getEvent(){
         return this.client.events.get(this._data.id);
     }
 
@@ -52,7 +52,7 @@ class COTD {
      * The number of players in this COTD
      * @type {number}
      */
-    get players(){
+    get playerCount(){
         return this._data.players;
     }
 

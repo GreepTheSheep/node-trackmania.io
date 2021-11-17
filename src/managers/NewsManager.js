@@ -1,6 +1,6 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
-const News = require('../structures/News');
+const Splashscreen = require('../structures/Splashscreen');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
 /**
@@ -23,14 +23,14 @@ class NewsManager{
          * @type {CacheManager} 
          * @private
          */
-        this._cache = new CacheManager(this.client, this, News);
+        this._cache = new CacheManager(this.client, this, Splashscreen);
     }
 
     /**
      * Get the in-game news list
      * @param {number} page The page number
      * @param {Boolean} [cache=this.client.options.cache.enabled] Whether to cache the news or not
-     * @returns {Promise<Array<News>>}
+     * @returns {Promise<Array<Splashscreen>>}
      */
     async list(page = 0, cache = this.client.options.cache.enabled){
         const news = this.client.options.api.paths.tmio.tabs.news;
@@ -38,22 +38,22 @@ class NewsManager{
         const array = [];
         if (res.splashscreens.length > 0) { // check all news from the page 0
             for (let i = 0; i < res.splashscreens.length; i++) {
-                let news = new News(this.client, res.splashscreens[i]);
+                let splashscreen = new Splashscreen(this.client, res.splashscreens[i]);
                 if (cache) {
                     res.splashscreens[i]._cachedTimestamp = Date.now();
-                    this._cache.set(res.id, news);
+                    this._cache.set(res.id, splashscreen);
                 } 
-                array.push(news);
+                array.push(splashscreen);
             }
         }
-        return news;
+        return array;
     }
 
     /**
      * Fetches a Trackmania splashscreen and returns its data.
      * @param {number} newsId The splashscreen ID
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the news from cache or not
-     * @returns {Promise<News>} The splashscreen
+     * @returns {Promise<Splashscreen>} The splashscreen
      * @example 
      * client.news.get(143).then(news => {
      *     console.log(news.title);
@@ -71,7 +71,7 @@ class NewsManager{
      * Fetches a splashscreen and returns its data
      * @param {number} newsId The splashscreen ID
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the news or not
-     * @returns {News} The splashscreen
+     * @returns {Promise<Splashscreen>} The splashscreen
      * @private
      */
     async _fetch(newsId, cache = this.client.options.cache.enabled){
@@ -86,7 +86,7 @@ class NewsManager{
                 for (let i = 0; i < res.splashscreens.length; i++) {
                     res.splashscreens[i]._cachedTimestamp = Date.now();
                     
-                    this._cache.set(res.id, new News(this.client, res.splashscreens[i]));
+                    this._cache.set(res.id, new Splashscreen(this.client, res.splashscreens[i]));
                 }
             }
             if (res.page_max > 1) {
@@ -97,7 +97,7 @@ class NewsManager{
                         for (let i = 0; i < res.splashscreens.length; i++) {
                             res.splashscreens[i]._cachedTimestamp = Date.now();
                             
-                            this._cache.set(res.id, new News(this.client, res.splashscreens[i]));
+                            this._cache.set(res.id, new Splashscreen(this.client, res.splashscreens[i]));
                         }
                     }
                 }
@@ -108,7 +108,7 @@ class NewsManager{
             if (res.splashscreens.length > 0) { // check all news from the page 0
                 for (let i = 0; i < res.splashscreens.length; i++) {
                     if (res.splashscreens[i].id === newsId) {
-                        return new News(this.client, res.splashscreens[i]);
+                        return new Splashscreen(this.client, res.splashscreens[i]);
                     }
                 }
             }
@@ -119,7 +119,7 @@ class NewsManager{
                     if (res.splashscreens.length > 0) {
                         for (let i = 0; i < res.splashscreens.length; i++) {
                             if (res.splashscreens[i].id === newsId) {
-                                return new News(this.client, res.splashscreens[i]);
+                                return new Splashscreen(this.client, res.splashscreens[i]);
                             }
                         }
                     }

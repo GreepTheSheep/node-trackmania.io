@@ -109,7 +109,7 @@ class PlayerManager {
 
     /**
      * Fetches a player and returns its data
-     * @param {string} accountid The account ID or its tm.io vanity name
+     * @param {string} accountId The account ID or its tm.io vanity name
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the player from cache or not
      * @returns {Promise<Player>} The player
      * @example
@@ -118,24 +118,24 @@ class PlayerManager {
      *     console.log(player.name);
      * });
      */
-    async get(accountid, cache = this.client.options.cache.enabled){
-        if (cache && this._cache.has(accountid)) {
-            return this._cache.get(accountid);
+    async get(accountId, cache = this.client.options.cache.enabled){
+        if (cache && this._cache.has(accountId)) {
+            return this._cache.get(accountId);
         } else {
-            return await this._fetch(accountid, cache);
+            return await this._fetch(accountId, cache);
         }
     }
         
     /**
      * Fetches a player and returns its data
-     * @param {string} accountid The account ID or its tm.io vanity name
+     * @param {string} accountId The account ID or its tm.io vanity name
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the player or not
      * @returns {Player} The player
      * @private
      */
-    async _fetch(accountid, cache = this.client.options.cache.enabled){
+    async _fetch(accountId, cache = this.client.options.cache.enabled){
         const player = this.client.options.api.paths.tmio.tabs.player,
-            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountid}`);
+            res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountId}`);
         
         const thePlayer = new Player(this.client, res);
         if (cache) {

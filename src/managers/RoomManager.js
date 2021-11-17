@@ -129,7 +129,7 @@ class RoomSearchResult {
          * Whether the room is hosted by Nadeo
          * @type {boolean}
          */
-        this.nadeo = data.nadeo;
+        this.nadeoHosted = data.nadeo;
 
         /**
          * The player count

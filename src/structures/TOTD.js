@@ -1,5 +1,5 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const TMMap = require('../structures/TMMap');
+const TMMap = require('../structures/TMMap'); // eslint-disable-line no-unused-vars
 
 /**
  * Represents a Track Of The Day (TOTD).
@@ -26,10 +26,15 @@ class TOTD {
 
     /**
      * The map
-     * @type {TMMap}
+     * @returns {Promise<TMMap>}
+     * @example
+     * Client.totd.get(date).then(async totd=>{
+     *  const map = await totd.map();
+     *  console.log(map.name);
+     * })
      */
-    get map(){
-        return new TMMap(this.client, this._data.map);
+    async map(){
+        return this.client.maps.get(this._data.map.mapUid);
     }
 
     /**

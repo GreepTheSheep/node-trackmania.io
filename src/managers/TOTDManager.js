@@ -67,8 +67,7 @@ class TOTDManager{
      * @private
      */
     async _fetch(date, cache = this.client.options.cache.enabled){
-        const totd = this.client.options.api.paths.tmio.tabs.totd,
-            map = this.client.options.api.paths.tmio.tabs.map;
+        const totd = this.client.options.api.paths.tmio.tabs.totd;
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${totd}/${this._calculateMonths(date)}`);
 
         if (res.year != date.getFullYear() && res.month != date.getMonth()+1) {
@@ -81,23 +80,6 @@ class TOTDManager{
         if (!dayMap) dayMap = res.days.find(map => map.monthday == date.getDate()-1);
 
         if (!dayMap) throw new Error('Track of the day not found, it is the right date?');
-
-        // Check if the map exists on tmx
-        if (dayMap.map.exchangeid !== 0) {
-            const tmxurl = this.client.options.api.paths.tmx,
-                tmxres = await this.client._apiReq(`${tmxurl.protocol}://${tmxurl.host}/${tmxurl.api}/${tmxurl.tabs.mapInfo}/${dayMap.map.exchangeid}`);
-            dayMap.map['exchange'] = tmxres[0];
-        }
-
-        // Get map votes thanks to RoboTec's Voting API
-        const mapVotes = this.client.options.api.paths.mapVoting.tabs.getVotes;
-        const votes = await this.client._apiReq(`${new ReqUtil(this.client).votingAPIURL}/${mapVotes}?map=${dayMap.map.mapUid}`);
-        dayMap.map['karma'] = votes;
-
-        // Get map leaderboard
-        const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard;
-        const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${dayMap.map.mapUid}`);
-        dayMap.map["leaderboard"] = leaderboardRes;
 
         const theMap = new TOTD(this.client, dayMap);
         if (cache) {

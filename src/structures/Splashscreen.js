@@ -3,7 +3,7 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
 /**
  * Represents a news item.
  */
-class News {
+class Splashscreen {
     /**
      * @param {Client} client The client.
      * @param {Object} data 
@@ -72,4 +72,4 @@ class News {
     }
 }
 
-module.exports = News;
+module.exports = Splashscreen;

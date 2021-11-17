@@ -27,7 +27,7 @@ class COTDManager{
     }
 
     /**
-     * Fetches a Trackmania event and returns its data
+     * Fetches the latest COTDs and returns its data
      * @param {number} [page=0] The page, each page contains 12 items
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the list from cache or not
      * @returns {Promise<Array<COTD>>} The COTD list
@@ -45,10 +45,10 @@ class COTDManager{
     }
         
     /**
-     * Fetches a event and returns its data
+     * Fetches a COTD and returns its data
      * @param {number} [page=0] The page
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the list or not
-     * @returns {array<COTD>} The COTD list
+     * @returns {Promise<Array<COTD>>} The COTD list
      * @private
      */
     async _fetch(page = 0, cache = this.client.options.cache.enabled){

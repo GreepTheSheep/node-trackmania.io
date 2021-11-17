@@ -28,7 +28,7 @@ class EventManager{
     }
     
     /**
-     * List all available events
+     * List all available events by creation date
      * @param {number} [page=0] The page number
      * @returns {Promise<Array<EventSearchResult>>} The events
      */
