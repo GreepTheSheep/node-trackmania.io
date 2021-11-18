@@ -74,3 +74,10 @@ class Client extends BaseClient {
 }
 
 module.exports = Client;
+
+/**
+ * Emitted for general debugging information.
+ * @event Client#debug
+ * @param {string} instance The instance name where the debug is triggered
+ * @param {string} info The debug information
+ */

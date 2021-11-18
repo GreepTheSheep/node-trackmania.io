@@ -64,9 +64,27 @@ class APIRequest {
             method,
             body            
         };
+        /**
+         * Emitted before every API request.
+         * This event can emit several times for the same request, e.g. when hitting a rate limit.
+         * <info>This is an informational event that is emitted quite frequently,
+         * it is highly recommended to check `request.url` to filter the data.</info>
+         * @event Client#apiRequest
+         * @param {APIRequest} request The request that is about to be sent
+        */
+        this.client.emit('apiRequest', this);
         return fetch(this.url, this.options)
             .then(async response => {
-                if (this.client.options.dev) console.log("API Request:", this.url, response.statusText);
+                /**
+                 * Emitted after every API request has received a response.
+                 * This event does not necessarily correlate to completion of the request, e.g. when hitting a rate limit.
+                 * <info>This is an informational event that is emitted quite frequently,
+                 * it is highly recommended to check `request.url` to filter the data.</info>
+                 * @event Client#apiResponse
+                 * @param {APIRequest} request The request that triggered this response
+                 * @param {Response} response The response received from the API
+                 */
+                this.client.emit('apiResponse', this, response);
                 // Save the rate limit details
                 if (this.url.startsWith(new ReqUtil(this.client).tmioAPIURL)){
                     this.client.ratelimit = {
@@ -80,13 +98,13 @@ class APIRequest {
                 } else {
                     if (response.status == 500) {
                         const json = await response.json();
-                        throw new Error(json.error);
-                    } else throw new Error(response.statusText);
+                        throw json.error;
+                    } else throw response.statusText;
                 }
             })
             .catch(error => {
                 if (this.client.options.dev) error = error + " ("+this.url+")";
-                throw new Error(error);
+                throw error;
             });
     }
 }
