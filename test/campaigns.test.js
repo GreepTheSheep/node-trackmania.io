@@ -6,20 +6,18 @@ const assert = require('assert'),
 describe("Campaigns", function(){
     this.timeout(15*1000);
 
-    describe("Official campaign", async function(){
-        const currentSeason = await tmioClient.campaigns.currentSeason(),
-            campaigns = await tmioClient.campaigns.officialCampaigns();          
+    describe("Official campaign", function(){
 
-        it("Current season is official", async function(){    
+        it("Current season is official", async function(){  
+            const currentSeason = await tmioClient.campaigns.currentSeason();
+
             assert.equal(currentSeason.isOfficial, true);
         });
 
-        it("All seasons must having current season", async function(){
-            assert.equal(campaigns.some(c=>c.id == currentSeason.id), true);
-        });
-
         it("Fall 2020", async function(){
-            const fall2020 = await campaigns.find(c=>c.id == 8449).campaign();
+            const campaigns = await tmioClient.campaigns.officialCampaigns(),
+                fall2020 = await campaigns.find(c=>c.id == 8449).campaign();
+                
             assert.equal(campaigns.find(c=>c.id == 8449).mapCount, 25);
             assert.equal(fall2020.isOfficial, true);
         });
