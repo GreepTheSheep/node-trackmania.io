@@ -2,10 +2,10 @@ const ReqUtil = require('../util/ReqUtil');
 const Player = require('./Player'); // eslint-disable-line no-unused-vars
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 
+/**
+ * Represents a map on Trackmania.
+ */
 class TMMap {
-    /**
-     * Represents a map on Trackmania.
-     */
     constructor(client, data) {
     
         /**
