@@ -15,11 +15,10 @@ describe("Campaigns", function(){
         });
 
         it("Fall 2020", async function(){
-            const campaigns = await tmioClient.campaigns.officialCampaigns(),
-                fall2020 = await campaigns.find(c=>c.id == 8449).campaign();
+            const campaigns = await tmioClient.campaigns.officialCampaigns();
+            const campaign = await campaigns.find(c=>c.id == 8449).campaign();
                 
-            assert.equal(campaigns.find(c=>c.id == 8449).mapCount, 25);
-            assert.equal(fall2020.isOfficial, true);
+            assert.equal(campaign.isOfficial, true);
         });
     });
 
