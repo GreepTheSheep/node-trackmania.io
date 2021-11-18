@@ -35,6 +35,8 @@ declare class BaseClient {
     /**
      * Sets an API Key.
      * Required if you run a important project. It will triple the rate limit.
+     *
+     * <warn>This should be kept private at all times.</warn>
      * @param {string} [key=this.options.api.key] The full API key. It must contains "yourname:theactualsecretkey"
      * @returns {void}
      */

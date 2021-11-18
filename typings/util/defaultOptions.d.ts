@@ -50,6 +50,9 @@ declare class defaultOptionsAPI {
     useragent: string | null;
     /**
      * The API Key to use. It must contains "yourname:theactualsecretkey".
+     * If present, this defaults to `process.env.TMIO_API` when instantiating the client
+     *
+     * <warn>This should be kept private at all times.</warn>
      * @type {?string}
      */
     key: string | null;
