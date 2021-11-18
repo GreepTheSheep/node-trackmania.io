@@ -58,12 +58,11 @@ class Player {
     }
 
     /**
-     * The timestamps of the player's first login
+     * The date of the player's first login
      * @type {Date}
      * @readonly
-     * @private
      */
-    get timestamp(){
+    get firstLogin(){
         return new Date(this._data.timestamp);
     }
 
