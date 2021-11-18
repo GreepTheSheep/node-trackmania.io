@@ -5,11 +5,9 @@ const defaultOptions = require('../util/defaultOptions');
 
 /**
  * The Base Client
+ * @extends {EventEmitter}
  */
 class BaseClient extends EventEmitter {
-    /**
-     * @param {defaultOptions} [options={}] The options to use.
-     */
     constructor(options = {}) {
         super();
 

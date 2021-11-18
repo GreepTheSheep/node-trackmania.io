@@ -7,10 +7,6 @@ const Club = require('./Club'); // eslint-disable-line no-unused-vars
  * The Campaign class represents a campaign.
  */
 class Campaign {
-    /**
-     * @param {Clienr} client The client.
-     * @param {Object} data 
-     */
     constructor(client, data) {
         /**
          * The client object of the campaign.
@@ -127,10 +123,6 @@ class Campaign {
  * The media images of an official campaign.
  */
 class CampaignMedia {
-    /**
-     * @param {Client} client The client instance.
-     * @param {Object} data The data object.
-     */
     constructor(client, data) {
         const ReqUtil = require('../util/ReqUtil'),
             tmioURL = new ReqUtil(client).tmioURL;

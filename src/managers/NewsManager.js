@@ -7,9 +7,6 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
  * Represents a in-game news manager.
  */
 class NewsManager{
-    /**
-     * @param {Client} client The client
-     */
     constructor(client){
         /**
          * The client instance.

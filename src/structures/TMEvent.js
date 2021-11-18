@@ -8,10 +8,6 @@ const CacheManager = require('../managers/CacheManager');
  * Represents a Event in Trackmania.
  */
 class TMEvent {
-    /**
-     * @param {Client} client The client
-     * @param {Object} data 
-     */
     constructor(client, data) {
         /** The client instance
          * @type {Client}
@@ -183,10 +179,6 @@ class TMEvent {
  * Represents a round in a TMEvent.
  */
 class TMEventRound {
-    /**
-     * @param {TMEvent} event The Event
-     * @param {Object} data 
-     */
     constructor(event, data) {
         /**
          * The event instance
@@ -295,10 +287,6 @@ class TMEventRound {
  * Represents a match in a TMEventRound.
  */
 class TMEventRoundMatch {
-    /**
-     * @param {TMEventRound} round The Round
-     * @param {Object} data 
-     */
     constructor(round, data) {
         /**
          * The round instance
@@ -401,10 +389,6 @@ class TMEventRoundMatch {
  * Represents a result in a TMEventRoundMatch.
  */
 class TMEventRoundMatchResult {
-    /**
-     * @param {TMEventRoundMatch} match The match
-     * @param {Object} data 
-     */
     constructor(match, data) {
         /**
          * The match instance
@@ -461,10 +445,6 @@ class TMEventRoundMatchResult {
  * Represents a challenge in a TMEventRound.
  */
 class TMEventChallenge {
-    /**
-     * @param {TMEventRound} round The round 
-     * @param {Object} data 
-     */
     constructor(round, data) {
         /**
          * The round instance
@@ -601,10 +581,6 @@ class TMEventChallenge {
  * Represents a result in a TMEventChallenge.
  */
 class TMEventChallengeResult {
-    /**
-     * @param {TMEventChallenge} challenge The challenge
-     * @param {Object} data 
-     */
     constructor(challenge, data) {
         /**
          * The challenge instance

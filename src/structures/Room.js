@@ -7,10 +7,6 @@ const {RoomRegions} = require('../util/Constants'); // eslint-disable-line no-un
  * Represents a room.
  */
 class Room {
-    /**
-     * @param {Client} client The client.
-     * @param {Object} data 
-     */
     constructor(client, data) {
         /**
          * The client that instantiated this room
@@ -103,10 +99,16 @@ class Room {
     /**
      * The script settings on the room.
      * <info> Example of result:
+     * 
      * [{
+     * 
      * key: 'S_DecoImageUrl_Checkpoint',
+     * 
      * value: 'https://trackmania-prod-nls-file-store-s3.cdn.ubi.com/club/decal/5f62400600952.png?updateTimestamp=1600274438.png'
-     * }] </info>
+     * 
+     * }]
+     * 
+     * </info>
      * @type {Array<Object<string, string|number|boolean>>} x must be "key" and "value"
      */
     get scriptSettings() {

@@ -5,10 +5,6 @@ const TMEvent = require('./TMEvent'); // eslint-disable-line no-unused-vars
  * Represents a COTD event.
  */
 class COTD {
-    /**
-     * @param {Client} client The client.
-     * @param {Object} data 
-     */
     constructor(client, data){
         /**
          * The client instance

@@ -7,9 +7,6 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
  * Represents a manager for clubs.
  */
 class ClubManager{
-    /**
-     * @param {Client} client The client.
-     */
     constructor(client){
         /**
          * The client instance.

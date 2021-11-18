@@ -9,9 +9,6 @@ const MatchmakingDivision = require('../structures/MatchmakingDivision');
  * Represents a manager for players.
  */
 class PlayerManager {
-    /**
-     * @param {Client} client The client.
-     */
     constructor(client){
         /**
          * The client instance
@@ -156,10 +153,6 @@ class PlayerManager {
  * Represents a player top trophy
  */
 class PlayerTopTrophy {
-    /**
-     * @param {Client} client The client instance
-     * @param {Object} data The data
-     */
     constructor(client, data){
         /**
          * The client instance
@@ -191,11 +184,6 @@ class PlayerTopTrophy {
  * The player top matchmaking
  */
 class PlayerTopMatchmaking{
-    /**
-     * @param {Client} client The client instance
-     * @param {MatchmakingGroup} typeId The matchmaking type ID
-     * @param {Object} data The data
-     */
     constructor(client, typeId, data){
         /**
          * The client instance
@@ -233,10 +221,6 @@ class PlayerTopMatchmaking{
  * The result of a player search. It is completely different from the {@link Player} object.
  */
 class PlayerSearchResult {
-    /**
-     * @param {Client} client The client instance.
-     * @param {Object} data The data.
-     */
     constructor(client, data){
         /**
          * The client instance

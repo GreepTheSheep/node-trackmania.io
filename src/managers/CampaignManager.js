@@ -8,9 +8,6 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
  * Represents a manager for campaigns.
  */
 class CampaignManager{
-    /**
-     * @param {Client} client The client
-     */
     constructor(client){
         /**
          * The client instance.
@@ -156,10 +153,6 @@ class CampaignManager{
  * The result of a campaign search. It is completely different from the {@link Campaign} object.
  */
 class CampaignSearchResult {
-    /**
-     * @param {Client} client The client instance.
-     * @param {Object} data The data.
-     */
     constructor(client, data){
         /**
          * The client instance

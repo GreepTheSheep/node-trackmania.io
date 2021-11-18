@@ -13,7 +13,7 @@ const RoomManager = require('../managers/RoomManager');
 const EventManager = require('../managers/EventManager');
 
 /**
- * Instantiates a new client.
+ * Instantiates a new client. This is the entry point.
  * @extends {BaseClient}
  */
 class Client extends BaseClient {

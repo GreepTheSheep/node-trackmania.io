@@ -7,10 +7,6 @@ const {MMTypes, MatchmakingGroup} = require('../util/Constants'); // eslint-disa
  * Represents a player in Trackmania.
  */
 class Player {
-    /**
-     * @param {Client} client The client.
-     * @param {Object} data 
-     */
     constructor(client, data){
         /**
          * The client object of the player
@@ -169,10 +165,6 @@ class Player {
  * Represents the trophies of a player
  */
 class PlayerTrophies {
-    /**
-     * @param {Player} player The player
-     * @param {Object} data 
-     */
     constructor(player, data){
         /**
          * The player object
@@ -274,10 +266,6 @@ class PlayerTrophies {
  * Represents the history of a player's trophies
  */
 class PlayerTrophyHistory {
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data 
-     */
     constructor(player, data){
         /**
          * The player object
@@ -371,10 +359,6 @@ class PlayerTrophyHistory {
  * Represents the type of an achievement
  */
 class PlayerTrophyAchievementType{
-    /**
-     * @param {Player} player 
-     * @param {Object} data 
-     */
     constructor(player, data){
         /**
          * The player object
@@ -543,10 +527,6 @@ class PlayerTrophyAchievementType{
  * Represents a player's echelon
  */
 class PlayerEchelon {
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data 
-     */
     constructor(player, data){
         /**
          * The player object
@@ -588,9 +568,6 @@ class PlayerEchelon {
  * Represents a player's metadata
  */
 class PlayerMeta {
-    /**
-     * @param {Player} player The player.
-     */
     constructor(player){
         /**
          * The player object
@@ -708,10 +685,6 @@ class PlayerMeta {
  * Represents a player's stats in matchmaking
  */
 class PlayerMatchmaking {
-    /**
-     * @param {Player} player The player.
-     * @param {MatchmakingGroup} type The type of matchmaking.
-     */
     constructor(player, type){
         /**
          * The player object
@@ -819,10 +792,6 @@ class PlayerMatchmaking {
  * Represents a player's matchmaking match result
  */
 class PlayerMatchmakingMatchResult {
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data 
-     */
     constructor(player, data){
         /**
          * The player object
@@ -897,10 +866,6 @@ class PlayerMatchmakingMatchResult {
  * Represents a player's COTD object
  */
 class PlayerCOTD{
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data 
-     */
     constructor(player, data){
         /**
          * The Player object
@@ -963,10 +928,6 @@ class PlayerCOTD{
  * Represents a player's COTD result
  */
 class PlayerCOTDResult{
-    /**
-     * @param {Player} player The player
-     * @param {Object} data 
-     */
     constructor(player, data){
         /**
          * The Player object
@@ -1058,10 +1019,6 @@ class PlayerCOTDResult{
  * Represents a player's COTD stats
  */
 class PlayerCOTDStats{
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data 
-     */
     constructor(player, data){
 
         /**
@@ -1177,10 +1134,6 @@ class PlayerCOTDStats{
  * Represents a player's COTD stats best stats
  */
 class PlayerCOTDStatsBest{
-    /**
-     * @param {PlayerCOTDStats} PlayerCOTDStats The player's COTD stats
-     * @param {Object} data 
-     */
     constructor(PlayerCOTDStats, data){
     
         /**

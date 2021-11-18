@@ -6,11 +6,6 @@ const { MMTypes } = require('../util/Constants');
  * Represents a division in the matchmaking system.
  */
 class MatchmakingDivision{
-    /**
-     * @param {Client} client The client
-     * @param {number} typeId 
-     * @param {Object} division 
-     */
     constructor(client, typeId, division){
         /**
          * The client instance

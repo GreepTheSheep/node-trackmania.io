@@ -8,9 +8,6 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
  * Represents a manager for in-game events.
  */
 class EventManager{
-    /**
-     * @param {Client} client The client.
-     */
     constructor(client){
         /**
          * The client instance.
@@ -95,10 +92,6 @@ class EventManager{
  * The result of a campaign search. It is completely different from the {@link TMEvent} object.
  */
 class EventSearchResult {
-    /**
-     * @param {Client} client The client instance.
-     * @param {Object} data The data.
-     */
     constructor(client, data){
         /**
          * The client instance

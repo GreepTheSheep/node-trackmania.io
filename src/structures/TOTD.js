@@ -5,10 +5,6 @@ const TMMap = require('../structures/TMMap'); // eslint-disable-line no-unused-v
  * Represents a Track Of The Day (TOTD).
  */
 class TOTD {
-    /**
-     * @param {Client} client The client.
-     * @param {Object} data 
-     */
     constructor(client, data){
         /**
          * The client objet
