@@ -6,8 +6,6 @@ on:
       - 'docs'
     tags:
       - '*'
-    paths:
-      - 'src/**.js'
   workflow_dispatch:
 
 permissions: write-all

@@ -11,4 +11,4 @@
   files:
     - name: Get TOTD when it came out
       id: totdEvent
-      path: examples/totdEvent.md
+      path: ../../examples/totdEvent.md
