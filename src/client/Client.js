@@ -1,6 +1,8 @@
+const {DateTime} = require('luxon');
 const BaseClient = require('./BaseClient');
 
 const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line no-unused-vars
+const TOTD = require('../structures/TOTD'); // eslint-disable-line no-unused-vars
 
 // Managers
 const PlayerManager = require('../managers/PlayerManager');
@@ -70,6 +72,26 @@ class Client extends BaseClient {
          * @type {EventManager}
          */
         this.events = new EventManager(this);
+
+
+        // Will initialize the TOTD event, witch calls an event for a new TOTD every day at 19h Europe/Paris timezone
+        let newTotdChecked = false;
+        setInterval(async ()=>{
+            const date = DateTime.local().setZone("Europe/Paris");
+            if (date.hour === 19 && date.minute === 1 && !newTotdChecked){
+                let totd = await this.totd.get(date.toJSDate());
+                /**
+                 * Emitted when a new Track Of The Day is out on Trackmania.io.
+                 * <info>This event is mostly emitted one minute after the release (at 19h01 CE(S)T)</info>
+                 * @event Client#totd
+                 * @param {TOTD} totd The Track of The Day
+                 */
+                this.client.emit('totd', totd);
+
+                // this prevent emitting this event a second time in the same day
+                newTotdChecked = true;
+            } else newTotdChecked = false;
+        }, 10000);
     }
 }
 

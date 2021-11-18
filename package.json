@@ -27,6 +27,7 @@
   "homepage": "https://github.com/GreepTheSheep/node-trackmania.io#readme",
   "dependencies": {
     "events": "3.3.0",
+    "luxon": "^2.1.1",
     "node-fetch": "2.6.1"
   },
   "devDependencies": {
