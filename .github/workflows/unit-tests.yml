@@ -1,10 +1,20 @@
-name: Unit Tests (Pull Request)
+name: Unit Tests
 
 on:
+  push:
+    branches-ignore:
+      - 'main'
+    paths:
+      - 'src/**.js'
+      - 'test/**.test.js'
   pull_request:
     branches:
       - main
       - develop
+    paths:
+      - 'src/**.js'
+      - 'test/**.test.js'
+  workflow_dispatch:
 
 jobs:
   test:
