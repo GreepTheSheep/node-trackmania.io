@@ -1,7 +1,7 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const TMMap = require('./TMMap'); // eslint-disable-line no-unused-vars
 const Club = require('./Club'); // eslint-disable-line no-unused-vars
-const {RoomRegions} = require('../util/Constants'); // eslint-disable-line no-unused-vars
+const {RoomRegion} = require('../util/Constants'); // eslint-disable-line no-unused-vars
 
 /**
  * Represents a room.
@@ -81,7 +81,7 @@ class Room {
 
     /**
      * The region of the room (if it's on a cloud room)
-     * @type {RoomRegions}
+     * @type {RoomRegion}
      */
     get region() {
         if (this.isCloud) return this._data.region;
