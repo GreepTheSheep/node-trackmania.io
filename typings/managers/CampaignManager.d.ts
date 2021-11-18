@@ -110,5 +110,5 @@ declare class CampaignSearchResult {
      * Return to the Campaign Object
      * @returns {Promise<Campaign>}
      */
-    campaign(): Promise<Campaign>;
+    getCampaign(): Promise<Campaign>;
 }
