@@ -3,8 +3,6 @@ const assert = require('assert'),
     TMIO = require('../'),
     tmioClient = new TMIO.Client({dev: true});
 
-tmioClient.setAPIKey(process.env.TMIO_API);
-
 describe("Campaigns", function(){
     this.timeout(15*1000);
 
