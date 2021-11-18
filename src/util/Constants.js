@@ -41,8 +41,24 @@ exports.RoomRegions = createEnum([
 ]);
 
 /**
+ * All available Club Member roles.
+ * * `Creator`
+ * * `Admin`
+ * * `Content_Creator`
+ * * `Member`
+ * @typedef {string} ClubMemberRole
+ */
+exports.ClubMemberRoles = createEnum([
+    'Creator',
+    'Admin',
+    'Content_Creator',
+    'Member'
+]);
+
+/**
  * @typedef {Object} Constants Constants that can be used in an enum or object-like way.
  * @property {PlayerGroup} GroupTypes All available player groups.
  * @property {MatchmakingGroup} MMTypes All available matchmaking groups.
  * @property {RoomRegion} RoomRegions All available Nadeo-hosted club rooms regions.
+ * @property {ClubMemberRole} ClubMemberRoles All available Club Member roles.
  */

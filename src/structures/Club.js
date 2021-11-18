@@ -1,6 +1,7 @@
 const Player = require('./Player'); // eslint-disable-line no-unused-vars
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const Campaign = require('./Campaign'); // eslint-disable-line no-unused-vars
+const {ClubMemberRole} = require('../util/Constants'); // eslint-disable-line no-unused-vars
 const CacheManager = require('../managers/CacheManager');
 
 /**
@@ -256,7 +257,7 @@ class ClubMember {
 
     /**
      * The member role
-     * @type {string}
+     * @type {ClubMemberRole}
      */
     get role() {
         return this._data.role;
