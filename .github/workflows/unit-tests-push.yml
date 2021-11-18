@@ -11,6 +11,8 @@ on:
 
 jobs:
   test:
+    # check if the branch is not in a pull request
+    if: ${{ github.event.pull_request != "opened" }}
     name: Unit Tests
     runs-on: ubuntu-latest
 
