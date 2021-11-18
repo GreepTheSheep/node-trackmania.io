@@ -1,8 +1,8 @@
 export = TMMap;
+/**
+ * Represents a map on Trackmania.
+ */
 declare class TMMap {
-    /**
-     * Represents a map on Trackmania.
-     */
     constructor(client: any, data: any);
     /**
      * The client instance.
