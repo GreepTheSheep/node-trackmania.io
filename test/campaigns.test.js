@@ -16,8 +16,9 @@ describe("Campaigns", function(){
 
         it("Fall 2020", async function(){
             const campaigns = await tmioClient.campaigns.officialCampaigns();
-            const campaign = await campaigns.find(c=>c.id == 8449).campaign();
+            const campaign = await campaigns.find(c=>c.id == 4791).getCampaign();
                 
+            assert.equal(campaigns.find(c=>c.id == 4791).mapCount, 25);
             assert.equal(campaign.isOfficial, true);
         });
     });

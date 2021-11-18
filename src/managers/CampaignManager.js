@@ -195,8 +195,9 @@ class CampaignSearchResult {
      * Return to the Campaign Object
      * @returns {Promise<Campaign>}
      */
-    async campaign(){
-        return await this.client.campaigns.get(this.clubId, this.id);
+    async getCampaign(){
+        const campaign = await this.client.campaigns.get(this.clubId, this.id);
+        return campaign;
     }
 }
 
