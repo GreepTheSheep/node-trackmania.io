@@ -3,3 +3,12 @@
     - name: Welcome
       id: welcome
       path: ../../README.md
+    - name: Contributing
+      id: contributing
+      path: ../../CONTRIBUTING.md
+
+- name: Examples
+  files:
+    - name: Get TOTD when it came out
+      id: totdEvent
+      path: examples/totdEvent.md
