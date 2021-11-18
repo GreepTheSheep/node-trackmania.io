@@ -233,6 +233,6 @@ declare class ClubActivity {
      * If the activity is a room, returns the room object of the activity
      * @returns {?Promise<Room>}
      */
-    room(): Promise<any> | null;
+    room(): Promise<Room> | null;
 }
 import Campaign = require("./Campaign");
