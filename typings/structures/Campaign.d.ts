@@ -3,10 +3,6 @@ export = Campaign;
  * The Campaign class represents a campaign.
  */
 declare class Campaign {
-    /**
-     * @param {Clienr} client The client.
-     * @param {Object} data
-     */
     constructor(client: any, data: any);
     /**
      * The client object of the campaign.
@@ -82,11 +78,7 @@ import TMMap = require("./TMMap");
  * The media images of an official campaign.
  */
 declare class CampaignMedia {
-    /**
-     * @param {Client} client The client instance.
-     * @param {Object} data The data object.
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /**
      * The client object of the campaign.
      * @type {Client}

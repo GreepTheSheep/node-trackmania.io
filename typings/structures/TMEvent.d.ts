@@ -3,11 +3,7 @@ export = TMEvent;
  * Represents a Event in Trackmania.
  */
 declare class TMEvent {
-    /**
-     * @param {Client} client The client
-     * @param {Object} data
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /** The client instance
      * @type {Client}
      */
@@ -115,11 +111,7 @@ import Player = require("./Player");
  * Represents a round in a TMEvent.
  */
 declare class TMEventRound {
-    /**
-     * @param {TMEvent} event The Event
-     * @param {Object} data
-     */
-    constructor(event: TMEvent, data: any);
+    constructor(event: any, data: any);
     /**
      * The event instance
      * @type {TMEvent}
@@ -181,11 +173,7 @@ declare class TMEventRound {
  * Represents a match in a TMEventRound.
  */
 declare class TMEventRoundMatch {
-    /**
-     * @param {TMEventRound} round The Round
-     * @param {Object} data
-     */
-    constructor(round: TMEventRound, data: any);
+    constructor(round: any, data: any);
     /**
      * The round instance
      * @type {TMEventRound}
@@ -248,11 +236,7 @@ declare class TMEventRoundMatch {
  * Represents a challenge in a TMEventRound.
  */
 declare class TMEventChallenge {
-    /**
-     * @param {TMEventRound} round The round
-     * @param {Object} data
-     */
-    constructor(round: TMEventRound, data: any);
+    constructor(round: any, data: any);
     /**
      * The round instance
      * @type {TMEventRound}
@@ -330,11 +314,7 @@ declare class TMEventChallenge {
  * Represents a result in a TMEventRoundMatch.
  */
 declare class TMEventRoundMatchResult {
-    /**
-     * @param {TMEventRoundMatch} match The match
-     * @param {Object} data
-     */
-    constructor(match: TMEventRoundMatch, data: any);
+    constructor(match: any, data: any);
     /**
      * The match instance
      * @type {TMEventRoundMatch}
@@ -377,11 +357,7 @@ import TMMap = require("./TMMap");
  * Represents a result in a TMEventChallenge.
  */
 declare class TMEventChallengeResult {
-    /**
-     * @param {TMEventChallenge} challenge The challenge
-     * @param {Object} data
-     */
-    constructor(challenge: TMEventChallenge, data: any);
+    constructor(challenge: any, data: any);
     /**
      * The challenge instance
      * @type {TMEventChallenge}

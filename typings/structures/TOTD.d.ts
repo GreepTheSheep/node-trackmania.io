@@ -3,11 +3,7 @@ export = TOTD;
  * Represents a Track Of The Day (TOTD).
  */
 declare class TOTD {
-    /**
-     * @param {Client} client The client.
-     * @param {Object} data
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /**
      * The client objet
      * @type {Client}

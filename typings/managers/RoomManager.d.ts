@@ -3,10 +3,7 @@ export = RoomManager;
  * Represents a manager for rooms.
  */
 declare class RoomManager {
-    /**
-     * @param {Client} client The client.
-     */
-    constructor(client: Client);
+    constructor(client: any);
     /**
      * The client instance.
      * @type {Client}
@@ -59,11 +56,7 @@ import Client = require("../client/Client");
  * The result of a campaign search. It is completely different from the {@link Room} object.
  */
 declare class RoomSearchResult {
-    /**
-     * @param {Client} client The client instance.
-     * @param {Object} data The data.
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /**
      * The client instance
      * @type {Client}

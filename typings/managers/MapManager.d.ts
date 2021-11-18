@@ -3,10 +3,7 @@ export = MapManager;
  * Represents a map manager.
  */
 declare class MapManager {
-    /**
-     * @param {Client} client The client
-     */
-    constructor(client: Client);
+    constructor(client: any);
     /**
      * The client instance.
      * @type {Client}

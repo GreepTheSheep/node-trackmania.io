@@ -3,11 +3,7 @@ export = Player;
  * Represents a player in Trackmania.
  */
 declare class Player {
-    /**
-     * @param {Client} client The client.
-     * @param {Object} data
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /**
      * The client object of the player
      * @type {Client}
@@ -107,11 +103,7 @@ import Client = require("../client/Client");
  * Represents the trophies of a player
  */
 declare class PlayerTrophies {
-    /**
-     * @param {Player} player The player
-     * @param {Object} data
-     */
-    constructor(player: Player, data: any);
+    constructor(player: any, data: any);
     /**
      * The player object
      * @type {Player}
@@ -175,10 +167,7 @@ declare class PlayerTrophies {
  * Represents a player's metadata
  */
 declare class PlayerMeta {
-    /**
-     * @param {Player} player The player.
-     */
-    constructor(player: Player);
+    constructor(player: any);
     /**
      * The player object
      * @type {Player}
@@ -244,11 +233,7 @@ declare class PlayerMeta {
  * Represents a player's COTD object
  */
 declare class PlayerCOTD {
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data
-     */
-    constructor(player: Player, data: any);
+    constructor(player: any, data: any);
     /**
      * The Player object
      * @type {Player}
@@ -292,11 +277,7 @@ import { MatchmakingGroup } from "../util/Constants";
  * Represents a player's stats in matchmaking
  */
 declare class PlayerMatchmaking {
-    /**
-     * @param {Player} player The player.
-     * @param {MatchmakingGroup} type The type of matchmaking.
-     */
-    constructor(player: Player, type: MatchmakingGroup);
+    constructor(player: any, type: any);
     /**
      * The player object
      * @type {Player}
@@ -360,11 +341,7 @@ declare class PlayerMatchmaking {
  * Represents a player's echelon
  */
 declare class PlayerEchelon {
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data
-     */
-    constructor(player: Player, data: any);
+    constructor(player: any, data: any);
     /**
      * The player object
      * @type {Player}
@@ -395,11 +372,7 @@ declare class PlayerEchelon {
  * Represents the history of a player's trophies
  */
 declare class PlayerTrophyHistory {
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data
-     */
-    constructor(player: Player, data: any);
+    constructor(player: any, data: any);
     /**
      * The player object
      * @type {Player}
@@ -461,11 +434,7 @@ declare class PlayerTrophyHistory {
  * Represents a player's COTD stats
  */
 declare class PlayerCOTDStats {
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data
-     */
-    constructor(player: Player, data: any);
+    constructor(player: any, data: any);
     /**
      * The player object
      * @type {Player}
@@ -544,11 +513,7 @@ declare class PlayerCOTDStats {
  * Represents a player's COTD result
  */
 declare class PlayerCOTDResult {
-    /**
-     * @param {Player} player The player
-     * @param {Object} data
-     */
-    constructor(player: Player, data: any);
+    constructor(player: any, data: any);
     /**
      * The Player object
      * @type {Player}
@@ -611,11 +576,7 @@ declare class PlayerCOTDResult {
  * Represents a player's matchmaking match result
  */
 declare class PlayerMatchmakingMatchResult {
-    /**
-     * @param {Player} player The player.
-     * @param {Object} data
-     */
-    constructor(player: Player, data: any);
+    constructor(player: any, data: any);
     /**
      * The player object
      * @type {Player}
@@ -667,11 +628,7 @@ declare class PlayerMatchmakingMatchResult {
  * Represents the type of an achievement
  */
 declare class PlayerTrophyAchievementType {
-    /**
-     * @param {Player} player
-     * @param {Object} data
-     */
-    constructor(player: Player, data: any);
+    constructor(player: any, data: any);
     /**
      * The player object
      * @type {Player}
@@ -774,11 +731,7 @@ import TMMap = require("../structures/TMMap");
  * Represents a player's COTD stats best stats
  */
 declare class PlayerCOTDStatsBest {
-    /**
-     * @param {PlayerCOTDStats} PlayerCOTDStats The player's COTD stats
-     * @param {Object} data
-     */
-    constructor(PlayerCOTDStats: PlayerCOTDStats, data: any);
+    constructor(PlayerCOTDStats: any, data: any);
     /**
     * The PlayerCOTDStats object
     * @type {PlayerCOTDStats}

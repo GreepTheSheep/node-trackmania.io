@@ -3,10 +3,7 @@ export = PlayerManager;
  * Represents a manager for players.
  */
 declare class PlayerManager {
-    /**
-     * @param {Client} client The client.
-     */
-    constructor(client: Client);
+    constructor(client: any);
     /**
      * The client instance
      * @type {Client}
@@ -81,11 +78,7 @@ import Client = require("../client/Client");
  * The result of a player search. It is completely different from the {@link Player} object.
  */
 declare class PlayerSearchResult {
-    /**
-     * @param {Client} client The client instance.
-     * @param {Object} data The data.
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /**
      * The client instance
      * @type {Client}
@@ -117,11 +110,7 @@ import { PlayerGroup } from "../util/Constants";
  * Represents a player top trophy
  */
 declare class PlayerTopTrophy {
-    /**
-     * @param {Client} client The client instance
-     * @param {Object} data The data
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /**
      * The client instance
      * @type {Client}
@@ -148,12 +137,7 @@ import { MatchmakingGroup } from "../util/Constants";
  * The player top matchmaking
  */
 declare class PlayerTopMatchmaking {
-    /**
-     * @param {Client} client The client instance
-     * @param {MatchmakingGroup} typeId The matchmaking type ID
-     * @param {Object} data The data
-     */
-    constructor(client: Client, typeId: MatchmakingGroup, data: any);
+    constructor(client: any, typeId: any, data: any);
     /**
      * The client instance
      * @type {Client}

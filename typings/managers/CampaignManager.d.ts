@@ -3,10 +3,7 @@ export = CampaignManager;
  * Represents a manager for campaigns.
  */
 declare class CampaignManager {
-    /**
-     * @param {Client} client The client
-     */
-    constructor(client: Client);
+    constructor(client: any);
     /**
      * The client instance.
      * @type {Client}
@@ -78,11 +75,7 @@ import Campaign = require("../structures/Campaign");
  * The result of a campaign search. It is completely different from the {@link Campaign} object.
  */
 declare class CampaignSearchResult {
-    /**
-     * @param {Client} client The client instance.
-     * @param {Object} data The data.
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /**
      * The client instance
      * @type {Client}

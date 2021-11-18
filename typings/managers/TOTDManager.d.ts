@@ -3,10 +3,7 @@ export = TOTDManager;
  * Represents a manager for TOTDs.
  */
 declare class TOTDManager {
-    /**
-     * @param {Client} client The client.
-     */
-    constructor(client: Client);
+    constructor(client: any);
     /**
      * The client instance.
      * @type {Client}

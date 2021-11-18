@@ -3,10 +3,7 @@ export = COTDManager;
  * Represents a COTD Manager.
  */
 declare class COTDManager {
-    /**
-     * @param {Client} client The client.
-     */
-    constructor(client: Client);
+    constructor(client: any);
     /**
      * The client instance.
      * @type {Client}

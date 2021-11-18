@@ -1,12 +1,10 @@
 export = BaseClient;
 /**
  * The Base Client
+ * @extends {EventEmitter}
  */
 declare class BaseClient {
-    /**
-     * @param {defaultOptions} [options={}] The options to use.
-     */
-    constructor(options?: defaultOptions);
+    constructor(options?: {});
     /**
      * The options of the client.
      * @type {defaultOptions}

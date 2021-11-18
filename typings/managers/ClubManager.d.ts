@@ -3,10 +3,7 @@ export = ClubManager;
  * Represents a manager for clubs.
  */
 declare class ClubManager {
-    /**
-     * @param {Client} client The client.
-     */
-    constructor(client: Client);
+    constructor(client: any);
     /**
      * The client instance.
      * @type {Client}

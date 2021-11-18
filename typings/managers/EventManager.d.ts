@@ -3,10 +3,7 @@ export = EventManager;
  * Represents a manager for in-game events.
  */
 declare class EventManager {
-    /**
-     * @param {Client} client The client.
-     */
-    constructor(client: Client);
+    constructor(client: any);
     /**
      * The client instance.
      * @type {Client}
@@ -57,11 +54,7 @@ import Client = require("../client/Client");
  * The result of a campaign search. It is completely different from the {@link TMEvent} object.
  */
 declare class EventSearchResult {
-    /**
-     * @param {Client} client The client instance.
-     * @param {Object} data The data.
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /**
      * The client instance
      * @type {Client}

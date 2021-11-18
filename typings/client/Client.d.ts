@@ -1,9 +1,13 @@
 export = Client;
 /**
- * Instantiates a new client.
+ * Instantiates a new client. This is the entry point.
  * @extends {BaseClient}
  */
 declare class Client extends BaseClient {
+    /**
+     * @param {defaultOptions} [options={}] The options to use
+     */
+    constructor(options?: defaultOptions);
     /**
      * The player manager
      * @type {PlayerManager}
@@ -54,3 +58,4 @@ import ClubManager = require("../managers/ClubManager");
 import CampaignManager = require("../managers/CampaignManager");
 import RoomManager = require("../managers/RoomManager");
 import EventManager = require("../managers/EventManager");
+import defaultOptions = require("../util/defaultOptions");

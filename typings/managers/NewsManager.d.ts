@@ -3,10 +3,7 @@ export = NewsManager;
  * Represents a in-game news manager.
  */
 declare class NewsManager {
-    /**
-     * @param {Client} client The client
-     */
-    constructor(client: Client);
+    constructor(client: any);
     /**
      * The client instance.
      * @type {Client}

@@ -3,11 +3,7 @@ export = COTD;
  * Represents a COTD event.
  */
 declare class COTD {
-    /**
-     * @param {Client} client The client.
-     * @param {Object} data
-     */
-    constructor(client: Client, data: any);
+    constructor(client: any, data: any);
     /**
      * The client instance
      * @type {Client}

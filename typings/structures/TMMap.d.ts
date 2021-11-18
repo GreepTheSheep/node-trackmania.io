@@ -116,10 +116,7 @@ import Client = require("../client/Client");
  * Represents the medals times on a map.
  */
 declare class TMMapMedalTimes {
-    /**
-     * @param {TMMap} map The map.
-     */
-    constructor(map: TMMap);
+    constructor(map: any);
     /**
      * The map object.
      * @type {TMMap}
@@ -151,11 +148,7 @@ import Player = require("./Player");
  * Represents the map details from Trackmania.exchange.
  */
 declare class TMExchangeMap {
-    /**
-     * @param {TMMap} map The map
-     * @param {Object} data
-     */
-    constructor(map: TMMap, data: any);
+    constructor(map: any, data: any);
     /**
      * The map instance.
      * @type {TMMap}
@@ -227,11 +220,7 @@ declare class TMExchangeMap {
  * Represents the Map Voting stats.
  */
 declare class TMMapKarma {
-    /**
-     * @param {TMMap} map The map.
-     * @param {Object} data
-     */
-    constructor(map: TMMap, data: any);
+    constructor(map: any, data: any);
     /**
      * The map instance.
      * @type {TMMap}
@@ -273,11 +262,7 @@ declare class TMMapKarma {
  * Represents the map leaderboard.
  */
 declare class TMMapLeaderboard {
-    /**
-     * @param {TMMap} map The map.
-     * @param {Object} data
-     */
-    constructor(map: TMMap, data: any);
+    constructor(map: any, data: any);
     /**
      * The map Instance
      * @type {TMMap}
