@@ -1,6 +1,6 @@
 <div align="center">
 
-[![NPM](docs/infography/image.svg)](https://tmio.greep.gq/#)
+[![NPM](https://raw.githubusercontent.com/GreepTheSheep/node-trackmania.io/main/docs/graphic/image.svg)](https://tmio.greep.gq/#)
 
 [![NPM](https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true)](https://npmjs.org/trackmania.io)
 
