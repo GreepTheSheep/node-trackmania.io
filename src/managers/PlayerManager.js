@@ -58,7 +58,7 @@ class PlayerManager {
             res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${players}/group/${groupName}`);
 
         if (res.error) {
-            throw new Error(res.error);
+            throw res.error;
         }
 
         let results = [];
@@ -81,7 +81,7 @@ class PlayerManager {
         const top = this.client.options.api.paths.tmio.tabs.topTrophies,
             res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${top}/${page}`);
 
-        if (res.error) throw new Error(res.error);
+        if (res.error) throw res.error;
 
         const topsArray = res.ranks.map(playerTop=> new PlayerTopTrophy(this.client, playerTop));
         return topsArray;
@@ -98,7 +98,7 @@ class PlayerManager {
             typeId = typeof group == "string" ? MMTypes[group] : group,
             res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${top}/${typeId}/${page}`);
 
-        if (res.error) throw new Error(res.error);
+        if (res.error) throw res.error;
         
         const topsArray = res.ranks.map(playerTop=> new PlayerTopMatchmaking(this.client, typeId, playerTop));
         return topsArray;

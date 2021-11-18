@@ -138,7 +138,7 @@ class Player {
             ReqUtil = require('../util/ReqUtil');
 
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${this.id}/${cotd}/${page}`);
-        if (!res) throw new Error("No response from the API");
+        if (!res) throw "No response from the API";
         return new PlayerCOTD(this, res);
     }
 
@@ -229,7 +229,7 @@ class PlayerTrophies {
      */
     trophy(number = 1){
         if (number < 1 || number > 9){
-            throw new Error('Invalid trophy number');
+            throw "Invalid trophy number";
         }
         return this._data.counts[number - 1];
     }
@@ -253,7 +253,7 @@ class PlayerTrophies {
             ReqUtil = require('../util/ReqUtil');
 
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${this.player.id}/${trophies}/${page}`);
-        if (!res) throw new Error("No response from the API");
+        if (!res) throw "No response from the API";
         let arr = [];
         for (let i = 0; i < res.gains.length; i++){
             arr.push(new PlayerTrophyHistory(this.player, res.gains[i]));
@@ -297,7 +297,7 @@ class PlayerTrophyHistory {
      */
     trophy(number = 1){
         if (number < 1 || number > 9){
-            throw new Error('Invalid trophy number');
+            throw "Invalid trophy number";
         }
         return this._data.counts[number - 1];
     }
@@ -707,7 +707,7 @@ class PlayerMatchmaking {
 
         // throw error if no matchmaking data found
         if (!this._data){
-            throw new Error('No matchmaking data found');
+            throw "No matchmaking data found";
         }
     }
 
@@ -779,7 +779,7 @@ class PlayerMatchmaking {
             ReqUtil = require('../util/ReqUtil');
 
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${this.player.id}/${matches}/${this.typeId}/${page}`);
-        if (!res) throw new Error('No matchmaking history found');
+        if (!res) throw "No matchmaking history found";
         let arr = [];
         for (let i = 0; i < res.matches.length; i++){
             arr.push(new PlayerMatchmakingMatchResult(this.player, res.matches[i]));

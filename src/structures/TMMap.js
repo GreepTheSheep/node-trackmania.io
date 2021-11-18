@@ -147,7 +147,7 @@ class TMMap {
                     this._TMExchange = new TMExchangeMap(this, this._data.exchange);
                 } 
                 return this._TMExchange;
-            } else throw new Error('No exchange data found for this map');
+            } else throw "No exchange data found for this map";
         }
     }
 

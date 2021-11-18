@@ -68,7 +68,7 @@ class TOTDManager{
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${totd}/${this._calculateMonths(date)}`);
 
         if (res.year != date.getFullYear() && res.month != date.getMonth()+1) {
-            throw new Error('Invalid date');
+            throw "Invalid date";
         }
 
         //get the map of the day in the month on the res
@@ -76,7 +76,7 @@ class TOTDManager{
 
         if (!dayMap) dayMap = res.days.find(map => map.monthday == date.getDate()-1);
 
-        if (!dayMap) throw new Error('Track of the day not found, it is the right date?');
+        if (!dayMap) throw "Track of the day not found, it is the right date?";
 
         const theMap = new TOTD(this.client, dayMap);
         if (cache) {
