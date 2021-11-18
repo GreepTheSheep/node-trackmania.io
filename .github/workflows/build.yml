@@ -67,12 +67,9 @@ jobs:
     - name: Check if changes were made
       id: check-changes
       run: |
-        if [ -z "$(git diff --name-only HEAD)" ]; then
-          ::set-output name=changed::false
-        else
-          ::set-output name=changed::true
-        fi
-        fi
+        if [ -z "$(git diff --name-only HEAD)" ]; \
+        then echo '::set-output name=changed::false'; \
+        else echo '::set-output name=changed::true'; fi
     
     - name: Commit files
       if: steps.check-changes.outputs.changed == 'true'
