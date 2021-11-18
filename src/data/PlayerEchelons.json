@@ -1,0 +1,42 @@
+[
+    {
+        "name": "No echelon",
+        "img": "https://trackmania.io/img/echelon/0.png"
+    },
+    {
+        "name": "Bronze 1",
+        "img": "https://trackmania.io/img/echelon/1.png"
+    },
+    {
+        "name": "Bronze 2",
+        "img": "https://trackmania.io/img/echelon/2.png"
+    },
+    {
+        "name": "Bronze 3",
+        "img": "https://trackmania.io/img/echelon/3.png"
+    },
+    {
+        "name": "Silver 1",
+        "img": "https://trackmania.io/img/echelon/4.png"
+    },
+    {
+        "name": "Silver 2",
+        "img": "https://trackmania.io/img/echelon/5.png"
+    },
+    {
+        "name": "Silver 3",
+        "img": "https://trackmania.io/img/echelon/6.png"
+    },
+    {
+        "name": "Gold 1",
+        "img": "https://trackmania.io/img/echelon/7.png"
+    },
+    {
+        "name": "Gold 2",
+        "img": "https://trackmania.io/img/echelon/8.png"
+    },
+    {
+        "name": "Gold 3",
+        "img": "https://trackmania.io/img/echelon/9.png"
+    }
+]

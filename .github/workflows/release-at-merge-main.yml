@@ -1,6 +1,3 @@
-#This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-
 name: Release after PR to main
 
 on:
@@ -11,23 +8,24 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+
     steps:
-      - uses: actions/checkout@v1
-      - name: get version
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get Version from package.json
         id: version
         uses: notiz-dev/github-action-json-property@release
         with: 
           path: 'package.json'
           prop_path: 'version'
-      - run: echo ${{steps.version.outputs.prop}}
 
-      
       - name: Release
         id: create_release
-        if: github.event.pull_request.merged
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.gh_token}}
         with:
           tag_name: v${{steps.version.outputs.prop}} 
           release_name: Release ${{steps.version.outputs.prop}} 

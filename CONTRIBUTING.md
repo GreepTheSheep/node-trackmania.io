@@ -1,4 +1,4 @@
-# Contributing
+# Contributing (v3)
 
 Thanks for being part of the code!
 
@@ -7,28 +7,24 @@ Thanks for being part of the code!
 ```css
 +---.github
 ¦   +---workflows /* CI & automations for PR and releases */
-+---.vscode /* VSCode Debug file */
-+---examples /* Examples files for end-users, please keep this updated */
++---.vscode /* VSCode Debug and tasks file */
 +---node_modules /* Node.js modules, for npm i */
 +---src
-¦   +---Campaigns
-¦   +---Clubs
-¦   +---COTD
-¦   +---Events
-¦   +---map
-¦   +---Matches
-¦   +---Matchmaking
-¦   +---News
-¦   +---Players
-¦   +---Rooms
-¦   +---TOTD
-¦   +---_appendix_datas /* all appendix JSON data to add in the result data, it includes names, pictures URL, and useful data that is not on the API */
-+---test /* Mocha tests */
+¦   +---client
+¦   +---data /* The data file that can be used for your views, containing useful strings */
+¦   +---managers
+¦   +---rest /* HTTP Requests */
+¦   +---structures
+¦   +---util /* Client options and private constructor strings */
++---typings /* TypeScript auto-generated typings for VSCode and other IDE using TS */
++---test /* Mocha tests (coming later in v3) */
 ```
 
 ## Pull Requests
 
 Before opening a PR, run `npm test` to do a eslint scan then run mocha tests
+
+Before commiting, **be sure that no files from the `typings/` directory is commited!** GitHub Actions will build it automatically after pushing
 
 When opening a PR, please open it to the 'develop' branch. Thanks!
 
@@ -38,4 +34,4 @@ All issues are appreciated, it can be suggestions, bug fixes.
 
 ## Discussion
 
-If you want to talk about this project or just for saying hi, Join the [Openplanet Discord Server](https://openplanet.nl/link/discord), in the #trackmania-io channel
+If you want to talk about this project or just for saying hi, Join the [Greep's Discord Server](https://greep.gq/discord) in the #node-tmio channel or the [Openplanet Discord Server](https://openplanet.nl/link/discord), in the #trackmania-io channel
