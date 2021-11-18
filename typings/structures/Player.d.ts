@@ -32,12 +32,11 @@ declare class Player {
      */
     get name(): string;
     /**
-     * The timestamps of the player's first login
+     * The date of the player's first login
      * @type {Date}
      * @readonly
-     * @private
      */
-    private readonly get timestamp();
+    readonly get firstLogin(): Date;
     /**
      * The club tag of the player (non-formatted)
      * @type {string}

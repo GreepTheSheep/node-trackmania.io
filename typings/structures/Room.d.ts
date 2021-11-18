@@ -52,7 +52,7 @@ declare class Room {
     get maxPlayersCount(): number;
     /**
      * The region of the room (if it's on a cloud room)
-     * @type {RoomRegions}
+     * @type {RoomRegion}
      */
     get region(): string;
     /**

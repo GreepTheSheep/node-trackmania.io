@@ -1,6 +1,7 @@
 export var GroupTypes: any;
 export var MMTypes: any;
-export var RoomRegionsList: any;
+export var RoomRegions: any;
+export var ClubMemberRoles: any;
 /**
  * All available player groups.
  * * `nadeo` - All players from the Nadeo company
@@ -21,7 +22,15 @@ export type MatchmakingGroup = string;
  * * `eu-west` - Europe West
  * * `ca-central` - Canada Central
  */
-export type RoomRegions = string;
+export type RoomRegion = string;
+/**
+ * All available Club Member roles.
+ * * `Creator`
+ * * `Admin`
+ * * `Content_Creator`
+ * * `Member`
+ */
+export type ClubMemberRole = string;
 /**
  * Constants that can be used in an enum or object-like way.
  */
@@ -37,5 +46,9 @@ export type Constants = {
     /**
      * All available Nadeo-hosted club rooms regions.
      */
-    RoomRegionsList: RoomRegions;
+    RoomRegions: RoomRegion;
+    /**
+     * All available Club Member roles.
+     */
+    ClubMemberRoles: ClubMemberRole;
 };

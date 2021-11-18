@@ -154,7 +154,7 @@ declare class ClubMember {
     get joinDate(): Date;
     /**
      * The member role
-     * @type {string}
+     * @type {ClubMemberRole}
      */
     get role(): string;
     /**
