@@ -2,11 +2,6 @@ name: Unit Tests
 
 on:
   push:
-    branches:
-      - 'develop'
-    paths:
-      - 'src/**.js'
-      - 'test/**.test.js'
   pull_request:
     branches:
       - main
