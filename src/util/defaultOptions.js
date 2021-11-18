@@ -55,11 +55,19 @@ class defaultOptionsAPI {
          */
         this.useragent = null;
 
-        /**
-         * The API Key to use. It must contains "yourname:theactualsecretkey".
-         * @type {?string}
-         */
-        this.key = null;
+        if (!this.key && 'TMIO_API' in process.env) {
+            /**
+             * The API Key to use. It must contains "yourname:theactualsecretkey".
+             * If present, this defaults to `process.env.TMIO_API` when instantiating the client
+             * 
+             * <warn>This should be kept private at all times.</warn>
+             * @type {?string}
+             */
+            this.key = process.env.TMIO_API;
+        } else {
+            this.key = null;
+        }
+        
     }
 }
 
