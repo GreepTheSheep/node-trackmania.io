@@ -37,7 +37,7 @@ class CampaignManager{
         if (cache && this._cache.has(campaignId)){
             return this._cache.get(campaignId);
         } else {
-            await this._fetch(0, campaignId, cache);
+            return await this._fetch(0, campaignId, cache);
         }
     }
 
