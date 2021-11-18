@@ -2,8 +2,8 @@ name: Unit Tests
 
 on:
   push:
-    branches-ignore:
-      - 'main'
+    branches:
+      - 'develop'
     paths:
       - 'src/**.js'
       - 'test/**.test.js'
