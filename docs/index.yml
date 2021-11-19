@@ -1,0 +1,23 @@
+- name: General
+  files:
+    - name: Welcome
+      id: welcome
+      path: ../../README.md
+    - name: Contributing
+      id: contributing
+      path: ../../CONTRIBUTING.md
+
+- name: Examples
+  files:
+    - name: Today's TOTD
+      id: totd
+      path: ../../examples/totd.md
+    - name: TOTD alert
+      id: totdEvent
+      path: ../../examples/totdEvent.md
+    - name: Player's COTD stats
+      id: playerCOTD
+      path: ../../examples/playerCOTD.md
+    - name: Current official campaign
+      id: currentCampaign
+      path: ../../examples/officialCampaign.md

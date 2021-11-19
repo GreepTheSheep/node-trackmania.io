@@ -1,41 +1,30 @@
-var assert = require('assert');
-var Trackmania = require('../')
-const clubs = new Trackmania.Clubs({listener:false})
+require('dotenv').config();
+const assert = require('assert'),
+    TMIO = require('../'),
+    tmioClient = new TMIO.Client({dev: true});
 
-describe('Clubs', function() {
-    this.timeout(10*1000)
+describe("Clubs", function(){
+    this.timeout(15*1000);
 
-    it('Popular clubs', async function() {
-        var club = await clubs.clubs()
-        assert.strictEqual(typeof club, 'object', 'It returns an ' + typeof club + ' insead of an object')
+    it("Search clubs", async function(){
+        const results = await tmioClient.clubs.search("Openplanet");
+        assert.equal(results.length > 0, true);
+        assert.equal(results.some(c=>c.id == 9), true);
     });
 
-    it('Latest clubs', async function() {
-        var club = await clubs.latestClubs()
-        assert.strictEqual(typeof club, 'object', 'It returns an ' + typeof club + ' insead of an object')
+    it("Club Info", async function(){
+        const club = await tmioClient.clubs.get(23500),
+            creator = await club.creator();
+        
+        assert.equal(creator.id, "26d9a7de-4067-4926-9d93-2fe62cd869fc");
+        assert.equal(club.createdAt.getTime(), 1614627947000);
     });
 
-    it('Search clubs', async function() {
-        var club = await clubs.searchClubs('Yannex')
-        assert.strictEqual(typeof club, 'object', 'It returns an ' + typeof club + ' insead of an object')
-    });
+    it("Club Members", async function(){
+        const club = await tmioClient.clubs.get(54),
+            members = await club.fetchMembers();
 
-    it('Club Info', async function() {
-        var club = await clubs.club(54)
-        assert.strictEqual(typeof club, 'object', 'It returns an ' + typeof club + ' insead of an object')
-        assert.strictEqual(club.name, "ZeratoR", "This club is not ZeratoR, it's " + club.name)
-        assert.strictEqual(club.tag, "ZT.", "This club tag is not ZT., it's " + club.tag)
-    });
-
-    it('Club Members', async function() {
-        var club = await clubs.clubMembers(54)
-        assert.strictEqual(typeof club, 'object', 'It returns an ' + typeof club + ' insead of an object')
-        assert.strictEqual(club.members.length, 50)
-        assert.strictEqual(club.members[0].role, 'Creator')
-    });
-
-    it('Club Activities', async function() {
-        var club = await clubs.clubActivities(54)
-        assert.strictEqual(typeof club, 'object', 'It returns an ' + typeof club + ' insead of an object')
+        assert.equal(members.length > 0, true);
+        assert.equal(members[0].isCreator, true);
     });
 });

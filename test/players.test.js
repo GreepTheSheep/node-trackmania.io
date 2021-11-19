@@ -1,89 +1,66 @@
-var assert = require('assert');
-var Trackmania = require('../')
-const players = new Trackmania.Players()
+require('dotenv').config();
+const assert = require('assert'),
+    TMIO = require('../'),
+    tmioClient = new TMIO.Client({dev: true});
 
-describe('Players', function() {
-    this.timeout(10*1000)
+describe("Players", function(){
+    this.timeout(15*1000);
 
-    describe('Player Info', function(){
-        it('Test 1 - Greep', async function() {
-            var player = await players.player('greep')
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.accountid, "26d9a7de-4067-4926-9d93-2fe62cd869fc", "The account ID is invalid")
-            assert.strictEqual(player.meta.team, undefined, "The meta is invalid")
-            assert.strictEqual(player.meta.tmgl, undefined, "The meta is invalid")
-            assert.strictEqual(player.meta.nadeo, undefined, "The meta is invalid")
+    describe("Player info", function(){
+        it("Greep", async function(){
+            const player = await tmioClient.players.get("greep");
+            assert.equal(player.id, "26d9a7de-4067-4926-9d93-2fe62cd869fc", "Wrong account ID");
+            assert.equal(player.zone[0].name, "Yonne");
+            assert.equal(player.meta.inNadeo, false);
+            assert.equal(player.meta.inTMIOTeam, false);
         });
-    
-        it('Test 2 - Miss', async function() {
-            var player = await players.player('miss')
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.accountid, "7398eeb6-9b4e-44b8-a7a1-a2149955ac70", "The account ID is invalid")
-            assert.strictEqual(player.meta.team, true, "The meta is invalid")
-            assert.strictEqual(player.meta.tmgl, undefined, "The meta is invalid")
-            assert.strictEqual(player.meta.nadeo, undefined, "The meta is invalid")
+
+        it("Hylis", async function(){
+            const player = await tmioClient.players.get("hylis");
+            assert.equal(player.id, "2232c721-f215-4036-b28b-772eee46632c", "Wrong account ID");
+            assert.equal(player.meta.inNadeo, true);
+            assert.equal(player.meta.inTMIOTeam, false);
         });
-    
-        it('Test 3 - Gwen', async function() {
-            var player = await players.player('gwen')
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.accountid, "dba55c7e-d5cd-40c0-a5e7-8e793fd295eb", "The account ID is invalid")
-            assert.strictEqual(player.meta.team, undefined, "The meta is invalid")
-            assert.strictEqual(player.meta.tmgl, true, "The meta is invalid")
-            assert.strictEqual(player.meta.nadeo, undefined, "The meta is invalid")
+
+        it("Miss", async function(){
+            const player = await tmioClient.players.get("miss");
+            assert.equal(player.id, "7398eeb6-9b4e-44b8-a7a1-a2149955ac70", "Wrong account ID");
+            assert.equal(player.meta.inNadeo, false);
+            assert.equal(player.meta.inTMIOTeam, true);
         });
-    
-        it('Test 4 - Hylis', async function() {
-            var player = await players.player('hylis')
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.accountid, "2232c721-f215-4036-b28b-772eee46632c", "The account ID is invalid")
-            assert.strictEqual(player.meta.team, undefined, "The meta is invalid")
-            assert.strictEqual(player.meta.tmgl, undefined, "The meta is invalid")
-            assert.strictEqual(player.meta.nadeo, true, "The meta is invalid")
+
+        it("Gwen", async function(){
+            const player = await tmioClient.players.get("gwen");
+            assert.equal(player.id, "dba55c7e-d5cd-40c0-a5e7-8e793fd295eb", "Wrong account ID");
+            assert.equal(player.meta.inTMGL, true);
+            assert.equal(player.meta.inTMIOTeam, false);
+        })
+    });
+
+    describe("Player search", function(){
+        it("Test 1", async function(){
+            const results = await tmioClient.players.search("usefiujnskxdfhousdhfjefojsd");
+            assert.equal(results.length, 0);
+        });
+
+        it("Test 2", async function(){
+            const results = await tmioClient.players.search("greep");
+            assert.equal(results.length > 0, true);
+            assert.equal(results[0].id, "26d9a7de-4067-4926-9d93-2fe62cd869fc");
         });
     });
 
-    describe('Player search', function(){
-        it('Test 1', async function() {
-            var player = await players.searchPlayer('hkgjgfhdgrtfjygj')
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.length, 0, "The result length is invalid")
+    describe("Player groups", function(){
+        it("Nadeo", async function(){
+            const group = await tmioClient.players.group("nadeo");
+            assert.equal(group.some(p=>p.id == "2232c721-f215-4036-b28b-772eee46632c"), true, "Hylis not found");
+            assert.equal(group.some(p=>p.id == "a76653e1-998a-4c53-8a91-0a396e15bfb5"), true, "Darrek not found");
         });
 
-        it('Test 2', async function() {
-            var player = await players.searchPlayer('greep')
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.length >= 1, true, "The result length is invalid")
-        });
-    });
-
-    describe('Player groups', function(){
-        it('Test 1 - Nadeo', async function() {
-            var player = await players.getGroupPlayers("Nadeo")
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.length, 17, "The result length is invalid")
-        });
-
-        it('Test 2 - Openplanet Team', async function() {
-            var player = await players.getGroupPlayers("team")
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-            assert.strictEqual(player.length, 5, "The result length is invalid")
-        });
-    });
-
-    it('Player trophies', async function() {
-        var player = await players.playerTrophies("26d9a7de-4067-4926-9d93-2fe62cd869fc")
-        assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-    });
-
-    it('Player matches', async function() {
-        it('Test 1 - 3v3', async function() {
-            var player = await players.playerMatches("26d9a7de-4067-4926-9d93-2fe62cd869fc", "3v3")
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
-        });
-        it('Test 2 - Royal', async function() {
-            var player = await players.playerMatches("26d9a7de-4067-4926-9d93-2fe62cd869fc", "Royal")
-            assert.strictEqual(typeof player, 'object', 'It returns an ' + typeof player + ' insead of an object')
+        it("Team", async function(){
+            const group = await tmioClient.players.group("team");
+            assert.equal(group.some(p=>p.id == "7398eeb6-9b4e-44b8-a7a1-a2149955ac70"), true, "Miss not found");
+            assert.equal(group.some(p=>p.id == "5b4d42f4-c2de-407d-b367-cbff3fe817bc"), true, "tooInfinite not found");
         });
     });
 });

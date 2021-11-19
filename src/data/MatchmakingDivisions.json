@@ -1,0 +1,125 @@
+{
+    "3v3": [
+        {
+            "name": "Unranked",
+            "abbr": "U",
+            "img": "https://trackmania.io/img/mm/Starter.png"
+        },
+        {
+            "name": "Bronze 1",
+            "abbr": "B1",
+            "img": "https://trackmania.io/img/mm/B1.png"
+        },
+        {
+            "name": "Bronze 2",
+            "abbr": "B2",
+            "img": "https://trackmania.io/img/mm/B2.png"
+        },
+        {
+            "name": "Bronze 3",
+            "abbr": "B3",
+            "img": "https://trackmania.io/img/mm/B3.png"
+        },
+        {
+            "name": "Silver 1",
+            "abbr": "S1",
+            "img": "https://trackmania.io/img/mm/S1.png"
+        },
+        {
+            "name": "Silver 2",
+            "abbr": "S2",
+            "img": "https://trackmania.io/img/mm/S2.png"
+        },
+        {
+            "name": "Silver 3",
+            "abbr": "S3",
+            "img": "https://trackmania.io/img/mm/S3.png"
+        },
+        {
+            "name": "Gold 1",
+            "abbr": "G1",
+            "img": "https://trackmania.io/img/mm/G1.png"
+        },
+        {
+            "name": "Gold 2",
+            "abbr": "G2",
+            "img": "https://trackmania.io/img/mm/G2.png"
+        },
+        {
+            "name": "Gold 3",
+            "abbr": "G3",
+            "img": "https://trackmania.io/img/mm/G3.png"
+        },
+        {
+            "name": "Master 1",
+            "abbr": "M1",
+            "img": "https://trackmania.io/img/mm/M1.png"
+        },
+        {
+            "name": "Master 2",
+            "abbr": "M2",
+            "img": "https://trackmania.io/img/mm/M2.png"
+        },
+        {
+            "name": "Master 3",
+            "abbr": "M3",
+            "img": "https://trackmania.io/img/mm/M3.png"
+        },
+        {
+            "name": "Trackmaster",
+            "abbr": "TM",
+            "img": "https://trackmania.io/img/mm/TM.png"
+        }
+    ],
+    "royal": [
+        null,
+        {
+            "name": "Unranked",
+            "abbr": "U",
+            "img": {
+                "crown": null,
+                "lion": "https://trackmania.io/img/royal/Lion_Unranked.png"
+            }
+        },
+        {
+            "name": "Bronze",
+            "abbr": "B",
+            "img": {
+                "crown": "https://trackmania.io/img/royal/Crown_Bronze.png",
+                "lion": "https://trackmania.io/img/royal/Lion_Bronze.png"
+            }
+        },
+        {
+            "name": "Silver",
+            "abbr": "S",
+            "img": {
+                "crown": "https://trackmania.io/img/royal/Crown_Silver.png",
+                "lion": "https://trackmania.io/img/royal/Lion_Silver.png"
+            }
+        },
+        {
+            "name": "Gold",
+            "abbr": "G",
+            "img": {
+                "crown": "https://trackmania.io/img/royal/Crown_Gold.png",
+                "lion": "https://trackmania.io/img/royal/Lion_Gold.png"
+            }
+        },
+        {
+            "name": "Master",
+            "abbr": "M",
+            "img": {
+                "crown": "https://trackmania.io/img/royal/Crown_Master.png",
+                "lion": "https://trackmania.io/img/royal/Lion_Master.png"
+            }
+        },
+        {
+            "name": "Trackmaster",
+            "abbr": "TM",
+            "img": {
+                "crown": "https://trackmania.io/img/royal/Crown_RoyalMaster.png",
+                "lion": "https://trackmania.io/img/royal/Lion_RoyalMaster.png"
+            }
+        }
+    ]
+}

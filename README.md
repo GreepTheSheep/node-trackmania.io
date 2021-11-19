@@ -1,34 +1,32 @@
-# node-trackmania.io
-A Node.js inplementation of Trackmania Live services ([trackmania.io](https://trackmania.io))
+<div align="center">
 
-[![Trackmania.io icon](https://trackmania.io/img/square.png)](https://trackmania.io)
-
-![Trackmania.io API](https://img.shields.io/website?down_message=Offline&label=Trackmania.io%20API&up_message=Online&url=https%3A%2F%2Ftrackmania.io)
-[![Discord](https://img.shields.io/discord/276076890714800129?color=%23FF309A&label=Discord&logo=discord&logoColor=%23FF309A)](https://openplanet.nl/link/discord)
+[![NPM](https://raw.githubusercontent.com/GreepTheSheep/node-trackmania.io/main/docs/graphic/image.svg)](https://tmio.greep.gq/#)
 
 [![NPM](https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true)](https://npmjs.org/trackmania.io)
 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/GreepTheSheep/node-trackmania.io?logo=npm)
-![npm](https://img.shields.io/npm/dw/trackmania.io?logo=npm)
-![NPM](https://img.shields.io/npm/l/trackmania.io)
+[![Trackmania.io API Status](https://img.shields.io/website?down_message=Offline&label=Trackmania.io%20API&up_message=Online&url=https%3A%2F%2Ftrackmania.io)](https://trackmania.io)
+[![Discord](https://img.shields.io/discord/570024448371982373?label=Discord&logo=discord)](https://greep.gq/discord)
 
-![GitHub issues](https://img.shields.io/github/issues/GreepTheSheep/node-trackmania.io?logo=github)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/GreepTheSheep/node-trackmania.io?logo=github)
+[![npm](https://img.shields.io/npm/dw/trackmania.io?logo=npm)](https://npmjs.com/trackmania.io)
+[![NPM](https://img.shields.io/npm/l/trackmania.io)](LICENSE)
 
-![GitHub Repo stars](https://img.shields.io/github/stars/GreepTheSheep/node-trackmania.io?logo=github&style=flat-square)
-![GitHub forks](https://img.shields.io/github/forks/GreepTheSheep/node-trackmania.io?style=flat-square)
+[![GitHub issues](https://img.shields.io/github/issues/GreepTheSheep/node-trackmania.io?logo=github)](https://github.com/GreepTheSheep/node-trackmania.io/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/GreepTheSheep/node-trackmania.io?logo=github)](https://github.com/GreepTheSheep/node-trackmania.io/pulls)
 
----
+[![GitHub Repo stars](https://img.shields.io/github/stars/GreepTheSheep/node-trackmania.io?logo=github&style=flat-square)](https://github.com/GreepTheSheep/node-trackmania.io/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/GreepTheSheep/node-trackmania.io?style=flat-square)](https://github.com/GreepTheSheep/node-trackmania.io/network/members)
+
+[![Unit Test (Push) & Builds](https://github.com/GreepTheSheep/node-trackmania.io/actions/workflows/builds.yml/badge.svg)](https://github.com/GreepTheSheep/node-trackmania.io/actions/workflows/builds.yml)
+
+</div>
 
 ## Disclaimer - [Can I use the Trackmania.io API for my own project?](https://openplanet.nl/tmio/api)
 
 [Please read this topic](https://openplanet.nl/tmio/api)
 
-*The User Agent Header will be automatically set to your project directory name, with your current file name included*
+*The User Agent Header will be automatically set to your project directory name, with your current file name included, you can also set your User Agent with the method `Client.setUserAgent("My Project Name");`*
 
-*Most data that you'll request **is not cached!**, do your part to cache stuff and try not to do bulk requests!*
-
-**You are responsible for the program you code, if you are banned from the API don't blame the wrapper or trackmania.io, blame yourself!**
+API Keys can be set with the method `Client.setAPIKey("yourname:yourkey");`
 
 If you're still unsure about your use of the API, feel free to DM Miss#8888 with any further questions.
 
@@ -40,7 +38,7 @@ Please see the [CONTRIBUTING.md file](CONTRIBUTING.md)
 ---
 ## Discussion
 
-If you want to talk about this project or just for saying hi, Join the [Openplanet Discord Server](https://openplanet.nl/link/discord), in the #trackmania-io channel
+If you want to talk about this project or just for saying hi, Join the [Project's Discord Server](https://greep.gq/discord), in the #node-tmio channel
 
 ---
 ## Thanks
