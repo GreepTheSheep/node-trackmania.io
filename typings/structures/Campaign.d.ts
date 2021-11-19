@@ -66,6 +66,11 @@ declare class Campaign {
      */
     maps(): Promise<Array<TMMap>>;
     /**
+     * Get the top 10 players of the campaign
+     * @returns {Promise<Array<CampaignLeaderboard>>}
+     */
+    leaderboard(): Promise<Array<CampaignLeaderboard>>;
+    /**
      * The media images of the campaign, if this is an official campaign.
      * @type {?CampaignMedia}
      */
@@ -74,6 +79,48 @@ declare class Campaign {
 import Client = require("../client/Client");
 import Club = require("./Club");
 import TMMap = require("./TMMap");
+/**
+ * The leaderboard of a campaign
+ */
+declare class CampaignLeaderboard {
+    constructor(campaign: any, data: any);
+    /**
+     * The campaign
+     * @type {Campaign}
+     */
+    campaign: Campaign;
+    /**
+     * The client instance.
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @type {Object}
+     * @private
+     */
+    private _data;
+    /**
+     * Fetches the player
+     * @returns {Promise<Player>}
+     */
+    player(): Promise<Player>;
+    /**
+     * The player name
+     * @type {string}
+     */
+    get playerName(): string;
+    /**
+     * The position
+     * @type {number}
+     */
+    get position(): number;
+    /**
+     * The number of points
+     * @type {number}
+     */
+    get points(): number;
+}
 /**
  * The media images of an official campaign.
  */
@@ -120,3 +167,4 @@ declare class CampaignMedia {
      */
     popup: string;
 }
+import Player = require("./Player");
