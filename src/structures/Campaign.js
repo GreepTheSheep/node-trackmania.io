@@ -2,6 +2,7 @@ const Player = require('./Player'); // eslint-disable-line no-unused-vars
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const TMMap = require('./TMMap'); // eslint-disable-line no-unused-vars
 const Club = require('./Club'); // eslint-disable-line no-unused-vars
+const ReqUtil = require('../util/ReqUtil');
 
 /**
  * The Campaign class represents a campaign.
@@ -109,6 +110,21 @@ class Campaign {
     }
 
     /**
+     * Get the top 10 players of the campaign
+     * @returns {Promise<Array<CampaignLeaderboard>>}
+     */
+    async leaderboard(){
+        const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard;
+        const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${this.leaderboardId}`);
+
+        let array = [];
+        res.tops.forEach(top => {
+            array.push(new CampaignLeaderboard(this, top));
+        });
+        return array;
+    }
+
+    /**
      * The media images of the campaign, if this is an official campaign.
      * @type {?CampaignMedia}
      */
@@ -174,6 +190,65 @@ class CampaignMedia {
          * @type {string}
          */
         this.popup = data.popup;
+    }
+}
+
+/**
+ * The leaderboard of a campaign
+ */
+class CampaignLeaderboard{
+    constructor(campaign, data){
+        /**
+         * The campaign
+         * @type {Campaign}
+         */
+        this.campaign = campaign;
+
+        /**
+         * The client instance.
+         * @type {Client}
+         */
+        this.client = this.campaign.client;
+
+        /**
+         * The data
+         * @type {Object}
+         * @private
+         */
+        this._data = data;
+    }
+
+    /**
+     * Fetches the player
+     * @returns {Promise<Player>}
+     */
+    async player(){
+        let player = await this.client.players.get(this._data.player.id);
+        return player;
+    }
+
+    /**
+     * The player name
+     * @type {string}
+     */
+    get playerName(){
+        return this._data.player.name;
+    }
+
+    /**
+     * The position
+     * @type {number}
+     */
+    get position(){
+        return this._data.position;
+    }
+
+    /**
+     * The number of points
+     * @type {number}
+     */
+    get points(){
+        return this._data.points;
     }
 }
 
