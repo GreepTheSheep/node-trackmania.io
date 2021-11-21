@@ -65,7 +65,7 @@ jobs:
       - name: Get Version
         if: steps.pre-release.outputs.release == 'true'
         id: version
-        run: "echo '::set-output name=version::$(jq --raw-output '.version' package.json)-dev.$(date +%d%m%y).$(git rev-parse --short HEAD)'"
+        run: "echo -n '::set-output name=version::$(jq --raw-output '.version' package.json)-dev.$(date +%d%m%y).$(git rev-parse --short HEAD)'"
 
       - name: Release
         if: steps.pre-release.outputs.release == 'true'
