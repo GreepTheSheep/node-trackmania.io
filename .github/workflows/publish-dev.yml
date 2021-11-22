@@ -31,6 +31,11 @@ jobs:
         if: steps.pre-release.outputs.release == 'true'
         run: npm ci --ignore-scripts
 
+      - name: Get latest dev version
+        id: get-version
+        if: steps.pre-release.outputs.release == 'true'
+        run: "echo '::set-output name=version::$(npm view trackmania.io@dev version)'"
+
       - name: Publish
         if: steps.pre-release.outputs.release == 'true'
         run: |
@@ -38,3 +43,7 @@ jobs:
           npm publish --tag dev || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+
+      - name: Deprecate old dev version
+        if: steps.pre-release.outputs.release == 'true'
+        run: "npm deprecate trackmania.io@${{ steps.get-version.outputs.version }} 'no longer supported'"
