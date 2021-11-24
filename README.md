@@ -1,6 +1,6 @@
 <div align="center">
 
-[![NPM](https://raw.githubusercontent.com/GreepTheSheep/node-trackmania.io/main/docs/graphic/image.svg)](https://tmio.greep.gq/#)
+[![Logo](https://raw.githubusercontent.com/GreepTheSheep/node-trackmania.io/main/docs/graphic/image.svg)](https://tmio.greep.gq/#)
 
 [![NPM](https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true)](https://npmjs.org/trackmania.io)
 
@@ -16,7 +16,7 @@
 [![GitHub Repo stars](https://img.shields.io/github/stars/GreepTheSheep/node-trackmania.io?logo=github&style=flat-square)](https://github.com/GreepTheSheep/node-trackmania.io/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/GreepTheSheep/node-trackmania.io?style=flat-square)](https://github.com/GreepTheSheep/node-trackmania.io/network/members)
 
-[![Unit Test (Push) & Builds](https://github.com/GreepTheSheep/node-trackmania.io/actions/workflows/builds.yml/badge.svg)](https://github.com/GreepTheSheep/node-trackmania.io/actions/workflows/builds.yml)
+[![Builds](https://github.com/GreepTheSheep/node-trackmania.io/actions/workflows/build.yml/badge.svg)](https://github.com/GreepTheSheep/node-trackmania.io/actions/workflows/build.yml)
 
 </div>
 
@@ -28,7 +28,17 @@
 
 API Keys can be set with the method `Client.setAPIKey("yourname:yourkey");`
 
-If you're still unsure about your use of the API, feel free to DM Miss#8888 with any further questions.
+If you're still unsure about your use of the API, feel free to DM Miss on the [Openplanet Discord](https://openplanet.nl/link/discord) with any further questions.
+
+---
+## API Keys
+
+API keys for trackmania.io can be retrieved by requesting access to Miss on the [Openplanet Discord](https://openplanet.nl/link/discord)
+
+---
+## Documentation
+
+Documentation and examples are available on [this website](https://tmio.greep.gq/#/docs)
 
 ---
 ## Contributing
