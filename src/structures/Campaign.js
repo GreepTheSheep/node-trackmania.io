@@ -88,7 +88,7 @@ class Campaign {
      * @type {string}
      */
     get leaderboardId() {
-        return this._data.leaderboardid;
+        return this._data.leaderboarduid;
     }
 
     /**
