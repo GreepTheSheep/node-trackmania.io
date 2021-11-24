@@ -93,6 +93,34 @@ class Client extends BaseClient {
             } else newTotdChecked = false;
         }, 10000);
     }
+
+    /**
+     * Format the string and remove the TM style code on it.
+     * @param {string} str string to format
+     * @returns {string}
+     */
+    formatTMText(str){
+        let res, resStr;
+
+        // Iterate through the string and check if there are $t,
+
+        // First remplace all $T by $t and $Z by $z (for the regex)
+        resStr = str.replace(/\$T/g, '$t').replace(/\$Z/g, '$z');
+        
+        
+        // If there is a $t, it will be replaced by the text in uppercase until the $z or the end of the string
+        while ((res = resStr.match(/\$t(.)*(\$z)|\$t(.)*$/g)) !== null) {
+            for (let i = 0; i < res.length; i++) {
+                resStr = resStr.replace(res[i], res[i].toUpperCase());
+            }
+        }
+
+        // Check if there are two dollar signs in a row, returns one dollar sign
+        resStr = resStr.replace(/\$\$/gi, '$');
+
+        // Then remove all TM codes
+        return resStr.replace(/\$[<>wnoisgtz]|\$[hl]\[(.)+\]|\$[hl]|\$[0-9a-fA-F]{3}/gi, '');
+    }
 }
 
 module.exports = Client;
