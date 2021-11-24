@@ -48,6 +48,12 @@ declare class Client extends BaseClient {
      * @type {EventManager}
      */
     events: EventManager;
+    /**
+     * Format the string and remove the TM style code on it.
+     * @param {string} str string to format
+     * @returns {string}
+     */
+    formatTMText(str: string): string;
 }
 import BaseClient = require("./BaseClient");
 import PlayerManager = require("../managers/PlayerManager");
