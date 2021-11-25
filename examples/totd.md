@@ -9,7 +9,7 @@ client.totd.get(new Date()).then(async totd=>{
         author = await map.author();
 
     // Map names aren't formatted by default (color codes for example), so we need to format them
-    const mapName = Client.Util.formatTMText(map.name);
+    const mapName = client.formatTMText(map.name);
 
     console.log("Today's TOTD is called", mapName, "and it was created by", author.name);
 });

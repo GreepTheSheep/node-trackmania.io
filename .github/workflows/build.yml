@@ -6,6 +6,8 @@ on:
       - 'docs'
     tags:
       - '*'
+    paths-ignore:
+      - 'typings/**'
   workflow_dispatch:
 
 permissions: write-all
