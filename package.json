@@ -6,7 +6,6 @@
   "types": "typings/index.d.ts",
   "scripts": {
     "test": "eslint . && mocha --exit",
-    "build": "tsc && docgen --source src --custom docs/index.yml --output docs/docs.json",
     "dts": "tsc",
     "docs": "docgen --source src --custom docs/index.yml --output docs/docs.json"
   },
@@ -24,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/GreepTheSheep/node-trackmania.io/issues"
   },
-  "homepage": "https://github.com/GreepTheSheep/node-trackmania.io#readme",
+  "homepage": "https://tmio.greep.gq/",
   "dependencies": {
     "events": "3.3.0",
     "luxon": "^2.1.1",
