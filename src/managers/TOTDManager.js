@@ -49,8 +49,13 @@ class TOTDManager{
      */
     async get(date, cache = this.client.options.cache.enabled){
         if (cache && this._cache.has(date.getMonth()+"_"+date.getFullYear())) {
-            let month = this._cache.get(date.getMonth()+"_"+date.getFullYear());
-            return month.days.find(map => map.monthday == date.getDate());
+            let month = this._cache.get(date.getMonth()+"_"+date.getFullYear()),
+                dayMap = month.days.find(map => map.monthday == date.getDate());
+            
+            if (!dayMap) dayMap = month.days.find(map => map.monthday == date.getDate()-1);
+            if (!dayMap) throw "Track of the day not found, it is the right date?";
+
+            return new TOTD(this.client, dayMap);
         } else {
             return await this._fetch(date, cache);
         }
@@ -71,6 +76,12 @@ class TOTDManager{
             throw "Invalid date";
         }
 
+        if (cache) {
+            res._cachedTimestamp = Date.now();
+            
+            this._cache.set(date.getMonth()+"_"+date.getFullYear(), res);
+        }
+
         //get the map of the day in the month on the res
         let dayMap = res.days.find(map => map.monthday == date.getDate());
 
@@ -78,13 +89,7 @@ class TOTDManager{
 
         if (!dayMap) throw "Track of the day not found, it is the right date?";
 
-        const theMap = new TOTD(this.client, dayMap);
-        if (cache) {
-            res._cachedTimestamp = Date.now();
-            
-            this._cache.set(date.getMonth()+"_"+date.getFullYear(), res);
-        }
-        return theMap;
+        return new TOTD(this.client, dayMap);
     }
 }
 
