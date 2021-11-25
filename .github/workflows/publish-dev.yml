@@ -33,7 +33,7 @@ jobs:
 
       - name: Deprecate old dev version
         if: steps.pre-release.outputs.release == 'true'
-        run: "npm deprecate trackmania.io@$(npm view trackmania.io@dev version)' 'no longer supported'"
+        run: "npm deprecate trackmania.io@$(npm view trackmania.io@dev version) 'no longer supported'"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
 
