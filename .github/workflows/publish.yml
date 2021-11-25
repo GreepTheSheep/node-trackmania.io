@@ -24,7 +24,6 @@ jobs:
 
       - name: Get latest version
         id: get-version
-        if: steps.pre-release.outputs.release == 'true'
         run: "echo '::set-output name=version::$(npm view trackmania.io version)'"
 
       - name: Publish on NPM
@@ -33,7 +32,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
       - name: Deprecate old version
-        if: steps.pre-release.outputs.release == 'true'
         run: "npm deprecate trackmania.io@${{ steps.get-version.outputs.version }} 'no longer supported'"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
