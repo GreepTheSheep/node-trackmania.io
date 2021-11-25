@@ -27,6 +27,10 @@ jobs:
           then echo '::set-output name=release::false'; \
           else echo '::set-output name=release::true'; fi
 
+      - name: Install dependencies
+        if: steps.pre-release.outputs.release == 'true'
+        run: npm ci --ignore-scripts
+
       - name: Deprecate old dev version
         if: steps.pre-release.outputs.release == 'true'
         run: "npm deprecate trackmania.io@$(npm view trackmania.io@dev version) 'no longer supported'"
