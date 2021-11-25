@@ -7,7 +7,7 @@ describe("TOTD", function(){
     this.timeout(15*1000);
 
     it("TOTD info - Urayne - 2021-11-25", async function(){
-        const date = new Date().setFullYear(2021, 10, 25),
+        const date = new Date(new Date().setFullYear(2021, 10, 25)),
             totd = await tmioClient.totd.get(date),
             map = await totd.map(),
             author = await map.author();
@@ -20,7 +20,7 @@ describe("TOTD", function(){
     });
 
     it("TOTD info - Plinko - 2021-04-01", async function(){
-        const date = new Date().setFullYear(2021, 3, 1),
+        const date = new Date(new Date().setFullYear(2021, 3, 1)),
             totd = await tmioClient.totd.get(date),
             map = await totd.map(),
             author = await map.author();
