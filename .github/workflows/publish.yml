@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Deprecate old version
-        run: "npm deprecate trackmania.io@$(npm view trackmania.io version) 'no longer supported'"
+        run: "npm deprecate trackmania.io@$(npm view trackmania.io version) 'no longer supported' || true"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
 
