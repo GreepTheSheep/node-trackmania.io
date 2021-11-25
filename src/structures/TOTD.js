@@ -62,7 +62,7 @@ class TOTD {
      * @type {string}
      */
     get leaderboardId(){
-        return this._data.leaderboardid;
+        return this._data.leaderboarduid;
     }
 }
 
