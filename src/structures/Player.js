@@ -753,7 +753,7 @@ class PlayerMatchmaking {
          * @type {Object}
          * @private
          */
-        this._data = typeof type == 'string' ? this.player._data.matchmaking.find(m=>m.info.typename == type).info : this.player._data.matchmaking.find(m=>m.info.typeid == type);
+        this._data = typeof type == 'string' ? this.player._data.matchmaking.find(m=>m.info.typename == type) : this.player._data.matchmaking.find(m=>m.info.typeid == type);
 
         // throw error if no matchmaking data found
         if (!this._data){
