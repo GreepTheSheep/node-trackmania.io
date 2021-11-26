@@ -85,7 +85,7 @@ class Player {
 
     /**
      * The player's zone data with the ranking of the player in the zone
-     * @type {Array<Object>}
+     * @type {Array<PlayerZone>}
      * @example
      * // Generate a string of the player's zone data
      * const string = player.zone.map(p=>p.name).join(', ');
