@@ -91,7 +91,8 @@ class Player {
      * const string = player.zone.map(p=>p.name).join(', ');
      */
     get zone(){
-        return this._constructZoneArray([], this._data.trophies.zone);
+        const zonesArray = this._constructZoneArray([], this._data.trophies.zone);
+        return zonesArray.map(z=>new PlayerZone(this, z));
     }
 
     /**
@@ -158,6 +159,53 @@ class Player {
         return this._PlayerMatchmaking;
     }
 
+}
+
+class PlayerZone {
+    constructor(player, zone){
+        /**
+         * The player instance
+         * @type {Player}
+         */
+        this.player = player;
+
+        /**
+         * The client that instancied the Player
+         * @type {Client}
+         */
+        this.client = this.player.client;
+
+        /**
+         * The data
+         * @type {Object}
+         * @private
+         */
+        this._data = zone;
+    }
+
+    /**
+     * The name of the zone
+     * @type {string}
+     */
+    get name(){
+        return this._data.name;
+    }
+
+    /**
+     * The flag of the zone
+     * @type {string}
+     */
+    get flag(){
+        return this._data.flag;
+    }
+
+    /**
+     * The ranking of the player in the zone
+     * @type {number}
+     */
+    get ranking(){
+        return this._data.ranking;
+    }
 }
 
 /**
