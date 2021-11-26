@@ -50,12 +50,12 @@ declare class Player {
     readonly get lastClubTagChange(): Date;
     /**
      * The player's zone data with the ranking of the player in the zone
-     * @type {Array<Object>}
+     * @type {Array<PlayerZone>}
      * @example
      * // Generate a string of the player's zone data
      * const string = player.zone.map(p=>p.name).join(', ');
      */
-    get zone(): any[];
+    get zone(): PlayerZone[];
     /**
      * The player's trophy data
      * @type {PlayerTrophies}
@@ -98,6 +98,40 @@ declare class Player {
     private _PlayerMatchmaking;
 }
 import Client = require("../client/Client");
+declare class PlayerZone {
+    constructor(player: any, zone: any);
+    /**
+     * The player instance
+     * @type {Player}
+     */
+    player: Player;
+    /**
+     * The client that instancied the Player
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @type {Object}
+     * @private
+     */
+    private _data;
+    /**
+     * The name of the zone
+     * @type {string}
+     */
+    get name(): string;
+    /**
+     * The flag of the zone
+     * @type {string}
+     */
+    get flag(): string;
+    /**
+     * The ranking of the player in the zone
+     * @type {number}
+     */
+    get ranking(): number;
+}
 /**
  * Represents the trophies of a player
  */
