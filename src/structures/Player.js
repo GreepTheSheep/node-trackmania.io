@@ -88,7 +88,7 @@ class Player {
      * @type {Array<PlayerZone>}
      * @example
      * // Generate a string of the player's zone data
-     * const string = player.zone.map(p=>p.name).join(', ');
+     * const string = player.zone.map(z=>z.name).join(', ');
      */
     get zone(){
         const zonesArray = this._constructZoneArray([], this._data.trophies.zone);
@@ -161,6 +161,9 @@ class Player {
 
 }
 
+/**
+ * Represents a zone in a player
+ */
 class PlayerZone {
     constructor(player, zone){
         /**
