@@ -702,7 +702,7 @@ class PlayerMatchmaking {
          * @type {Object}
          * @private
          */
-        this._data = typeof type == 'string' ? this.player._data.matchmaking.find(m=>m.info.typename == type).info : this.player._data.matchmaking.find(m=>m.info.typeid == type).info;
+        this._data = typeof type == 'string' ? this.player._data.matchmaking.find(m=>m.info.typename == type).info : this.player._data.matchmaking.find(m=>m.info.typeid == type);
 
         // throw error if no matchmaking data found
         if (!this._data){
@@ -715,7 +715,7 @@ class PlayerMatchmaking {
      * @type {string}
      */
     get type(){
-        return this._data.typename;
+        return this._data.info.typename;
     }
 
     /**
@@ -723,7 +723,7 @@ class PlayerMatchmaking {
      * @type {number}
      */
     get typeId(){
-        return this._data.typeid;
+        return this._data.info.typeid;
     }
 
     /**
@@ -731,7 +731,15 @@ class PlayerMatchmaking {
      * @type {number}
      */
     get rank(){
-        return this._data.rank;
+        return this._data.info.rank;
+    }
+
+    /**
+     * The total number of players in this matchmaking
+     * @type {number}
+     */
+    get totalPlayers(){
+        return this._data.total;
     }
 
     /**
@@ -739,7 +747,7 @@ class PlayerMatchmaking {
      * @type {number}
      */
     get score(){
-        return this._data.score;
+        return this._data.info.score;
     }
 
     /**
@@ -747,7 +755,7 @@ class PlayerMatchmaking {
      * @type {number}
      */
     get progression(){
-        return this._data.progression;
+        return this._data.info.progression;
     }
 
     /**
@@ -755,14 +763,14 @@ class PlayerMatchmaking {
      * @type {MatchmakingDivision}
      */
     get division(){
-        if (!this._MatchmakingDivision || this._MatchmakingDivision.division !== this._data.division.position){
+        if (!this._MatchmakingDivision || this._MatchmakingDivision.division !== this._data.info.division.position){
             const MatchmakingDivision = require('./MatchmakingDivision');
             /**
              * The division of the player on this matchmaking
              * @type {MatchmakingDivision}
              * @private
              */
-            this._MatchmakingDivision = new MatchmakingDivision(this.client, this.typeId, this._data.division);
+            this._MatchmakingDivision = new MatchmakingDivision(this.client, this.typeId, this._data.info.division);
         } 
         return this._MatchmakingDivision;
     }
