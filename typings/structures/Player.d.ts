@@ -309,6 +309,11 @@ declare class PlayerMatchmaking {
      */
     get rank(): number;
     /**
+     * The total number of players in this matchmaking
+     * @type {number}
+     */
+    get totalPlayers(): number;
+    /**
      * The MMR rank of the player on this matchmaking (score)
      * @type {number}
      */
