@@ -2,6 +2,7 @@ export var GroupTypes: any;
 export var MMTypes: any;
 export var RoomRegions: any;
 export var ClubMemberRoles: any;
+export var AdTypes: any;
 /**
  * All available player groups.
  * * `nadeo` - All players from the Nadeo company
@@ -32,6 +33,12 @@ export type RoomRegion = string;
  */
 export type ClubMemberRole = string;
 /**
+ * All available Maniapub Types.
+ * * `nadeo` - Nadeo official Maniapubs
+ * * `ugc` - (User Generated Content) - Community Maniapubs
+ */
+export type AdType = string;
+/**
  * Constants that can be used in an enum or object-like way.
  */
 export type Constants = {
@@ -51,4 +58,8 @@ export type Constants = {
      * All available Club Member roles.
      */
     ClubMemberRoles: ClubMemberRole;
+    /**
+     * All available Maniapub Types.
+     */
+    AdTypes: AdType;
 };

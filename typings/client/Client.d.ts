@@ -49,6 +49,16 @@ declare class Client extends BaseClient {
      */
     events: EventManager;
     /**
+     * The news manager
+     * @type {NewsManager}
+     */
+    news: NewsManager;
+    /**
+     * The Maniapub manager
+     * @type {AdsManager}
+     */
+    ads: AdsManager;
+    /**
      * Format the string and remove the TM style code on it.
      * @param {string} str string to format
      * @returns {string}
@@ -64,4 +74,6 @@ import ClubManager = require("../managers/ClubManager");
 import CampaignManager = require("../managers/CampaignManager");
 import RoomManager = require("../managers/RoomManager");
 import EventManager = require("../managers/EventManager");
+import NewsManager = require("../managers/NewsManager");
+import AdsManager = require("../managers/AdsManager");
 import defaultOptions = require("../util/defaultOptions");
