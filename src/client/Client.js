@@ -13,6 +13,7 @@ const ClubManager = require('../managers/ClubManager');
 const CampaignManager = require('../managers/CampaignManager');
 const RoomManager = require('../managers/RoomManager');
 const EventManager = require('../managers/EventManager');
+const NewsManager = require('../managers/NewsManager');
 const AdsManager = require('../managers/AdsManager');
 
 /**
@@ -73,6 +74,12 @@ class Client extends BaseClient {
          * @type {EventManager}
          */
         this.events = new EventManager(this);
+
+        /**
+         * The news manager
+         * @type {NewsManager}
+         */
+        this.news = new NewsManager(this);
 
         /**
          * The Maniapub manager
