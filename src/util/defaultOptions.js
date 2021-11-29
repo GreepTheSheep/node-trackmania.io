@@ -181,6 +181,12 @@ class defaultOptionsAPIPathsTMIOTabs {
         this.news = "splashscreens";
 
         /**
+         * Ads tab (Maniapub)
+         * @type {string}
+         */
+        this.ads = "ads";
+
+        /**
          * Campaigns Tab.
          * @type {string}
          */

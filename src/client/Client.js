@@ -13,6 +13,7 @@ const ClubManager = require('../managers/ClubManager');
 const CampaignManager = require('../managers/CampaignManager');
 const RoomManager = require('../managers/RoomManager');
 const EventManager = require('../managers/EventManager');
+const AdsManager = require('../managers/AdsManager');
 
 /**
  * Instantiates a new client. This is the entry point.
@@ -72,6 +73,12 @@ class Client extends BaseClient {
          * @type {EventManager}
          */
         this.events = new EventManager(this);
+
+        /**
+         * The Maniapub manager
+         * @type {AdsManager}
+         */
+        this.ads = new AdsManager(this);
 
 
         // Will initialize the TOTD event, witch calls an event for a new TOTD every day at 19h Europe/Paris timezone
