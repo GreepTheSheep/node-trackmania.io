@@ -27,6 +27,11 @@ declare class Player {
      */
     get id(): string;
     /**
+     * The login of the player
+     * @type {string}
+     */
+    get login(): string;
+    /**
      * The display name of the player
      * @type {string}
      */

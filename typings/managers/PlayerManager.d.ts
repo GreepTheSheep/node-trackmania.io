@@ -17,6 +17,18 @@ declare class PlayerManager {
      */
     private _cache;
     /**
+     * Returns the login of an account ID
+     * @param {string} accountID The account ID
+     * @returns {string}
+     */
+    toLogin(accountID: string): string;
+    /**
+     * Returns the Account ID of a login
+     * @param {string} login The login of the player
+     * @returns {?string}
+     */
+    toAccountId(login: string): string | null;
+    /**
      * Searches for a player by its name
      * @param {string} query The query to search for
      * @returns {Promise<Array<PlayerSearchResult>>} The results
