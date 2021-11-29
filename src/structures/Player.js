@@ -50,6 +50,14 @@ class Player {
     }
 
     /**
+     * The login of the player
+     * @type {string}
+     */
+    get login(){
+        return this.client.players.toLogin(this.id);
+    }
+
+    /**
      * The display name of the player
      * @type {string}
      */

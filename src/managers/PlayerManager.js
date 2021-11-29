@@ -26,6 +26,51 @@ class PlayerManager {
     }
 
     /**
+     * Returns the login of an account ID
+     * @param {string} accountID The account ID
+     * @returns {string}
+     */
+    toLogin(accountID){
+        var chars = accountID.replace(/-/g, '');
+
+        var bytes = '';
+        for (var i = 0; i < chars.length; i += 2) {
+            var hex = chars.substr(i, 2);
+            var dec = parseInt(hex, 16);
+            var byte = String.fromCharCode(dec);
+            bytes += byte;
+        }
+    
+        return btoa(bytes)
+            .replace(/\\+/g, '-')
+            .replace(/\//g, '_')
+            .replace(/=/g, '');
+    }
+
+    /**
+     * Returns the Account ID of a login
+     * @param {string} login The login of the player
+     * @returns {?string}
+     */
+    toAccountId(login){
+        if (login.length != 22) return null;
+    
+        var bytes = atob(login
+            .replace(/-/g, '+')
+            .replace(/_/g, '/')
+        );
+    
+        var ret = '';
+        for (var i = 0; i < bytes.length; i++) {
+            if (i == 4 || i == 6 || i == 8 || i == 10) {
+                ret += '-';
+            }
+            ret += bytes.charCodeAt(i).toString(16);
+        }
+        return ret;
+    }
+
+    /**
      * Searches for a player by its name
      * @param {string} query The query to search for
      * @returns {Promise<Array<PlayerSearchResult>>} The results
