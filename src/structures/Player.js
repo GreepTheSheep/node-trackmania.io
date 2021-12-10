@@ -1242,7 +1242,7 @@ class PlayerCOTDStatsBest{
      * @readonly
      */
     get rankDate(){
-        return new Date(this._data.bestrankdate);
+        return new Date(this._data.bestranktime);
     }
 
     /**
@@ -1267,7 +1267,7 @@ class PlayerCOTDStatsBest{
      * @readonly
      */
     get divisionDate(){
-        return new Date(this._data.bestdivdate);
+        return new Date(this._data.bestdivtime);
     }
 
     /**
@@ -1284,7 +1284,7 @@ class PlayerCOTDStatsBest{
      * @readonly
      */
     get rankInDivisionDate(){
-        return new Date(this._data.bestrankindivdate);
+        return new Date(this._data.bestrankindivtime);
     }
 
     /**
