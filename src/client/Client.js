@@ -100,11 +100,13 @@ class Client extends BaseClient {
                  * @event Client#totd
                  * @param {TOTD} totd The Track of The Day
                  */
-                this.client.emit('totd', totd);
+                this.emit('totd', totd);
 
                 // this prevent emitting this event a second time in the same day
                 newTotdChecked = true;
-            } else newTotdChecked = false;
+            } else {
+                if (date.hour !== 19 && date.minute !== 1 && newTotdChecked) newTotdChecked = false;
+            }
         }, 10000);
     }
 
