@@ -6,18 +6,6 @@ const assert = require('assert'),
 describe("TOTD", function(){
     this.timeout(15*1000);
 
-    it("TOTD info - Urayne - 2021-11-25", async function(){
-        const date = new Date(new Date().setFullYear(2021, 10, 25)),
-            totd = await tmioClient.totd.get(date),
-            map = await totd.map(),
-            author = await map.author();
-
-        assert.equal(totd.campaignId, 17947);
-        assert.equal(map.uid, "tdJlvPWseaM9oP5UzQ4EBISLj2l");
-        assert.equal(map.exchange.id, 26819);
-        assert.equal(author.id, "541cd232-0daa-48c4-8e59-5d9d70371f51");
-    });
-
     it("TOTD info - Plinko - 2021-04-01", async function(){
         const date = new Date(new Date().setFullYear(2021, 3, 1)),
             totd = await tmioClient.totd.get(date),
