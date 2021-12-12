@@ -12,7 +12,6 @@ describe("TOTD", function(){
             map = await totd.map(),
             author = await map.author();
 
-        assert.equal(totd.leaderboardId, "eef43a0e-f881-4e65-86b8-144ab6034188");
         assert.equal(totd.campaignId, 17947);
         assert.equal(map.uid, "tdJlvPWseaM9oP5UzQ4EBISLj2l");
         assert.equal(map.exchange.id, 26819);
