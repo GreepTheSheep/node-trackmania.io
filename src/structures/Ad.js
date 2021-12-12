@@ -1,6 +1,9 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const {AdType} = require('../util/Constants'); // eslint-disable-line no-unused-vars
 
+/**
+ * The Maniapub
+ */
 class Ad {
     constructor(client, data){
         /**
