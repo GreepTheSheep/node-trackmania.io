@@ -245,6 +245,11 @@ declare class defaultOptionsAPIPathsTMIOTabs {
      */
     news: string;
     /**
+     * Ads tab (Maniapub)
+     * @type {string}
+     */
+    ads: string;
+    /**
      * Campaigns Tab.
      * @type {string}
      */

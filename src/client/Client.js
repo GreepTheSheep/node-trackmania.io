@@ -13,6 +13,8 @@ const ClubManager = require('../managers/ClubManager');
 const CampaignManager = require('../managers/CampaignManager');
 const RoomManager = require('../managers/RoomManager');
 const EventManager = require('../managers/EventManager');
+const NewsManager = require('../managers/NewsManager');
+const AdsManager = require('../managers/AdsManager');
 
 /**
  * Instantiates a new client. This is the entry point.
@@ -73,6 +75,18 @@ class Client extends BaseClient {
          */
         this.events = new EventManager(this);
 
+        /**
+         * The news manager
+         * @type {NewsManager}
+         */
+        this.news = new NewsManager(this);
+
+        /**
+         * The Maniapub manager
+         * @type {AdsManager}
+         */
+        this.ads = new AdsManager(this);
+
 
         // Will initialize the TOTD event, witch calls an event for a new TOTD every day at 19h Europe/Paris timezone
         let newTotdChecked = false;
@@ -86,11 +100,13 @@ class Client extends BaseClient {
                  * @event Client#totd
                  * @param {TOTD} totd The Track of The Day
                  */
-                this.client.emit('totd', totd);
+                this.emit('totd', totd);
 
                 // this prevent emitting this event a second time in the same day
                 newTotdChecked = true;
-            } else newTotdChecked = false;
+            } else {
+                if (date.hour !== 19 && date.minute !== 1 && newTotdChecked) newTotdChecked = false;
+            }
         }, 10000);
     }
 

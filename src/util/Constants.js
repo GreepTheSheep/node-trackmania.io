@@ -56,9 +56,21 @@ exports.ClubMemberRoles = createEnum([
 ]);
 
 /**
+ * All available Maniapub Types.
+ * * `nadeo` - Nadeo official Maniapubs
+ * * `ugc` - (User Generated Content) - Community Maniapubs
+ * @typedef {string} AdType
+ */
+exports.AdTypes = createEnum([
+    'nadeo',
+    'ugc'
+]);
+
+/**
  * @typedef {Object} Constants Constants that can be used in an enum or object-like way.
  * @property {PlayerGroup} GroupTypes All available player groups.
  * @property {MatchmakingGroup} MMTypes All available matchmaking groups.
  * @property {RoomRegion} RoomRegions All available Nadeo-hosted club rooms regions.
  * @property {ClubMemberRole} ClubMemberRoles All available Club Member roles.
+ * @property {AdType} AdTypes All available Maniapub Types.
  */

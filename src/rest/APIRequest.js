@@ -20,10 +20,19 @@ class APIRequest {
         this.client = client;
 
         // Creating UA string
-        let cwd = process.cwd();
-        let cwf = require.main.filename;
-        cwf = cwf.substring(cwf.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
+        let cwd = process.cwd(),
+            cwf;
+        
         cwd = cwd.substring(cwd.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
+
+        // Gets the current file name where the script starts
+        // If require.main is undefined, that means it executes that in the CLI
+        if (require.main){
+            cwf = require.main.filename;
+            cwf = cwf.substring(cwf.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
+        }
+        else cwf = "Node.js cli";
+
         /**
          * The User-Agent string which is used for the requests
          * @type {string}

@@ -66,7 +66,7 @@ class MatchmakingDivision{
      * @type {number}
      */
     get minPoints(){
-        if (this.typeName == "Royal") return this._division.minwins;
+        if (this.typeId == 3) return this._division.minwins;
         else return this._division.minpoints;
     }
 
@@ -75,7 +75,7 @@ class MatchmakingDivision{
      * @type {number}
      */
     get maxPoints(){
-        if (this.typeName == "Royal") return this._division.maxwins;
+        if (this.typeId == 3) return this._division.maxwins;
         else return this._division.maxpoints;
     }
 
