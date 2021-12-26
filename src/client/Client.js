@@ -147,3 +147,9 @@ module.exports = Client;
  * @param {string} instance The instance name where the debug is triggered
  * @param {string} info The debug information
  */
+
+/**
+ * Emitted when there is an error when fetching external data (Trackmania.exchange for example).
+ * @event Client#error
+ * @param {Error} error The error
+ */

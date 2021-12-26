@@ -54,20 +54,32 @@ class MapManager{
 
         // Check if the map exists on tmx
         if (res.exchangeid !== 0) {
-            const tmxurl = this.client.options.api.paths.tmx,
-                tmxres = await this.client._apiReq(`${tmxurl.protocol}://${tmxurl.host}/${tmxurl.api}/${tmxurl.tabs.mapInfo}/${res.exchangeid}`);
-            res['exchange'] = tmxres[0];
+            try {
+                const tmxurl = this.client.options.api.paths.tmx,
+                    tmxres = await this.client._apiReq(`${tmxurl.protocol}://${tmxurl.host}/${tmxurl.api}/${tmxurl.tabs.mapInfo}/${res.exchangeid}`);
+                res['exchange'] = tmxres[0];
+            } catch (e) {
+                this.client.emit('error', e);
+            }
         }
 
         // Get map votes thanks to RoboTec's Voting API
-        const mapVotes = this.client.options.api.paths.mapVoting.tabs.getVotes;
-        const votes = await this.client._apiReq(`${new ReqUtil(this.client).votingAPIURL}/${mapVotes}?map=${mapUid}`);
-        res['karma'] = votes;
+        try {
+            const mapVotes = this.client.options.api.paths.mapVoting.tabs.getVotes,
+                votes = await this.client._apiReq(`${new ReqUtil(this.client).votingAPIURL}/${mapVotes}?map=${mapUid}`);
+            res['karma'] = votes;
+        } catch (e) {
+            this.client.emit('error', e);
+        }        
 
         // Get map leaderboard
-        const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard;
-        const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${mapUid}`);
-        res["leaderboard"] = leaderboardRes;
+        try {
+            const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
+                leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${mapUid}?offset=0&length=100`);
+            res["leaderboard"] = leaderboardRes;
+        } catch (e) {
+            this.client.emit('error', e);
+        }
 
         const theMap = new TMMap(this.client, res);
         if (cache) {

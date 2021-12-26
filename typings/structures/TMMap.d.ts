@@ -36,6 +36,11 @@ declare class TMMap {
      */
     get uid(): string;
     /**
+     * The map Storage Object ID.
+     * @type {string}
+     */
+    get storageId(): string;
+    /**
      * The map author.
      * @returns {Promise<Player>}
      * @example
@@ -71,10 +76,15 @@ declare class TMMap {
      */
     get url(): string;
     /**
-     * The map thumbnail.
+     * The map thumbnail (from Nadeo services, direct download).
      * @type {string}
      */
     get thumbnail(): string;
+    /**
+     * The map thumbnail (cached from trackmania.io, can show).
+     * @type {string}
+     */
+    get thumbnailCached(): string;
     /**
      * The map exchange id, if the map is on trackmania.exchange, else null.
      * @type {?string}
@@ -106,10 +116,16 @@ declare class TMMap {
      */
     get leaderboard(): TMMapLeaderboard[];
     /**
-     * Load more in the leaderboard
-     * @returns {?Promise<Array<TMMapLeaderboard>>}
+     * Load 100 more results in the leaderboard.
+     * @returns {Promise<?Array<TMMapLeaderboard>>}
      */
-    leaderboardLoadMore(): Promise<Array<TMMapLeaderboard>> | null;
+    leaderboardLoadMore(): Promise<Array<TMMapLeaderboard> | null>;
+    /**
+     * Get a leaderboard in a specific position. Must be between 1 and 10000.
+     * @param {number} position The position of the leaderboard.
+     * @returns {Promise<?TMMapLeaderboard>}
+     */
+    leaderboardGet(position: number): Promise<TMMapLeaderboard | null>;
 }
 import Client = require("../client/Client");
 /**
@@ -281,9 +297,9 @@ declare class TMMapLeaderboard {
     private _data;
     /**
      * The player that got this leaderboard
-     * @returns {Player}
+     * @returns {Promise<Player>}
      */
-    player(): Player;
+    player(): Promise<Player>;
     /**
      * The position of the player on this leaderboard
      * @type {number}
