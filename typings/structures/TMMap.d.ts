@@ -37,7 +37,7 @@ declare class TMMap {
     get uid(): string;
     /**
      * The map Storage Object ID.
-     * @returns {string}
+     * @type {string}
      */
     get storageId(): string;
     /**
