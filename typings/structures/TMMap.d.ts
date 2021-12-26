@@ -36,6 +36,11 @@ declare class TMMap {
      */
     get uid(): string;
     /**
+     * The map Storage Object ID.
+     * @returns {string}
+     */
+    get storageId(): string;
+    /**
      * The map author.
      * @returns {Promise<Player>}
      * @example
@@ -71,10 +76,15 @@ declare class TMMap {
      */
     get url(): string;
     /**
-     * The map thumbnail.
+     * The map thumbnail (from Nadeo services, direct download).
      * @type {string}
      */
     get thumbnail(): string;
+    /**
+     * The map thumbnail (cached from trackmania.io, can show).
+     * @type {string}
+     */
+    get thumbnailCached(): string;
     /**
      * The map exchange id, if the map is on trackmania.exchange, else null.
      * @type {?string}
