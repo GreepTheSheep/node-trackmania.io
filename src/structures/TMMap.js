@@ -62,6 +62,14 @@ class TMMap {
     }
 
     /**
+     * The map Storage Object ID.
+     * @returns {string}
+     */
+    get storageId() {
+        return this.thumbnail.replace(/^[a-z:/.]*([^]*)\.[a-z]*$/gi, '$1');
+    }
+
+    /**
      * The map author.
      * @returns {Promise<Player>}
      * @example
@@ -115,11 +123,19 @@ class TMMap {
     }
 
     /**
-     * The map thumbnail.
+     * The map thumbnail (from Nadeo services, direct download).
      * @type {string}
      */
     get thumbnail() {
         return this._data.thumbnailUrl;
+    }
+
+    /**
+     * The map thumbnail (cached from trackmania.io, can show).
+     * @type {string}
+     */
+    get thumbnailCached() {
+        return `${new ReqUtil(this.client).tmioAPIURL}/download/jpg/${this.storageId}`;
     }
 
     /**
