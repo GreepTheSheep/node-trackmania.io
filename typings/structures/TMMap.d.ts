@@ -106,10 +106,16 @@ declare class TMMap {
      */
     get leaderboard(): TMMapLeaderboard[];
     /**
-     * Load more in the leaderboard
-     * @returns {?Promise<Array<TMMapLeaderboard>>}
+     * Load 100 more results in the leaderboard.
+     * @returns {Promise<?Array<TMMapLeaderboard>>}
      */
-    leaderboardLoadMore(): Promise<Array<TMMapLeaderboard>> | null;
+    leaderboardLoadMore(): Promise<Array<TMMapLeaderboard> | null>;
+    /**
+     * Get a leaderboard in a specific position. Must be between 1 and 10000.
+     * @param {number} position The position of the leaderboard.
+     * @returns {Promise<?TMMapLeaderboard>}
+     */
+    leaderboardGet(position: number): Promise<TMMapLeaderboard | null>;
 }
 import Client = require("../client/Client");
 /**
@@ -281,9 +287,9 @@ declare class TMMapLeaderboard {
     private _data;
     /**
      * The player that got this leaderboard
-     * @returns {Player}
+     * @returns {Promise<Player>}
      */
-    player(): Player;
+    player(): Promise<Player>;
     /**
      * The position of the player on this leaderboard
      * @type {number}
