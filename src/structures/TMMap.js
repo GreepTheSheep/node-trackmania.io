@@ -183,15 +183,15 @@ class TMMap {
     }
 
     /**
-     * Load more in the leaderboard
-     * @returns {?Promise<Array<TMMapLeaderboard>>}
+     * Load 100 more results in the leaderboard.
+     * @returns {Promise<?Array<TMMapLeaderboard>>}
      */
     async leaderboardLoadMore(){
         if (this._data.leaderboard && this._data.leaderboard.tops.length >= 1) {
 
             const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
                 map = this.client.options.api.paths.tmio.tabs.map;
-            const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?from=${this._data.leaderboard.tops[this._data.leaderboard.tops.length - 2].time}`);
+            const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?offset=${this._data.leaderboard.tops.length}&length=100`);
             if (leaderboardRes.tops != null){
                 for (let i = 0; i < leaderboardRes.tops.length; i++){
                     this._data.leaderboard.tops.push(leaderboardRes.tops[i]);
@@ -203,6 +203,21 @@ class TMMap {
             }
             return arr;
         } else return null;
+    }
+
+    /**
+     * Get a leaderboard in a specific position. Must be between 1 and 10000.
+     * @param {number} position The position of the leaderboard.
+     * @returns {Promise<?TMMapLeaderboard>}
+     */
+    async leaderboardGet(position){
+        if (position < 1 || position > 10000) throw "Position must be between 1 and 10000";
+        position--;
+        const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
+            map = this.client.options.api.paths.tmio.tabs.map,
+            leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?offset=${position}&length=1}`);
+        if (!leaderboardRes.tops) return null;
+        return new TMMapLeaderboard(this, leaderboardRes.tops[0]);
     }
 }
 
@@ -435,7 +450,7 @@ class TMMapLeaderboard {
 
     /**
      * The player that got this leaderboard
-     * @returns {Player}
+     * @returns {Promise<Player>}
      */
     async player(){
         return this.client.players.get(this._data.player.id);

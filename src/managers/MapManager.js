@@ -66,8 +66,8 @@ class MapManager{
 
         // Get map leaderboard
         const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard;
-        const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${mapUid}`);
         res["leaderboard"] = leaderboardRes;
+                leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${mapUid}?offset=0&length=100`);
 
         const theMap = new TMMap(this.client, res);
         if (cache) {
