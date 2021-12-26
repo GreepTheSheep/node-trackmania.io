@@ -63,7 +63,7 @@ class TMMap {
 
     /**
      * The map Storage Object ID.
-     * @returns {string}
+     * @type {string}
      */
     get storageId() {
         return this.thumbnail.replace(/^[a-z:/.]*([^]*)\.[a-z]*$/gi, '$1');
