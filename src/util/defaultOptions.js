@@ -49,12 +49,17 @@ class defaultOptionsAPI {
          */
         this.paths = new defaultOptionsAPIPaths();
 
-        /**
-         * The default User Agent to use.
-         * @type {?string}
-         */
-        this.useragent = null;
-
+        if (!this.key && 'TMIO_UA' in process.env) {
+            /**
+             * The default User Agent to use.
+             * If present, this defaults to `process.env.TMIO_UA` when instantiating the client
+             * @type {?string}
+             */
+            this.useragent = process.env.TMIO_UA;
+        } else {
+            this.useragent = null;
+        }
+            
         if (!this.key && 'TMIO_API' in process.env) {
             /**
              * The API Key to use. It must contains "yourname:theactualsecretkey".
