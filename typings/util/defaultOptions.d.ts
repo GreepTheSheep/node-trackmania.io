@@ -45,6 +45,7 @@ declare class defaultOptionsAPI {
     paths: defaultOptionsAPIPaths;
     /**
      * The default User Agent to use.
+     * If present, this defaults to `process.env.TMIO_UA` when instantiating the client
      * @type {?string}
      */
     useragent: string | null;
