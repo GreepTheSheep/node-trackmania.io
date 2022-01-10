@@ -49,7 +49,7 @@ class defaultOptionsAPI {
          */
         this.paths = new defaultOptionsAPIPaths();
 
-        if (!this.key && 'TMIO_UA' in process.env) {
+        if (!this.useragent && 'TMIO_UA' in process.env) {
             /**
              * The default User Agent to use.
              * If present, this defaults to `process.env.TMIO_UA` when instantiating the client
