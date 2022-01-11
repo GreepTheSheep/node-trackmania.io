@@ -109,7 +109,8 @@ class APIRequest {
                 } else {
                     if (response.status >= 500) {
                         const json = await response.json();
-                        throw json.error;
+                        if (json.error) throw json.error;
+                        else throw json;
                     } else throw response.statusText;
                 }
             })
