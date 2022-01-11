@@ -6,7 +6,7 @@ Most errors can come from an API block.
 
 Every requests is managed with a Promise, so you need to handle that with async/await or with a `.then()` block
 
-### Example with campaign fetch
+### Example with main request
 
 ```js
 const TMIO = require('trackmania.io'),
@@ -38,4 +38,33 @@ client.campaigns.currentSeason().then(async campaign=>{
 
     console.error(err);
 })
+```
+
+### Example with side requests
+
+Side requests is requests made to another domain than trackmania.io (trackmania.exchange for example), this does not throws a error but emit an "error" Event.
+
+Error events is not a big deal than main errors
+
+To catch them, you just need to add a `client.on("error", error=>...)` block
+
+```js
+const TMIO = require('trackmania.io'),
+    client = new TMIO.Client();
+
+client.maps.get("89OtLgP9IRQzmC9n_h0SrIr8l_4").then(map=>{
+    console.log(map.name);
+}).catch(err=>{
+    // Here, we got a tm.io error, because it's the main thing after all
+    
+    console.error(err);
+});
+
+client.on("error", error=>{
+    // But here, errors can come from another services for the map info
+    // Trackmania Exchange for example
+
+    console.error(error);
+});
+
 ```
