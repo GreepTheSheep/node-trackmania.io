@@ -92,6 +92,23 @@ class Campaign {
     }
 
     /**
+     * Get the number of maps in the campaign.
+     * @type {number}
+     */
+    get mapCount() {
+        return this._data.playlist.length;
+    }
+
+    /**
+     * Get a specific map of the campaign.
+     * @param {number} index The index of the map.
+     * @returns {Promise<TMMap>}
+     */
+    async map(index) {
+        return await this.client.maps.get(this._data.playlist[index].mapUid);
+    }
+
+    /**
      * The list of maps in the campaign.
      * @returns {Promise<Array<TMMap>>}
      * @example
