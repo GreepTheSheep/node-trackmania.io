@@ -56,6 +56,17 @@ declare class Campaign {
      */
     get leaderboardId(): string;
     /**
+     * Get the number of maps in the campaign.
+     * @type {number}
+     */
+    get mapCount(): number;
+    /**
+     * Get a specific map of the campaign.
+     * @param {number} index The index of the map.
+     * @returns {Promise<TMMap>}
+     */
+    map(index: number): Promise<TMMap>;
+    /**
      * The list of maps in the campaign.
      * @returns {Promise<Array<TMMap>>}
      * @example
