@@ -94,20 +94,23 @@ class APIRequest {
                  * @param {Response} response The response received from the API
                  */
                 this.client.emit('apiResponse', this, response);
-                // Save the rate limit details
-                if (this.url.startsWith(new ReqUtil(this.client).tmioAPIURL)){
-                    this.client.ratelimit = {
-                        ratelimit: Number(response.headers.raw()['x-ratelimit-limit'][0]),
-                        remaining: Number(response.headers.raw()['x-ratelimit-remaining'][0]),
-                        reset: new Date(Number(response.headers.raw()['x-ratelimit-reset'][0]) * 1000)
-                    };
-                }
+
                 if (response.status >= 200 && response.status < 300) {
+                    // Save the rate limit details
+                    if (this.url.startsWith(new ReqUtil(this.client).tmioAPIURL)){
+                        this.client.ratelimit = {
+                            ratelimit: Number(response.headers.raw()['x-ratelimit-limit'][0]),
+                            remaining: Number(response.headers.raw()['x-ratelimit-remaining'][0]),
+                            reset: new Date(Number(response.headers.raw()['x-ratelimit-reset'][0]) * 1000)
+                        };
+                    }
+                    
                     return await response.json();
                 } else {
-                    if (response.status == 500) {
+                    if (response.status >= 500) {
                         const json = await response.json();
-                        throw json.error;
+                        if (json.error) throw json.error;
+                        else throw json;
                     } else throw response.statusText;
                 }
             })

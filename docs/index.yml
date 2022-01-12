@@ -21,3 +21,6 @@
     - name: Current official campaign
       id: currentCampaign
       path: ../../examples/officialCampaign.md
+    - name: Gracefully catch errors
+      id: errorCatches
+      path: ../../examples/errorCatches.md

@@ -66,7 +66,7 @@ class TMMap {
      * @type {string}
      */
     get storageId() {
-        return this.thumbnail.replace(/^[a-z:/.]*([^]*)\.[a-z]*$/gi, '$1');
+        return this.thumbnail.replace(/^[a-z:/.]*\/([^]*)\.[a-z]*$$/gi, '$1');
     }
 
     /**
