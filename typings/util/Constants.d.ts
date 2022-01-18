@@ -4,6 +4,13 @@ export var RoomRegions: any;
 export var ClubMemberRoles: any;
 export var AdTypes: any;
 /**
+ * All available Match Status types.
+ * * `PENDING`
+ * * `COMPLETED`
+ */
+export type MatchStatus = string;
+export var MatchStatus: any;
+/**
  * All available player groups.
  * * `nadeo` - All players from the Nadeo company
  * * `tmgl` - All players from the TMGL competition
