@@ -10,6 +10,7 @@ export var AdTypes: any;
  */
 export type MatchStatus = string;
 export var MatchStatus: any;
+export var TeamNames: any;
 /**
  * All available player groups.
  * * `nadeo` - All players from the Nadeo company
@@ -46,6 +47,12 @@ export type ClubMemberRole = string;
  */
 export type AdType = string;
 /**
+ * Team names for the 3v3 match.
+ * * `Red`
+ * * `Blue`
+ */
+export type TeamName = string;
+/**
  * Constants that can be used in an enum or object-like way.
  */
 export type Constants = {
@@ -69,4 +76,12 @@ export type Constants = {
      * All available Maniapub Types.
      */
     AdTypes: AdType;
+    /**
+     * All available Match Status types.
+     */
+    MatchStatus: MatchStatus;
+    /**
+     * All available Team names for the 3v3 match.
+     */
+    TeamNames: TeamName;
 };
