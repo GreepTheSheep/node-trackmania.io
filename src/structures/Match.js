@@ -1,5 +1,5 @@
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const {MMTypes, MatchmakingGroup, MatchStatus} = require('../util/Constants'); // eslint-disable-line no-unused-vars
+const {MMTypes, MatchmakingGroup, MatchStatus, TeamNames, TeamName} = require('../util/Constants'); // eslint-disable-line no-unused-vars
 const RoyalTeams = require('../data/RoyalTeams.json');
 
 /**
@@ -209,12 +209,11 @@ class MatchTeam {
 
     /**
      * The team name
-     * @type {?string}
+     * @type {?string | TeamName}
      */
     get name(){
         if (this.match.type == MMTypes[2]){ // 3v3
-            if (this.index == 0) return "Blue";
-            if (this.index == 1) return "Red";
+            return TeamNames[this.index];
         } else if (this.match.type == MMTypes[3]){ // Royal
             return RoyalTeams[this.index].name;
         }
@@ -229,7 +228,7 @@ class MatchTeam {
         if (this.match.type == MMTypes[3]){ // Royal
             return RoyalTeams[this.index].img;
         }
-        else return null;
+        return null;
     }
 }
 

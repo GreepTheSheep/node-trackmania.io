@@ -36,7 +36,7 @@ class MatchesManager{
         const matches = this.client.options.api.paths.tmio.tabs.matches;
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${matches}/${group}/${page}`);
         const array = [];
-        if (res.matches.length > 0) { // check all news from the page 0
+        if (res.matches.length > 0) {
             for (let i = 0; i < res.matches.length; i++) {
                 let match = new MatchResult(this.client, res.matches[i]);
                 if (cache) {
@@ -65,12 +65,13 @@ class MatchesManager{
 
     /**
      * Fetches a Match and returns its data
-     * @param {number} liveID Thelive ID of the match (should start with 'LID-MTCH')
+     * @param {string} liveID Thelive ID of the match (should start with 'LID-MTCH')
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the news or not
      * @returns {Promise<Match>} The splashscreen
      * @private
      */
     async _fetch(liveID, cache = this.client.options.cache.enabled){
+        if (!liveID.startsWith("LID-MTCH")) throw "The live ID must start with 'LID-MTCH'";
         const match = this.client.options.api.paths.tmio.tabs.match;
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${match}/${liveID}`);
 
