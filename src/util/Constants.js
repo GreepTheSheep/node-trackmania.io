@@ -67,6 +67,17 @@ exports.AdTypes = createEnum([
 ]);
 
 /**
+ * All available Match Status types.
+ * * `PENDING`
+ * * `COMPLETED`
+ * @typedef {string} MatchStatus
+ */
+exports.MatchStatus = createEnum([
+    'PENDING',
+    'COMPLETED'
+]);
+
+/**
  * @typedef {Object} Constants Constants that can be used in an enum or object-like way.
  * @property {PlayerGroup} GroupTypes All available player groups.
  * @property {MatchmakingGroup} MMTypes All available matchmaking groups.
