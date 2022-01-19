@@ -67,10 +67,34 @@ exports.AdTypes = createEnum([
 ]);
 
 /**
+ * All available Match Status types.
+ * * `PENDING`
+ * * `COMPLETED`
+ * @typedef {string} MatchStatus
+ */
+exports.MatchStatus = createEnum([
+    'PENDING',
+    'COMPLETED'
+]);
+
+/**
+ * Team names for the 3v3 match.
+ * * `Red`
+ * * `Blue`
+ * @typedef {string} TeamName
+ */
+exports.TeamNames = createEnum([
+    'Blue',
+    'Red'
+]);
+
+/**
  * @typedef {Object} Constants Constants that can be used in an enum or object-like way.
  * @property {PlayerGroup} GroupTypes All available player groups.
  * @property {MatchmakingGroup} MMTypes All available matchmaking groups.
  * @property {RoomRegion} RoomRegions All available Nadeo-hosted club rooms regions.
  * @property {ClubMemberRole} ClubMemberRoles All available Club Member roles.
  * @property {AdType} AdTypes All available Maniapub Types.
+ * @property {MatchStatus} MatchStatus All available Match Status types.
+ * @property {TeamName} TeamNames All available Team names for the 3v3 match.
  */
