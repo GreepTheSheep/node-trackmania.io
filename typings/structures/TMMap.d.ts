@@ -101,16 +101,6 @@ declare class TMMap {
      * */
     private _TMExchange;
     /**
-     * The map karma.
-     * @type {?TMMapKarma}
-     */
-    get karma(): TMMapKarma;
-    /**
-     * @type {TMMapKarma}
-     * @private
-     */
-    private _TMMapKarma;
-    /**
      * The map leaderboard.
      * @type {?Array<TMMapLeaderboard>}
      */
@@ -231,48 +221,6 @@ declare class TMExchangeMap {
      * @type {string}
      */
     get download(): string;
-}
-/**
- * Represents the Map Voting stats.
- */
-declare class TMMapKarma {
-    constructor(map: any, data: any);
-    /**
-     * The map instance.
-     * @type {TMMap}
-     */
-    map: TMMap;
-    /**
-     * The client instance.
-     * @type {Client}
-     */
-    client: Client;
-    /**
-     * The map data.
-     * @type {Object}
-     * @private
-     */
-    private _data;
-    /**
-     * The map Uid.
-     * @type {string}
-     */
-    get uid(): string;
-    /**
-     * The number of votes.
-     * @type {number}
-     */
-    get votes(): number;
-    /**
-     * The average vote (between 0 and 100).
-     * @type {number}
-     */
-    get average(): number;
-    /**
-     * The last vote date.
-     * @type {Date}
-     */
-    get lastVoteDate(): Date;
 }
 /**
  * Represents the map leaderboard.
