@@ -100,12 +100,6 @@ class defaultOptionsAPIPaths {
          * @type {defaultOptionsAPIPathsTMX}
          */
         this.tmx = new defaultOptionsAPIPathsTMX();
-
-        /**
-         * The default Map Voting API Paths options.
-         * @type {defaultOptionsAPIPathsMapVoting}
-         */
-        this.mapVoting = new defaultOptionsAPIPathsMapVoting();
     }
 }
 
@@ -376,78 +370,6 @@ class defaultOptionsAPIPathsTMXTabs {
          * @type {string}
          */
         this.mapsDownload = "maps/download";
-    }
-}
-
-/**
- * The default Map Voting Paths options.
- */
-class defaultOptionsAPIPathsMapVoting {
-    constructor(defaultOptionsAPIPaths) {
-        /**
-         * The default API Paths options.
-         * @type {defaultOptionsAPIPaths}
-         * @private
-         * @readonly
-         */
-        this._defaultOptionsAPIPaths = defaultOptionsAPIPaths;
-
-        /**
-         * The default Map Voting Protocol to use.
-         * @type {string}
-         */
-        this.protocol = "https";
-
-        /**
-         * The default Map Voting Host to use.
-         * @type {string}
-         */
-        this.host = "tm-voting.willers.digital";
-        
-        /**
-         * The default Map Voting API Tabs to use.
-         * @type {defaultOptionsAPIPathsMapVotingTabs}
-         */
-        this.tabs = new defaultOptionsAPIPathsMapVotingTabs();
-    }
-}
-
-/**
- * The default Map Voting Tabs options.
- */
-class defaultOptionsAPIPathsMapVotingTabs {
-    constructor(defaultOptionsAPIPathsMapVoting) {
-        /**
-         * The default Map Voting API options.
-         * @type {defaultOptionsAPIPathsMapVoting}
-         */
-        this._defaultOptionsAPIPathsMapVoting = defaultOptionsAPIPathsMapVoting;
-
-        /**
-         * Player Vote Tab.
-         * @type {string}
-         */
-        this.getPlayerVote = "getPlayerVote";
-
-        /**
-         * All Votes Tab.
-         * @type {string}
-         */
-        this.getVotes = "getVotes";
-
-        /**
-         * Most Player Voted Tab.
-         * @type {string}
-         */
-        this.mostPlayerVoted = "mostPlayerVoted";
-
-        /**
-         * Most Map Voted Tab.
-         * @type {string}
-         */
-        this.mostVotedMaps = "mostVotedMaps";
-        
-        //TODO setVote (POST)
     }
 }
 

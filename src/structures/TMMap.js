@@ -168,23 +168,6 @@ class TMMap {
     }
 
     /**
-     * The map karma.
-     * @type {?TMMapKarma}
-     */
-    get karma() {
-        if (this._data.karma) {
-            if (!this._TMMapKarma || this._TMMapKarma.id !== this.id) {
-                /**
-                 * @type {TMMapKarma} 
-                 * @private
-                 */
-                this._TMMapKarma = new TMMapKarma(this, this._data.karma);
-            }
-            return this._TMMapKarma;
-        } else return null;
-    }
-
-    /**
      * The map leaderboard.
      * @type {?Array<TMMapLeaderboard>}
      */
@@ -378,64 +361,6 @@ class TMExchangeMap {
     get download() {
         const tmx = this.map.client.options.api.paths.tmx;
         return `${tmx.protocol}://${tmx.host}/${tmx.tabs.mapsDownload}/${this.id}`;
-    }
-}
-
-/**
- * Represents the Map Voting stats.
- */
-class TMMapKarma {
-    constructor(map, data) {
-        /**
-         * The map instance.
-         * @type {TMMap}
-         */
-        this.map = map;
-
-        /**
-         * The client instance.
-         * @type {Client}
-         */
-        this.client = map.client;
-
-        /**
-         * The map data.
-         * @type {Object}
-         * @private
-         */
-        this._data = data;
-    }
-
-    /**
-     * The map Uid.
-     * @type {string}
-     */
-    get uid() {
-        return this._data.mapUid;
-    }
-
-    /**
-     * The number of votes.
-     * @type {number}
-     */
-    get votes() {
-        return this._data.votes;
-    }
-
-    /**
-     * The average vote (between 0 and 100).
-     * @type {number}
-     */
-    get average() {
-        return this._data.average;
-    }
-
-    /**
-     * The last vote date.
-     * @type {Date}
-     */
-    get lastVoteDate() {
-        return new Date(this._data.lastVoteDate);
     }
 }
 

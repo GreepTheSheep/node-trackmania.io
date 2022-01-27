@@ -63,15 +63,6 @@ class MapManager{
             }
         }
 
-        // Get map votes thanks to RoboTec's Voting API
-        try {
-            const mapVotes = this.client.options.api.paths.mapVoting.tabs.getVotes,
-                votes = await this.client._apiReq(`${new ReqUtil(this.client).votingAPIURL}/${mapVotes}?map=${mapUid}`);
-            res['karma'] = votes;
-        } catch (e) {
-            this.client.emit('error', e);
-        }        
-
         // Get map leaderboard
         try {
             const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,

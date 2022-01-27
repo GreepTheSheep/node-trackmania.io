@@ -15,6 +15,7 @@ const RoomManager = require('../managers/RoomManager');
 const EventManager = require('../managers/EventManager');
 const NewsManager = require('../managers/NewsManager');
 const AdsManager = require('../managers/AdsManager');
+const MatchesManager = require('../managers/MatchesManager');
 
 /**
  * Instantiates a new client. This is the entry point.
@@ -74,6 +75,12 @@ class Client extends BaseClient {
          * @type {EventManager}
          */
         this.events = new EventManager(this);
+
+        /**
+         * The matches manager
+         * @type {MatchesManager}
+         */
+        this.matches = new MatchesManager(this);
 
         /**
          * The news manager

@@ -49,6 +49,11 @@ declare class Client extends BaseClient {
      */
     events: EventManager;
     /**
+     * The matches manager
+     * @type {MatchesManager}
+     */
+    matches: MatchesManager;
+    /**
      * The news manager
      * @type {NewsManager}
      */
@@ -74,6 +79,7 @@ import ClubManager = require("../managers/ClubManager");
 import CampaignManager = require("../managers/CampaignManager");
 import RoomManager = require("../managers/RoomManager");
 import EventManager = require("../managers/EventManager");
+import MatchesManager = require("../managers/MatchesManager");
 import NewsManager = require("../managers/NewsManager");
 import AdsManager = require("../managers/AdsManager");
 import defaultOptions = require("../util/defaultOptions");

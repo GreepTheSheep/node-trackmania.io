@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Flamingo",
+        "img": "https://trackmania.io/img/clans/flamingo.png"
+    },
+    {
+        "name": "Pig",
+        "img": "https://trackmania.io/img/clans/pig.png"
+    },
+    {
+        "name": "Clown Fish",
+        "img": "https://trackmania.io/img/clans/clown_fish.png"
+    },
+    {
+        "name": "Fox",
+        "img": "https://trackmania.io/img/clans/fox.png"
+    },
+    {
+        "name": "Octopus",
+        "img": "https://trackmania.io/img/clans/octopus.png"
+    },
+    {
+        "name": "Butterfly",
+        "img": "https://trackmania.io/img/clans/butterfly.png"
+    },
+    {
+        "name": "Crocodile",
+        "img": "https://trackmania.io/img/clans/crocodile.png"
+    },
+    {
+        "name": "Grasshopper",
+        "img": "https://trackmania.io/img/clans/grasshopper.png"
+    },
+    {
+        "name": "Ladybug",
+        "img": "https://trackmania.io/img/clans/ladybug.png"
+    },
+    {
+        "name": "Macaw Parrot",
+        "img": "https://trackmania.io/img/clans/macaw_parrot.png"
+    },
+    {
+        "name": "Giraffe",
+        "img": "https://trackmania.io/img/clans/giraffe.png"
+    },
+    {
+        "name": "Bee",
+        "img": "https://trackmania.io/img/clans/bee.png"
+    },
+    {
+        "name": "Dolphin",
+        "img": "https://trackmania.io/img/clans/dolphin.png"
+    },
+    {
+        "name": "Peafowl",
+        "img": "https://trackmania.io/img/clans/peafowl.png"
+    },
+    {
+        "name": "Kangaroo",
+        "img": "https://trackmania.io/img/clans/kangaroo.png"
+    },
+    {
+        "name": "Monkey",
+        "img": "https://trackmania.io/img/clans/monkey.png"
+    },
+    {
+        "name": "Panda",
+        "img": "https://trackmania.io/img/clans/panda.png"
+    },
+    {
+        "name": "Zebra",
+        "img": "https://trackmania.io/img/clans/zebra.png"
+    },
+    {
+        "name": "Rabbit",
+        "img": "https://trackmania.io/img/clans/rabbit.png"
+    },
+    {
+        "name": "Polar Bear",
+        "img": "https://trackmania.io/img/clans/polar_bear.png"
+    }
+]
