@@ -113,11 +113,6 @@ declare class defaultOptionsAPIPaths {
      * @type {defaultOptionsAPIPathsTMX}
      */
     tmx: defaultOptionsAPIPathsTMX;
-    /**
-     * The default Map Voting API Paths options.
-     * @type {defaultOptionsAPIPathsMapVoting}
-     */
-    mapVoting: defaultOptionsAPIPathsMapVoting;
 }
 /**
  * The default Trackmania.io Paths options.
@@ -184,34 +179,6 @@ declare class defaultOptionsAPIPathsTMX {
      * @type {defaultOptionsAPIPathsTMXTabs}
      */
     tabs: defaultOptionsAPIPathsTMXTabs;
-}
-/**
- * The default Map Voting Paths options.
- */
-declare class defaultOptionsAPIPathsMapVoting {
-    constructor(defaultOptionsAPIPaths: any);
-    /**
-     * The default API Paths options.
-     * @type {defaultOptionsAPIPaths}
-     * @private
-     * @readonly
-     */
-    private readonly _defaultOptionsAPIPaths;
-    /**
-     * The default Map Voting Protocol to use.
-     * @type {string}
-     */
-    protocol: string;
-    /**
-     * The default Map Voting Host to use.
-     * @type {string}
-     */
-    host: string;
-    /**
-     * The default Map Voting API Tabs to use.
-     * @type {defaultOptionsAPIPathsMapVotingTabs}
-     */
-    tabs: defaultOptionsAPIPathsMapVotingTabs;
 }
 /**
  * The default Trackmania.io Tabs options.
@@ -373,35 +340,4 @@ declare class defaultOptionsAPIPathsTMXTabs {
      * @type {string}
      */
     mapsDownload: string;
-}
-/**
- * The default Map Voting Tabs options.
- */
-declare class defaultOptionsAPIPathsMapVotingTabs {
-    constructor(defaultOptionsAPIPathsMapVoting: any);
-    /**
-     * The default Map Voting API options.
-     * @type {defaultOptionsAPIPathsMapVoting}
-     */
-    _defaultOptionsAPIPathsMapVoting: defaultOptionsAPIPathsMapVoting;
-    /**
-     * Player Vote Tab.
-     * @type {string}
-     */
-    getPlayerVote: string;
-    /**
-     * All Votes Tab.
-     * @type {string}
-     */
-    getVotes: string;
-    /**
-     * Most Player Voted Tab.
-     * @type {string}
-     */
-    mostPlayerVoted: string;
-    /**
-     * Most Map Voted Tab.
-     * @type {string}
-     */
-    mostVotedMaps: string;
 }
