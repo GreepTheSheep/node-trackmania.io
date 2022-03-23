@@ -249,6 +249,16 @@ declare class TMMapLeaderboard {
      */
     player(): Promise<Player>;
     /**
+     * The player name on this leaderboard
+     * @type {string}
+     */
+    get playerName(): string;
+    /**
+     * The player club tag on this leaderboard
+     * @type {string}
+     */
+    get playerClubTag(): string;
+    /**
      * The position of the player on this leaderboard
      * @type {number}
      */
