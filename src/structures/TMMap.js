@@ -398,6 +398,22 @@ class TMMapLeaderboard {
     }
 
     /**
+     * The player name on this leaderboard
+     * @type {string}
+     */
+    get playerName(){
+        return this._data.player.name;
+    }
+
+    /**
+     * The player club tag on this leaderboard
+     * @type {string}
+     */
+    get playerClubTag(){
+        return this._data.player.tag;
+    }
+
+    /**
      * The position of the player on this leaderboard
      * @type {number}
      */
