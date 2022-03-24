@@ -68,11 +68,15 @@ exports.AdTypes = createEnum([
 
 /**
  * All available Match Status types.
+ * * `HAS_MATCHES`
+ * * `ONGOING`
  * * `PENDING`
  * * `COMPLETED`
  * @typedef {string} MatchStatus
  */
 exports.MatchStatus = createEnum([
+    'HAS_MATCHES',
+    'ONGOING',
     'PENDING',
     'COMPLETED'
 ]);
