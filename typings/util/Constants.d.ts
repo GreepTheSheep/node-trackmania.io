@@ -5,6 +5,8 @@ export var ClubMemberRoles: any;
 export var AdTypes: any;
 /**
  * All available Match Status types.
+ * * `HAS_MATCHES`
+ * * `ONGOING`
  * * `PENDING`
  * * `COMPLETED`
  */
