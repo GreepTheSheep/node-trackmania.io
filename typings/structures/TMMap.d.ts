@@ -41,6 +41,11 @@ declare class TMMap {
      */
     get storageId(): string;
     /**
+     * The map author's name.
+     * @type {string}
+     */
+    get authorName(): string;
+    /**
      * The map author.
      * @returns {Promise<Player>}
      * @example
@@ -50,6 +55,11 @@ declare class TMMap {
      * });
      */
     author(): Promise<Player>;
+    /**
+     * The map submitter's name.
+     * @type {string}
+     */
+    get submitterName(): string;
     /**
      * The map submitter.
      * @returns {Promise<Player>}
