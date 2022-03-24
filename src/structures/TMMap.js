@@ -7,7 +7,7 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
  */
 class TMMap {
     constructor(client, data) {
-    
+
         /**
          * The client instance.
          * @type {Client}
@@ -23,11 +23,11 @@ class TMMap {
 
         /**
          * The map medal times.
-         * @type {TMMapMedalTimes} 
+         * @type {TMMapMedalTimes}
          */
         this.medalTimes = new TMMapMedalTimes(this);
 
-        
+
         // Check if the exchange data is already fetched
         if (!this._data.exchange){
             const tmxurl = this.client.options.api.paths.tmx;
@@ -70,6 +70,14 @@ class TMMap {
     }
 
     /**
+     * The map author's name.
+     * @type {string}
+     */
+    get authorName() {
+        return this._data.authorplayer.name;
+    }
+
+    /**
      * The map author.
      * @returns {Promise<Player>}
      * @example
@@ -80,6 +88,14 @@ class TMMap {
      */
     async author() {
         return this.client.players.get(this._data.author);
+    }
+
+    /**
+     * The map submitter's name.
+     * @type {string}
+     */
+    get submitterName() {
+        return this._data.submitterplayer.name;
     }
 
     /**
@@ -151,17 +167,17 @@ class TMMap {
      * The map informations on trackmania.exchange.
      * @type {?TMExchangeMap}
      */
-    get exchange() { 
+    get exchange() {
         if (this.exchangeId == null) return null;
         else {
             if (this._data.exchange) {
                 if (!this._TMExchange || this._TMExchange.id !== this.exchangeId) {
-                    /** 
+                    /**
                      * @type {TMExchangeMap}
                      * @private
                      * */
                     this._TMExchange = new TMExchangeMap(this, this._data.exchange);
-                } 
+                }
                 return this._TMExchange;
             } else throw "No exchange data found for this map";
         }
