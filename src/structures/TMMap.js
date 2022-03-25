@@ -165,22 +165,23 @@ class TMMap {
 
     /**
      * The map informations on trackmania.exchange.
-     * @type {?TMExchangeMap}
+     * @returns {Promise<?TMExchangeMap>}
      */
-    get exchange() {
-        if (this.exchangeId == null) return null;
-        else {
-            if (this._data.exchange) {
-                if (!this._TMExchange || this._TMExchange.id !== this.exchangeId) {
-                    /**
-                     * @type {TMExchangeMap}
-                     * @private
-                     * */
-                    this._TMExchange = new TMExchangeMap(this, this._data.exchange);
-                }
-                return this._TMExchange;
-            } else throw "No exchange data found for this map";
-        }
+    async exchange() {
+        return new Promise((resolve, reject) => {
+            if (!this.exchangeId) return resolve(null);
+            const tmxurl = this.client.options.api.paths.tmx;
+            if (!this._data.exchange) {
+                this.client._apiReq(`${tmxurl.protocol}://${tmxurl.host}/${tmxurl.api}/${tmxurl.tabs.mapInfo}/${this.exchangeId}`).then(data => {
+                    this._data.exchange = data[0];
+                    return resolve(new TMExchangeMap(this.client, data[0]));
+                }).catch(err => {
+                    return reject(err);
+                });
+            } else {
+                return resolve(new TMExchangeMap(this.client, this._data.exchange));
+            }
+        });
     }
 
     /**
