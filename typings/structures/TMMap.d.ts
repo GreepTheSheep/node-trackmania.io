@@ -102,14 +102,9 @@ declare class TMMap {
     get exchangeId(): string;
     /**
      * The map informations on trackmania.exchange.
-     * @type {?TMExchangeMap}
+     * @returns {Promise<?TMExchangeMap>}
      */
-    get exchange(): TMExchangeMap;
-    /**
-     * @type {TMExchangeMap}
-     * @private
-     * */
-    private _TMExchange;
+    exchange(): Promise<TMExchangeMap | null>;
     /**
      * The map leaderboard.
      * @type {?Array<TMMapLeaderboard>}
