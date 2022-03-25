@@ -15,7 +15,7 @@ describe("TOTD", function(){
         assert.equal(totd.leaderboardId, "bf597bc1-a8c9-4dfa-9ae9-40a3a5e4a0bf");
         assert.equal(totd.campaignId, 8383);
         assert.equal(map.uid, "17B5XtQBJ_nukdrylfT7Pj1q1C1");
-        assert.equal(map.exchange.id, 23641);
+        assert.equal(map.exchangeId, 23641);
         assert.equal(author.id, "62c59cd2-4981-43cc-a6d2-7feaf96ceeb1");
     });
 });
