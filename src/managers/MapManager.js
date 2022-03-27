@@ -52,15 +52,6 @@ class MapManager{
         const map = this.client.options.api.paths.tmio.tabs.map;
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${map}/${mapUid}`);
 
-        // Get map leaderboard
-        try {
-            const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
-                leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${mapUid}?offset=0&length=100`);
-            res["leaderboard"] = leaderboardRes;
-        } catch (e) {
-            this.client.emit('error', e);
-        }
-
         const theMap = new TMMap(this.client, res);
         if (cache) {
             res._cachedTimestamp = Date.now();
