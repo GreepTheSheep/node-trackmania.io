@@ -27,14 +27,12 @@ class TMMap {
          */
         this.medalTimes = new TMMapMedalTimes(this);
 
+        /**
+         * The map cached leaderboard data. You should use the leaderboardLoadMore() the first time to load the leaderboard.
+         * @type {Array<TMMapLeaderboard>}
+         */
+        this.leaderboard = [];
 
-        // Check if the exchange data is already fetched
-        if (!this._data.exchange){
-            const tmxurl = this.client.options.api.paths.tmx;
-            this.client._apiReq(`${tmxurl.protocol}://${tmxurl.host}/${tmxurl.api}/${tmxurl.tabs.mapInfo}/${this.exchangeId}`).then(data => {
-                this._data.exchange = data[0];
-            });
-        }
     }
 
     /**
@@ -185,40 +183,25 @@ class TMMap {
     }
 
     /**
-     * The map leaderboard.
-     * @type {?Array<TMMapLeaderboard>}
-     */
-    get leaderboard() {
-        if (this._data.leaderboard && this._data.leaderboard.tops.length >= 1) {
-            const arr = [];
-            for (let i = 0; i < this._data.leaderboard.tops.length; i++) {
-                arr.push(new TMMapLeaderboard(this, this._data.leaderboard.tops[i]));
-            }
-            return arr;
-        } else return null;
-    }
-
-    /**
-     * Load 100 more results in the leaderboard.
+     * Load more results in the leaderboard.
+     * @param {number} [nbOfResults=100] The number of results to load. (max 100)
      * @returns {Promise<?Array<TMMapLeaderboard>>}
      */
-    async leaderboardLoadMore(){
-        if (this._data.leaderboard && this._data.leaderboard.tops.length >= 1) {
-
-            const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
-                map = this.client.options.api.paths.tmio.tabs.map;
-            const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?offset=${this._data.leaderboard.tops.length}&length=100`);
-            if (leaderboardRes.tops != null){
-                for (let i = 0; i < leaderboardRes.tops.length; i++){
-                    this._data.leaderboard.tops.push(leaderboardRes.tops[i]);
-                }
+    async leaderboardLoadMore(nbOfResults = 100) {
+        if (nbOfResults > 100) nbOfResults = 100;
+        if (nbOfResults < 1) nbOfResults = 1;
+        const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
+            map = this.client.options.api.paths.tmio.tabs.map,
+            params = new URLSearchParams();
+        params.append('offset', this.leaderboard.length);
+        params.append('length', nbOfResults);
+        const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?${params.toString()}`);
+        if (leaderboardRes.tops != null){
+            for (let i = 0; i < leaderboardRes.tops.length; i++) {
+                this.leaderboard.push(new TMMapLeaderboard(this, leaderboardRes.tops[i]));
             }
-            const arr = [];
-            for (let i = 0; i < this._data.leaderboard.tops.length; i++) {
-                arr.push(new TMMapLeaderboard(this, this._data.leaderboard.tops[i]));
-            }
-            return arr;
-        } else return null;
+        }
+        return this.leaderboard;
     }
 
     /**

@@ -21,6 +21,11 @@ declare class TMMap {
      */
     medalTimes: TMMapMedalTimes;
     /**
+     * The map cached leaderboard data. You should use the leaderboardLoadMore() the first time to load the leaderboard.
+     * @type {Array<TMMapLeaderboard>}
+     */
+    leaderboard: Array<TMMapLeaderboard>;
+    /**
      * The map name.
      * @type {string}
      */
@@ -106,15 +111,11 @@ declare class TMMap {
      */
     exchange(): Promise<TMExchangeMap | null>;
     /**
-     * The map leaderboard.
-     * @type {?Array<TMMapLeaderboard>}
-     */
-    get leaderboard(): TMMapLeaderboard[];
-    /**
-     * Load 100 more results in the leaderboard.
+     * Load more results in the leaderboard.
+     * @param {number} [nbOfResults=100] The number of results to load. (max 100)
      * @returns {Promise<?Array<TMMapLeaderboard>>}
      */
-    leaderboardLoadMore(): Promise<Array<TMMapLeaderboard> | null>;
+    leaderboardLoadMore(nbOfResults?: number): Promise<Array<TMMapLeaderboard> | null>;
     /**
      * Get a leaderboard in a specific position. Must be between 1 and 10000.
      * @param {number} position The position of the leaderboard.
@@ -153,6 +154,63 @@ declare class TMMapMedalTimes {
      * @type {number}
      */
     bronze: number;
+}
+/**
+ * Represents the map leaderboard.
+ */
+declare class TMMapLeaderboard {
+    constructor(map: any, data: any);
+    /**
+     * The map Instance
+     * @type {TMMap}
+     */
+    map: TMMap;
+    /**
+     * The Client instance
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @type {Object}
+     * @private
+     */
+    private _data;
+    /**
+     * The player that got this leaderboard
+     * @returns {Promise<Player>}
+     */
+    player(): Promise<Player>;
+    /**
+     * The player name on this leaderboard
+     * @type {string}
+     */
+    get playerName(): string;
+    /**
+     * The player club tag on this leaderboard
+     * @type {string}
+     */
+    get playerClubTag(): string;
+    /**
+     * The position of the player on this leaderboard
+     * @type {number}
+     */
+    get position(): number;
+    /**
+     * The time in milliseconds of the player
+     * @type {number}
+     */
+    get time(): number;
+    /**
+     * The date when the player get this leaderboard
+     * @type {Date}
+     */
+    get date(): Date;
+    /**
+     * The ghost URL
+     * @type {string}
+     */
+    get ghost(): string;
 }
 import Player = require("./Player");
 /**
@@ -226,61 +284,4 @@ declare class TMExchangeMap {
      * @type {string}
      */
     get download(): string;
-}
-/**
- * Represents the map leaderboard.
- */
-declare class TMMapLeaderboard {
-    constructor(map: any, data: any);
-    /**
-     * The map Instance
-     * @type {TMMap}
-     */
-    map: TMMap;
-    /**
-     * The Client instance
-     * @type {Client}
-     */
-    client: Client;
-    /**
-     * The data
-     * @type {Object}
-     * @private
-     */
-    private _data;
-    /**
-     * The player that got this leaderboard
-     * @returns {Promise<Player>}
-     */
-    player(): Promise<Player>;
-    /**
-     * The player name on this leaderboard
-     * @type {string}
-     */
-    get playerName(): string;
-    /**
-     * The player club tag on this leaderboard
-     * @type {string}
-     */
-    get playerClubTag(): string;
-    /**
-     * The position of the player on this leaderboard
-     * @type {number}
-     */
-    get position(): number;
-    /**
-     * The time in milliseconds of the player
-     * @type {number}
-     */
-    get time(): number;
-    /**
-     * The date when the player get this leaderboard
-     * @type {Date}
-     */
-    get date(): Date;
-    /**
-     * The ghost URL
-     * @type {string}
-     */
-    get ghost(): string;
 }
