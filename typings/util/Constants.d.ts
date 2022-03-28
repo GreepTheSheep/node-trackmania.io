@@ -17,7 +17,6 @@ export var TeamNames: any;
  * All available player groups.
  * * `nadeo` - All players from the Nadeo company
  * * `tmgl` - All players from the TMGL competition
- * * `tmwc21` - All players from the TrackMania World Cup 2021 competition
  * * `sponsor` - All players who sponsors Trackmania.io and Openplanet
  * * `team` - All players from the Trackmania.io and Openplanet team
  */

@@ -245,11 +245,6 @@ declare class PlayerMeta {
      */
     get inTMGL(): boolean;
     /**
-     * Whether the player is in the TMWC21 group
-     * @type {boolean}
-     */
-    get inTMWC21(): boolean;
-    /**
      * Whether the player is in the Nadeo company
      * @type {boolean}
      */
