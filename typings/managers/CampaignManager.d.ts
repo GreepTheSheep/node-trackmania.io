@@ -40,7 +40,7 @@ declare class CampaignManager {
      * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
      * @example
      * client.campaigns.search('htimh').then(campaigns => {
-     *    client.campaigns.get(campaigns[0].clubid, campaigns[0].id).then(async campaign => {
+     *    campaigns[0].getCampaign().then(async campaign => {
      *       const maps = await campaign.maps();
      *       maps.forEach(map => console.log(map.name));
      *   });

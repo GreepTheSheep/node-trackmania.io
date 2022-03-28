@@ -16,6 +16,11 @@ declare class Campaign {
      */
     private _data;
     /**
+     * The leaderboard of the campaign
+     * @type {Array<CampaignLeaderboard>}
+     */
+    leaderboard: Array<CampaignLeaderboard>;
+    /**
      * The id of the campaign.
      * @type {number}
      */
@@ -77,10 +82,11 @@ declare class Campaign {
      */
     maps(): Promise<Array<TMMap>>;
     /**
-     * Get the top 10 players of the campaign
-     * @returns {Promise<Array<CampaignLeaderboard>>}
+     * Load more results in the leaderboard.
+     * @param {number} [nbOfResults=100] The number of results to load. (max 100)
+     * @returns {Promise<?Array<CampaignLeaderboard>>}
      */
-    leaderboard(): Promise<Array<CampaignLeaderboard>>;
+    leaderboardLoadMore(nbOfResults?: number): Promise<Array<CampaignLeaderboard> | null>;
     /**
      * The media images of the campaign, if this is an official campaign.
      * @type {?CampaignMedia}
@@ -88,8 +94,6 @@ declare class Campaign {
     get media(): CampaignMedia;
 }
 import Client = require("../client/Client");
-import Club = require("./Club");
-import TMMap = require("./TMMap");
 /**
  * The leaderboard of a campaign
  */
@@ -132,6 +136,8 @@ declare class CampaignLeaderboard {
      */
     get points(): number;
 }
+import Club = require("./Club");
+import TMMap = require("./TMMap");
 /**
  * The media images of an official campaign.
  */
