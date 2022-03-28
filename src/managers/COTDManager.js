@@ -3,7 +3,7 @@ const CacheManager = require('./CacheManager');
 const COTD = require('../structures/COTD');
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
 const Player = require('../structures/Player'); // eslint-disable-line no-unused-vars
-
+const { COTDLeaderboardSortGroup } = require('../util/Constants'); // eslint-disable-line no-unused-vars
 
 /**
  * Represents a COTD Manager.
@@ -22,6 +22,32 @@ class COTDManager{
          * @private
          */
         this._cache = new CacheManager(this.client, this, COTD);
+    }
+
+    /**
+     * Get the COTD leaderboard by category
+     * @param {COTDLeaderboardSortGroup} [sort="wins"] The leaderboard sorting
+     * @param {boolean} [includeReruns=false] Whether to include reruns when sorting or not
+     * @param {number} [page=0] The page number
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the list from cache or not
+     * @returns {Promise<Array<COTDLeaderboard>>}
+     */
+    async leaderboard(sort = "wins", includeReruns = false, page = 0, cache = this.client.options.cache.enabled) {
+        const cacheKey = `leaderboard_${sort}${includeReruns ? 'reruns' : ''}_${page}`;
+        if (cache && this._cache.has(cacheKey)) {
+            return this._cache.get(cacheKey);
+        } else {
+            const cotd = this.client.options.api.paths.tmio.tabs.cotd,
+                players = this.client.options.api.paths.tmio.tabs.players,
+                res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${cotd}/${players}/${page}/${sort}${includeReruns ? 'reruns' : ''}`);
+
+            let results = [];
+            for (var i = 0; i < res.players.length; i++) {
+                results.push(new COTDLeaderboard(this.client, res.players[i]));
+            }
+            if (cache) this._cache.set(cacheKey, results);
+            return results;
+        }
     }
 
     /**
@@ -63,6 +89,9 @@ class COTDManager{
     }
 }
 
+/**
+ * Represents a position in the COTD Leaderboard
+ */
 class COTDLeaderboard {
     constructor(client, data) {
         /**
@@ -140,7 +169,7 @@ class COTDLeaderboard {
      * @type {number}
      */
     get wins() {
-        return this._data.totalwins;
+        return this._data.wins;
     }
 
     /**

@@ -91,6 +91,19 @@ exports.TeamNames = createEnum([
 ]);
 
 /**
+ * All available COTD leaderboard sorting groups.
+ * * `wins`
+ * * `winstreak`
+ * * `totalplayed`
+ * @typedef {string} COTDLeaderboardSortGroup
+ */
+exports.COTDLeaderboardSortGroups = createEnum([
+    'wins',
+    'winstreak',
+    'totalplayed'
+]);
+
+/**
  * @typedef {Object} Constants Constants that can be used in an enum or object-like way.
  * @property {PlayerGroup} GroupTypes All available player groups.
  * @property {MatchmakingGroup} MMTypes All available matchmaking groups.
@@ -99,4 +112,5 @@ exports.TeamNames = createEnum([
  * @property {AdType} AdTypes All available Maniapub Types.
  * @property {MatchStatus} MatchStatus All available Match Status types.
  * @property {TeamName} TeamNames All available Team names for the 3v3 match.
+ * @property {COTDLeaderboardSortGroup} COTDLeaderboardSortGroups All available COTD leaderboard sorting groups.
  */
