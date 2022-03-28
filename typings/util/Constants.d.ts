@@ -13,6 +13,7 @@ export var AdTypes: any;
 export type MatchStatus = string;
 export var MatchStatus: any;
 export var TeamNames: any;
+export var COTDLeaderboardSortGroups: any;
 /**
  * All available player groups.
  * * `nadeo` - All players from the Nadeo company
@@ -54,6 +55,13 @@ export type AdType = string;
  */
 export type TeamName = string;
 /**
+ * All available COTD leaderboard sorting groups.
+ * * `wins`
+ * * `winstreak`
+ * * `totalplayed`
+ */
+export type COTDLeaderboardSortGroup = string;
+/**
  * Constants that can be used in an enum or object-like way.
  */
 export type Constants = {
@@ -85,4 +93,8 @@ export type Constants = {
      * All available Team names for the 3v3 match.
      */
     TeamNames: TeamName;
+    /**
+     * All available COTD leaderboard sorting groups.
+     */
+    COTDLeaderboardSortGroups: COTDLeaderboardSortGroup;
 };
