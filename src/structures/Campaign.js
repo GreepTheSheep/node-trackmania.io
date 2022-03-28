@@ -21,6 +21,12 @@ class Campaign {
          * @private
          */
         this._data = data;
+
+        /**
+         * The leaderboard of the campaign
+         * @type {Array<CampaignLeaderboard>}
+         */
+        this.leaderboard = [];
     }
 
     /**
@@ -45,7 +51,7 @@ class Campaign {
      */
     get isOfficial() {
         return this._data.clubid === 0;
-    }	
+    }
 
     /**
      * The image URL of the campaign. If this is an official campaign, the decal image URL is returned.
@@ -127,18 +133,24 @@ class Campaign {
     }
 
     /**
-     * Get the top 10 players of the campaign
-     * @returns {Promise<Array<CampaignLeaderboard>>}
+     * Load more results in the leaderboard.
+     * @param {number} [nbOfResults=100] The number of results to load. (max 100)
+     * @returns {Promise<?Array<CampaignLeaderboard>>}
      */
-    async leaderboard(){
-        const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard;
-        const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${this.leaderboardId}`);
-
-        let array = [];
-        res.tops.forEach(top => {
-            array.push(new CampaignLeaderboard(this, top));
-        });
-        return array;
+    async leaderboardLoadMore(nbOfResults = 100) {
+        if (nbOfResults > 100) nbOfResults = 100;
+        if (nbOfResults < 1) nbOfResults = 1;
+        const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
+            params = new URLSearchParams();
+        params.append('offset', this.leaderboard.length);
+        params.append('length', nbOfResults);
+        const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${this.leaderboardId}?${params.toString()}`);
+        if (leaderboardRes.tops != null){
+            for (let i = 0; i < leaderboardRes.tops.length; i++) {
+                this.leaderboard.push(new CampaignLeaderboard(this, leaderboardRes.tops[i]));
+            }
+        }
+        return this.leaderboard;
     }
 
     /**

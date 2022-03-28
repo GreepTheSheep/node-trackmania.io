@@ -8,7 +8,7 @@ describe("Campaigns", function(){
 
     describe("Official campaign", function(){
 
-        it("Current season is official", async function(){  
+        it("Current season is official", async function(){
             const currentSeason = await tmioClient.campaigns.currentSeason();
 
             assert.equal(currentSeason.isOfficial, true);
@@ -17,7 +17,7 @@ describe("Campaigns", function(){
         it("Fall 2020", async function(){
             const campaigns = await tmioClient.campaigns.officialCampaigns();
             const campaign = await campaigns.find(c=>c.id == 4791).getCampaign();
-                
+
             assert.equal(campaigns.find(c=>c.id == 4791).mapCount, 25);
             assert.equal(campaign.isOfficial, true);
         });

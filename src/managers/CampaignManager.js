@@ -18,7 +18,7 @@ class CampaignManager{
 
         /**
          * The cache manager
-         * @type {CacheManager} 
+         * @type {CacheManager}
          * @private
          */
         this._cache = new CacheManager(this.client, this, Campaign);
@@ -83,7 +83,7 @@ class CampaignManager{
      * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
      * @example
      * client.campaigns.search('htimh').then(campaigns => {
-     *    client.campaigns.get(campaigns[0].clubid, campaigns[0].id).then(async campaign => {
+     *    campaigns[0].getCampaign().then(async campaign => {
      *       const maps = await campaign.maps();
      *       maps.forEach(map => console.log(map.name));
      *   });
@@ -106,7 +106,7 @@ class CampaignManager{
      * @param {number} id The campaign Id
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the campaign from cache or not
      * @returns {Promise<Campaign>} The campaign
-     * @example 
+     * @example
      * client.campaigns.get(54, 10621).then(campaign => {
      *     console.log(campaign.name);
      * });
@@ -118,7 +118,7 @@ class CampaignManager{
             return await this._fetch(clubId, id, cache);
         }
     }
-        
+
     /**
      * Fetches a campaign and returns its data
      * @param {number} clubId The club Id that the campaign belongs to
@@ -142,7 +142,7 @@ class CampaignManager{
         const theCampaign = new Campaign(this.client, res);
         if (cache) {
             res._cachedTimestamp = Date.now();
-            
+
             this._cache.set(res.id, theCampaign);
         }
         return theCampaign;
