@@ -1,13 +1,14 @@
 const ReqUtil = require('../util/ReqUtil');
 const Player = require('./Player'); // eslint-disable-line no-unused-vars
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const EventEmitter = require('events');
 
 /**
  * Represents a map on Trackmania.
  */
-class TMMap {
+class TMMap extends EventEmitter {
     constructor(client, data) {
-
+        super();
         /**
          * The client instance.
          * @type {Client}
@@ -217,6 +218,35 @@ class TMMap {
             leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?offset=${position}&length=1}`);
         if (!leaderboardRes.tops) return null;
         return new TMMapLeaderboard(this, leaderboardRes.tops[0]);
+    }
+
+    /**
+     * Subscribe to the map WR updates. (when a new WR is set, the event 'wr' will be fired)
+     * @returns {Promise<void>}
+     * @example
+     * Client.maps.get('z28QXoFnpODEGgg8MOederEVl3j').then(map => {
+     *    map.subWR();
+     *    map.on('wr', (old, new) => {
+     *      console.log(`New WR for ${map.name} is ${new.playerName} (${new.time})`);
+     *   });
+     * });
+     */
+    async subWR() {
+        let actualWR = await this.leaderboardGet(1);
+        setInterval(async ()=>{
+            let newWR = await this.leaderboardGet(1);
+            if (actualWR.time != newWR.time) {
+                /**
+                 * Emitted when a new WR is set.
+                 * <info>This event is emitted only if the method `map.subWR()` is called</info>
+                 * @event TMMap#wr
+                 * @param {TMMapLeaderboard} oldWR The old WR.
+                 * @param {TMMapLeaderboard} newWR The new WR.
+                 */
+                this.emit('wr', actualWR, newWR);
+                actualWR = newWR;
+            }
+        }, this.client.options.cache.ttl * 60 * 1000);
     }
 }
 
