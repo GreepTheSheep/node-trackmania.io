@@ -222,7 +222,7 @@ class TMMap extends EventEmitter {
 
     /**
      * Subscribe to the map WR updates.
-     * <info>When a new WR is set, the event {@link TMMap#wr} will be fired</info>
+     * <info>When a new WR is set, the event {@link TMMap#e-wr} will be fired</info>
      * @returns {Promise<void>}
      * @example
      * Client.maps.get('z28QXoFnpODEGgg8MOederEVl3j').then(map => {
