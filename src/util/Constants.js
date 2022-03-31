@@ -4,7 +4,6 @@ const { createEnum } = require("./Util");
  * All available player groups.
  * * `nadeo` - All players from the Nadeo company
  * * `tmgl` - All players from the TMGL competition
- * * `tmwc21` - All players from the TrackMania World Cup 2021 competition
  * * `sponsor` - All players who sponsors Trackmania.io and Openplanet
  * * `team` - All players from the Trackmania.io and Openplanet team
  * @typedef {string} PlayerGroup
@@ -12,7 +11,6 @@ const { createEnum } = require("./Util");
 exports.GroupTypes = createEnum([
     'nadeo',
     'tmgl',
-    'tmwc21',
     'sponsor',
     'team'
 ]);
@@ -68,11 +66,15 @@ exports.AdTypes = createEnum([
 
 /**
  * All available Match Status types.
+ * * `HAS_MATCHES`
+ * * `ONGOING`
  * * `PENDING`
  * * `COMPLETED`
  * @typedef {string} MatchStatus
  */
 exports.MatchStatus = createEnum([
+    'HAS_MATCHES',
+    'ONGOING',
     'PENDING',
     'COMPLETED'
 ]);
@@ -89,6 +91,19 @@ exports.TeamNames = createEnum([
 ]);
 
 /**
+ * All available COTD leaderboard sorting groups.
+ * * `wins`
+ * * `winstreak`
+ * * `totalplayed`
+ * @typedef {string} COTDLeaderboardSortGroup
+ */
+exports.COTDLeaderboardSortGroups = createEnum([
+    'wins',
+    'winstreak',
+    'totalplayed'
+]);
+
+/**
  * @typedef {Object} Constants Constants that can be used in an enum or object-like way.
  * @property {PlayerGroup} GroupTypes All available player groups.
  * @property {MatchmakingGroup} MMTypes All available matchmaking groups.
@@ -97,4 +112,5 @@ exports.TeamNames = createEnum([
  * @property {AdType} AdTypes All available Maniapub Types.
  * @property {MatchStatus} MatchStatus All available Match Status types.
  * @property {TeamName} TeamNames All available Team names for the 3v3 match.
+ * @property {COTDLeaderboardSortGroup} COTDLeaderboardSortGroups All available COTD leaderboard sorting groups.
  */

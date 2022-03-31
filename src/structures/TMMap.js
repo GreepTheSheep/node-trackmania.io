@@ -1,13 +1,14 @@
 const ReqUtil = require('../util/ReqUtil');
 const Player = require('./Player'); // eslint-disable-line no-unused-vars
 const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const EventEmitter = require('events');
 
 /**
  * Represents a map on Trackmania.
  */
-class TMMap {
+class TMMap extends EventEmitter {
     constructor(client, data) {
-    
+        super();
         /**
          * The client instance.
          * @type {Client}
@@ -23,18 +24,16 @@ class TMMap {
 
         /**
          * The map medal times.
-         * @type {TMMapMedalTimes} 
+         * @type {TMMapMedalTimes}
          */
         this.medalTimes = new TMMapMedalTimes(this);
 
-        
-        // Check if the exchange data is already fetched
-        if (!this._data.exchange){
-            const tmxurl = this.client.options.api.paths.tmx;
-            this.client._apiReq(`${tmxurl.protocol}://${tmxurl.host}/${tmxurl.api}/${tmxurl.tabs.mapInfo}/${this.exchangeId}`).then(data => {
-                this._data.exchange = data[0];
-            });
-        }
+        /**
+         * The map cached leaderboard data. You should use the leaderboardLoadMore() the first time to load the leaderboard.
+         * @type {Array<TMMapLeaderboard>}
+         */
+        this.leaderboard = [];
+
     }
 
     /**
@@ -70,6 +69,14 @@ class TMMap {
     }
 
     /**
+     * The map author's name.
+     * @type {string}
+     */
+    get authorName() {
+        return this._data.authorplayer.name;
+    }
+
+    /**
      * The map author.
      * @returns {Promise<Player>}
      * @example
@@ -80,6 +87,14 @@ class TMMap {
      */
     async author() {
         return this.client.players.get(this._data.author);
+    }
+
+    /**
+     * The map submitter's name.
+     * @type {string}
+     */
+    get submitterName() {
+        return this._data.submitterplayer.name;
     }
 
     /**
@@ -149,59 +164,45 @@ class TMMap {
 
     /**
      * The map informations on trackmania.exchange.
-     * @type {?TMExchangeMap}
+     * @returns {Promise<?TMExchangeMap>}
      */
-    get exchange() { 
-        if (this.exchangeId == null) return null;
-        else {
-            if (this._data.exchange) {
-                if (!this._TMExchange || this._TMExchange.id !== this.exchangeId) {
-                    /** 
-                     * @type {TMExchangeMap}
-                     * @private
-                     * */
-                    this._TMExchange = new TMExchangeMap(this, this._data.exchange);
-                } 
-                return this._TMExchange;
-            } else throw "No exchange data found for this map";
-        }
-    }
-
-    /**
-     * The map leaderboard.
-     * @type {?Array<TMMapLeaderboard>}
-     */
-    get leaderboard() {
-        if (this._data.leaderboard && this._data.leaderboard.tops.length >= 1) {
-            const arr = [];
-            for (let i = 0; i < this._data.leaderboard.tops.length; i++) {
-                arr.push(new TMMapLeaderboard(this, this._data.leaderboard.tops[i]));
+    async exchange() {
+        return new Promise((resolve, reject) => {
+            if (!this.exchangeId) return resolve(null);
+            const tmxurl = this.client.options.api.paths.tmx;
+            if (!this._data.exchange) {
+                this.client._apiReq(`${tmxurl.protocol}://${tmxurl.host}/${tmxurl.api}/${tmxurl.tabs.mapInfo}/${this.exchangeId}`).then(data => {
+                    this._data.exchange = data[0];
+                    return resolve(new TMExchangeMap(this.client, data[0]));
+                }).catch(err => {
+                    return reject(err);
+                });
+            } else {
+                return resolve(new TMExchangeMap(this.client, this._data.exchange));
             }
-            return arr;
-        } else return null;
+        });
     }
 
     /**
-     * Load 100 more results in the leaderboard.
+     * Load more results in the leaderboard.
+     * @param {number} [nbOfResults=100] The number of results to load. (max 100)
      * @returns {Promise<?Array<TMMapLeaderboard>>}
      */
-    async leaderboardLoadMore(){
-        if (this._data.leaderboard && this._data.leaderboard.tops.length >= 1) {
-
-            const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
-                map = this.client.options.api.paths.tmio.tabs.map;
-            const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?offset=${this._data.leaderboard.tops.length}&length=100`);
-            if (leaderboardRes.tops != null){
-                for (let i = 0; i < leaderboardRes.tops.length; i++){
-                    this._data.leaderboard.tops.push(leaderboardRes.tops[i]);
-                }
+    async leaderboardLoadMore(nbOfResults = 100) {
+        if (nbOfResults > 100) nbOfResults = 100;
+        if (nbOfResults < 1) nbOfResults = 1;
+        const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
+            map = this.client.options.api.paths.tmio.tabs.map,
+            params = new URLSearchParams();
+        params.append('offset', this.leaderboard.length);
+        params.append('length', nbOfResults);
+        const leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?${params.toString()}`);
+        if (leaderboardRes.tops != null){
+            for (let i = 0; i < leaderboardRes.tops.length; i++) {
+                this.leaderboard.push(new TMMapLeaderboard(this, leaderboardRes.tops[i]));
             }
-            const arr = [];
-            for (let i = 0; i < this._data.leaderboard.tops.length; i++) {
-                arr.push(new TMMapLeaderboard(this, this._data.leaderboard.tops[i]));
-            }
-            return arr;
-        } else return null;
+        }
+        return this.leaderboard;
     }
 
     /**
@@ -217,6 +218,36 @@ class TMMap {
             leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?offset=${position}&length=1}`);
         if (!leaderboardRes.tops) return null;
         return new TMMapLeaderboard(this, leaderboardRes.tops[0]);
+    }
+
+    /**
+     * Subscribe to the map WR updates.
+     * <info>When a new WR is set, the event {@link TMMap#e-wr} will be fired</info>
+     * @returns {Promise<void>}
+     * @example
+     * Client.maps.get('z28QXoFnpODEGgg8MOederEVl3j').then(map => {
+     *    map.subWR();
+     *    map.on('wr', (old, new) => {
+     *      console.log(`New WR for ${map.name} is ${new.playerName} (${new.time})`);
+     *   });
+     * });
+     */
+    async subWR() {
+        let actualWR = await this.leaderboardGet(1);
+        setInterval(async ()=>{
+            let newWR = await this.leaderboardGet(1);
+            if (actualWR.time != newWR.time) {
+                /**
+                 * Emitted when a new WR is set.
+                 * <info>This event is emitted only if the method {@link TMMap#subWR} is called</info>
+                 * @event TMMap#wr
+                 * @param {TMMapLeaderboard} oldWR The old WR.
+                 * @param {TMMapLeaderboard} newWR The new WR.
+                 */
+                this.emit('wr', actualWR, newWR);
+                actualWR = newWR;
+            }
+        }, this.client.options.cache.ttl * 60 * 1000);
     }
 }
 
@@ -395,6 +426,22 @@ class TMMapLeaderboard {
      */
     async player(){
         return this.client.players.get(this._data.player.id);
+    }
+
+    /**
+     * The player name on this leaderboard
+     * @type {string}
+     */
+    get playerName(){
+        return this._data.player.name;
+    }
+
+    /**
+     * The player club tag on this leaderboard
+     * @type {string}
+     */
+    get playerClubTag(){
+        return this._data.player.tag;
     }
 
     /**

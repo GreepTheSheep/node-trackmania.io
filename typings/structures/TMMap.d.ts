@@ -21,6 +21,11 @@ declare class TMMap {
      */
     medalTimes: TMMapMedalTimes;
     /**
+     * The map cached leaderboard data. You should use the leaderboardLoadMore() the first time to load the leaderboard.
+     * @type {Array<TMMapLeaderboard>}
+     */
+    leaderboard: Array<TMMapLeaderboard>;
+    /**
      * The map name.
      * @type {string}
      */
@@ -41,6 +46,11 @@ declare class TMMap {
      */
     get storageId(): string;
     /**
+     * The map author's name.
+     * @type {string}
+     */
+    get authorName(): string;
+    /**
      * The map author.
      * @returns {Promise<Player>}
      * @example
@@ -50,6 +60,11 @@ declare class TMMap {
      * });
      */
     author(): Promise<Player>;
+    /**
+     * The map submitter's name.
+     * @type {string}
+     */
+    get submitterName(): string;
     /**
      * The map submitter.
      * @returns {Promise<Player>}
@@ -92,30 +107,34 @@ declare class TMMap {
     get exchangeId(): string;
     /**
      * The map informations on trackmania.exchange.
-     * @type {?TMExchangeMap}
+     * @returns {Promise<?TMExchangeMap>}
      */
-    get exchange(): TMExchangeMap;
+    exchange(): Promise<TMExchangeMap | null>;
     /**
-     * @type {TMExchangeMap}
-     * @private
-     * */
-    private _TMExchange;
-    /**
-     * The map leaderboard.
-     * @type {?Array<TMMapLeaderboard>}
-     */
-    get leaderboard(): TMMapLeaderboard[];
-    /**
-     * Load 100 more results in the leaderboard.
+     * Load more results in the leaderboard.
+     * @param {number} [nbOfResults=100] The number of results to load. (max 100)
      * @returns {Promise<?Array<TMMapLeaderboard>>}
      */
-    leaderboardLoadMore(): Promise<Array<TMMapLeaderboard> | null>;
+    leaderboardLoadMore(nbOfResults?: number): Promise<Array<TMMapLeaderboard> | null>;
     /**
      * Get a leaderboard in a specific position. Must be between 1 and 10000.
      * @param {number} position The position of the leaderboard.
      * @returns {Promise<?TMMapLeaderboard>}
      */
     leaderboardGet(position: number): Promise<TMMapLeaderboard | null>;
+    /**
+     * Subscribe to the map WR updates.
+     * <info>When a new WR is set, the event {@link TMMap#e-wr} will be fired</info>
+     * @returns {Promise<void>}
+     * @example
+     * Client.maps.get('z28QXoFnpODEGgg8MOederEVl3j').then(map => {
+     *    map.subWR();
+     *    map.on('wr', (old, new) => {
+     *      console.log(`New WR for ${map.name} is ${new.playerName} (${new.time})`);
+     *   });
+     * });
+     */
+    subWR(): Promise<void>;
 }
 import Client = require("../client/Client");
 /**
@@ -148,6 +167,63 @@ declare class TMMapMedalTimes {
      * @type {number}
      */
     bronze: number;
+}
+/**
+ * Represents the map leaderboard.
+ */
+declare class TMMapLeaderboard {
+    constructor(map: any, data: any);
+    /**
+     * The map Instance
+     * @type {TMMap}
+     */
+    map: TMMap;
+    /**
+     * The Client instance
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @type {Object}
+     * @private
+     */
+    private _data;
+    /**
+     * The player that got this leaderboard
+     * @returns {Promise<Player>}
+     */
+    player(): Promise<Player>;
+    /**
+     * The player name on this leaderboard
+     * @type {string}
+     */
+    get playerName(): string;
+    /**
+     * The player club tag on this leaderboard
+     * @type {string}
+     */
+    get playerClubTag(): string;
+    /**
+     * The position of the player on this leaderboard
+     * @type {number}
+     */
+    get position(): number;
+    /**
+     * The time in milliseconds of the player
+     * @type {number}
+     */
+    get time(): number;
+    /**
+     * The date when the player get this leaderboard
+     * @type {Date}
+     */
+    get date(): Date;
+    /**
+     * The ghost URL
+     * @type {string}
+     */
+    get ghost(): string;
 }
 import Player = require("./Player");
 /**
@@ -221,51 +297,4 @@ declare class TMExchangeMap {
      * @type {string}
      */
     get download(): string;
-}
-/**
- * Represents the map leaderboard.
- */
-declare class TMMapLeaderboard {
-    constructor(map: any, data: any);
-    /**
-     * The map Instance
-     * @type {TMMap}
-     */
-    map: TMMap;
-    /**
-     * The Client instance
-     * @type {Client}
-     */
-    client: Client;
-    /**
-     * The data
-     * @type {Object}
-     * @private
-     */
-    private _data;
-    /**
-     * The player that got this leaderboard
-     * @returns {Promise<Player>}
-     */
-    player(): Promise<Player>;
-    /**
-     * The position of the player on this leaderboard
-     * @type {number}
-     */
-    get position(): number;
-    /**
-     * The time in milliseconds of the player
-     * @type {number}
-     */
-    get time(): number;
-    /**
-     * The date when the player get this leaderboard
-     * @type {Date}
-     */
-    get date(): Date;
-    /**
-     * The ghost URL
-     * @type {string}
-     */
-    get ghost(): string;
 }

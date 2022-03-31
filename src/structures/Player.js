@@ -16,8 +16,8 @@ class Player {
 
         /**
          * The data of the player
-         * @type {Object} 
-         * @private 
+         * @type {Object}
+         * @private
          */
         this._data = data;
     }
@@ -105,17 +105,17 @@ class Player {
 
     /**
      * The player's trophy data
-     * @type {PlayerTrophies} 
+     * @type {PlayerTrophies}
      */
     get trophies(){
         if (!this._PlayerTrophies){
-            /** 
+            /**
              * The player's trophy data
              * @type {PlayerTrophies}
              * @private
              */
             this._PlayerTrophies = new PlayerTrophies(this, this._data.trophies);
-        } 
+        }
         return this._PlayerTrophies;
     }
 
@@ -131,7 +131,7 @@ class Player {
              * @private
              */
             this._PlayerMeta = new PlayerMeta(this);
-        } 
+        }
         return this._PlayerMeta;
     }
 
@@ -163,7 +163,7 @@ class Player {
              * @private
              */
             this._PlayerMatchmaking = new PlayerMatchmaking(this, type);
-        } 
+        }
         return this._PlayerMatchmaking;
     }
 
@@ -273,7 +273,7 @@ class PlayerTrophies {
              * @private
              */
             this._PlayerEchelon = new PlayerEchelon(this.player, this._data);
-        } 
+        }
         return this._PlayerEchelon;
     }
 
@@ -394,7 +394,7 @@ class PlayerTrophyHistory {
         if (!this._achievement || this.achievement.id != achievement.trophyAchievementId){
             /**
              * The achievement type object
-             * @type {PlayerTrophyAchievementType} 
+             * @type {PlayerTrophyAchievementType}
              * @private
              */
             this._achievement = new PlayerTrophyAchievementType(this.player, achievement);
@@ -694,15 +694,6 @@ class PlayerMeta {
     }
 
     /**
-     * Whether the player is in the TMWC21 group
-     * @type {boolean}
-     */
-    get inTMWC21(){
-        if(this.player._data.meta && this.player._data.meta.tmwc21) return true;
-        else return false;
-    }
-
-    /**
      * Whether the player is in the Nadeo company
      * @type {boolean}
      */
@@ -770,7 +761,7 @@ class PlayerMatchmaking {
     }
 
     /**
-     * The type name of the matchmaking 
+     * The type name of the matchmaking
      * @type {string}
      */
     get type(){
@@ -830,7 +821,7 @@ class PlayerMatchmaking {
              * @private
              */
             this._MatchmakingDivision = new MatchmakingDivision(this.client, this.typeId, this._data.info.division);
-        } 
+        }
         return this._MatchmakingDivision;
     }
 
@@ -1201,7 +1192,7 @@ class PlayerCOTDStats{
  */
 class PlayerCOTDStatsBest{
     constructor(PlayerCOTDStats, data){
-    
+
         /**
         * The PlayerCOTDStats object
         * @type {PlayerCOTDStats}

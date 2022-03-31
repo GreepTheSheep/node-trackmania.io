@@ -11,7 +11,7 @@ describe("Rooms", function(){
 
         assert.equal(room.isCloud, false);
         assert.equal(room.region, null);
-        assert.equal(room.login, "evoice");
+        assert.equal(room.login, "evoiceb");
     });
 
     it("Hosted Room", async function(){
