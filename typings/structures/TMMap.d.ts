@@ -122,6 +122,18 @@ declare class TMMap {
      * @returns {Promise<?TMMapLeaderboard>}
      */
     leaderboardGet(position: number): Promise<TMMapLeaderboard | null>;
+    /**
+     * Subscribe to the map WR updates. (when a new WR is set, the event 'wr' will be fired)
+     * @returns {Promise<void>}
+     * @example
+     * Client.maps.get('z28QXoFnpODEGgg8MOederEVl3j').then(map => {
+     *    map.subWR();
+     *    map.on('wr', (old, new) => {
+     *      console.log(`New WR for ${map.name} is ${new.playerName} (${new.time})`);
+     *   });
+     * });
+     */
+    subWR(): Promise<void>;
 }
 import Client = require("../client/Client");
 /**
