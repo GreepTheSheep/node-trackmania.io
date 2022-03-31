@@ -221,7 +221,8 @@ class TMMap extends EventEmitter {
     }
 
     /**
-     * Subscribe to the map WR updates. (when a new WR is set, the event 'wr' will be fired)
+     * Subscribe to the map WR updates.
+     * <info>When a new WR is set, the event {@link TMMap#wr} will be fired</info>
      * @returns {Promise<void>}
      * @example
      * Client.maps.get('z28QXoFnpODEGgg8MOederEVl3j').then(map => {
@@ -238,7 +239,7 @@ class TMMap extends EventEmitter {
             if (actualWR.time != newWR.time) {
                 /**
                  * Emitted when a new WR is set.
-                 * <info>This event is emitted only if the method `map.subWR()` is called</info>
+                 * <info>This event is emitted only if the method {@link TMMap#subWR} is called</info>
                  * @event TMMap#wr
                  * @param {TMMapLeaderboard} oldWR The old WR.
                  * @param {TMMapLeaderboard} newWR The new WR.
