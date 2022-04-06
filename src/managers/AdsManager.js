@@ -17,7 +17,7 @@ class AdsManager{
 
         /**
          * The cache manager
-         * @type {CacheManager} 
+         * @type {CacheManager}
          * @private
          */
         this._cache = new CacheManager(this.client, this, Ad);
@@ -25,7 +25,7 @@ class AdsManager{
 
     /**
      * Get the in-game Maniapub list
-     * @param {Boolean} [cache=this.client.options.cache.enabled] Whether to cache the ads or not
+     * @param {boolean} [cache=this.client.options.cache.enabled] Whether to cache the ads or not
      * @returns {Promise<Array<Ad>>}
      */
     async list(cache = this.client.options.cache.enabled){
@@ -38,7 +38,7 @@ class AdsManager{
                 if (cache) {
                     res.ads[i]._cachedTimestamp = Date.now();
                     this._cache.set(res.id, ad);
-                } 
+                }
                 array.push(ad);
             }
         }
@@ -50,7 +50,7 @@ class AdsManager{
      * @param {string} adUid The Ad UID
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the news from cache or not
      * @returns {Promise<Ad>} The Maniapub
-     * @example 
+     * @example
      * client.ads.get("fcc22a11-0d59-4fef-b102-0bf5a2df7221").then(ad => {
      *     console.log(ad.name);
      * });
@@ -62,7 +62,7 @@ class AdsManager{
             return await this._fetch(adUid, cache);
         }
     }
-        
+
     /**
      * Fetches a maniapub and returns its data
      * @param {number} adUid The ad ID
@@ -78,12 +78,12 @@ class AdsManager{
             if (res.ads.length > 0) {
                 for (let i = 0; i < res.ads.length; i++) {
                     res.ads[i]._cachedTimestamp = Date.now();
-                    
+
                     this._cache.set(res.ads[i].uid, new Ad(this.client, res.ads[i]));
                 }
             }
             if (this._cache.has(adUid)) return this._cache.get(adUid);
-            else return null; 
+            else return null;
         } else {
             if (res.ads.length > 0) { // check all news from the page 0
                 for (let i = 0; i < res.ads.length; i++) {
@@ -93,7 +93,7 @@ class AdsManager{
                 }
             }
             // If we reach this point, the ad was not found
-            return null; 
+            return null;
         }
     }
 }
