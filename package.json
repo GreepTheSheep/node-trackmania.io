@@ -30,7 +30,7 @@
     "node-fetch": "2.6.7"
   },
   "devDependencies": {
-    "@discordjs/docgen": "0.11.0",
+    "@discordjs/docgen": "0.11.1",
     "dotenv": "16.0.0",
     "eslint": "7.31.0",
     "mocha": "9.2.2",
