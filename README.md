@@ -62,3 +62,10 @@ Thanks to [@dassschaf](https://github.com/dassschaf) and [@stefan-baumann](https
 Thanks to [@Flirno](https://github.com/Flirno) for player COTD results API
 
 Thanks to [@jonese1234](https://github.com/jonese1234) for the dataset to get the players searching
+
+---
+<div align="center">
+
+![Alt](https://repobeats.axiom.co/api/embed/6d1745e4fe894ffc1e84f68bc7eb0731588eeda4.svg "Repobeats analytics image")
+
+</div>
