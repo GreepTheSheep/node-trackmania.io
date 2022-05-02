@@ -13,7 +13,7 @@ class APIRequest {
      */
     constructor(client) {
         /**
-         * The client that created this request 
+         * The client that created this request
          * @type {BaseClient}
          * @readonly
          */
@@ -22,7 +22,7 @@ class APIRequest {
         // Creating UA string
         let cwd = process.cwd(),
             cwf;
-        
+
         cwd = cwd.substring(cwd.lastIndexOf(require('os').type == 'Windows_NT' ? '\\' : '/')+1);
 
         // Gets the current file name where the script starts
@@ -65,13 +65,13 @@ class APIRequest {
         const headers = new fetch.Headers({
             "Accept"       : "application/json",
             "Content-Type" : "application/json",
-            "User-Agent"   : this.UA 
+            "User-Agent"   : this.UA
         });
         if (this.url.startsWith(new ReqUtil(this.client).tmioAPIURL) && this.key) headers.append('X-API-Key', this.key);
         this.options = {
             headers,
             method,
-            body            
+            body
         };
         /**
          * Emitted before every API request.
@@ -95,7 +95,7 @@ class APIRequest {
                  */
                 this.client.emit('apiResponse', this, response);
 
-                if (response.status >= 200 && response.status < 300) {
+                if (response.ok) {
                     // Save the rate limit details
                     if (this.url.startsWith(new ReqUtil(this.client).tmioAPIURL)){
                         this.client.ratelimit = {
@@ -104,11 +104,11 @@ class APIRequest {
                             reset: new Date(Number(response.headers.raw()['x-ratelimit-reset'][0]) * 1000)
                         };
                     }
-                    
+
                     return await response.json();
                 } else {
-                    if (response.status >= 500) {
-                        const json = await response.json();
+                    const json = await response.json();
+                    if (json) {
                         if (json.error) throw json.error;
                         else throw json;
                     } else throw response.statusText;
