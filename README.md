@@ -53,9 +53,9 @@ If you want to talk about this project or just for saying hi, Join the [Project'
 ---
 ## Projects that use this Trackmania.io library
 
-- [discord-trackmania.io](https://github.com/GreepTheSheep/discord-trackmania.io) by @GreepTheSheep
-- [The backend of the Random Map Challenge](https://github.com/tm-rmc/backend) by @GreepTheSheep
-- [state-trackmania-bot](https://github.com/allanjacob/state-trackmania-bot) by @allanjacob
+- [discord-trackmania.io](https://github.com/GreepTheSheep/discord-trackmania.io) by [@GreepTheSheep](https://github.com/GreepTheSheep)
+- [The backend of the Random Map Challenge](https://github.com/tm-rmc/backend) by [@GreepTheSheep](https://github.com/GreepTheSheep)
+- [state-trackmania-bot](https://github.com/allanjacob/state-trackmania-bot) by [@allanjacob](https://github.com/allanjacob)
 
 Add yours here by opening a PR!
 
@@ -64,7 +64,7 @@ Add yours here by opening a PR!
 
 There are a few other implementations of the Trackmania.io API, these are:
 
-- Python: [py-tmio](https://github.com/NottCurious/py-tmio) by @NottCurious
+- Python: [py-tmio](https://github.com/NottCurious/py-tmio) by [@NottCurious](https://github.com/NottCurious)
 
 Add yours here by opening a PR!
 ---
