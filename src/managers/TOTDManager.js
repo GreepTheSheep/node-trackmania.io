@@ -17,7 +17,7 @@ class TOTDManager{
 
         /**
          * The cache manager
-         * @type {CacheManager} 
+         * @type {CacheManager}
          * @private
          */
         this._cache = new CacheManager(this.client, this, TOTD);
@@ -38,10 +38,10 @@ class TOTDManager{
 
     /**
      * Fetches a TOTD with it's day and returns its data
-     * @param {Date} date The date 
+     * @param {Date} date The date
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the map from cache or not
      * @returns {Promise<TOTD>} The map
-     * @example 
+     * @example
      * // Gets the TOTD of today
      * client.totd.get(new Date()).then(totd => {
      *     console.log(totd.map.name);
@@ -51,7 +51,7 @@ class TOTDManager{
         if (cache && this._cache.has(date.getMonth()+"_"+date.getFullYear())) {
             let month = this._cache.get(date.getMonth()+"_"+date.getFullYear()),
                 dayMap = month.days.find(map => map.monthday == date.getDate());
-            
+
             if (!dayMap) dayMap = month.days.find(map => map.monthday == date.getDate()-1);
             if (!dayMap) throw "Track of the day not found, it is the right date?";
 
@@ -60,7 +60,7 @@ class TOTDManager{
             return await this._fetch(date, cache);
         }
     }
-        
+
     /**
      * Fetches a TOTD and returns its data
      * @param {Date} date The date
@@ -78,7 +78,7 @@ class TOTDManager{
 
         if (cache) {
             res._cachedTimestamp = Date.now();
-            
+
             this._cache.set(date.getMonth()+"_"+date.getFullYear(), res);
         }
 

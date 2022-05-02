@@ -215,7 +215,7 @@ class TMMap extends EventEmitter {
         position--;
         const leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
             map = this.client.options.api.paths.tmio.tabs.map,
-            leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?offset=${position}&length=1}`);
+            leaderboardRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${map}/${this.uid}?offset=${position}&length=1`);
         if (!leaderboardRes.tops) return null;
         return new TMMapLeaderboard(this, leaderboardRes.tops[0]);
     }

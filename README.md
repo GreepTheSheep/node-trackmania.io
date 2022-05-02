@@ -51,6 +51,23 @@ Please see the [CONTRIBUTING.md file](CONTRIBUTING.md)
 If you want to talk about this project or just for saying hi, Join the [Project's Discord Server](https://greep.gq/discord), in the #node-tmio channel
 
 ---
+## Projects that use this Trackmania.io library
+
+- [discord-trackmania.io](https://github.com/GreepTheSheep/discord-trackmania.io) by [@GreepTheSheep](https://github.com/GreepTheSheep)
+- [The backend of the Random Map Challenge](https://github.com/tm-rmc/backend) by [@GreepTheSheep](https://github.com/GreepTheSheep)
+- [state-trackmania-bot](https://github.com/allanjacob/state-trackmania-bot) by [@allanjacob](https://github.com/allanjacob)
+
+Add yours here by opening a PR!
+
+---
+## Other Trackmania.io Implementations
+
+There are a few other implementations of the Trackmania.io API, these are:
+
+- Python: [py-tmio](https://github.com/NottCurious/py-tmio) by [@NottCurious](https://github.com/NottCurious)
+
+Add yours here by opening a PR!
+---
 ## Thanks
 
 Thanks to [@codecat](https://github.com/codecat) for creating trackmania.io and for helping me with their API *(and updating it everytime)*.
@@ -62,3 +79,10 @@ Thanks to [@dassschaf](https://github.com/dassschaf) and [@stefan-baumann](https
 Thanks to [@Flirno](https://github.com/Flirno) for player COTD results API
 
 Thanks to [@jonese1234](https://github.com/jonese1234) for the dataset to get the players searching
+
+---
+<div align="center">
+
+![Alt](https://repobeats.axiom.co/api/embed/6d1745e4fe894ffc1e84f68bc7eb0731588eeda4.svg "Repobeats analytics image")
+
+</div>

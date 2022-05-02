@@ -101,18 +101,20 @@ class Client extends BaseClient {
             const date = DateTime.local().setZone("Europe/Paris");
             if (date.hour === 19 && date.minute === 1 && !newTotdChecked){
                 let totd = await this.totd.get(date.toJSDate());
-                /**
-                 * Emitted when a new Track Of The Day is out on Trackmania.io.
-                 * <info>This event is mostly emitted one minute after the release (at 19h01 CE(S)T)</info>
-                 * @event Client#totd
-                 * @param {TOTD} totd The Track of The Day
-                 */
-                this.emit('totd', totd);
+                if (totd.monthDay === date.day) {
+                    /**
+                     * Emitted when a new Track Of The Day is out on Trackmania.io.
+                     * <info>This event is mostly emitted one minute after the release (at 19h01 CE(S)T)</info>
+                     * @event Client#totd
+                     * @param {TOTD} totd The Track of The Day
+                     */
+                    this.emit('totd', totd);
 
-                // this prevent emitting this event a second time in the same day
-                newTotdChecked = true;
+                    // this prevent emitting this event a second time in the same day
+                    newTotdChecked = true;
+                }
             } else {
-                if (date.hour !== 19 && date.minute !== 1 && newTotdChecked) newTotdChecked = false;
+                if (date.hour !== 19 && date.minute !== 1) newTotdChecked = false;
             }
         }, 10000);
     }
@@ -129,8 +131,8 @@ class Client extends BaseClient {
 
         // First remplace all $T by $t and $Z by $z (for the regex)
         resStr = str.replace(/\$T/g, '$t').replace(/\$Z/g, '$z');
-        
-        
+
+
         // If there is a $t, it will be replaced by the text in uppercase until the $z or the end of the string
         while ((res = resStr.match(/\$t(.)*(\$z)|\$t(.)*$/g)) !== null) {
             for (let i = 0; i < res.length; i++) {
