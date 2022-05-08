@@ -33,7 +33,7 @@ If you're still unsure about your use of the API, feel free to DM Miss on the [O
 ---
 ## API Keys
 
-API keys for trackmania.io can be retrieved by requesting access to Miss on the [Openplanet Discord](https://openplanet.nl/link/discord)
+API keys for trackmania.io are not mandatory, but can be used to increase the rate limit. These are not given out frequently, and as such are issued only on request. For more information, contact Miss on the [Openplanet Discord](https://openplanet.nl/link/discord).
 
 ---
 ## Documentation
