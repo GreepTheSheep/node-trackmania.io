@@ -92,6 +92,31 @@ declare class Campaign {
      * @type {?CampaignMedia}
      */
     get media(): CampaignMedia;
+    /**
+     * Whether the campaign is tracked.
+     * @type {boolean}
+     */
+    get isTracked(): boolean;
+    /**
+     * Gets the campaign activity.
+     * <info>{@link Campaign#isTracked} must be true.</info>
+     * @returns {Promise<Array<CampaignRecordActivity>>}
+     */
+    activity(page?: number): Promise<Array<CampaignRecordActivity>>;
+    /**
+     * Subscribe to the campaign WR updates.
+     * <info>{@link Campaign#isTracked} must be true.</info>
+     * <info>When a new WR is set, the event {@link Campaign#e-wr} will be fired</info>
+     * @returns {Promise<void>}
+     * @example
+     * Client.campaigns.currentSeason().then(campaign => {
+     *    campaign.subWR();
+     *    campaign.on('wr', (map, record) => {
+     *      console.log(`New WR on ${campaign.name} in ${map.name} is ${record.playerName} (${record.time})`);
+     *   });
+     * });
+     */
+    subWR(): Promise<void>;
 }
 import Client = require("../client/Client");
 /**
@@ -183,5 +208,82 @@ declare class CampaignMedia {
      * @type {string}
      */
     popup: string;
+}
+/**
+ * The WR activity of a campaign
+ */
+declare class CampaignRecordActivity {
+    constructor(campaign: any, data: any);
+    /**
+     * The Campaign
+     * @type {Campaign}
+     */
+    campaign: Campaign;
+    /**
+     * The client instance.
+     * @type {Client}
+     */
+    client: Client;
+    /**
+     * The data
+     * @type {Object}
+     * @private
+     */
+    private _data;
+    /**
+     * The ID of the activity
+     * @type {number}
+     */
+    get id(): number;
+    /**
+     * The leaderboard UID of the campaign
+     * @type {string}
+     */
+    get leaderboardId(): string;
+    /**
+     * The map of the activity
+     * @returns {Promise<TMMap>}
+     */
+    map(): Promise<TMMap>;
+    /**
+     * The map name
+     * @type {string}
+     */
+    get mapName(): string;
+    /**
+     * The map author
+     * @returns {Promise<Player>}
+     */
+    mapAuthor(): Promise<Player>;
+    /**
+     * The map author name
+     * @type {string}
+     */
+    get mapAuthorName(): string;
+    /**
+     * The player who set the record
+     * @returns {Promise<Player>}
+     */
+    player(): Promise<Player>;
+    /**
+     * The player name who set the record
+     * @type {string}
+     */
+    get playerName(): string;
+    /**
+     * The date of the record
+     * @type {Date}
+     */
+    get date(): Date;
+    /**
+     * The time of the record
+     * @type {number}
+     */
+    get time(): number;
+    /**
+     * The difference between the record and the previous one
+     * @type {number}
+     */
+    get difference(): number;
 }
 import Player = require("./Player");
