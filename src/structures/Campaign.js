@@ -3,12 +3,14 @@ const Client = require('../client/Client'); // eslint-disable-line no-unused-var
 const TMMap = require('./TMMap'); // eslint-disable-line no-unused-vars
 const Club = require('./Club'); // eslint-disable-line no-unused-vars
 const ReqUtil = require('../util/ReqUtil');
+const EventEmitter = require('events');
 
 /**
  * The Campaign class represents a campaign.
  */
-class Campaign {
+class Campaign extends EventEmitter {
     constructor(client, data) {
+        super();
         /**
          * The client object of the campaign.
          * @type {Client}
@@ -162,6 +164,61 @@ class Campaign {
             return new CampaignMedia(this.client, this._data.mediae);
         } else return null;
     }
+
+    /**
+     * Whether the campaign is tracked.
+     * @type {boolean}
+     */
+    get isTracked() {
+        return this._data.tracked;
+    }
+
+    /**
+     * Gets the campaign activity.
+     * <info>{@link Campaign#isTracked} must be true.</info>
+     * @returns {Promise<Array<CampaignRecordActivity>>}
+     */
+    async activity(page = 0) {
+        if (!this.isTracked) throw 'Campaign is not tracked.';
+        const activity = this.client.options.api.paths.tmio.tabs.activity,
+            leaderboard = this.client.options.api.paths.tmio.tabs.leaderboard,
+            activityRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${leaderboard}/${activity}/${this.leaderboardId}/${page}`);
+
+        return activityRes.map(activity => new CampaignRecordActivity(this, activity));
+    }
+
+    /**
+     * Subscribe to the campaign WR updates.
+     * <info>{@link Campaign#isTracked} must be true.</info>
+     * <info>When a new WR is set, the event {@link Campaign#e-wr} will be fired</info>
+     * @returns {Promise<void>}
+     * @example
+     * Client.campaigns.currentSeason().then(campaign => {
+     *    campaign.subWR();
+     *    campaign.on('wr', (map, record) => {
+     *      console.log(`New WR on ${campaign.name} in ${map.name} is ${record.playerName} (${record.time})`);
+     *   });
+     * });
+     */
+    async subWR() {
+        if (!this.isTracked) throw 'The campaign is not tracked';
+        let actualWR = await this.activity();
+        setInterval(async ()=>{
+            let newWR = await this.activity();
+            if (actualWR[0].id != newWR[0].id) {
+                let map = await newWR[0].map();
+                /**
+                 * Emitted when a new WR is set.
+                 * <info>This event is emitted only if the method {@link Campaign#subWR} is called</info>
+                 * @event Campaign#wr
+                 * @param {TMMap} map The map where the new WR is set.
+                 * @param {CampaignRecordActivity} newWR The new WR.
+                 */
+                this.emit('wr', map, newWR);
+                actualWR = newWR;
+            }
+        }, this.client.options.cache.ttl * 60 * 1000);
+    }
 }
 
 /**
@@ -278,6 +335,120 @@ class CampaignLeaderboard{
      */
     get points(){
         return this._data.points;
+    }
+}
+
+/**
+ * The WR activity of a campaign
+ */
+class CampaignRecordActivity{
+    constructor(campaign, data){
+        /**
+         * The Campaign
+         * @type {Campaign}
+         */
+        this.campaign = campaign;
+
+        /**
+         * The client instance.
+         * @type {Client}
+         */
+        this.client = this.campaign.client;
+
+        /**
+         * The data
+         * @type {Object}
+         * @private
+         */
+        this._data = data;
+    }
+
+    /**
+     * The ID of the activity
+     * @type {number}
+     */
+    get id(){
+        return this._data.id;
+    }
+
+    /**
+     * The leaderboard UID of the campaign
+     * @type {string}
+     */
+    get leaderboardId(){
+        return this._data.group;
+    }
+
+    /**
+     * The map of the activity
+     * @returns {Promise<TMMap>}
+     */
+    async map(){
+        return await this.client.maps.get(this._data.map.mapUid);
+    }
+
+    /**
+     * The map name
+     * @type {string}
+     */
+    get mapName(){
+        return this._data.map.name;
+    }
+
+    /**
+     * The map author
+     * @returns {Promise<Player>}
+     */
+    async mapAuthor(){
+        return await this.client.players.get(this._data.map.author);
+    }
+
+    /**
+     * The map author name
+     * @type {string}
+     */
+    get mapAuthorName(){
+        return this._data.map.authorplayer.name;
+    }
+
+    /**
+     * The player who set the record
+     * @returns {Promise<Player>}
+     */
+    async player(){
+        return await this.client.players.get(this._data.player.id);
+    }
+
+    /**
+     * The player name who set the record
+     * @type {string}
+     */
+    get playerName(){
+        return this._data.player.name;
+    }
+
+    /**
+     * The date of the record
+     * @type {Date}
+     */
+    get date(){
+        return new Date(this._data.drivenat);
+    }
+
+    /**
+     * The time of the record
+     * @type {number}
+     */
+    get time(){
+        return this._data.time;
+    }
+
+    /**
+     * The difference between the record and the previous one
+     * @type {number}
+     */
+    get difference(){
+        return this._data.timediff;
     }
 }
 

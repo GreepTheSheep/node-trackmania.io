@@ -59,12 +59,12 @@ class defaultOptionsAPI {
         } else {
             this.useragent = null;
         }
-            
+
         if (!this.key && 'TMIO_API' in process.env) {
             /**
              * The API Key to use. It must contains "yourname:theactualsecretkey".
              * If present, this defaults to `process.env.TMIO_API` when instantiating the client
-             * 
+             *
              * <warn>This should be kept private at all times.</warn>
              * @type {?string}
              */
@@ -72,7 +72,7 @@ class defaultOptionsAPI {
         } else {
             this.key = null;
         }
-        
+
     }
 }
 
@@ -190,25 +190,25 @@ class defaultOptionsAPIPathsTMIOTabs {
          * @type {string}
          */
         this.campaigns = "campaigns";
-        
+
         /**
          * Specific campaign Tab.
          * @type {string}
          */
         this.campaign = "campaign";
-        
+
         /**
          * Official campaign Tab.
          * @type {string}
          */
         this.officialCampaign = "officialcampaign";
-        
+
         /**
          * Rooms Tab.
          * @type {string}
          */
         this.rooms = "rooms";
-        
+
         /**
          * Specific room Tab.
          * @type {string}
@@ -220,67 +220,73 @@ class defaultOptionsAPIPathsTMIOTabs {
          * @type {string}
          */
         this.clubs = "clubs";
-        
+
         /**
          * Specific club Tab.
          * @type {string}
          */
         this.club = "club";
-        
+
         /**
          * Members Tab.
          * @type {string}
          */
         this.members = "members";
-        
+
         /**
          * Activities Tab.
          * @type {string}
          */
         this.activities = "activities";
-        
+
+        /**
+         * Activity Tab.
+         * @type {string}
+         */
+        this.activity = "activity";
+
         /**
          * Events Tab.
          * @type {string}
          */
         this.events = "competitions";
-        
+
         /**
          * Specific player Tab.
          * @type {string}
          */
         this.player = "player";
-        
+
         /**
          * Players Tab.
          * @type {string}
          */
         this.players = "players";
-        
+
         /**
          * Trophies Tab.
          * @type {string}
          */
         this.trophies = "trophies";
-        
+
         /**
          * Top Trophies Tab.
          * @type {string}
          */
         this.topTrophies = "top/trophies";
-        
+
         /**
          * Leaderboard Tab.
          * @type {string}
          */
         this.leaderboard = "leaderboard";
-        
+
         /**
          * Map Tab.
          * @type {string}
          */
         this.map = "map";
-        
+
         /**
          * Matches Tab.
          * @type {string}
@@ -292,13 +298,13 @@ class defaultOptionsAPIPathsTMIOTabs {
          * @type {string}
          */
         this.topMatchmaking = "top/matchmaking";
-        
+
         /**
          * Specific match Tab.
          * @type {string}
          */
         this.match = "match";
-        
+
         /**
          * Specific challenge Tab.
          * @type {string}
@@ -358,13 +364,13 @@ class defaultOptionsAPIPathsTMXTabs {
          * @readonly
          */
         this._defaultOptionsAPIPathsTMX = defaultOptionsAPIPathsTMX;
-        
+
         /**
          * Map Info Tab.
          * @type {string}
          */
         this.mapInfo = "maps/get_map_info/multi";
-        
+
         /**
          * Map Download Tab.
          * @type {string}
