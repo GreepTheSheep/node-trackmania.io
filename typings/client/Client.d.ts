@@ -69,7 +69,7 @@ declare class Client extends BaseClient {
      * @returns {string}
      * @deprecated use {@link Client#stripFormat} instead
      */
-    get formatTMText(): string;
+    formatTMText(str: string): string;
     /**
      * Format the string and remove the TM style code on it.
      * @param {string} str string to format
