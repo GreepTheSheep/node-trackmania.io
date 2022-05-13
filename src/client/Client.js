@@ -126,8 +126,8 @@ class Client extends BaseClient {
      * @returns {string}
      * @deprecated use {@link Client#stripFormat} instead
      */
-    get formatTMText(){
-        return deprecate(this.stripFormat, 'Client.formatTMText is deprecated, use Client.stripFormat instead');
+    formatTMText(str){
+        return deprecate(this.stripFormat, 'Client#formatTMText is deprecated, use Client#stripFormat instead')(str);
     }
 
     /**
