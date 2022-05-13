@@ -8,7 +8,7 @@ client.on('totd', async totd=>{
     const map = await totd.map();
 
     // Map names aren't formatted by default (color codes for example), so we need to format them
-    const mapName = client.formatTMText(map.name);
+    const mapName = client.stripFormat(map.name);
 
     console.log('New Track Of The Day:', mapName);
 });

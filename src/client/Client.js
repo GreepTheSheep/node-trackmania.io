@@ -1,5 +1,6 @@
 const {DateTime} = require('luxon');
 const BaseClient = require('./BaseClient');
+const { deprecate } = require('util');
 
 const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line no-unused-vars
 const TOTD = require('../structures/TOTD'); // eslint-disable-line no-unused-vars
@@ -123,8 +124,18 @@ class Client extends BaseClient {
      * Format the string and remove the TM style code on it.
      * @param {string} str string to format
      * @returns {string}
+     * @deprecated use {@link Client#stripFormat} instead
      */
-    formatTMText(str){
+    get formatTMText(){
+        return deprecate(this.stripFormat, 'Client.formatTMText is deprecated, use Client.stripFormat instead');
+    }
+
+    /**
+     * Format the string and remove the TM style code on it.
+     * @param {string} str string to format
+     * @returns {string}
+     */
+    stripFormat(str){
         let res, resStr;
 
         // Iterate through the string and check if there are $t,
