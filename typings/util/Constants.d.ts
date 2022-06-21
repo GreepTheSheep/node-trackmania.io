@@ -1,8 +1,8 @@
-export var GroupTypes: any;
-export var MMTypes: any;
-export var RoomRegions: any;
-export var ClubMemberRoles: any;
-export var AdTypes: any;
+export const GroupTypes: any;
+export const MMTypes: any;
+export const RoomRegions: any;
+export const ClubMemberRoles: any;
+export const AdTypes: any;
 /**
  * All available Match Status types.
  * * `HAS_MATCHES`
@@ -11,9 +11,9 @@ export var AdTypes: any;
  * * `COMPLETED`
  */
 export type MatchStatus = string;
-export var MatchStatus: any;
-export var TeamNames: any;
-export var COTDLeaderboardSortGroups: any;
+export const MatchStatus: any;
+export const TeamNames: any;
+export const COTDLeaderboardSortGroups: any;
 /**
  * All available player groups.
  * * `nadeo` - All players from the Nadeo company

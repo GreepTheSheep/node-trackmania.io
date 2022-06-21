@@ -263,6 +263,11 @@ declare class defaultOptionsAPIPathsTMIOTabs {
      */
     activities: string;
     /**
+     * Activity Tab.
+     * @type {string}
+     */
+    activity: string;
+    /**
      * Events Tab.
      * @type {string}
      */
