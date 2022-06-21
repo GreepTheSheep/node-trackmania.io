@@ -100,12 +100,11 @@ class Client extends BaseClient {
         let newTotdChecked = false;
         setInterval(async ()=>{
             const date = DateTime.local().setZone("Europe/Paris");
-            if (date.hour === 19 && date.minute === 1 && !newTotdChecked){
+            if (date.hour === 19 && !newTotdChecked){
                 let totd = await this.totd.get(date.toJSDate());
                 if (totd.monthDay === date.day) {
                     /**
                      * Emitted when a new Track Of The Day is out on Trackmania.io.
-                     * <info>This event is mostly emitted one minute after the release (at 19h01 CE(S)T)</info>
                      * @event Client#totd
                      * @param {TOTD} totd The Track of The Day
                      */
@@ -114,10 +113,9 @@ class Client extends BaseClient {
                     // this prevent emitting this event a second time in the same day
                     newTotdChecked = true;
                 }
-            } else {
-                if (date.hour !== 19 && date.minute !== 1) newTotdChecked = false;
             }
-        }, 10000);
+            if (date.hour !== 19) newTotdChecked = false;
+        }, 30000);
     }
 
     /**
