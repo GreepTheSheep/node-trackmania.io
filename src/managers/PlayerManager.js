@@ -19,7 +19,7 @@ class PlayerManager {
 
         /**
          * The cache manager
-         * @type {CacheManager} 
+         * @type {CacheManager}
          * @private
          */
         this._cache = new CacheManager(this.client, this, Player);
@@ -40,9 +40,9 @@ class PlayerManager {
             var byte = String.fromCharCode(dec);
             bytes += byte;
         }
-    
+
         return btoa(bytes)
-            .replace(/\\+/g, '-')
+            .replace(/\+/g, '-')
             .replace(/\//g, '_')
             .replace(/=/g, '');
     }
@@ -54,12 +54,12 @@ class PlayerManager {
      */
     toAccountId(login){
         if (login.length != 22) return null;
-    
+
         var bytes = atob(login
             .replace(/-/g, '+')
             .replace(/_/g, '/')
         );
-    
+
         var ret = '';
         for (var i = 0; i < bytes.length; i++) {
             if (i == 4 || i == 6 || i == 8 || i == 10) {
@@ -144,7 +144,7 @@ class PlayerManager {
             res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${top}/${typeId}/${page}`);
 
         if (res.error) throw res.error;
-        
+
         const topsArray = res.ranks.map(playerTop=> new PlayerTopMatchmaking(this.client, typeId, playerTop));
         return topsArray;
     }
@@ -155,7 +155,7 @@ class PlayerManager {
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the player from cache or not
      * @returns {Promise<Player>} The player
      * @example
-     * // Get a player 
+     * // Get a player
      * client.players.get('26d9a7de-4067-4926-9d93-2fe62cd869fc').then(player => {
      *     console.log(player.name);
      * });
@@ -167,7 +167,7 @@ class PlayerManager {
             return await this._fetch(accountId, cache);
         }
     }
-        
+
     /**
      * Fetches a player and returns its data
      * @param {string} accountId The account ID or its tm.io vanity name
@@ -178,11 +178,11 @@ class PlayerManager {
     async _fetch(accountId, cache = this.client.options.cache.enabled){
         const player = this.client.options.api.paths.tmio.tabs.player,
             res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${player}/${accountId}`);
-        
+
         const thePlayer = new Player(this.client, res);
         if (cache) {
             res._cachedTimestamp = Date.now();
-            
+
             this._cache.set(res.accountid, thePlayer);
 
             // Adds also the player by its vanity name in the cache
