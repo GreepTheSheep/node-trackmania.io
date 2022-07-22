@@ -41,6 +41,16 @@ declare class TOTD {
      */
     get monthDay(): number;
     /**
+     * The month
+     * @type {number}
+     */
+    get month(): number;
+    /**
+     * The year
+     * @type {number}
+     */
+    get year(): number;
+    /**
      * The leaderboard ID
      * @type {string}
      */
