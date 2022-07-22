@@ -58,6 +58,22 @@ class TOTD {
     }
 
     /**
+     * The month
+     * @type {number}
+     */
+    get month(){
+        return this._data.month;
+    }
+
+    /**
+     * The year
+     * @type {number}
+     */
+    get year(){
+        return this._data.year;
+    }
+
+    /**
      * The leaderboard ID
      * @type {string}
      */

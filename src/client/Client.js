@@ -102,7 +102,7 @@ class Client extends BaseClient {
             const date = DateTime.local().setZone("Europe/Paris");
             if (date.hour === 19 && !newTotdChecked){
                 let totd = await this.totd.get(date.toJSDate());
-                if (totd.monthDay === date.day) {
+                if (totd.monthDay === date.day && totd.month === date.month && totd.year === date.year) {
                     /**
                      * Emitted when a new Track Of The Day is out on Trackmania.io.
                      * @event Client#totd
