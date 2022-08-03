@@ -149,11 +149,7 @@ class Client extends BaseClient {
             }
         }
 
-        // Check if there are two dollar signs in a row, returns one dollar sign
-        resStr = resStr.replace(/\$\$/gi, '$');
-
-        // Then remove all TM codes
-        return resStr.replace(/\$[<>wnoisgtz]|\$[hl]\[(.)+\]|\$[hl]|\$[0-9a-fA-F]{3}/gi, '');
+        return resStr.replace(/\$((\$)|[0-9a-f]{2,3}|[lh]\[.*?\]|.)/gi, '$2');
     }
 }
 
