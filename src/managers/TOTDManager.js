@@ -89,6 +89,9 @@ class TOTDManager{
 
         if (!dayMap) throw "Track of the day not found, it is the right date?";
 
+        dayMap.month = res.month;
+        dayMap.year = res.year;
+
         return new TOTD(this.client, dayMap);
     }
 }

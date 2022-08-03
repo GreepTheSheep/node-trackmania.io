@@ -1,5 +1,6 @@
 require('dotenv').config();
 const assert = require('assert'),
+    {DateTime} = require('luxon'),
     TMIO = require('../'),
     tmioClient = new TMIO.Client({dev: true});
 
@@ -17,5 +18,13 @@ describe("TOTD", function(){
         assert.equal(map.uid, "17B5XtQBJ_nukdrylfT7Pj1q1C1");
         assert.equal(map.exchangeId, 23641);
         assert.equal(author.id, "62c59cd2-4981-43cc-a6d2-7feaf96ceeb1");
+    });
+
+    it("TOTD dates", async function(){
+        const date = DateTime.local().setZone("Europe/Paris"),
+            totd = await tmioClient.totd.get(date.toJSDate());
+
+        assert.equal(totd.month, date.month);
+        assert.equal(totd.year, date.year);
     });
 });

@@ -4,6 +4,9 @@
 
 [![NPM](https://nodei.co/npm/trackmania.io.png?downloads=true&stars=true)](https://npmjs.org/trackmania.io)
 
+[![npm](https://img.shields.io/npm/v/trackmania.io?logo=npm)](https://npmjs.com/trackmania.io)
+[![GitHub release](https://img.shields.io/github/v/release/GreepTheSheep/node-trackmania.io?logo=github)](https://github.com/GreepTheSheep/node-trackmania.io/releases/latest)
+
 [![Trackmania.io API Status](https://img.shields.io/website?down_message=Offline&label=Trackmania.io%20API&up_message=Online&url=https%3A%2F%2Ftrackmania.io)](https://trackmania.io)
 [![Discord](https://img.shields.io/discord/570024448371982373?label=Discord&logo=discord)](https://greep.gq/discord)
 

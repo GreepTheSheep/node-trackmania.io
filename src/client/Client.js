@@ -102,7 +102,7 @@ class Client extends BaseClient {
             const date = DateTime.local().setZone("Europe/Paris");
             if (date.hour === 19 && !newTotdChecked){
                 let totd = await this.totd.get(date.toJSDate());
-                if (totd.monthDay === date.day) {
+                if (totd.monthDay === date.day && totd.month === date.month && totd.year === date.year) {
                     /**
                      * Emitted when a new Track Of The Day is out on Trackmania.io.
                      * @event Client#totd
@@ -149,11 +149,7 @@ class Client extends BaseClient {
             }
         }
 
-        // Check if there are two dollar signs in a row, returns one dollar sign
-        resStr = resStr.replace(/\$\$/gi, '$');
-
-        // Then remove all TM codes
-        return resStr.replace(/\$[<>wnoisgtz]|\$[hl]\[(.)+\]|\$[hl]|\$[0-9a-fA-F]{3}/gi, '');
+        return resStr.replace(/\$((\$)|[0-9a-f]{2,3}|[lh]\[.*?\]|.)/gi, '$2');
     }
 }
 
