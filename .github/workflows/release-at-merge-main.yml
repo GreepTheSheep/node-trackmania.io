@@ -2,7 +2,7 @@ name: Release after PR to main
 
 on:
   pull_request:
-    branches: 
+    branches:
       - main
     types: [closed]
 
@@ -18,7 +18,7 @@ jobs:
       - name: Get Version from package.json
         id: version
         uses: notiz-dev/github-action-json-property@release
-        with: 
+        with:
           path: 'package.json'
           prop_path: 'version'
 
@@ -28,8 +28,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.gh_token}}
         with:
-          tag_name: v${{steps.version.outputs.prop}} 
-          release_name: Release ${{steps.version.outputs.prop}} 
+          tag_name: v${{steps.version.outputs.prop}}
+          release_name: Release ${{steps.version.outputs.prop}}
           body: ${{ github.event.pull_request.body }}
           draft: false
           prerelease: false
