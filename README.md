@@ -68,8 +68,10 @@ Add yours here by opening a PR!
 There are a few other implementations of the Trackmania.io API, these are:
 
 - Python: [py-tmio](https://github.com/NottCurious/py-tmio) by [@NottCurious](https://github.com/NottCurious)
+- C# (.NET): [TrackmaniaIo.ApiClient](https://github.com/snixtho/TrackmaniaIo.ApiClient) by [@snixtho](https://github.com/snixtho)
 
 Add yours here by opening a PR!
+
 ---
 ## Thanks
 
