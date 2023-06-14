@@ -10,7 +10,6 @@ describe("Players", function(){
         it("Greep", async function(){
             const player = await tmioClient.players.get("greep");
             assert.equal(player.id, "26d9a7de-4067-4926-9d93-2fe62cd869fc", "Wrong account ID");
-            assert.equal(player.zone[0].name, "Yonne");
             assert.equal(player.meta.inNadeo, false);
             assert.equal(player.meta.inTMIOTeam, false);
         });

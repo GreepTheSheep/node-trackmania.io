@@ -1,6 +1,6 @@
 {
   "name": "trackmania.io",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Node.js inplementation of Trackmania Live services (trackmania.io)",
   "main": "src/index.js",
   "types": "typings/index.d.ts",
@@ -26,14 +26,14 @@
   },
   "homepage": "https://tmio.greep.gq/",
   "dependencies": {
-    "luxon": "^3.0.1",
+    "luxon": "^3.3.0",
     "node-fetch": "2.6.7"
   },
   "devDependencies": {
     "@discordjs/docgen": "0.11.1",
-    "dotenv": "16.0.1",
+    "dotenv": "16.1.4",
     "eslint": "7.31.0",
-    "mocha": "10.0.0",
-    "typescript": "4.7.4"
+    "mocha": "10.2.0",
+    "typescript": "5.1.3"
   }
 }
