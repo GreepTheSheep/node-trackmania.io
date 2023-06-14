@@ -671,6 +671,19 @@ class PlayerMeta {
     }
 
     /**
+     * The mastodon profile link of the player, if the player has one, otherwise null
+     * @type {string}
+     */
+    get mastodon(){
+        if (this.player._data.meta && (this.player._data.meta.mastodon && this.player._data.mastodon != "")) {
+            let mastodonDomain = this.player._data.meta.mastodon.substring(this.player._data.meta.mastodon.indexOf('@')+1),
+                mastodonHandle = this.player._data.meta.mastodon.substring(0, this.player._data.meta.mastodon.indexOf('@'));
+            return "https://"+mastodonDomain+"/@"+mastodonHandle;
+        }
+        else return null;
+    }
+
+    /**
      * The display URL of the player
      * @type {string}
      */
