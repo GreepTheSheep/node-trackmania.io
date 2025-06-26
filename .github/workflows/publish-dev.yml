@@ -13,10 +13,10 @@ jobs:
         with:
           ref: 'develop'
 
-      - name: Install Node v16
+      - name: Install Node v22
         uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: 22
           registry-url: https://registry.npmjs.org/
           cache: npm
 
