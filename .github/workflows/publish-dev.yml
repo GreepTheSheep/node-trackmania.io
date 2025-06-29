@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@latest
         with:
           ref: 'develop'
 
       - name: Install Node v22
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@latest
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org/
