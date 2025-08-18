@@ -13,10 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Setup Node.js LTS
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts'
+          node-version: 'latest'
           registry-url: https://registry.npmjs.org/
 
       - name: Install dependencies
@@ -35,10 +35,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Setup Node.js LTS
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts'
+          node-version: 'latest'
           registry-url: https://npm.pkg.github.com/
           scope: '@greepthesheep'
 
