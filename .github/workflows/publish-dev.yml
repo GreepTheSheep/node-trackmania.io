@@ -9,16 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@latest
+        uses: actions/checkout@v5
         with:
           ref: 'develop'
 
-      - name: Install Node v22
-        uses: actions/setup-node@latest
+      - name: Install Node LTS
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 'lts'
           registry-url: https://registry.npmjs.org/
-          cache: npm
 
       - name: Check previous released version
         id: pre-release
