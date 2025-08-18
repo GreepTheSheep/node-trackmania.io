@@ -18,13 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@latest
+        uses: actions/checkout@v5
 
-      - name: Install Node v22
-        uses: actions/setup-node@latest
+      - name: Install Node LTS
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: npm
+          node-version: 'lts'
 
       - name: Install dependencies
         run: npm ci
