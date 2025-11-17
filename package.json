@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "@discordjs/docgen": "0.11.1",
-    "dotenv": "17.2.2",
+    "dotenv": "17.2.3",
     "eslint": "7.31.0",
-    "mocha": "11.7.2",
+    "mocha": "11.7.5",
     "typescript": "5.9.3"
   }
 }
