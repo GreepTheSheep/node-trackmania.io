@@ -6,6 +6,8 @@ on:
       - main
     types: [closed]
 
+permissions: write-all
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -13,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Get Version from package.json
         id: version
@@ -24,12 +26,12 @@ jobs:
 
       - name: Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v3
         env:
-          GITHUB_TOKEN: ${{secrets.gh_token}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           tag_name: v${{steps.version.outputs.prop}}
-          release_name: Release ${{steps.version.outputs.prop}}
+          name: Release ${{steps.version.outputs.prop}}
           body: ${{ github.event.pull_request.body }}
-          draft: false
           prerelease: false
+          generate_release_notes: true
