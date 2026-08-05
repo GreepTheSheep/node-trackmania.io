@@ -23,44 +23,44 @@ permissions:
 
 jobs:
   publish-dev-npm:
-  name: Publish Dev release on NPM
-  runs-on: ubuntu-latest
-  if: github.event.inputs.release_type == 'dev' || github.event.schedule == '0 0 */4 * *'
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v7
-      with:
-        ref: 'develop'
+    name: Publish Dev release on NPM
+    runs-on: ubuntu-latest
+    if: github.event.inputs.release_type == 'dev' || github.event.schedule == '0 0 */4 * *'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: 'develop'
 
-    - name: Install Node
-      uses: actions/setup-node@v7
-      with:
-        registry-url: https://registry.npmjs.org/
+      - name: Install Node
+        uses: actions/setup-node@v7
+        with:
+          registry-url: https://registry.npmjs.org/
 
-    - name: Check previous released version
-      id: pre-release
-      run: |
-        if [[ $(npm view trackmania.io@dev version | grep -e "$(jq --raw-output '.version' package.json)-dev.*.$(git rev-parse --short HEAD | cut -b1-3)") ]]; \
-        then echo "release=false" >> "$GITHUB_OUTPUT"; \
-        else echo "release=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Check previous released version
+        id: pre-release
+        run: |
+          if [[ $(npm view trackmania.io@dev version | grep -e "$(jq --raw-output '.version' package.json)-dev.*.$(git rev-parse --short HEAD | cut -b1-3)") ]]; \
+          then echo "release=false" >> "$GITHUB_OUTPUT"; \
+          else echo "release=true" >> "$GITHUB_OUTPUT"; fi
 
-    - name: Install dependencies
-      if: steps.pre-release.outputs.release == 'true'
-      run: npm ci --ignore-scripts
+      - name: Install dependencies
+        if: steps.pre-release.outputs.release == 'true'
+        run: npm ci --ignore-scripts
 
-    - name: Deprecate old dev version
-      if: steps.pre-release.outputs.release == 'true'
-      run: "npm deprecate trackmania.io@$(npm view trackmania.io@dev version) 'no longer supported' || true"
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+      - name: Deprecate old dev version
+        if: steps.pre-release.outputs.release == 'true'
+        run: "npm deprecate trackmania.io@$(npm view trackmania.io@dev version) 'no longer supported' || true"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
 
-    - name: Publish
-      if: steps.pre-release.outputs.release == 'true'
-      run: |
-        npm version --git-tag-version=false $(jq --raw-output '.version' package.json)-dev.$(date +%d%m%y).$(git rev-parse --short HEAD)
-        npm publish --tag dev || true
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+      - name: Publish
+        if: steps.pre-release.outputs.release == 'true'
+        run: |
+          npm version --git-tag-version=false $(jq --raw-output '.version' package.json)-dev.$(date +%d%m%y).$(git rev-parse --short HEAD)
+          npm publish --tag dev || true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
 
 
   publish-npm:
