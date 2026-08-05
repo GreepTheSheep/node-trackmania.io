@@ -126,7 +126,7 @@ class Club {
     }
 
     /**
-     * Whether the club is featured 
+     * Whether the club is featured
      * @type {boolean}
      */
     get featured() {
@@ -151,7 +151,7 @@ class Club {
      * });
      */
     async creator() {
-        return this.client.players.get(this._data.creatorplayer.id);
+        return this.client.players.get(this._data.authorplayer.id);
     }
 
     /**
@@ -179,7 +179,7 @@ class Club {
         const array = [];
         for (const member of res.members) {
             array.push(new ClubMember(this, member));
-            
+
             if (cache) {
                 this._membersCache.set(member.player.id, member);
             }
@@ -211,7 +211,7 @@ class Club {
         const array = [];
         for (const activity of res.activities) {
             array.push(new ClubActivity(this, activity));
-            
+
             if (cache) {
                 this._activitiesCache.set(activity.id, activity);
             }

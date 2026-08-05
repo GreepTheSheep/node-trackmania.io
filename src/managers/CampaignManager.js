@@ -30,7 +30,7 @@ class CampaignManager{
      * @returns {Promise<Campaign>} The campaign
      */
     async currentSeason(cache = this.client.options.cache.enabled){
-        const campaigns = this.client.options.api.paths.tmio.tabs.campaigns,
+        const campaigns = this.client.options.api.paths.tmio.tabs.seasonalCampaigns,
             searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaigns}/0`),
             campaignId = searchRes.campaigns[0].id;
 
@@ -43,15 +43,18 @@ class CampaignManager{
 
     /**
      * Get all official campaigns from recent to old
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
      */
-    async officialCampaigns(){
-        const campaigns = this.client.options.api.paths.tmio.tabs.campaigns,
-            searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaigns}/0`);
+    async officialCampaigns(page = 0){
+        const campaigns = this.client.options.api.paths.tmio.tabs.seasonalCampaigns,
+            searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaigns}/${page}`);
 
         let arr = [];
         for (const campaign of searchRes.campaigns) {
-            if (campaign.clubid != 0) break;
+            if (!campaign.seasonal) break;
+
+            campaign["clubid"] = 0;
 
             arr.push(new CampaignSearchResult(this.client, campaign));
         }
@@ -64,12 +67,12 @@ class CampaignManager{
      * @returns {Promise<Array<CampaignSearchResult>>} The campaigns
      */
     async popularCampaigns(page = 0){
-        const campaigns = this.client.options.api.paths.tmio.tabs.campaigns,
+        const campaigns = this.client.options.api.paths.tmio.tabs.clubCampaigns,
             searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaigns}/${page}`);
 
         let arr = [];
         for (const campaign of searchRes.campaigns) {
-            if (campaign.clubid == 0) continue;
+            if (campaign.seasonal) break;
 
             arr.push(new CampaignSearchResult(this.client, campaign));
         }
@@ -90,7 +93,7 @@ class CampaignManager{
      * });
      */
     async search(query, page = 0){
-        const campaigns = this.client.options.api.paths.tmio.tabs.campaigns,
+        const campaigns = this.client.options.api.paths.tmio.tabs.clubCampaigns,
             searchRes = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaigns}/${page}?search=${query}`);
 
         let arr = [];
@@ -131,7 +134,7 @@ class CampaignManager{
         let campaign, res;
         if (clubId == 0) {
             // Official campaign
-            campaign = this.client.options.api.paths.tmio.tabs.officialCampaign;
+            campaign = this.client.options.api.paths.tmio.tabs.seasonalCampaign;
             res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${campaign}/${id}`);
         } else {
             // Club campaign

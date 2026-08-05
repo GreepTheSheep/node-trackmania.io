@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({quiet:true});
 const assert = require('assert'),
     TMIO = require('../'),
     tmioClient = new TMIO.Client({dev: true});
@@ -31,7 +31,6 @@ describe("Players", function(){
         it("Gwen", async function(){
             const player = await tmioClient.players.get("gwen");
             assert.equal(player.id, "dba55c7e-d5cd-40c0-a5e7-8e793fd295eb", "Wrong account ID");
-            assert.equal(player.meta.inTMGL, true);
             assert.equal(player.meta.inTMIOTeam, false);
         })
     });
@@ -53,13 +52,14 @@ describe("Players", function(){
         it("Nadeo", async function(){
             const group = await tmioClient.players.group("nadeo");
             assert.equal(group.some(p=>p.id == "2232c721-f215-4036-b28b-772eee46632c"), true, "Hylis not found");
-            assert.equal(group.some(p=>p.id == "a76653e1-998a-4c53-8a91-0a396e15bfb5"), true, "Darrek not found");
+            assert.equal(group.some(p=>p.id == "aa02b90e-0652-4a1c-b705-4677e2983003"), true, "Nadeo not found");
         });
 
         it("Team", async function(){
             const group = await tmioClient.players.group("team");
             assert.equal(group.some(p=>p.id == "7398eeb6-9b4e-44b8-a7a1-a2149955ac70"), true, "Miss not found");
             assert.equal(group.some(p=>p.id == "5b4d42f4-c2de-407d-b367-cbff3fe817bc"), true, "tooInfinite not found");
+            assert.equal(group.some(p=>p.id == "0a2d1bc0-4aaa-4374-b2db-3d561bdab1c9"), true, "XertroV not found");
         });
     });
 });

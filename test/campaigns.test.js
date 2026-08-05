@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({quiet:true});
 const assert = require('assert'),
     TMIO = require('../'),
     tmioClient = new TMIO.Client({dev: true});

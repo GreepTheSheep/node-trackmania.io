@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({quiet:true});
 const assert = require('assert'),
     {DateTime} = require('luxon'),
     TMIO = require('../'),
