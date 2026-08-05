@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/GreepTheSheep/node-trackmania.io/issues"
   },
-  "homepage": "https://tmio.greep.gq/",
+  "homepage": "https://tmio.greep.fr/",
   "dependencies": {
     "luxon": "^3.7.2",
     "node-fetch": "2.6.7"
