@@ -186,10 +186,16 @@ class defaultOptionsAPIPathsTMIOTabs {
         this.ads = "ads";
 
         /**
-         * Campaigns Tab.
+         * Seasonal Campaigns Tab.
          * @type {string}
          */
-        this.campaigns = "campaigns";
+        this.seasonalCampaigns = "campaigns/seasonal";
+
+        /**
+         * Club Campaigns Tab.
+         * @type {string}
+         */
+        this.clubCampaigns = "campaigns/club";
 
         /**
          * Specific campaign Tab.
@@ -201,7 +207,7 @@ class defaultOptionsAPIPathsTMIOTabs {
          * Official campaign Tab.
          * @type {string}
          */
-        this.officialCampaign = "officialcampaign";
+        this.seasonalCampaign = "campaign/seasonal";
 
         /**
          * Rooms Tab.
