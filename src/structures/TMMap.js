@@ -1,6 +1,6 @@
 const ReqUtil = require('../util/ReqUtil');
-const Player = require('./Player'); // eslint-disable-line no-unused-vars
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Player = require('./Player');
+const Client = require('../client/Client');
 const EventEmitter = require('events');
 
 /**

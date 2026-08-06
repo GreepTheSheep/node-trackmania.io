@@ -1,5 +1,5 @@
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const TMEvent = require('./TMEvent'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
+const TMEvent = require('./TMEvent');
 
 /**
  * Represents a COTD event.

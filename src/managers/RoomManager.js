@@ -1,7 +1,7 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const Room = require('../structures/Room');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
 
 /**
  * Represents a manager for rooms.
@@ -17,7 +17,7 @@ class RoomManager{
 
         /**
          * The cache manager
-         * @type {CacheManager} 
+         * @type {CacheManager}
          * @private
          */
         this._cache = new CacheManager(this.client, this, Room);
@@ -54,7 +54,7 @@ class RoomManager{
      * @param {number} id The room Id
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the room from cache or not
      * @returns {Promise<Room>} The room
-     * @example 
+     * @example
      * client.rooms.get(338, 1180).then(room => {
      *     console.log(room.name);
      * });
@@ -66,7 +66,7 @@ class RoomManager{
             return await this._fetch(clubId, id, cache);
         }
     }
-        
+
     /**
      * Fetches a room and returns its data
      * @param {number} clubId The club Id that the room belongs to
@@ -82,7 +82,7 @@ class RoomManager{
             theRoom = new Room(this.client, res);
         if (cache) {
             res._cachedTimestamp = Date.now();
-            
+
             this._cache.set(res.id, theRoom);
         }
         return theRoom;

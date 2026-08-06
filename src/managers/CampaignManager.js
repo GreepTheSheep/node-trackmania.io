@@ -1,7 +1,7 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const Campaign = require('../structures/Campaign');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
 
 
 /**

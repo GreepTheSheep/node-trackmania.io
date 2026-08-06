@@ -1,7 +1,7 @@
-const Player = require('./Player'); // eslint-disable-line no-unused-vars
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const TMMap = require('./TMMap'); // eslint-disable-line no-unused-vars
-const Club = require('./Club'); // eslint-disable-line no-unused-vars
+const Player = require('./Player');
+const Client = require('../client/Client');
+const TMMap = require('./TMMap');
+const Club = require('./Club');
 const ReqUtil = require('../util/ReqUtil');
 const EventEmitter = require('events');
 

@@ -1,7 +1,7 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const TMEvent = require('../structures/TMEvent');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
 
 
 /**
@@ -18,12 +18,12 @@ class EventManager{
 
         /**
          * The cache manager
-         * @type {CacheManager} 
+         * @type {CacheManager}
          * @private
          */
         this._cache = new CacheManager(this.client, this, TMEvent);
     }
-    
+
     /**
      * List all available events by creation date
      * @param {number} [page=0] The page number
@@ -54,7 +54,7 @@ class EventManager{
      * @param {number} eventId The event id
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the map from cache or not
      * @returns {Promise<TMEvent>} The event
-     * @example 
+     * @example
      * client.events.get(706).then(event => {
      *     console.log(event.name);
      * });
@@ -66,7 +66,7 @@ class EventManager{
             return await this._fetch(eventId, cache);
         }
     }
-        
+
     /**
      * Fetches a event and returns its data
      * @param {number} eventId The event id
@@ -81,7 +81,7 @@ class EventManager{
         const theEvent = new TMEvent(this.client, res);
         if (cache) {
             res._cachedTimestamp = Date.now();
-            
+
             this._cache.set(res.id, theEvent);
         }
         return theEvent;

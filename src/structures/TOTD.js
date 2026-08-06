@@ -1,5 +1,5 @@
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const TMMap = require('../structures/TMMap'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
+const TMMap = require('../structures/TMMap');
 
 /**
  * Represents a Track Of The Day (TOTD).

@@ -2,8 +2,8 @@ const {DateTime} = require('luxon');
 const BaseClient = require('./BaseClient');
 const { deprecate } = require('util');
 
-const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line no-unused-vars
-const TOTD = require('../structures/TOTD'); // eslint-disable-line no-unused-vars
+const defaultOptions = require('../util/defaultOptions');
+const TOTD = require('../structures/TOTD');
 
 // Managers
 const PlayerManager = require('../managers/PlayerManager');

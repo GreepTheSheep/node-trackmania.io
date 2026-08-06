@@ -1,8 +1,8 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
-const {MMTypes, MatchmakingGroup, MatchStatus} = require('../util/Constants'); // eslint-disable-line no-unused-vars
+const {MMTypes, MatchmakingGroup, MatchStatus} = require('../util/Constants');
 const Match = require('../structures/Match');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
 
 /**
  * Represents the matches manager (3v3 or Royal matches).

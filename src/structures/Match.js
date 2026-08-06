@@ -1,5 +1,5 @@
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const {MMTypes, MatchmakingGroup, MatchStatus, TeamNames, TeamName} = require('../util/Constants'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
+const {MMTypes, MatchmakingGroup, MatchStatus, TeamNames, TeamName} = require('../util/Constants');
 const RoyalTeams = require('../data/RoyalTeams.json');
 
 /**

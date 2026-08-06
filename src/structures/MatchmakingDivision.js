@@ -1,4 +1,4 @@
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
 const MatchmakingDivisionData = require('../data/MatchmakingDivisions.json');
 const { MMTypes } = require('../util/Constants');
 

@@ -1,8 +1,8 @@
 const Player = require('../structures/Player');
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const {PlayerGroup, MMTypes, MatchmakingGroup} = require('../util/Constants'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
+const {PlayerGroup, MMTypes, MatchmakingGroup} = require('../util/Constants');
 const MatchmakingDivision = require('../structures/MatchmakingDivision');
 
 /**

@@ -1,7 +1,7 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const Splashscreen = require('../structures/Splashscreen');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
 
 /**
  * Represents a in-game news manager.
@@ -17,7 +17,7 @@ class NewsManager{
 
         /**
          * The cache manager
-         * @type {CacheManager} 
+         * @type {CacheManager}
          * @private
          */
         this._cache = new CacheManager(this.client, this, Splashscreen);
@@ -39,7 +39,7 @@ class NewsManager{
                 if (cache) {
                     res.splashscreens[i]._cachedTimestamp = Date.now();
                     this._cache.set(res.id, splashscreen);
-                } 
+                }
                 array.push(splashscreen);
             }
         }
@@ -51,7 +51,7 @@ class NewsManager{
      * @param {number} newsId The splashscreen ID
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the news from cache or not
      * @returns {Promise<Splashscreen>} The splashscreen
-     * @example 
+     * @example
      * client.news.get(143).then(news => {
      *     console.log(news.title);
      * });
@@ -63,7 +63,7 @@ class NewsManager{
             return await this._fetch(newsId, cache);
         }
     }
-        
+
     /**
      * Fetches a splashscreen and returns its data
      * @param {number} newsId The splashscreen ID
@@ -82,7 +82,7 @@ class NewsManager{
             if (res.splashscreens.length > 0) {
                 for (let i = 0; i < res.splashscreens.length; i++) {
                     res.splashscreens[i]._cachedTimestamp = Date.now();
-                    
+
                     this._cache.set(res.id, new Splashscreen(this.client, res.splashscreens[i]));
                 }
             }
@@ -93,14 +93,14 @@ class NewsManager{
                     if (res.splashscreens.length > 0) {
                         for (let i = 0; i < res.splashscreens.length; i++) {
                             res.splashscreens[i]._cachedTimestamp = Date.now();
-                            
+
                             this._cache.set(res.id, new Splashscreen(this.client, res.splashscreens[i]));
                         }
                     }
                 }
             }
             if (this._cache.has(newsId)) return this._cache.get(newsId);
-            else return null; 
+            else return null;
         } else {
             if (res.splashscreens.length > 0) { // check all news from the page 0
                 for (let i = 0; i < res.splashscreens.length; i++) {
@@ -123,7 +123,7 @@ class NewsManager{
                 }
             }
             // If we reach this point, the news was not found
-            return null; 
+            return null;
         }
     }
 }

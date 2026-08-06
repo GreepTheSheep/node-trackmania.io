@@ -1,4 +1,4 @@
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
 
 /**
  * Represents a news item.

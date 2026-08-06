@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const pkg = require('../../package.json');
 const ReqUtil = require('../util/ReqUtil');
-const BaseClient = require('../client/BaseClient'); // eslint-disable-line no-unused-vars
+const BaseClient = require('../client/BaseClient');
 
 /**
  * APIRequest class

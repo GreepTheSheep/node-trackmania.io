@@ -1,9 +1,9 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const COTD = require('../structures/COTD');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const Player = require('../structures/Player'); // eslint-disable-line no-unused-vars
-const { COTDLeaderboardSortGroup } = require('../util/Constants'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
+const Player = require('../structures/Player');
+const { COTDLeaderboardSortGroup } = require('../util/Constants');
 
 /**
  * Represents a COTD Manager.

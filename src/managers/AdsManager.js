@@ -1,7 +1,7 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const Ad = require('../structures/Ad');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
 
 /**
  * Represents a in-game ads manager (also called Maniapub).

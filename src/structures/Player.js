@@ -1,7 +1,7 @@
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const TMMap = require('../structures/TMMap'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
+const TMMap = require('../structures/TMMap');
 const PlayerEchelonData = require('../data/PlayerEchelons.json');
-const {MMTypes, MatchmakingGroup} = require('../util/Constants'); // eslint-disable-line no-unused-vars
+const {MMTypes, MatchmakingGroup} = require('../util/Constants');
 
 /**
  * Represents a player in Trackmania.

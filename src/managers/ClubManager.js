@@ -1,7 +1,7 @@
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('./CacheManager');
 const Club = require('../structures/Club');
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
+const Client = require('../client/Client');
 
 /**
  * Represents a manager for clubs.
@@ -17,7 +17,7 @@ class ClubManager{
 
         /**
          * The cache manager
-         * @type {CacheManager} 
+         * @type {CacheManager}
          * @private
          */
         this._cache = new CacheManager(this.client, this, Club);
@@ -45,7 +45,7 @@ class ClubManager{
     /**
      * Searches for a club
      * @param {string} query Search query
-     * @param {number} [page=0] The page number 
+     * @param {number} [page=0] The page number
      * @returns {Promise<Array<Club>>}
      */
     async search(query, page = 0){
@@ -64,7 +64,7 @@ class ClubManager{
      * @param {number} id The Club Id
      * @param {boolean} [cache=this.client.options.cache.enabled] Whether to get the club from cache or not
      * @returns {Promise<Club>} The Club
-     * @example 
+     * @example
      * client.clubs.get(54).then(club => {
      *     console.log(club.name);
      * });
@@ -76,7 +76,7 @@ class ClubManager{
             return await this._fetch(id, cache);
         }
     }
-        
+
     /**
      * Fetches a map and returns its data
      * @param {string} id The Club Id
@@ -91,7 +91,7 @@ class ClubManager{
         const theClub = new Club(this.client, res);
         if (cache) {
             res._cachedTimestamp = Date.now();
-            
+
             this._cache.set(res.id, theClub);
         }
         return theClub;

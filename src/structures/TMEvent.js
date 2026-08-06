@@ -1,6 +1,6 @@
-const Player = require('./Player'); // eslint-disable-line no-unused-vars
-const Client = require('../client/Client'); // eslint-disable-line no-unused-vars
-const TMMap = require('./TMMap'); // eslint-disable-line no-unused-vars
+const Player = require('./Player');
+const Client = require('../client/Client');
+const TMMap = require('./TMMap');
 const ReqUtil = require('../util/ReqUtil');
 const CacheManager = require('../managers/CacheManager');
 
@@ -16,8 +16,8 @@ class TMEvent {
 
         /**
          * The event's data.
-         * @type {Object} 
-         * @private 
+         * @type {Object}
+         * @private
          */
         this._data = data;
     }
@@ -195,7 +195,7 @@ class TMEventRound {
         /**
          * The round's data.
          * @type {Object}
-         * @private 
+         * @private
          */
         this._data = data;
 
@@ -273,10 +273,10 @@ class TMEventRound {
 
         const res = await this.client._apiReq(`${new ReqUtil(this.client).tmioAPIURL}/${comp}/${this.event.id}/${challenge}/${this._data.challenges[index].id}`);
         const theChallenge = new TMEventChallenge(this, res);
-        
+
         if (cache) {
             res._cachedTimestamp = Date.now();
-            
+
             this._challengesCache.set(this._data.challenges[index].id, theChallenge);
         }
         return theChallenge;
@@ -316,7 +316,7 @@ class TMEventRoundMatch {
         /**
          * The match's results CacheManager instance
          * @type {CacheManager}
-         * @private 
+         * @private
          */
         this._resultsCache = new CacheManager(this.client, this, TMEventRoundMatchResult);
     }
@@ -378,7 +378,7 @@ class TMEventRoundMatch {
         }
         if (cache) {
             res._cachedTimestamp = Date.now();
-            
+
             this._resultsCache.set(this.id+"_"+page, arr);
         }
         return arr;
@@ -570,7 +570,7 @@ class TMEventChallenge {
         }
         if (cache) {
             res._cachedTimestamp = Date.now();
-            
+
             this._resultsCache.set(this.id+"_"+page, arr);
         }
         return arr;
@@ -587,7 +587,7 @@ class TMEventChallengeResult {
          * @type {TMEventChallenge}
          */
         this.challenge = challenge;
-        
+
         /**
          * The event instance
          * @type {TMEvent}
