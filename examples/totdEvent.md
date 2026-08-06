@@ -1,14 +1,20 @@
 ## Gets the TOTD when it cames out every day
 
+> [!WARNING]
+> Starting with version 4 of node-trackmania.io, the `client.stripFormat()` method has been removed in favor of the `tm-essentials` package.
+> You don't have to install it, but it's recommended if you want more formatting options of all kinds in Trackmania.
+
 ```js
 const TMIO = require('trackmania.io'),
-    client = new TMIO.Client();
+  TMEssentials = require('tm-essentials'),
+  client = new TMIO.Client();
 
 client.on('totd', async totd=>{
     const map = await totd.map();
 
     // Map names aren't formatted by default (color codes for example), so we need to format them
-    const mapName = client.stripFormat(map.name);
+    // Starting with version 4 of node-trackmania.io, the `client.stripFormat()` method has been removed in favor of the `tm-essentials` package.
+    const mapName = TMEssentials.TextFormatter.deformat(TMEssentials.TextFormatter.formatAnsi(map.name));
 
     console.log('New Track Of The Day:', mapName);
 });
