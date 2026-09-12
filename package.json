@@ -33,7 +33,7 @@
     "@discordjs/docgen": "0.11.1",
     "dotenv": "17.4.2",
     "eslint": "9.39.2",
-    "mocha": "12.0.0",
+    "mocha": "12.0.1",
     "typescript": "6.0.3"
   }
 }
