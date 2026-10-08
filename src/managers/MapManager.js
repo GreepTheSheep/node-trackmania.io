@@ -21,6 +21,13 @@ class MapManager{
          * @private
          */
         this._cache = new CacheManager(this.client, this, TMMap);
+
+        /**
+         * Pending fetch promises, keyed by map UID, used to deduplicate concurrent requests.
+         * @type {Map<string, Promise<TMMap>>}
+         * @private
+         */
+        this._pending = new Map();
     }
 
     /**
@@ -36,8 +43,12 @@ class MapManager{
     async get(mapUid, cache = this.client.options.cache.enabled){
         if (cache && this._cache.has(mapUid)) {
             return this._cache.get(mapUid);
+        } else if (this._pending.has(mapUid)) {
+            return await this._pending.get(mapUid);
         } else {
-            return await this._fetch(mapUid, cache);
+            const promise = this._fetch(mapUid, cache).finally(() => this._pending.delete(mapUid));
+            this._pending.set(mapUid, promise);
+            return await promise;
         }
     }
 
